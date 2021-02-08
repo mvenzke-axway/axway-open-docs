@@ -1,7 +1,7 @@
 {
     "title": "Promote managed APIs between environments",
     "linkTitle": "Promote managed APIs between environments",
-    "weight": "12",
+    "weight": "120",
     "date": "2019-09-17",
     "description": "Different approaches you can use to promote APIs between environments."
 }
@@ -14,7 +14,7 @@ Alternatively, you can use one of these approaches:
 * Use a promotion policy that you have configured in Policy Studio to automate promotion between environments.
 * When APIs have been developed using Policy Studio, you can also promote them between environments using the API Gateway mechanism for promotion and deployment of standard API Gateway configuration.
 
-{{< alert title="Tip" color="primary" >}}Another alternative is to use the `swagger-promote` tool to follow an APIs as code approach. Store your API definition (Swagger or WSDL) plus a meta data configuration file in your version control system, and a CI/CD pipeline replicates it into API Manager in the state you want. For details, go to [`swagger-promote` tool on GitHub](https://github.com/Axway-API-Management-Plus/apimanager-swagger-promote).{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}Another alternative is to use the `apim-cli` tool to follow an APIs as code approach. Store your API definition (Swagger or WSDL) plus a meta data configuration file in your version control system, and a CI/CD pipeline replicates it into API Manager in the state you want. For details, go to [`apim-cli` tool on GitHub](https://github.com/Axway-API-Management-Plus/apim-cli).{{< /alert >}}
 
 ## Promote registered APIs with zero downtime using a script
 
@@ -104,6 +104,8 @@ The promotion properties are described as follows:
 | `application.oauthresource.upgrade` | Specify whether to promote an existing OAuth resource if there is a conflict in the consumer organization (`true` or `false`). |
 | `api.publish.virtualhost`           | Specify an optional virtual host name and port on which the promoted APIs are available. The host name should be DNS resolvable. |
 | `api.unpublished.remove`            | Specify whether to remove an old unpubished API from the development organization (`true` or `false`). This only applies when an upgrade occurs. For example, if there is a conflict and `api.conflict.upgrade` is set to `true`, this results in two APIs (existing and upgraded). The `api.unpublished.remove` option specifies whether to keep or delete the existing API that has been unpublished. |
+| `application.apis.remove.all`       | Specifies whether, on API conflict, all current API access granted to applications should be removed (`true` or `false`). When enabled, requires that api.conflict.upgrade is set to `true` also.|
+| `organization.apis.remove.all`      | Specifies whether, on API conflict, all current API access granted to organizations should be removed (`true` or `false`). When enabled, requires that api.conflict.upgrade is set to `true` also.|
 
 After running the `apimanager-promote` command, press **F5** to reload the API Manager web console in the target environment.
 
@@ -142,7 +144,7 @@ For details of onboarding a client application from sandbox APIs to production A
 
 APIs created with the REST API development wizard in Policy Studio are part of the standard API Gateway configuration. This means that you can promote APIs between environments using the API Gateway mechanism for promotion and deployment of API Gateway configuration (using `.fed`, `.pol`, and `.env` packages). For example, you can use this mechanism to promote APIs from a testing environment to a production environment and to handle differences between each environment.
 
-For more details on the API Gateway mechanism for promoting configuration between environments, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
+For more details on the API Gateway mechanism for promoting configuration between environments, see the [API Gateway DevOps Deployment Guide](/docs/apigtw_devops/).
 
 For details of onboarding a client application from sandbox APIs to production APIs, see [Deploy sandbox and production APIs](#deploy-sandbox-and-production-apis).
 
@@ -152,9 +154,6 @@ In a production environment, enterprises should create and deploy the following 
 
 * *Sandbox API group* - the APIs that API consumers use against test back-end systems before going live (for example, a test credit card payment system)
 * *Production API group* - the production APIs that front the production back-end systems (for example, a live credit card payment system)
-
-This production environment topology is recommended by Axway. For details on creating a domain environment topology, see the
-[API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
 
 This section shows an example production environment topology with Sandbox and Production API groups, and shows examples of promoting and onboarding Sandbox APIs to Production APIs.
 
@@ -174,7 +173,7 @@ The following diagram shows the process of promoting API Gateway policy-based co
 
 Both the Sandbox API and Production API groups are virtualizing the same APIs and therefore must use the same policy package (`.pol`). During configuration promotion, the policy package from the downstream environment (for example, testing) is copied and deployed to both API groups.
 
-However, both API groups use different environment specific configuration (for example, to connect to different back-end systems, which require different connection information). Therefore each API group has a specific environment package (`.env`) that is deployed to the API group along with the common policy package. For more details on promoting API Gateway configuration between environments, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
+However, both API groups use different environment specific configuration (for example, to connect to different back-end systems, which require different connection information). Therefore each API group has a specific environment package (`.env`) that is deployed to the API group along with the common policy package.
 
 ![Promote production APIs](/Images/docbook/images/api_mgmt/api_mgmt_promotion.png)
 
@@ -192,4 +191,4 @@ The following diagram shows the process of onboarding a client application from 
 
 Each API Gateway instance connects to an external Apache Cassandra for default persistent data storage. This Cassandra database is used by features such as API Manager, API keys, and OAuth.
 
-If you configure multiple API Gateways in a group, you should configure high availability in the Apache Cassandra database. For more details, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+If you configure multiple API Gateways in a group, you should configure high availability in the Apache Cassandra database. For more details, see [Administer Apache Cassandra](/docs/cass_admin/).

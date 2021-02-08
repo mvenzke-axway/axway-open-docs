@@ -1,329 +1,214 @@
 {
-    "title":"Install API Portal dependencies",
-    "linkTitle":"Install API Portal dependencies",
-    "weight":"2",
-    "date":"2019-08-09",
-    "description":"Install required dependencies before you install API Portal."
+"title": "Install Apache HTTP server and PHP",
+  "linkTitle": "Install Apache HTTP server and PHP",
+  "weight": "20",
+  "date": "2019-08-09",
+  "description": "The API Portal installation script does not install specific dependencies (such as Apache HTTP server and PHP) that are required by API Portal, so you must install these dependencies yourself before you install API Portal."
 }
 
-The API Portal installation script does not install specific dependencies (such as PHP, Apache) that are required by API Portal, so you must install these dependencies yourself before you install API Portal.
+## Install dependencies from RedHat Software Collections (RHSCL) on RHEL 7
 
-## RHEL – Install dependencies from official RHEL repository
+On a Red Hat Enterprise Linux (RHEL7) installation, the default PHP version available in the official repository is 5.4. However, API Portal only supports PHP 7.1+. You can use RedHat Software Collections (RHSCL) to install PHP 7.1+.
 
-On a RHEL7 installation, the default PHP version available in the official repository is 5.4. It is best to install PHP 7.x.
+### Enable RedHat Software Collections
 
-To install PHP 7.x, you can use an additional official RHEL repository. By default, RHEL uses packages from Red Hat Enterprise Linux 7 base channel but RHEL provides additional repositories under the Red Hat Software Collections channel.
+Before installing Apache HTTP server and PHP you must first enable RHSCL:
 
-### Enable the official RHEL repository
+```bash
+sudo subscription-manager repos --enable rhel-server-rhscl-7-rpms
+sudo yum clean all
+```
 
-1. Add an official RHEL repository that contains PHP version 7.x:
+### Install Apache HTTP server on RHEL7
 
-    ```
-    sudo subscription-manager repos --enable rhel-server-rhscl-7-rpms
-    ```
+1. Install Apache from RHSCL:
 
-2. Clear the cache:
+   ```bash
+   sudo yum install httpd24-httpd httpd24-httpd-tools httpd24-mod_ssl
+   ```
+2. Make Apache available in any bash session by default:
 
-    ```
-    sudo yum clean all
-    ```
+   ```bash
+   echo "source scl_source enable httpd24" | sudo tee -a /etc/profile.d/scl-httpd24.sh
+   source /etc/profile.d/scl-httpd24.sh
+   sudo ln -s $(which httpd) /usr/bin/httpd
+   ```
+3. Verify Apache is now available:
 
-3. Run the update:
+   ```bash
+   httpd -v
+   ```
+4. Enable and start Apache service:
 
-    ```
-    sudo yum update
-    ```
+   ```bash
+   sudo systemctl enable --now httpd24-httpd
+   ```
+5. Verify that Apache service is active and running:
 
-### Install PHP from official RHEL repository
+   ```bash
+   systemctl status httpd24-httpd
+   ```
 
-{{< alert title="Note" color="primary" >}}At the time of writing, the latest available PHP version in the RHEL repository is PHP 7.1.x, but the official latest PHP version is 7.2.x. It is best to install the latest 7.x version available.{{< /alert >}}
+### Install PHP on RHEL7
 
-1. To find the latest PHP7 version, enter the following command:
+You must install the latest PHP version provided by the RHSCL.
 
-    ```
-    sudo yum search php7
-    ```
+1. Install all required PHP packages:
 
-2. Install all required packages, for example:
+   ```bash
+   sudo yum install rh-php73 rh-php73-php rh-php73-php-cli rh-php73-php-common rh-php73-php-gd rh-php73-php-json rh-php73-php-intl rh-php73-php-mbstring rh-php73-php-mysqlnd rh-php73-php-pdo rh-php73-php-xml rh-php73-php-zip
+   ```
+2. Enable PHP in bash:
 
-    ```
-    sudo yum install rh-php71 rh-php71-php rh-php71-php-cli rh-php71-php-common rh-php71-php-gd rh-php71-php-json rh-php71-php-intl rh-php71-php-mbstring rh-php71-php-mysqlnd rh-php71-php-pdo     rh-php71-php-xml rh-php71-php-zip
-    ```
+   ```bash
+   echo "source scl_source enable rh-php73" | sudo tee -a /etc/profile.d/scl-rh-php73.sh
+   source /etc/profile.d/scl-rh-php73.sh
+   sudo ln -s $(which php) /usr/bin/php
+   ```
+3. Verify that PHP is available:
 
-### Create symbolic link
+   ```bash
+   php -v
+   ```
+4. Verify that `php7_module` is enabled in Apache:
 
-After installation, create a symbolic link to use PHP directly in a terminal:
+   ```bash
+   httpd -M | grep php7
+   ```
+5. Restart Apache and verify it is running:
 
-1. Check that PHP is located in the directory `/opt/rh/rh-php71/root/usr/bin/php` and execute the following command to verify the PHP version:
-
-    ```
-    /opt/rh/rh-php71/root/usr/bin/php -v
-    PHP 7.1.8 (cli) (built: Nov 7 2018 18:12:07) (NTS)
-    ```
-
-2. To create a symbolic link, enter the command:
-
-    ```
-    ln -s /opt/rh/rh-php71/root/usr/bin/php /usr/bin/php
-    ```
-
-3. Run the following to validate the symbolic link was created successfully:
-
-    ```
-    php –v
-    PHP 7.1.8 (cli) (built: Nov 7 2018 18:12:07) (NTS)
-    ```
+   ```bash
+   sudo systemctl restart httpd24-httpd
+   systemctl status httpd24-httpd
+   ```
 
 ### Upgrade PHP
 
-If you already have PHP 5.4 or earlier and API Portal 7.7 or earlier installed, you cannot uninstall the old PHP version due to a dependency in API Portal. Perform the steps in [Install PHP from official RHEL repository](#install-php-from-official-rhel-repository) and leave the old PHP version installed. If there is already a symbolic link to the old PHP version, update it with the new location of PHP (for example, using `ln -sf` instead of `ln-s`).
+If you already have PHP 5.4 or earlier and API Portal 7.7 or earlier installed, you cannot uninstall the old PHP version due to a dependency in API Portal. Perform the steps in [Install PHP on RHEL7](#install-php-on-rhel7) and leave the old PHP version installed. If there is already a symbolic link to the old PHP version, update it with the new location of PHP (for example, using `ln -sf` instead of `ln -s`).
 
-### Configure existing Apache
+## Install dependencies from community repository EPEL with Remi for RHEL 8 and CentOS 7/8
 
-If Apache is not already installed, skip this section and follow the steps in [Install Apache and PHP from official RHEL repository](#install-apache-and-php-from-official-rhel-repository).
+RHEL 8 and CentOS do not offer the latest PHP version in the default repositories. To install the latest PHP, we recommend using the Extra Packages for Enterprise Linux (EPEL) repository.
 
-Depending on your existing Apache installation, you might need to configure Apache. Use the following command to check your existing Apache package:
+### Enable EPEL with Remi
 
-```
-rpm -qa | grep httpd
-```
+To install and enable EPEL with Remi:
 
-Follow the appropriate steps for your version (`httpd-2.4.*` or `httpd24-httpd-2.4.*`).
-
-#### Configure existing Apache (httpd-2.4.*)
-
-By default, Apache does not use the newly installed PHP, so you must perform some additional configuration steps. The following steps apply to the default Apache 2.4 (for example, `yum install httpd`) only.
-
-1. Open the file `/etc/httpd/conf/httpd.conf`.
-2. Above the line `Include conf.modules.d/*`, remove any existing entry for PHP and add the line:
-
-    ```
-    LoadModule php7_module /opt/rh/httpd24/root/usr/lib64/httpd/modules/librh-php71-php7.so
-    ```
-
-3. Add `index.php` to the `<IfModule dir_module>` directive. For example, change:
-
-    ```
-    <IfModule dir_module>
-            DirectoryIndex index.html
-    </IfModule>
-    ```
-
-    to:
-
-    ```
-    <IfModule dir_module>
-            DirectoryIndex index.php index.html
-    </IfModule>
-    ```
-
-4. Add the following after the `<IfModule dir_module>` directive:
-
-    ```
-    # Allow php to handle Multiviews
-        AddType text/html .php
-        # mod_php options
-        <IfModule  mod_php7.c>
-            # Cause the PHP interpreter to handle files with a .php extension.
-            <FilesMatch \.php$>
-                SetHandler application/x-httpd-php
-            </FilesMatch>
-            # Uncomment the following lines to allow PHP to pretty-print .phps
-            # files as PHP source code:
-            #<FilesMatch \.phps$>
-            #    SetHandler application/x-httpd-php-source
-            #</FilesMatch>
-            # Apache specific PHP configuration options
-            # those can be override in each configured vhost
-            #
-            php_value session.save_handler "files"
-            php_value session.save_path    "/var/opt/rh/rh-php71/lib/php/session"
-            php_value soap.wsdl_cache_dir  "/var/opt/rh/rh-php71/lib/php/wsdlcache"
-            #php_value opcache.file_cache   "/var/opt/rh/rh-php71/lib/php/opcache"
-        </IfModule>
-    ```
-
-5. Save the file and restart Apache:
-
-    ```
-    systemctl restart httpd
-    ```
-
-#### Configure existing Apache (httpd24-httpd-2.4.*)
-
-This package does not require any additional configuration for PHP.
-
-* You do not have to perform any additional steps if you have installed `httpd24-httpd` (and `httpd24-mod_ssl`) and want to use `rh-php71`.
-* If you are using the newer Apache (for example, `yum install httpd24-httpd`) its configuration files are usually located in `/opt/rh/httpd24/root/etc/httpd/`.
-
-### Install Apache and PHP from official RHEL repository
-
-RHEL offers a newer version of Apache that is also available in the additional repository you enabled for PHP.
-
-Follow these steps to install Apache and PHP from the Red Hat Software Collections channel:
-
-1. Enable the additional repository as detailed in [Enable the official RHEL repository](#enable-the-official-rhel-repository).
-2. If you have Apache already, remove it:
-
-    ```
-    yum remove httpd
-    ```
-
-3. Install the packages:
-
-    ```
-    yum install httpd24-httpd httpd24-httpd-tools httpd24-mod_ssl
-    ```
-
-4. Verify you have the package `httpd24-httpd` with the command:
-
-    ```
-    pm -qa  grep httpd24-httpd
-    ```
-
-5. Create a symbolic link:
-
-    ```
-    ln -sf /opt/rh/httpd24/root/sbin/httpd /usr/bin/httpd
-    ```
-
-6. Restart the terminal to enable the symbolic link.
-7. Verify:
-
-    ```
-    httpd -v
-    ```
-
-8. Perform the steps in [Install PHP from official RHEL repository](#install-php-from-official-rhel-repository).
-9. Restart Apache:
-
-```
-systemctl restart httpd24-httpd
+```bash
+# for CentOS 7
+sudo yum install epel-release yum-utils
+sudo yum install http://rpms.remirepo.net/enterprise/remi-release-$(rpm -E '%{rhel}').rpm
 ```
 
-No additional PHP configuration is required.
+```bash
+# for CentOS 8
+sudo dnf install epel-release yum-utils
+sudo dnf install http://rpms.remirepo.net/enterprise/remi-release-$(rpm -E '%{rhel}').rpm
+sudo dnf update
+```
 
-## RHEL – Install dependencies from community repository EPEL with Remi
+```bash
+# for RHEL 8
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm
 
-EPEL (Extra Packages for Enterprise Linux) is an open source repository which provides add-on software packages for Linux distributions including RHEL, CentOS, and Scientific Linux. Using this repository allows you to install the latest available PHP. For example, at the time of writing, you can install PHP 7.2.* from this repository, whereas only PHP 7.1.* is available in the official RHEL repository.
+sudo subscription-manager repos --enable codeready-builder-for-rhel-8-$(arch)-rpms
 
-### Install PHP from EPEL repository
+sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-$(rpm -E '%{rhel}').rpm
 
-1. Turn on the EPEL repository and search for PHP:
+sudo dnf install dnf-utils
+```
 
-    ```
-    yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-    yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-    yum install yum-utils
-    subscription-manager repos --enable=rhel-7-server-optional-rpms
-    yum-config-manager --enable remi-php72
-    yum update
-    yum search php72
-    ```
+### Install Apache HTTP server on CentOS/RHEL 8
 
-    All available PHP packages are listed.
+1. Install Apache HTTP Server and its SSL module:
 
-2. Install PHP:
+   ```bash
+   # for CentOS 7
+   sudo yum install httpd mod_ssl
+   ```
 
-    ```
-    yum install php72 php72-php php72-php-cli php72-php-gd php72-php-json php72-php-mbstring php72-php-mysqlnd php72-php-xml php72-php-zip php72-php-pdo php72-php-intl
-    ```
+   ```bash
+   # for CentOS 8 / RHEL 8
+   sudo dnf install httpd mod_ssl
+   ```
+2. Enable and start the Apache service:
 
-3. After PHP is installed, create a symbolic link:
+   ```bash
+   # for CentOS 7/8 and RHEL 8
+   sudo systemctl enable --now httpd
+   ```
 
-    ```
-    ln -sf /opt/remi/php72/root/bin/php /usr/bin/php
-    ```
+    If you get the error message: `SSLCertificateFile: file '/etc/pki/tls/certs/localhost.crt' does not exist or is empty` you can resolve it by generating a self-signed certificate:
 
-4. Reopen the terminal if you cannot verify with `php -v` and try again.
-5. Configure Apache. Follow the steps in [Configure existing Apache](#configure-existing-Apache).
-6. Because the location of the PHP `.so` file is different, use the following when setting the PHP module in the Apache configuration:
+   ```
+   openssl req -newkey rsa:4096 -x509 -sha256 -days 3600 -nodes \
+   -out "/etc/pki/tls/certs/localhost.crt" \
+   -keyout "/etc/pki/tls/private/localhost.key"
+   ```
 
-    ```
-    LoadModule php7_module /opt/remi/php72/root/lib64/httpd/modules/libphp7.so.
-    ```
+    Then, run `sudo systemctl enable --now httpd` again.
+3. Verify that Apache service is active and running:
 
-7. Follow the steps in [Upgrade PHP](#upgrade-php) to upgrate your PHP.
+   ```bash
+   # for CentOS 7/8 and RHEL 8
+   systemctl status httpd
+   ```
+4. Open the TCP port 80 and 443 in the local firewall
 
-## CentOS – Install dependencies from community repository EPEL with Remi
+   ```bash
+   # for CentOS 7/8 and RHEL 8
+   sudo firewall-cmd --permanent --add-port=80/tcp
+   sudo firewall-cmd --permanent --add-port=443/tcp
+   sudo firewall-cmd --reload
+   ```
 
-CentOS also does not offer the latest PHP version in the default repositories. To install the latest PHP, it is best to use the EPEL repository.
+### Install PHP on CentOS and RHEL 8
 
-### Install PHP from community repository EPEL with Remi
+1. Install PHP:
 
-1. Install the EPEL repository:
+   ```bash
+   # for CentOS 7
+   sudo yum-config-manager --enable remi-php74
+   sudo yum install php php-cli php-common php-gd php-json php-intl php-mbstring php-mysqlnd php-pdo php-xml php-pecl-zip
+   ```
 
-    ```
-    yum install epel-release
-    ```
+   ```bash
+   # for CentOS 8
+   sudo dnf module reset php
+   sudo dnf module install php:remi-7.4
 
-2. Install the Remi repository:
+   sudo dnf install php php-cli php-common php-gd php-json php-intl php-mbstring php-mysqlnd php-pdo php-xml php-pecl-zip
+   ```
 
-    ```
-    yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-    ```
+   ```bash
+   # for RHEL 8
+   sudo dnf module reset php
+   sudo dnf module install php:remi-7.4
 
-3. Install `yum-utils` packages (if not already installed):
+   sudo dnf install php php-cli php-common php-gd php-json php-intl php-mbstring php-mysqli php-openssl php-pdo php-xml php-zip
+   ```
+2. Verify that PHP was installed. If the command fails, restart the bash session:
 
-    ```
-    yum install yum-utils
-    ```
+   ```bash
+   # for CentOS 7/8 and RHEL 8
+   php -v
+   ```
+3. Locate the `mpm` configuration file and make sure that line `LoadModule mpm_prefork_module modules/mod_mpm_prefork.so` is uncommented and all the other lines are commented out.
 
-4. Enable the Remi repository:
+   ```bash
+   # for CentOS 7/8 and RHEL 8
+   find /etc/httpd -name '*-mpm.conf'
+   ```
+4. Verify that `php7_module` of Apache is enabled:
 
-    ```
-    yum-config-manager --enable remi-php72
-    yum update
-    ```
+   ```bash
+   # for CentOS 7/8 and RHEL 8
+   httpd -M | grep php7
+   ```
+5. Restart Apache and verify that it is working:
 
-5. Verify the repository is enabled:
-
-    ```
-    yum search php72
-    ```
-
-6. Install PHP:
-
-    ```
-    yum install php72 php72-php php72-php-cli php72-php-gd php72-php-json php72-php-mbstring php72-php-mysqlnd php72-php-xml php72-php-zip php72-php-pdo php72-php-intl
-    ```
-
-7. Configure Apache.
-
-    * Use the steps in [Configure existing Apache (httpd-2.4.\*)](#configure-existing-apache-httpd-2-4) as a reference, but because the location of the PHP `.so` file is different, search for the location of a file similar to `libphp72.so` and use that path when setting the PHP module in the Apache configuration.
-
-    * You do not need to configure Apache if you have already installed it through the package manager.
-
-8. Restart Apache:
-
-    ```
-    systemctl restart httpd
-    ```
-
-9. Verify that the installed version is set:
-
-    ```
-    php -v
-    ```
-
-10. If the result is not the newly installed version, modify the PHP symbolic link with the path to the new version:
-
-    ```
-    /opt/remi/php72/root/bin/php
-    ```
-
-11. Remove the old version of PHP.
-
-### Install Apache from community repository EPEL with Remi
-
-1. To install Apache, enter the following command:
-
-    ```
-    yum install httpd httpd-tools mod_ssl
-    ```
-
-2. To start Apache, enter the following command:
-
-    ```
-    ystemctl start httpd
-    ```
+   ```bash
+   # for CentOS 7/8 and RHEL 8
+   sudo systemctl restart httpd
+   systemctl status httpd
+   ```

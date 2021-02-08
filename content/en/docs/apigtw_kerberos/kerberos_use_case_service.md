@@ -308,7 +308,7 @@ To enable SSL/TLS connection, you must have a valid SSL certificate.
 3. Click **Import Certificate...**, and select the certificate file you want to use.
 4. Enter an alias for the certificate or click **Use Subject**, and click **OK**.
 
-For more details on the fields and options in this configuration window, see [Manage X.509 certificates and keys](/docs/apim_administration/general_certificates/#configure-an-x-509-certificate).
+For more details on the fields and options in this configuration window, see [Manage certificates and keys](/docs/apim_administration/apigtw_admin/general_certificates/).
 
 #### Configure an HTTPS interface
 
@@ -318,7 +318,7 @@ For more details on the fields and options in this configuration window, see [Ma
 4. Click **X.509 Certificate**, select your SSL certificate, and click **OK**.
 5. Click the **Deploy** icon to deploy the configuration to API Gateway.
 
-For more details on the fields and options in this configuration window, see [Configure HTTP services](/docs/apim_policydev/apigw_poldev/gw_instances/general_services/).
+For more details on the fields and options in this configuration window, see [Configure HTTP services](/docs/apim_policydev/apigw_gw_instances/general_services/).
 
 You must configure your browser to use secure connection as well. For more details, see [Configure your browser to use SSL/TLS connection](#configure-your-browser-to-use-ssl-tls-connection).
 

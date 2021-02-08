@@ -10,7 +10,7 @@ A *messaging system* is a loosely coupled, peer-to-peer facility where clients c
 
 Java Message Service (JMS) is an implementation of such a messaging system. It provides an API for creating, sending, receiving, and reading messages. Java-based applications can use it to connect to other messaging system implementations. A *JMS provider* can deliver messages synchronously or asynchronously, which means that the client can fire and forget messages or wait for a response before resuming processing. Furthermore, the JMS API ensures different levels of reliability in terms of message delivery. For example, it can ensure that the message is delivered once and only once, or at least once.
 
-API Gateway uses the JMS API to connect to other messaging systems that expose a JMS interface (for example, Oracle WebLogic Server, IBM WebSphere MQ, Red Hat JBoss Messaging, Apache ActiveMQ, or Progress SonicMQ). As a consumer of a JMS queue or topic, the API Gateway can read XML messages and pass them into a policy for validation. These messages can then be routed on over HTTP or dropped on to another JMS queue or topic.
+API Gateway uses the JMS API to connect to other messaging systems that expose a JMS interface (for example, Oracle WebLogic Server, IBM MQ, Red Hat JBoss Messaging, Apache ActiveMQ, or Progress SonicMQ). As a consumer of a JMS queue or topic, the API Gateway can read XML messages and pass them into a policy for validation. These messages can then be routed on over HTTP or dropped on to another JMS queue or topic.
 
 API Gateway also provides a default embedded Apache ActiveMQ service, which enables it to act as a JMS server. For example, this enables API Gateway to integrate external facing REST APIs and SOAP Web services with back-end systems and applications using reliable asynchronous messaging.
 
@@ -64,6 +64,8 @@ of Embedded Apache ActiveMQ, Apache ActiveMQ, or Standard JMS:
 
 **Connection Factory**: Enter the name of the connection factory to use when connecting to the JMS provider. The name of the connection factory is vendor-specific. For example, the connection factory for the JBoss application server is `org.jnp.interfaces:javax.jnp`. Defaults to `connectionFactory`
 for embedded and external ActiveMQ.
+
+{{< alert title="Note" color="primary" >}}Since version 5.15.6 of **Apache ActiveMQ JMS API**, client connections using SSL are checking that the server certificate common name (CN) matches the host name provided in the connection URL. You can disable this feature by setting the `socket.verifyHostName` parameter to `false` in the provider URL. For example, `ssl://activemq.server.name:61616?socket.verifyHostName=false`.{{< /alert >}}
 
 ### IBM WebSphere MQ settings
 
@@ -278,7 +280,7 @@ You can use the API Gateway server settings to configure the default embedded Ap
 
 In the Policy Studio tree, select **Environment Configuration > Server Settings > Messaging > Embedded ActiveMQ**. For example, you can enable embedded ActiveMQ, and configure location and SSL security settings.
 
-{{< alert title="Note" color="primary" >}}Apache ActiveMQ 5.14.3 restricts serializing object message types. For more details, see the [API Gateway Administrator Guide](/docs/apim_administration/apigtw_admin/).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Apache ActiveMQ 5.14.3 restricts serializing object message types. For more details, see the [Embedded ActiveMQ settings](/docs/apim_reference/general_activemq_settings/).{{< /alert >}}
 
 ## Monitor messaging using API Gateway Manager
 

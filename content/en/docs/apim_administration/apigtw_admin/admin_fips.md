@@ -6,6 +6,10 @@
 "description": "Run an API Gateway instance or a Policy Studio client in FIPS mode."
 }
 
+{{< alert title="Note" color="primary" >}}
+Running API Gateway in FIPS mode is not supported in API Gateway 7.7 Mar20 update or later. In the Mar20 update OpenSSL has been upgraded to OpenSSL 1.1.1, as OpenSSL 1.0.2 is EOL. OpenSSL 1.1.1 does not support FIPS. OpenSSL 3.0 (when available) will support FIPS.
+{{< /alert >}}
+
 API Gateway supports Federal Information Processing Standards (FIPS). When running an API Gateway instance or a Policy Studio client in FIPS mode, the following FIPS-certified cryptographic modules are enabled and invoked for all FIPS-compliant cryptographic algorithms:
 
 | Cryptographic Module                                          | FIPS 140-2 Certificate Number |

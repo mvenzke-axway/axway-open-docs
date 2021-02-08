@@ -39,7 +39,7 @@ When operating in FIPS mode, the following FIPS-certified cryptographic modules 
 | OpenSSL FIPS Object Module                                    | 1747                          |
 
 The ability to run API Gateway in FIPS mode is a licensable option of the standard version and must be specifically ordered.  It is possible to enable or disable FIPS mode as required. For more information on running in FIPS mode, see
-[Run API Gateway in FIPS mode](/docs/apim_administration/admin_fips/).
+[Run API Gateway in FIPS mode](/docs/apim_administration/apigtw_admin/admin_fips/).
 
 You can run the FIPS Compliance Validation Tool from Policy Studio to check that a configuration is FIPS compliant. This tool is available from the **Tools > Check Security Constraints > FIPS** menu option.
 

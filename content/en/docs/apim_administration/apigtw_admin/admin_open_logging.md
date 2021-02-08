@@ -1,11 +1,10 @@
 {
 "title": "Configure open logging",
-"linkTitle": "Configure open logging",
-"weight":"115",
-"date": "2019-10-14",
-"description": "Consolidate transaction event data, traces, and system metrics stored by API Gateway, and visualize and analyze them in external observability systems."
+  "linkTitle": "Configure open logging",
+  "weight": "115",
+  "date": "2019-10-14",
+  "description": "Consolidate transaction event data, traces, and system metrics stored by API Gateway, and visualize and analyze them in external observability systems."
 }
-
 When open logging is enabled, API Gateway generates open traffic event logs containing traffic event data in a JSON format that is easily consumed by external systems.
 
 This section describes the supported open logging flows, and explains how you can use open logging to forward log and trace information to an external system. It also describes the open traffic event log file format and configuration options.
@@ -26,7 +25,6 @@ The following diagram shows a typical transaction flow through an API Gateway.
 * Leg 1 (and subsequent legs) are the interactions between API Gateway and the back-ends.
 * The duration of leg 0 is the overall duration of the entire transaction (as seen by the client).
 * The duration of each subsequent leg is the back-end transaction duration.
-*The duration value for leg 0 minus the sum of the duration of all subsequent legs gives you the total time spent in the API Gateway for that transaction.
 
 The following diagram shows a typical transaction flow when multiple back-ends are involved.
 
@@ -64,7 +62,7 @@ Filebeat is included in your API Gateway installation in the following directory
 INSTALL_DIR/apigateway/tools/
 ```
 
-For more information on configuring Filebeat, see the [Embedded Analytics for AMPLIFY API Management documentation](/bundle/EmbeddedAnalyticsAPIM_allOS_en_HTML5/).
+For more information on configuring Filebeat, see the [Embedded Analytics for AMPLIFY API Management documentation](https://docs.axway.com/bundle/EmbeddedAnalyticsAPIM_allOS_en_HTML5/).
 
 {{< alert title="Note" color="primary" >}}In a future release, Embedded Analytics will use the open traffic event log.{{< /alert >}}
 
@@ -98,7 +96,7 @@ Transaction payloads are stored separately (if payload storage is enabled) and a
 <transaction ID>-<Leg>-<sent|received>
 ```
 
-For more information on transaction and legs, see [Introduction to transactions and legs in API Gateway](/docs/apim_administration/apigtw_admin/admin_transactions).
+For more information on transaction and legs, see [Introduction to transactions and legs in API Gateway](#introduction-to-transactions-and-legs).
 
 The following are some example payload file names:
 

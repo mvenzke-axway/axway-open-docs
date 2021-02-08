@@ -1,11 +1,10 @@
 {
 "title": "Manage certificates and keys",
-"linkTitle": "Manage certificates and keys",
-"weight":"60",
-"date": "2019-10-18",
-"description": "Import CA certificates, and import and create server certificates and private keys in the certificate store."
+  "linkTitle": "Manage certificates and keys",
+  "weight": "60",
+  "date": "2019-10-18",
+  "description": "Import CA certificates, and import and create server certificates and private keys in the certificate store."
 }
-
 For API Gateway to trust X.509 certificates issued by a specific Certificate Authority (CA), you must import that CA's certificate into the API Gateway's trusted certificate store. For example, if API Gateway is to trust secure communications (SSL connections or XML Signature) from an external SAML Policy Decision Point (PDP), you must import the PDP certificate, or the issuing CA certificate into the API Gateway certificate store.
 
 In addition to importing CA certificates, you can import and create server certificates and private keys in the certificate store. These can be stored locally or on an external Hardware Security Module (HSM). You can also import and create public-private key pairs. For example, these can be used with the Secure Shell (SSH) File Transfer Protocol (SFTP) or with Pretty Good Privacy (PGP).
@@ -42,53 +41,22 @@ To create a certificate and private key, click **Create/Import**. The **Configur
 
 Configure the following settings to create a certificate:
 
-* **Subject**:
-
-Click **Edit** to configure the *Distinguished Name* (DName) of the subject.
-
-* **Alias Name**:
-
-This mandatory field enables you to specify a friendly name (or alias) for the certificate. Alternatively, you can click **Use Subject** to add the DName of the certificate in he text box instead of a certificate alias.
-
-* **Public Key**:
-
-Click **Import** to import the subject's public key (usually from a PEM or DER-encoded file).
-
-* **Version**:
-
-This read-only field displays the X.509 version of the certificate.
-
-* **Issuer**:
-
-This read-only field displays the distinguished name of the CA that issued the certificate.
-
-* **Choose Issuer Certificate**:
-
-Select to explicitly specify an issuer certificate for this certificate (for example, to avoid a potential clash or expiry issue with another certificate using the same ntermediary certificate). You can then click the browse button on the right to select an issuer certificate. This setting is not selected by default.
-
-* **Not valid before**:
-
-Select a date to define the start of the validity period of the certificate.
-
-* **Not valid after**:
-
-Select a date to define the end of the validity period of the certificate.
-
-* **Sign Certificate**:
-
-You must click this button to sign the certificate. The certificate can be self-signed, or signed by the private key belonging to a trusted CA whose key pair is stored in the certificate store.
+* **Subject**: Click **Edit** to configure the *Distinguished Name* (DName) of the subject.
+* **Alias Name**: This mandatory field enables you to specify a friendly name (or alias) for the certificate. Alternatively, you can click **Use Subject** to add the DName of the certificate in he text box instead of a certificate alias.
+* **Public Key**: Click **Import** to import the subject's public key (usually from a PEM or DER-encoded file).
+* **Version**: This read-only field displays the X.509 version of the certificate.
+* **Issuer**: This read-only field displays the distinguished name of the CA that issued the certificate.
+* **Choose Issuer Certificate**: Select to explicitly specify an issuer certificate for this certificate (for example, to avoid a potential clash or expiry issue with another certificate using the same intermediary certificate). You can then click the browse button on the right to select an issuer certificate. This setting is not selected by default.
+* **Not valid before**: Select a date to define the start of the validity period of the certificate.
+* **Not valid after**: Select a date to define the end of the validity period of the certificate.
+* **Sign Certificate**: You must click this button to sign the certificate. The certificate can be self-signed, or signed by the private key belonging to a trusted CA whose key pair is stored in the certificate store.
 
 ### Import certificates
 
 You can use the following buttons to import or export certificates into the certificate store:
 
-* **Import Certificate**:
-
-Click to import a certificate (for example, from a `.pem` or `.der` file).
-
-* **Export Certificate**:
-
-Click to export the certificate (for example, to a `.pem` or `.der` file).
+* **Import Certificate**: Click to import a certificate (for example, from a `.pem` or `.der` file).
+* **Export Certificate**: Click to export the certificate (for example, to a `.pem` or `.der` file).
 
 ## Configure a private key
 
@@ -102,35 +70,21 @@ API Gateway supports PKCS#11-compatible HSM devices. For example, this includes 
 
 If the private key is stored in the API Gateway certificate store, select **Private key stored locally**. The following options are available for keys stored locally:
 
-* **Private key stored locally**:
-
-This read-only field displays details of the private key.
-
-* **Import Private Key**:
-
-Click to import the subject's private key (usually from a PEM or DER-encoded file).
-
-* **Export Private Key**:
-
-Click to export the subject's private key to a PEM or DER-encoded file.
+* **Private key stored locally**: This read-only field displays details of the private key.
+* **Import Private Key**: Click to import the subject's private key (usually from a PEM or DER-encoded file).
+* **Export Private Key**: Click to export the subject's private key to a PEM or DER-encoded file.
 
 ### Private key provided by OpenSSL engine
+
+{{< alert title="Warning" color="warning" >}}Engines from OpenSSL 1.0 are not compatible with OpenSSL 1.1. When configuring and using an OpenSSL engine, make sure it has been made for version 1.1.{{< /alert >}}
 
 If the private key that corresponds to the public key in the certificate is provided by an OpenSSL engine, select **Private key provided by OpenSSL Engine**.
 
 Configure the following fields to associate a key provided by the OpenSSL engine with the current certificate:
 
-* **Engine name**:
-
-Enter the name of the OpenSSL engine to use to interface to an HSM. All vendor implementations of the OpenSSL Engine API are identified by a unique name. See your vendor's penSSL engine implementation or HSM documentation to find out the name of the engine.
-
-* **Key Id**:
-
-Enter the key ID used to uniquely identify a specific private key from all others stored on an HSM. When you complete this dialog, the private key is associated with the ertificate that you are currently editing. Private keys are identified by their key ID by default.
-
-* **Conversation**:
-
-If the HSM requires the server to provide a specific response to a specific request from the HSM, you can enter the response in this field. This enables the server to conduct an automated dialog with a HSM when it requires access to a private key. For example, in a simple case, the server response might be a specific passphrase.
+* **Engine name**: Enter the name of the OpenSSL engine to use to interface to an HSM. All vendor implementations of the OpenSSL Engine API are identified by a unique name. See your vendor's penSSL engine implementation or HSM documentation to find out the name of the engine.
+* **Key Id**: Enter the key ID used to uniquely identify a specific private key from all others stored on an HSM. When you complete this dialog, the private key is associated with the certificate that you are currently editing. Private keys are identified by their key ID by default.
+* **Conversation**: If the HSM requires the server to provide a specific response to a specific request from the HSM, you can enter the response in this field. This enables the server to conduct an automated dialog with a HSM when it requires access to a private key. For example, in a simple case, the server response might be a specific passphrase.
 
 ### Private key stored on external HSM
 
@@ -139,6 +93,8 @@ If the private key that corresponds to the public key stored in the certificate 
 To use the API Gateway's PKCS#11 engine to access objects in an external HSM, the corresponding HSM provider and certificate realms must also be configured. For more details, see [Configure HSMs and certificate realms](#configure-hsms-and-certificate-realms).
 
 ## Configure HSMs and certificate realms
+
+{{< alert title="Warning" color="warning" >}}OpenSSL 1.1 no longer supports FIPS and requires use of X.509 cryptographic operations. HSM hardware, and its corresponding driver, must be compatible with those requirements.{{< /alert >}}
 
 *Certificate realms* are abstractions of private keys and public key certificates, which mean that policy developers do not need to enter HSM-specific configuration such as slots and key labels. Instead, if a private key exists on an HSM, the developer can configure the certificate to show that its private key uses a specific certificate realm, which is simply an alias for a private key (for example, `JMS Keys`).
 
@@ -158,7 +114,7 @@ For example, if a policy developer is using JMS, and wants to indicate that priv
 For more details, enter `keystoreadmin` in the following directory, and perform the instructions at the command prompt:
 
 ```
-INSTALL_DIR/apigateway/posix/bi
+INSTALL_DIR/apigateway/posix/bin
 ```
 
 When you enter `keystoreadmin` without arguments, this displays an interactive menu with the following options:
@@ -218,21 +174,19 @@ To create a certificate realm and associated keystore, perform the following ste
 7. You are prompted to input the PIN passphrase for the slot. The passphrase will not echo any output.
 8. When you enter the correct PIN passphrase for the slot, this displays a list of private keys. Choose the key to use for the certificate realm. For example:
 
-    ```
-    Choose from one of the following:
-        1) server1_priv
-        2) jms_priv
-        q) Quit
+   ```
+   Choose from one of the following:
+       1) server1_priv
+       2) jms_priv
+       q) Quit
 
-    Select option:2
-    ```
-
+   Select option:2
+   ```
 9. You are prompted for a file name for the keystore. For example:
 
-    ```
-    Certificate realm filename [jms keys.ks]:Successfully created the certificate realm:JMS KeysPress any key to continue...
-    ```
-
+   ```
+   Certificate realm filename [jms keys.ks]:Successfully created the certificate realm:JMS KeysPress any key to continue...
+   ```
 10. The keystore is output to the API Gateway instance directory. For example:
 
 ```
@@ -262,54 +216,50 @@ You can configure the gateway to start and initialize the HSM by invoking a comm
 
 To configure an automatic PIN passphrase, perform the following steps:
 
-1. Edit the API Gateway instance’s `vpkcs11.xml` configuration file. For example:
+1. Edit the vpkcs11.xml instance configuration file of API Gateway. For example:
 
-    ```
-    apigateway/groups/group-2/instance-1/conf/vpkcs11.xml
-    ```
+   ```
+   apigateway/groups/group-2/instance-1/conf/vpkcs11.xml
+   ```
+2. Add a `PASSPHRASE_EXEC` command that contains the full path to the script that executes and obtains the passphrase. The script must have user execute permission to write the passphrase to stdout, and it must have the necessary operating system protection settings to prevent unauthorized access to the PIN passphrase.
 
-2. Add a `PASSPHRASE_EXEC` command that contains the full path to the script that executes and obtains the passphrase. The script should write the passphrase to stdout, and should have the necessary operating system file and execute protection settings to prevent unauthorized access to the PIN passphrase. The following example shows a `vpkcs11.xml` file that invokes the `hsmpin.sh` to echo the passphrase:
+   The following example shows a vpkcs11.xml file that invokes the hsmpin.sh to echo the passphrase:
 
-    ```
-    <?xml version="1.0" encoding="utf-8"?>
-     <ConfigurationFragment provider="cryptov">
+   ```
+   <?xml version="1.0" encoding="utf-8"?>
+    <ConfigurationFragment provider="cryptov">
 
-        <Engine name="vpkcs11" defaultFor="">
-            <EngineCommand when="preInit" name="REALMS_DIR"
-                 value="$VINSTDIR/conf/certrealms" />
-            <EngineCommand when="preInit" name="PASSPHRASE_EXEC"
-                 value=""$VDISTDIR/hsmpin.sh"" />
-        </Engine>
-        </ConfigurationFragment>
-    ```
-
+       <Engine name="vpkcs11" defaultFor="">
+           <EngineCommand when="preInit" name="REALMS_DIR"
+                value="$VINSTDIR/conf/certrealms" />
+           <EngineCommand when="preInit" name="PASSPHRASE_EXEC"
+                value="$VDISTDIR/hsmpin.sh" />
+       </Engine>
+       </ConfigurationFragment>
+   ```
 3. API Gateway provides the certificate realm as an argument to the script, so you can use the same script to initialize multiple realms. The following examples show scripts that write a PIN of `1234` to stdout when initializing the `JMS Keys` certificate realm:
 
-    ```
-    #!/bin/shcase $1 in"JMS Keys")echo 1234;;esac
-    ```
+   ```
+   #!/bin/sh
+   case $1 in
+     "JMS Keys")
+       # Test your echo command in sh if using special characters.
+       echo 1234
+       ;;
+   esac
+   ```
 
 ## Configure SSH key pairs
 
-To configure public-private key pairs in the certificate store, select **Environment Configuration > Certificates and Keys > Key Pairs**. The **Key Pairs** window enables you to add, edit, or delete OpenSSH public-private key pairs, which are required for the Secure Shell (SSH) File Transfer Protocol (SFTP).
+To configure public-private key pairs in the certificate store, select **Environment Configuration > Certificates and Keys > Key Pairs**. The **Key Pairs** window enables you to add, edit, or delete PEM public-private key pairs, which are required for the Secure Shell (SSH) File Transfer Protocol (SFTP).
 
 ### Add a key pair
 
 To add a public-private key pair, click **Add** on the right, and configure the following settings in the dialog:
 
-* **Alias**:
-
-Enter a unique name for the key pair.
-
-* **Algorithm**:
-
-Enter the algorithm used to generate the key pair. Defaults to `RSA`.
-
-* **Load**:
-
-Click to select the public key or private key files to use. The **Fingerprint** field is auto-populated when you load a public key.
-
-* The keys must be OpenSSH keys. RSA keys are supported, but DSA keys are not supported. The keys must not be passphrase protected.
+* **Alias**: Enter a unique name for the key pair.
+* **Algorithm**: Enter the algorithm used to generate the key pair. Defaults to `RSA`.
+* **Load**: Click to select the public key or private key files to use. The **Fingerprint** field is auto-populated when you load a public key. The keys must be OpenSSL compatible PEM keys. RSA keys are supported, but DSA keys are not supported. The keys must not be passphrase protected.
 
 ### Edit a key pair
 
@@ -317,32 +267,29 @@ To edit a public-private key pair, select a key pair alias in the table, and cli
 
 You can delete a selected key pair from the certificate store by clicking **Remove** on the right. Alternatively, click **Remove All**.
 
-### Manage OpenSSH keys
+### Manage SSH keys
 
-You can use the `ssh-keygen` command provided on Linux to manage OpenSSH keys. For example:
+You can use the `ssh-keygen` command provided on Linux to manage SSH keys.
 
-The following command creates an OpenSSH key:
+{{< alert title="Note" color="primary" >}}
+With the release of OpenSSH 7.8, the default private key format for private keys generated from `ssh-keygen` has changed from OpenSSL compatible PEM files to a custom key format created by the OpenSSH developers.{{< /alert >}}
 
-```
-ssh-keygen -t rsa
-```
-
-The following command converts an `ssh.com` key to an OpenSSH key:
+This OpenSSH format is not supported by API Gateway, so the keys should be created in PEM format before the keys can be used. For example, the following command creates an SSH key in PEM format:
 
 ```
-ssh-keygen -i -f ssh.com.key > open.ssh.key
+ssh-keygen -t rsa -m pem -f my_key
 ```
 
 The following command removes a passphrase (enter the old passphrase, and enter nothing for the new passphrase):
 
 ```
-ssh-keygen -p
+ssh-keygen -p -m pem -f my_key
 ```
 
 The following command outputs the key fingerprint:
 
 ```
- ssh-keygen -lf ssh_host_rsa_key.pub
+ ssh-keygen -lf my_key.pub
 ```
 
 ## Configure PGP key pairs
@@ -353,13 +300,8 @@ To configure Pretty Good Privacy (PGP) key pairs in the certificate store, selec
 
 To add a PGP public-private key pair, click the **Add** on the right, and configure the following settings in the dialog:
 
-**Alias**:
-
-Enter a unique name for the PGP key pair.
-
-**Load**:
-
-Click **Load** to select the public key and private key files to use.
+**Alias**: Enter a unique name for the PGP key pair.
+**Load**: Click **Load** to select the public key and private key files to use.
 
 The PGP keys added must not be passphrase protected.
 
@@ -479,13 +421,16 @@ Perform the following steps:
 1. In Policy Studio, connect to an API Gateway instance.
 2. In the tree on the left, select **Certificates**. The certificates are displayed in the pane on the right.
 3. Depending on your use case, click the appropriate import button at the bottom right:
-    * Design-time: Click **Keystore**, click **Add to keystore** on the subsequent dialog box. This imports the certificate and private key into the key store for Policy Studio.
-    * Run-time: Click **Create/Import**. This import the certificate and private key into the runtime key store for API Gateway.
+
+   * Design-time: Click **Keystore**, click **Add to keystore** on the subsequent dialog box. This imports the certificate and private key into the key store for Policy Studio.
+   * Run-time: Click **Create/Import**. This import the certificate and private key into the runtime key store for API Gateway.
 4. Configure the **X.509 Certificate** tab as follows:
-    * Click **Import Certificate** if the certificate is in a separate file. If the certificate and key are in the same file, click **Import Certificate + Key**.
-    * Browse to `mycompany.crt` or the file that contains both the certificate and private key. Ensure that the correct file type is set in the file selector at the bottom right (usually `.pem`).
+
+   * Click **Import Certificate** if the certificate is in a separate file. If the certificate and key are in the same file, click **Import Certificate + Key**.
+   * Browse to `mycompany.crt` or the file that contains both the certificate and private key. Ensure that the correct file type is set in the file selector at the bottom right (usually `.pem`).
 5. Configure the **Private Key** tab as follows:
-    * Select the **Private Key** tab (you must import both the certificate and the associated private key).
-    * Click **Import Private Key**.
-    * Browse to `mycompany.key`. Ensure that the correct file type is set in the file selector at the bottom right.
+
+   * Select the **Private Key** tab (you must import both the certificate and the associated private key).
+   * Click **Import Private Key**.
+   * Browse to `mycompany.key`. Ensure that the correct file type is set in the file selector at the bottom right.
 6. Click **OK** to complete importing the key and certificate.

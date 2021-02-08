@@ -20,7 +20,7 @@ The recommended configuration for each data type and its replication between dat
 
 ### API Gateway data
 
-* **API Gateway configuration**: You must deploy the API Gateway group configuration in both datacenters. For details on automating deployment processes, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
+* **API Gateway configuration**: You must deploy the API Gateway group configuration in both datacenters.
 * **API Gateway logs**: Does not apply (local file-based data only).
 * **API Gateway traffic monitoring**: Does not apply (local file-based data only).
 * **API Gateway KPS custom tables**: Automatic. It is recommended to use Cassandra with replication between datacenters. See [Configure Cassandra for multiple datacenters](#cassandra_multiple), or your RDBMS documentation.
@@ -41,7 +41,7 @@ The recommended configuration for each data type and its replication between dat
 
 ## Configure Cassandra for multiple datacenters {#cassandra_multiple}
 
-Cassandra is required to store data for API Manager data, and also recommended for API Gateway custom KPS tables. For details on the recommended Cassandra architecture, see [Multi-datacenter deployment architecture](/docs/apim_installation/apigtw_install/multi_datacenter_intro).
+Cassandra is required to store data for API Manager data, and also recommended for API Gateway custom KPS tables. For details on the recommended Cassandra architecture, see [Multi-datacenter deployment architecture](/docs/apimgmt_multi_dc/#multi-datacenter-deployment-architecture).
 
 {{< alert title="Note" color="primary" >}}You must install and configure Cassandra on each node in both datacenters before installing and configuring API Gateway and API Manager.{{< /alert >}}
 
@@ -49,9 +49,8 @@ Cassandra is required to store data for API Manager data, and also recommended f
 
 The following prerequisites apply to Cassandra in a multi-datacenter production environment:
 
-* Ensure that Cassandra version 2.2.12 is installed. For details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/). For details on upgrading Cassandra, see
-[Upgrade Apache Cassandra](/csh?context=801&product=prod-api-gateway-77) in the [API Gateway Upgrade Guide](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5).
-* You must have at least three Cassandra nodes per datacenter. Cassandra must be installed on each node in the cluster, but should not be started until the Cassandra cluster is fully configured. For more details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/l).
+* Ensure that Cassandra version 2.2.12 is installed. For details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
+* You must have at least three Cassandra nodes per datacenter. Cassandra must be installed on each node in the cluster, but should not be started until the Cassandra cluster is fully configured. For more details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
 * Configure `JAVA_HOME` to a JRE 1.8 installation.
 * Each Cassandra node must have Python 2.7.x installed.
 * Time must be synchronized on all servers.
@@ -90,7 +89,7 @@ Configure the following settings in `cassandra.yaml`:
 * `start_native_transport`: `true`
 * `native_transport_port`: `9042`
 
-    {{< alert title="Note" color="primary" >}}You must remove `cassandra-topology.properties` from `cassandra/conf/`. This is not needed when `GossipingPropertyFileSnitch` is set and could cause conflicts.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You must remove `cassandra-topology.properties` from `cassandra/conf/`. This is not needed when `GossipingPropertyFileSnitch` is set and could cause conflicts.{{< /alert >}}
 
 #### Configure authentication settings
 
@@ -98,7 +97,8 @@ It is recommended to enable authentication. Set the following properties:
 
 * `authenticator`: `org.apache.cassandra.auth.PasswordAuthenticator`
 * `authorizer`: `org.apache.cassandra.auth.CassandraAuthorizer`
-*{{< alert title="Note" color="primary" >}}When these properties are set, you must change the default Cassandra user.{{< /alert >}}
+
+{{< alert title="Note" color="primary" >}}When these properties are set, you must change the default Cassandra user.{{< /alert >}}
 
 #### Configure TLS/SSL traffic encryption
 
@@ -152,8 +152,6 @@ For example:
 
 When you have configured `cassandra.yaml` and `cassandra-rackdc.properties` on all nodes, you can start the seed nodes one at a time, followed by the remaining nodes in each datacenter.
 
-For details on starting Cassandra, see [Manage Apache Cassandra](/csh?context=1301&product=prod-api-gateway-77) in the [API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/).
-
 ### Configure cqlsh for TSL/SSL encryption
 
 If the Cassandra cluster has been configured to use client-to-node TSL/SSL encryption, you must configure all clients connecting to the cluster (including `cqlsh`) to use TSL/SSL. `cqlsh` is a Python-based command line client for executing Cassandra Query Language (CQL) commands.
@@ -172,7 +170,7 @@ When TSL/SSL has been configured, run the following command:
 ./cqlsh -u cassandra -p MY_PASSWORD --ssl --cqlshrc=MY_CQLSHRC_FILE 192.168.10.1
 ```
 
-### Configure the default system\_auth keyspace
+### Configure the default system_auth keyspace
 
 When all nodes are online, if authentication is enabled, you must set the replication strategy and replication factor for the `system_auth` keyspace to ensure that credentials are shared across the cluster. You can do this using the `cqlsh` tool from the `cassandra/bin` directory.
 
@@ -233,7 +231,7 @@ On the first API Gateway host in DC1, perform the following steps:
 7. Configure the API Gateway to connect to the Cassandra cluster. In the Policy Studio tree, select **Server Settings > Cassandra**, and configure the following:
     * **Keyspace**: Name of the API Gateway Cassandra keyspace to be created when deployed. Defaults to `x${DOMAINID}_${GROUPID}`
     * **Initial replication strategy**: Network Topology Strategy
-    * **Initial replication**: ${env.CASS.REPL.FACTOR}
+    * **Initial replication**: `${env.CASS.REPL.FACTOR}`
     * **Hosts**: Add the environment variable settings that you set in `envSettings.props`. For example:
         ![Set Cassandra hosts using environment variables](/Images/APIGateway/cassandra_multi-dc_hosts.png)
     * **Authentication**: Enter the Cassandra user name and password that you configured earlier. See [Configure the default system_auth keyspace](#configure-the-default-system-auth-keyspace).
@@ -242,7 +240,8 @@ On the first API Gateway host in DC1, perform the following steps:
 9. For all KPS collections, update the read and write consistency levels to **LOCAL_QUORUM**. For example, in the Policy Studio tree, select **Environment Configuration > Key Property Stores > API Server > Data Sources > Cassandra Storage**, and click **Edit**.
 10. Repeat this step for each KPS collection using Cassandra (for example, **Key Property Stores > OAuth** and **API Portal** for API Manager). This also applies to any custom KPS collections that you have created.
 11. Click **Deploy** in the toolbar to deploy the updated configuration.
-{{< alert title="Note" color="primary" >}}Policy Studio may need a longer transaction timeout in the Admin Nodemanager server settings than the default time (4 minutes), especially for the first deploy that creates the API Manager Cassandra tables. In this case, it is recommended to increase the timeout to at least 10 minutes. See the [API Gateway Administrator Guide](/docs/apim_administration/apimgr_admin/) for more details. If Policy Studio shows a timeout error, the back-end would still complete and the success status can be verified in the API Manager instance trace file.{{< /alert >}}
+
+{{< alert title="Note" color="primary" >}}Policy Studio may need a longer transaction timeout in the Admin Node Manager server settings than the default time (4 minutes), especially for the first deploy that creates the API Manager Cassandra tables. In this case, it is recommended to increase the timeout to at least 10 minutes. See the [API Gateway Administrator Guide](/docs/apim_administration/apimgr_admin/) for more details. If Policy Studio shows a timeout error, the back-end would still complete and the success status can be verified in the API Manager instance trace file.{{< /alert >}}
 
 ### Update the Cassandra replication settings for the new API Gateway keyspace
 
@@ -267,8 +266,7 @@ Perform the following steps:
 
 4. On each node, run `nodetool repair`.
 
-    {{< alert title="Tip" color="primary" >}}In a production environment, you should schedule weekly node repairs as a best practice. For more details, see
-    [Perform essential Cassandra operations](/csh?context=1302&product=prod-api-gateway-77) in the [API Gateway Apache Cassandra Administrator Guide](/bundle/APIGateway_77_CassandraGuide_allOS_en_HTML5/).{{< /alert >}}
+    {{< alert title="Tip" color="primary" >}}In a production environment, you should schedule weekly node repairs as a best practice.{{< /alert >}}
 
 ### Configure the remaining API Gateway nodes
 
@@ -381,7 +379,7 @@ For API Manager Single Sign On (SSO), when you have multiple API Managers under 
 
 For example, you have two datacenter sites, `apimgt.example.us` and `apimgt.example.eu`. Each site has a separate client, load balancer, and `service-provider.xml` file, and this file is shared by all API Manager instances under that load balancer.
 
-For more details on API Manager SSO, see [Configure API Manager SSO](/csh?context=1024&product=prod-api-manager-77) in the [API Manager User Guide](/bundle/APIManager_77_APIMgmtGuide_allOS_en_HTML5/).
+For more details on API Manager SSO, see [Configure API Manager SSO](/docs/apim_administration/apimgr_sso/).
 
 ### Prevent simultaneous design-time changes in multiple datacenters
 
@@ -552,7 +550,7 @@ The following general guidelines apply to API Manager quota storage:
 
 ## Further details
 
-For more details on using API Gateway environment variables in `envSettings.props`, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
+For more details on using API Gateway environment variables in `envSettings.props`, see the [API Gateway DevOps Deployment Guide](/docs/apigtw_devops/).
 
 For more details on Cassandra and Ehcache, see the following:
 

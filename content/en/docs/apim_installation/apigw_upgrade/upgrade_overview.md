@@ -1,7 +1,7 @@
 {
     "title": "Upgrade and migration overview",
     "linkTitle": "Overview",
-    "weight": 1,
+    "weight": 10,
     "date": "2019-10-07",
     "description": "Introduction to API Gateway upgrade and migration, and recommended best practices for test upgrades."
 }
@@ -22,7 +22,7 @@ The upgrade and migration process involves exporting data from your old installa
 
 API Gateway provides the `sysupgrade` command to upgrade your API Gateway system and migrate your data. This script provides feedback at each step, which enables you to resolve any issues before proceeding to the next step. This ensures that all possible issues are identified and resolved before you apply the upgraded data to your new installation.
 
-![Overview of upgrade steps](/Images/UpgradeGuide/APIgw_upgrade%20overview.png)
+![Overview of upgrade steps](/Images/UpgradeGuide/APIgw_upgrade_overview.png)
 
 An upgrade always requires the following steps:
 

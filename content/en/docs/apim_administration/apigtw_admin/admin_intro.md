@@ -1,14 +1,10 @@
 {
 "title": "Introduction to API Gateway administration",
-"linkTitle": "Introduction to API Gateway administration",
+"linkTitle": "Introduction",
 "weight":"10",
 "date": "2019-10-14",
-"description": "Axway API Gateway is a comprehensive platform for managing, delivering, and securing APIs."
+"description": "Introduces the main issues involved in API Gateway administration."
 }
-
-This topic introduces the main issues involved in you API gateway administration.
-
-For an introduction to API Gateway features, tools, and architecture, see the [API Gateway Concepts Guide](/bundle/APIGateway_77_ConceptsGuide_allOS_en_HTML5).
 
 ## API Gateway form factors
 
@@ -52,8 +48,6 @@ System architects and security architects have an overarching view of enterprise
 
 Policy Studio is a rich API Gateway policy development tool that enables architects and policy developers to create and control the gateway policies. You can use Policy Studio to visually define policy workflows in a drag-n-drop environment. This means that configuration is performed at the systems architecture level, without needing to write code.
 
-For more details on using Policy Studio to create gateway policies, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
-
 ## Where do you deploy an API Gateway?
 
 API Gateways can be deployed in the Demilitarized Zone (DMZ) or in the Local Area Network (LAN) depending on policies or requirements, as shown in the following diagram:
@@ -75,13 +69,11 @@ The following guidelines help you to decide where to deploy the gateway:
 
 Although you can select the API Gateway Analytics component in the API Gateway installer, it is good practice to install API Gateway Analytics on a separate host from your gateway installations. You should ensure that API Gateway Analytics runs on a dedicated host, or on a host that is not a running an API Gateway instance or Node Manager.
 
-You can deploy API Gateway Analytics on any supported host platform depending on its availability in your architecture. For more details on supported platform versions, see the
-[API Gateway Installation Guide](/docs/apim_installation/apigtw_install/).
+You can deploy API Gateway Analytics on any supported host platform depending on its availability in your architecture.
 
 {{< alert title="Note" color="primary" >}}API Gateway Analytics supports a range of databases for storing historic reports and metrics (for example, Oracle, DB2, MySQL, and Microsoft SQL Server). You should not install the database used for API Gateway Analytics in the DMZ. You should install this database in the LAN on a separate host from your API Gateway installations.{{< /alert >}}
 
-You can secure the connection to the API Gateway Analytics database by dedicating it to one IP address. For more details on configuring the API Gateway Analytics database, see the
-[API Gateway Analytics User Guide](/docs/apimanager_analytics/).
+You can secure the connection to the API Gateway Analytics database by dedicating it to one IP address. For more details on configuring the API Gateway Analytics database, see the [API Gateway Analytics User Guide](/docs/apimanager_analytics/).
 
 ## Secure the last mile
 
@@ -91,7 +83,7 @@ Securing the last mile refers to preventing internal users from directly accessi
 * **Establishing a mutual SSL connection between API Gateways and services**: This solution is the easiest to put in place and has little to no impact on existing applications. However, it does have a non-negligible impact on latency.
 * **Passing authentication tokens from API Gateways to back-end services**: This involves passing authentication tokens for WS-Security, Security Assertion Markup Language (SAML), and so on. This solution has a low impact on latency but requires some development because the target service container must validate the presence and the contents of the token.
 
-For more details on configuring mutual SSL, and configuring WS-Security and SAML authentication tokens, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+For more details on configuring mutual SSL, and configuring WS-Security and SAML authentication tokens, see the [API Gateway Policy Developer Guide](/docs/apim_policydev/).
 
 ## API Gateway administration lifecycle
 
@@ -101,7 +93,7 @@ The main stages in the overall API Gateway administration lifecycle are as follo
 2. Installing API Gateway components. See the [API Gateway Installation Guide](/docs/apim_installation/apigtw_install/).
 3. Configuring a domain. This is described in [Configure an API Gateway domain](/docs/apim_administration/apigtw_admin/makegateway/).
 4. Operating and managing the API Gateway. This is described in the rest of this guide.
-5. Upgrading an API Gateway. See the [API Gateway Upgrade Guide](/docs/apigw_upgrade).
+5. Upgrading an API Gateway. See the [API Gateway Upgrade Guide](/docs/apim_installation/apigw_upgrade/).
 
 ## Interaction with existing infrastructure
 
@@ -288,7 +280,7 @@ The options shown in the diagram are described as follows:
 
 ### Public Key Infrastructure
 
-API Gateway supports Secure Sockets Layer (SSL) and Transport Layer Security (TLS) for transport-based authentication, encryption, and integrity checks. The gateway can interact with Public Key Infrastructure (PKI) systems in the following ways: Certificates and keys can be stored in the gateway keystore, or in a network or an optional Hardware Security Module (HSM). For more details, see [Manage X.509 certificates and keys](../CommonTopics/general_certificates).
+API Gateway supports Secure Sockets Layer (SSL) and Transport Layer Security (TLS) for transport-based authentication, encryption, and integrity checks. The gateway can interact with Public Key Infrastructure (PKI) systems in the following ways: Certificates and keys can be stored in the gateway keystore, or in a network or an optional Hardware Security Module (HSM). For more details, see [Manage certificates and keys](/docs/apim_administration/apigtw_admin/general_certificates/).
 
 * Connecting to Online Certificate Status Protocol (OCSP) and XML Key Management Specification (XKMS) to query certificate status online.
 * Using a Certificate Revocation List (CRL) retrieved from a directory, file, or LDAP to check certificate status.
@@ -299,7 +291,7 @@ API Gateway supports Secure Sockets Layer (SSL) and Transport Layer Security (TL
 API Gateway includes the following support for service registries and repositories:
 
 * Architects and policy developers can use Policy Studio to pull Web service definitions (WSDL) from UDDI directories or HTTP-based repositories. These WSDL files are then used to generate the required security policies. The gateway can update UDDI registries with updated WSDL files or can serve them directly to the client.
-* When the API Manager product is installed, architects and policy developers can use Policy Studio to register REST APIs with the gateway. API administrators can then use API Manager to make these APIs available to client application developers in a Client Application Registry. For more details, see the [API Manager User Guide](docs/apimgr_admin/).
+* When the API Manager product is installed, architects and policy developers can use Policy Studio to register REST APIs with the gateway. API administrators can then use API Manager to make these APIs available to client application developers in a Client Application Registry. For more details, see the [API Manager User Guide](/docs/apim_administration/apimgr_admin/).
 
 ### Software Configuration Management
 
@@ -307,4 +299,4 @@ The API Gateway does not include its own built-in Software Configuration Managem
 
 In addition, you can use the properties metadata associated with the gateway configuration packages (`.fed`, `.pol`, and `.env` files) to associate version information with the packages that are provided to upstream environments. You can also use the gateway Compare/Merge features to determine changes between different configuration packages.
 
-For more details on API Gateway configuration packages and their properties metadata, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
+For more details on API Gateway configuration packages and their properties metadata, see the [API Gateway DevOps Deployment Guide](/docs/apigtw_devops/).

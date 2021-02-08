@@ -82,7 +82,7 @@ You can create an API Gateway configuration package for a currently loaded proje
     * **Environment Package** (`.env`)
 2. Enter a file name, and click **Save**.
 
-**Configure package properties in Policy Studio**:
+#### Configure package properties in Policy Studio
 
 You can view or modify API Gateway configuration package properties for a currently loaded project configuration. To view and modify configuration properties, perform the following steps:
 
@@ -93,7 +93,7 @@ You can view or modify API Gateway configuration package properties for a curren
 
 ### Deploy packages in Policy Studio
 
-You can deploy the configuration as normal using the **Deploy** button in the toolbar. For more details, see [Deploy configuration in Policy Studio](#deploy-configuration-in-policy-studio)
+You can deploy the configuration as normal using the **Deploy** button in the toolbar. For more details, see [Deploy configuration in Policy Studio](#deploy-configuration-in-policy-studio).
 
 ### Deploy packages in API Gateway Manager
 
@@ -151,14 +151,14 @@ The following diagram illustrates the process:
 
 To perform a zero downtime policy deployment, follow these steps:
 
-1. Enable zero downtime deployment in Policy Studio, and set the delays before and after deployment. For more information, see [Zero downtime settings](/docs/apim_reference/additional_settings#zero-downtime-settings).
+1. Enable zero downtime deployment in Policy Studio, and set the delays before and after deployment. For more information, see [Zero downtime settings](/docs/apim_reference/general_settings/#zero-downtime-settings).
 2. Configure your load balancer to ping the Health Check LB policy periodically to determine if each API Gateway is healthy. This is available on the following default URL:
 
     ```
     http://APIGATEWAY_HOST:8080/healthchecklb
     ```
 
-3. Initiate deployment to a group of API Gateways using API Gateway Manager, Policy Studio, or managedomain. For more information, see [Deploy API Gateway configuration](#deploy-api-gateway-configuration). The configuration is deployed sequentially to each API Gateway in the group.
+3. Initiate deployment to a group of API Gateways using API Gateway Manager, Policy Studio, or `managedomain`. The configuration is deployed sequentially to each API Gateway in the group.
 4. When deployment is initiated on each API Gateway:
     * The Health Check LB policy returns a `503 Service Unavailable` response. This indicates to the load balancer that this API Gateway is not available for traffic and the load balancer stops routing to it.
     * After the specified delay before deployment (for example, 10 seconds), the configuration is deployed to the API Gateway.

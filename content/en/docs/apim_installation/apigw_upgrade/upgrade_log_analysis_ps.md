@@ -1,12 +1,12 @@
 {
     "title": "Resolve upgrade issues in Policy Studio",
     "linkTitle": "Resolve upgrade issues in Policy Studio",
-    "weight": 7,
+    "weight": 70,
     "date": "2019-10-07",
     "description": "Detect and analyze upgrade issues in Policy Studio."
 }
 
-Policy Studio provides graphical features to help you detect and analyze upgrade issues. You can use the **Tools > Upgrade Log Analysis** option to analyze an `upgrade.log` file. You can also use the tool to analyze upgrade issues when creating a new project from existing configuration, or when importing a configuration fragment. For more information, see [Upgrade log analysis](/csh?context=635&product=prod-api-gateway-77) in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+Policy Studio provides graphical features to help you detect and analyze upgrade issues. You can use the **Tools > Upgrade Log Analysis** option to analyze an `upgrade.log` file. You can also use the tool to analyze upgrade issues when creating a new project from existing configuration, or when importing a configuration fragment. For more information, see [Upgrade log analysis](/docs/apim_policydev/apigw_poldev/upgrade_log_analysis_ps/).
 
 You can also use Policy Studio to resolve configuration issues. If the upgrade process identifies issues with the configuration in your old installation, you can use Policy Studio to resolve the issues. There are two ways of doing this:
 

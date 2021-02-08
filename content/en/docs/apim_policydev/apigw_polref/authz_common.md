@@ -1,9 +1,9 @@
 {
 "title": "Authorization filters",
-"linkTitle": "Authorization filters",
-"weight": 40,
-"date": "2019-10-17",
-"description": "Commonly used authorization filters, including SAML authorization assertion, XACML PEP, and LDAP."
+  "linkTitle": "Authorization filters",
+  "weight": 40,
+  "date": "2019-10-17",
+  "description": "Commonly used authorization filters, including SAML authorization assertion, XACML PEP, and LDAP."
 }
 
 ## Insert SAML authorization assertion filter
@@ -302,7 +302,7 @@ filter is configured in the API Gateway, the workflow is as follows:
 6. The PEP filter validates the response from the PDP.
 7. By default, if the response is `Permit`, the PEP filter passes, and the original client request for the resource is authorized, and the policy flow continues on the success path.
 
-For more details on XACML, see the XACML specification at <http://docs.oasis-open.org/xacml/2.0/access_control-xacml-2.0-core-spec-os.pdf>
+For more details on XACML, see the [XACML specification](http://docs.oasis-open.org/xacml/2.0/access_control-xacml-2.0-core-spec-os.pdf).
 
 ### Example XACML request
 
@@ -585,7 +585,7 @@ tab:
 
 **Connection**:
 Click the button on the right to select your preconfigured LDAP directory server (for example, `openldap.qa.axway.com`). For details on how to configure LDAP servers, see
-[Configure LDAP directories](/docs/apim_policydev/apigw_poldev/external_connections/common_ldap_conf/).
+[Configure LDAP directories](/docs/apim_policydev/apigw_external_connections/common_ldap_conf/).
 
 **Search Base**:
 Enter the Distinguished Name (DN) to use as the base from which the search starts (for example, `o=Axway,l=Dublin 4,st=Dublin,C=IE`).

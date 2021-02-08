@@ -1,53 +1,42 @@
 ---
-title: "Delete an outdated fork before contributing to Axway documentation"
-linkTitle: "Delete an outdated fork"
+title: "Sync or delete an outdated fork before contributing"
+linkTitle: "Sync or delete an outdated fork"
 weight: 6
 date: 2019-10-15
 description: >
-    A fork is a copy of a repository. You must make sure that your fork is up to date with the upstream repository before contributing to the documentation.
-author: Andrea Mussap
+    To avoid issues when sending a pull request, make sure that your fork is up to date with the upstream repository before contributing to the documentation.
 ---
 
-The first time you make a contribution to the Axway documentation by way of the [Edit a page on GitHub](/docs/contribution_guidelines/#1-edit-a-page-on-github) flow, this creates a copy (fork) of the [axway-open-docs](https://github.com/Axway/axway-open-docs) project on your GitHub account.
+The first time you make a contribution to the documentation by way of GitHub or Netlify CMS, this creates a copy (fork) of the [axway-open-docs](https://github.com/Axway/axway-open-docs) repository in your GitHub account.
 
-Since there are other users collaborating with Axway documentation, it's highly likely that your fork will be behind the upstream repository quickly and you might encounter errors, or conflicts, the next time you try to send a pull request to `axway-open-docs`.
+Since there are other users collaborating with Axway documentation, it is highly likely that your fork will quickly fall behind the upstream repository and you might encounter conflicts the next time you try to send a pull request.
 
-To avoid issues when sending a pull request, you can [delete and recreate](#delete-and-recreate-your-fork) or [synchronize](#sync-your-fork) your old fork before starting a new contribution.
+To avoid issues when sending a pull request, you can [delete and recreate](#delete-and-recreate-your-fork) using the GitHub UI, or [synchronize](#sync-your-fork) your fork using Git CLI, before starting a new contribution.
 
-{{< alert title="Caution" color="warning">}}Do not delete your fork if you have pending PRs, otherwise this will erase work that is not merged yet.{{< /alert >}}
+{{< alert title="Note" color="primary">}} You do not need to sync your fork if you are working exclusively from Netlify CMS, as Netlify CMS creates the new branch based on master from the upstream repository.{{< /alert >}}
 
 ## Delete and recreate your fork
 
-The easiest way to make sure that your fork is up-to-date with the latest changes of the project is to delete and recreate your fork every time you make a new contribution:
+{{< alert title="Caution" color="warning">}}Do not delete your fork if you have pending PRs that have not yet been merged, as the changes from those PRs will be lost.{{< /alert >}}
 
-1. You must log off from the [Netlify CMS](https://axway-open-docs.netlify.com/admin).
+To delete and recreate your fork before you make a new contribution:
 
-2. Go to your axway-open-docs fork on GitHub, and click **Settings**
+1. Go to your `axway-open-docs` fork on GitHub, and click **Settings**
 
     ```
-    https://github.com/<your GitHub username>/axway-open-docs
-    ```
-    
-    For example: 
-    
-    ```
-    https://github.com/amussapvordel/axway-open-docs
+    https://github.com/YOUR-USERNAME/axway-open-docs
     ```
 
     ![Delete fork Settings](/Images/contributing/deletefork_settings.png)
 
-3. Under Danger Zone, click **Delete this repository**.
+2. Under Danger Zone, click **Delete this repository**.
 
     ![Delete fork Danger Zone](/Images/contributing/deletefork_dangerzone.png)
 
-4. Follow the [Edit a page on GitHub](/docs/contribution_guidelines/#1-edit-a-page-on-github) procedure to create a new fork and start contributing.
+3. Follow the [Edit on GitHub](/docs/contribution_guidelines/#option-1-edit-on-github) procedure to start a new contribution, which creates a new fork based on the latest upstream.
 
-To know more about how to delete your fork, see [Deleting a repository](https://help.github.com/en/articles/deleting-a-repository).
+To find out more about how to delete your fork, see [Deleting a repository](https://help.github.com/en/articles/deleting-a-repository).
 
 ## Sync your fork
 
-You can sync your fork with the latest changes added to the upstream repository. However, this procedure involves running Git commands in a line interface (CLI).
-
-See [Keep your fork synced](https://help.github.com/en/articles/fork-a-repo#keep-your-fork-synced) to know more about this.
-
-If you have any question or suggestion, create an Issue at [axway-open-docs](https://github.com/Axway/axway-open-docs/issues) project.
+You can sync your fork with the latest changes added to the upstream repository, using Git on the command line. For details, see [Keep your fork synced](https://help.github.com/en/articles/fork-a-repo#keep-your-fork-synced).

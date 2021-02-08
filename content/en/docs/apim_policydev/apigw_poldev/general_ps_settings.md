@@ -17,8 +17,7 @@ in the toolbar. {{< /alert >}}
 ### Auto-mapping
 
 These settings relate to the auto-mapping feature in Visual Mapper. For more information, see the
-[API Gateway Visual Mapper User Guide](/bundle/API_VisualMapper_78_UserGuide_allOS_en_HTML5)
-.
+[API Gateway Visual Mapper User Guide](https://docs.axway.com/bundle/API_VisualMapper_77_UserGuide_allOS_en_HTML5).
 
 ### Environmentalization
 
@@ -146,7 +145,7 @@ The WS-I settings are described as follows:
 {{< alert title="Note" color="primary" >}}On Linux, when you download WS-I Testing Tools v1.1, you must run `dos2unix`
 on `/java/bin/Analyzer.sh` and `/java/bin/setenv.sh`, because both files do not have executable privileges set and have Windows line endings, so the shell interpreter is unable to use them.{{< /alert >}}
 
-For details on running the WS-I testing tools, see [Manage WSDL and XML schema documents](/docs/apim_policydev/apigw_poldev/web_services/general_schema_cache/).
+For details on running the WS-I testing tools, see [Manage WSDL and XML schema documents](/docs/apim_policydev/apigw_web_services/general_schema_cache/).
 
 ### XML settings
 

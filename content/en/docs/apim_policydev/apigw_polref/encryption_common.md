@@ -1,9 +1,9 @@
 {
 "title": "Encryption and decryption filters",
-"linkTitle": "Encryption and decryption filters",
-"weight": 90,
-"date": "2019-10-17",
-"description": "Commonly used filters for encrypting or decrypting messages, including PGP encryption and decryption, and key generation."
+  "linkTitle": "Encryption and decryption filters",
+  "weight": 90,
+  "date": "2019-10-17",
+  "description": "Commonly used filters for encrypting or decrypting messages, including PGP encryption and decryption, and key generation."
 }
 
 ## PGP decrypt and verify filter
@@ -73,8 +73,7 @@ If you selected to decrypt and verify the incoming message, select the decrypt a
     Decrypts the message in the first pass, and then verifies the signature in the second pass. Use this option when the message has been encrypted and signed in two passes.
 
 **Content type**:
-Enter the `Content-Type`
-of the unencrypted message data. Defaults to `application/octet-stream`.
+Enter the `Content-Type` of the unencrypted message data. Defaults to `application/octet-stream`.
 
 ## PGP encrypt and sign filter
 

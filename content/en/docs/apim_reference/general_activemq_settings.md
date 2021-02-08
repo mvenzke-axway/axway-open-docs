@@ -1,7 +1,7 @@
 {
 "title": "Embedded ActiveMQ settings in Policy Studio",
 "linkTitle": "Embedded ActiveMQ settings",
-"weight":"50",
+"weight":"90",
 "date": "2019-10-14",
 "description": "Configure settings for the Apache ActiveMQ messaging broker in Policy Studio."
 }
@@ -47,6 +47,8 @@ Specifies the TCP port for incoming ActiveMQ connections. Defaults to `${env.BRO
 **Shared Directory**:
 
 Specifies the location of the shared directory in your environment that is used by multiple embedded ActiveMQ brokers. This setting is required, and must be configured for high availability and failover. Defaults to `INSTALL_DIR/messaging-shared`.
+
+When setting up a shared directory, do not use OCFS2, NFSv3, or other software where exclusive file locks do not work reliably. For details, see [Apache ActiveMQ Shared File System Master Slave](http://activemq.apache.org/shared-file-system-master-slave.html).
 
 ### SSL settings
 

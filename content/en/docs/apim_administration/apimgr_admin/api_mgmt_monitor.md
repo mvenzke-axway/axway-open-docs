@@ -1,7 +1,7 @@
 {
     "title": "Monitor APIs and applications in API Manager",
     "linkTitle": "Monitor APIs and applications",
-    "weight": "8",
+    "weight": "80",
     "date": "2019-09-17",
     "description": "View metrics on all invoked APIs and client applications in the system."
 }
@@ -48,7 +48,7 @@ To enable monitoring in API Manager, perform the following steps:
 
 5. Restart the API Gateway instance and Admin Node Manager.
 
-For more details on setting up a metrics database, see [Configure the metrics database](/csh?context=302&product=prod-api-gateway-77) in the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+For more details on setting up a metrics database, see [Configure the metrics database](/docs/apim_installation/apigtw_install/metrics_db_install/).
 
 ## Monitor APIs in API Manager
 
@@ -83,6 +83,9 @@ In both the **API Usage** and **Application Usage** views, you can use the **F
 ### Date interval
 
 You can select a date interval instead of the default value of **Today** (for example, **Last 7 days**, **Last 30 days**, or a custom date range).
+
+* **Today** and **Specify date/time**: Returns data from the current day up to the last interval processed.
+* All other date intervals: Return full days, but only up to the end of yesterday. It does not include data from today.
 
 You must click **Apply** or **Reset** to update the metrics graph and table on the right.
 

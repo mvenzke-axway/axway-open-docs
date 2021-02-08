@@ -12,7 +12,7 @@ For example, you might have an Active Directory password policy where all passwo
 
 To achieve this, you can use a Key Property Store (KPS) to store passwords for both Kerberos clients and Kerberos services. A KPS is a table of data that policies running on API Gateway can reference as needed using selectors. You can view, populate, and update the data in KPS tables using API Gateway Manager. When a password is changed in Active Directory, you can update the password in the KPS at runtime, instead of redeploying the API Gateway configuration, or restarting API Gateway.
 
-For more details on KPS tables, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
+For more details on KPS tables, see the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/).
 
 ## Configure a KPS table for Kerberos passwords
 

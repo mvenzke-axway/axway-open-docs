@@ -18,9 +18,10 @@
   "homepage": "https://github.com/bep/tech-doc-hugo#readme",
   "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^9.6.1",
+    "autoprefixer": "^9.8.6",
     "grunt": "^1.0.4",
     "grunt-markdownlint": "^2.6.0",
-    "postcss-cli": "^5.0.1"
+    "minimist": "^1.2.5",
+    "postcss-cli": "^7.1.2"
   }
 }

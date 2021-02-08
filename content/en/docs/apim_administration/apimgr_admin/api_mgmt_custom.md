@@ -1,7 +1,7 @@
 {
 "title": "Customize API Manager",
   "linkTitle": "Customize API Manager",
-  "weight": "13",
+  "weight": "130",
   "date": "2019-09-17",
   "description": "Customize API Manager features, such as generated emails and password validation, and customize API Manager data using custom properties."
 }
@@ -500,8 +500,6 @@ After a successful read, the custom property is available in the resulting attri
 ${myOrg.customProperty1}
 ```
 
-For more details, see [Read organization](/docs/apim_reference/api_mgr_ps_filters/#read-organization).
-
 ### Retrieve custom properties for applications
 
 You can use the **Read Application** filter to retrieve custom properties for applications. This automatically populates custom attributes and makes them available to the policy. In this filter, the **Application ID selector** represents the primary key, which enables the application details to be retrieved from the Cassandra database using the KPS:
@@ -516,8 +514,6 @@ After a successful read, the custom property is available in the resulting attri
 ${myApp.customProperty1}
 ```
 
-For more details, see [Read application](/docs/apim_reference/api_mgr_ps_filters/#read-application).
-
 ### Retrieve custom properties for users
 
 You can use the **Read Application Developer** filter to retrieve custom properties for API consumer users. This automatically populates custom attributes and makes them available to the policy. In this filter, the **Application Developer ID selector** represents the primary key, which enables the user details to be retrieved from the Cassandra database using the KPS:
@@ -531,8 +527,6 @@ After a successful read, the custom property is available in the resulting attri
 ```
 ${myUser.customProperty1}
 ```
-
-For more details, see [Read application developer](/docs/apim_reference/api_mgr_ps_filters/#read-application-developer).
 
 ### Retrieve custom properties for APIs
 
@@ -551,8 +545,6 @@ ${kps.PortalVirtualizedAPI[alert.apiIdList].customProperties.internalId}
 ```
 
 {{< alert title="Note" color="primary" >}}Custom properties cannot be encrypted. This means that any sensitive data stored in custom properties will be sent in the clear.{{< /alert >}}
-
-For more details on KPS, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
 
 ## Customize API Manager password validation
 
@@ -602,7 +594,7 @@ In each of these `app.config` files, perform the following steps:
 
 ## Customize API Gateway Manager URL for testing
 
-API Manager enables you to specify the location of the API Gateway Manager web console that is used for testing. For example, this enables the **Try method** button to link to the specified API Gateway Manager console for viewing the transaction log. For more details on using API Gateway Manager, see the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+API Manager enables you to specify the location of the API Gateway Manager web console that is used for testing. For example, this enables the **Try method** button to link to the specified API Gateway Manager console for viewing the transaction log.
 
 To specify the location of the API Gateway Manager console, perform the following steps:
 

@@ -1,15 +1,13 @@
 ---
 title: API Portal overview
 linkTitle: Overview
-weight: 1
+weight: 10
 date: 2019-07-30T00:00:00.000Z
 description: Learn the key capabilities and features of API Portal.
 ---
 Axway API Portal is a self-service developer portal layered on both API Manager and API Gateway.
 
 With API Portal, you can enable both internal or external client application (app) developers to browse, consume, build, and test APIs for use in their applications on their own. You can use several channels, such as FAQs, articles, forums or blogs, to provide more information for the developers and to encourage developer engagement. The look and feel of the web-based API Portal is fully customizable to match your brand and image.
-
-API Portal is part of the Axway AMPLIFY API Management solution. For more details, see the [AMPLIFY API Management Getting Started Guide](/bundle/APIManagementPlus_GettingStartedGuide_allOS_en_HTML5/) .
 
 ![Diagram illustrating the API Management concepts in API Portal](/Images/APIPortal/API_Portal_cncpt_api_mgmt.png)
 
@@ -41,12 +39,13 @@ API Portal supports two rendering tools to customize the visualization of the AP
 This is the UI tool used to visualize REST APIs. It supports OpenAPI specifications and it is built over the official Swagger.io. In addition to the commonly known fields of a method, the AMPLIFY SwaggerUI also provides the following:
 
 * **Examples (or, snippets)** - This section displays a line or block of code that you can copy and paste, and run straight away using the relevant tool (curl, Titanium, node.js, web.js).
+* **Single or 2-column layout** available for API details for a better and more flexible user experience.
 * **OAuth Authorization code flow** - Allows you to request a token to authorize access to your requests using an OAuth authorization code, as opposed to the `Client credentials` option where you need a secret key to request the token.
 * **External OAuth resource servers** - Supports authorization code flow only.
 
-{{% alert title="Note" %}}
+{{< alert title="Note" color="primary" >}}
 Clients in external OAuth servers must be created as public, and their redirect URL must be set to `{apiportal-url}/cb`.
-{{% /alert %}}
+{{< /alert >}}
 
 ### SwaggerUI 1.x
 

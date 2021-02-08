@@ -70,7 +70,7 @@ Alternatively, to create a new keyspace for the API Gateway container, follow th
 1. Use `kpsadmin backup` to export the KPS data.
 2. Copy the backup directory to the API Gateway container and run `kpsadmin restore` from the Admin Node Manager container.
 
-For more details, see the `kpsadmin` section in the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
+For more details, see the `kpsadmin` section in the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/).
 
 {{< alert title="Note" color="primary" >}}You can also export your API Manager APIs as an API collection if you require a backup.{{< /alert >}}
 

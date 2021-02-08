@@ -1,17 +1,17 @@
 {
 "title": "AWS filters",
-"linkTitle": "AWS filters",
-"weight": 80,
-"date": "2019-10-17",
-"description": "Upload data to Amazon S3 or send messages to Amazon SQS."
+  "linkTitle": "AWS filters",
+  "weight": 80,
+  "date": "2019-10-17",
+  "description": "Upload data to Amazon S3 or send messages to Amazon SQS."
 }
 
-For more information on Amazon S3, go to <http://aws.amazon.com/s3/>.
+For more information on Amazon Simple Storage Service, see [Amazon S3](http://aws.amazon.com/s3/).
 
 For detailed information on Amazon Web Services integration, see the *AWS Integration Guide* available from Axway Support.
 
 For more information on configuring AWS client settings in Policy Studio, see
-[Configure AWS client settings](/docs/apim_policydev/apigw_poldev/gw_instances/general_aws_poller/#configure-aws-client-settings).
+[Configure AWS client settings](/docs/apim_policydev/apigw_gw_instances/general_aws_poller/#configure-aws-client-settings).
 
 ## Upload to Amazon S3 filter
 

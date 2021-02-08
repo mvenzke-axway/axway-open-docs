@@ -1,26 +1,20 @@
 {
 "title": "Throttling filter",
-"linkTitle": "Throttling filter",
-"weight": 59,
-"date": "2019-10-17",
-"description": "Use the Throttling filter to rate limit calls to a back-end service."
+  "linkTitle": "Throttling filter",
+  "weight": 59,
+  "date": "2019-10-17",
+  "description": "Use the Throttling filter to rate limit calls to a back-end service."
 }
-
-The **Throttling**
-filter enables you to limit the number of requests that pass through an API Gateway in a specified time period. This enables you to enforce a specified message quota or *rate limit*
-on a client application, and to protect a back-end service from message flooding.
+The **Throttling** filter enables you to limit the number of requests that pass through an API Gateway in a specified time period. This enables you to enforce a specified message quota or *rate limit* on a client application, and to protect a back-end service from message flooding.
 
 You can configure this filter, for example, to allow only a specified number of messages from a specified client over a configured time period through to a virtualized API. If the number of messages exceeds the specified limit, the filter fails for the excess messages.
 
-When the configured constraints are breached, the API Gateway behavior is determined by the filter that is next in the policy failure path from the **Throttling**
-filter. Typically, an **Alert**, **Trace**, or **Log**
-filter is configured as the successor filter in the failure path.
+When the configured constraints are breached, the API Gateway behavior is determined by the filter that is next in the policy failure path from the **Throttling** filter. Typically, an **Alert**, **Trace**, or **Log** filter is configured as the successor filter in the failure path.
 
-Some example use cases for the **Throttling**
-filter include:
+Some example use cases for the **Throttling** filter include:
 
-* Protect a back-end service that can handle a maximum of only 20 messages per client per second
-* Enforce a specific message rate limit or quota where a customer has purchased a maximum of 100 messages per client per hour only
+* Protect a back-end service that can handle a maximum of only 20 messages per client per second.
+* Enforce a specific message rate limit or quota where a customer has purchased a maximum of 100 messages per client per hour only.
 
 {{< alert title="Note" color="primary" >}}API Gateway version 7.6.0 introduced the **Smooth Rate Limiting** algorithm for improved handling of high traffic levels. The existing algorithm has been renamed as **Floating Time Window**, and is still provided for backwards compatibility with previous API Gateway versions. Existing configuration from previous API Gateway versions is preserved during upgrade and executes as before.{{< /alert >}}
 
@@ -33,6 +27,7 @@ You can select the following options from the rate limit algorithm drop-down lis
     The Smooth Rate Limiting algorithm distributes rate limits among running API Gateways evenly (round robin) or dynamically (based on past traffic) to match your load balancing strategy. It also keeps track of the number of running API Gateways and dynamically updates the limits for each API Gateway when there is a change in the number of running API Gateways.
 
     The smooth rate limits are stored in an Apache Cassandra database. If you want to use this algorithm, you must first configure an Apache Cassandra connection.
+
 * **Floating Time Window**: This algorithm is provided for backwards compatibility with previous API Gateway versions. It does not include any traffic smoothing, and is suitable for lower traffic levels, over longer time intervals (for example, 10 transactions per minute or 100 transactions per hour). This means that if a rate limit is set to 100 requests per minute, all 100 can arrive in the first 10 seconds, and will be served. But any requests in next 50 seconds will be rejected. Floating time window is the default algorithm. Its rate limits are stored in a local or distributed cache.
 
 ### Smooth rate limiting algorithm settings
@@ -84,13 +79,11 @@ Enter a name for this filter to display in a policy.
 
 **Allow**:
 
-Enter the number of messages to allow in the time interval specified in the adjoining **Messages every**
-field. If the API Gateway receives more than the specified number of messages during the specified time interval, the filter fails. Otherwise, the filter passes.
+Enter the number of messages to allow in the time interval specified in the adjoining **Messages every** field. If the API Gateway receives more than the specified number of messages during the specified time interval, the filter fails. Otherwise, the filter passes.
 
 **Messages every**:
 
-Enter the allowed time interval. If the API Gateway receives more than the number of messages in the **Allow**
-field in the time interval specified, the filter fails. The time interval depends on the units selected (**seconds**, **minutes**, **hours**, **days**, or **weeks**). Defaults to **seconds**.
+Enter the allowed time interval. If the API Gateway receives more than the number of messages in the **Allow** field in the time interval specified, the filter fails. The time interval depends on the units selected (**seconds**, **minutes**, **hours**, **days**, or **weeks**). Defaults to **seconds**.
 
 The specified time period starts when a message is received. When the time period is over, the message count is reset, and the counter starts again when another message is received.
 
@@ -98,9 +91,7 @@ The specified time period starts when a message is received. When the time perio
 
 Select a cache for rate limit storage. You can configure a local cache or a distributed cache:
 
-* *Local cache*: Use when you have a single API Gateway deployed. The **Throttling**
-    filter uses a preconfigured local cache called **Local maximum messages**
-    by default. To configure a different local cache, click the button on the right.
+* *Local cache*: Use when you have a single API Gateway deployed. The **Throttling**   filter uses a preconfigured local cache called **Local maximum messages**   by default. To configure a different local cache, click the button on the right.
 * *Distributed cache*: Use when you have multiple API Gateways deployed for load balancing purposes, and you want to maintain a single count of all messages processed by all API Gateway instances.
 
 **Rate limit based on**:
@@ -113,8 +104,7 @@ For example, to track rate limits based on the client IP address, use the follow
 ${http.request.clientaddr.getAddress()}
 ```
 
-The value entered can also be a combination of a fixed string value and an API Gateway message attribute selector. For example, use the following value to keep track of the number of times an API named `StockQuote`
-is requested by an authenticated subject:
+The value entered can also be a combination of a fixed string value and an API Gateway message attribute selector. For example, use the following value to keep track of the number of times an API named `StockQuote` is requested by an authenticated subject:
 
 ```
 StockQuote-${authentication.subject.id}
@@ -124,18 +114,11 @@ StockQuote-${authentication.subject.id}
 
 **A day starts on the following hour**:
 
-You must configure this field if you select `Day`
-from the list when configuring the **messages every**
-field. For example, if you select `Day`, and enter `00:00`
-in this field, this means that only the specified number of messages can be received in a one day period starting from midnight tonight until midnight the next day.
+You must configure this field if you select `Day` from the list when configuring the **messages every** field. For example, if you select `Day`, and enter `00:00` in this field, this means that only the specified number of messages can be received in a one day period starting from midnight tonight until midnight the next day.
 
 **A week starts on the following day**:
 
-You must configure this field if you select `Week`
-from the list when configuring the **messages every**
-field. For example, if you select `Week`
-and `00:00`, and enter `Sunday`
-in this field, this means that the time period starts next Sunday at midnight, and lasts for one week exactly. The time period is reset on midnight of the next Sunday.
+You must configure this field if you select `Week` from the list when configuring the **messages every** field. For example, if you select `Week` and `00:00`, and enter `Sunday` in this field, this means that the time period starts next Sunday at midnight, and lasts for one week exactly. The time period is reset on midnight of the next Sunday.
 
 ## Rate limit HTTP headers settings
 
@@ -143,8 +126,7 @@ The following settings apply when the **Smooth Rate Limiting** or **Floating Tim
 
 **Include remaining limit in HTTP response headers**:
 
-Specifies whether to include the following `X-Rate-Limit`
-headers in the HTTP response message:
+Specifies whether to include the following `X-Rate-Limit` headers in the HTTP response message:
 
 * `X-Rate-Limit-Limit`: Rate limit ceiling for the given request (for example, `100` messages).
 * `X-Rate-Limit-Remaining`: Number of requests left for the time window (for example, `45` messages).
@@ -168,15 +150,11 @@ When **Smooth Rate Limiting** is selected, you must use only one **Throttling** 
 
 ### Floating time window
 
-When the **Floating Time Window** algorithm is selected, to use two or more **Throttling**
-filters to maintain separate message counts, you must use a different rate limit value for each filter, or use different caches for each filter.
+When the **Floating Time Window** algorithm is selected, to use two or more **Throttling** filters to maintain separate message counts, you must use a different rate limit value for each filter, or use different caches for each filter.
 
 #### Use a different rate limit per filter
 
-With this approach, you can use a unique **Rate limit based on**
-value in each **Throttling**
-filter. The easiest way to do this is to prepend the `${http.request.clientaddr.getAddress()}`
-selector value with the filter name, for example:
+With this approach, you can use a unique **Rate limit based on** value in each **Throttling** filter. The easiest way to do this is to prepend the `${http.request.clientaddr.getAddress()}` selector value with the filter name, for example:
 
 ```
 Acme Corp Quota Filter ${http.request.clientaddr.getAddress()}
@@ -186,7 +164,4 @@ This ensures that each filter maintains its own separate message count in the se
 
 #### Use a unique cache per filter
 
-Alternatively, you can use a unique cache to store the message count of each **Throttling**
-filter. With this solution, you must configure a separate cache for each **Throttling**
-filter that you have configured throughout *all*
-policies running on the API Gateway.
+Alternatively, you can use a unique cache to store the message count of each **Throttling** filter. With this solution, you must configure a separate cache for each **Throttling** filter that you have configured throughout *all* policies running on the API Gateway.

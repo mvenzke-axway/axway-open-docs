@@ -31,7 +31,7 @@ To start Cassandra in the foreground, run the following command:
 ./cassandra -f
 ```
 
-For more details, see [Running Cassandra in the Apache Cassandra Wiki](https://wiki.apache.org/cassandra/RunningCassandra).
+For more details, see [Running Cassandra in the Apache Cassandra Wiki](https://cwiki.apache.org/confluence/display/CASSANDRA2/RunningCassandra).
 
 ### Start Cassandra as a service
 
@@ -87,7 +87,9 @@ If you installed a Custom setup and did not select the Quickstart tutorial, you 
 3. Select **Server Settings > Cassandra > Hosts**. Add an address for the Cassandra node. You can enter an IP address or host name.
 4. Deploy the configuration to the API Gateway group.
 
-For more details on configuring **Server Settings** in the Policy Studio client, see [Cassandra Settings](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/page/Content/AdminGuideTopics/cassandra_settings.htm) in the API Gateway Administrator Guide. For details on updating the Cassandra server configuration, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).
+For more details on configuring **Server Settings** in the Policy Studio client, see [Cassandra Settings](/docs/apim_reference/cassandra_settings/).
+
+For details on updating the Cassandra server configuration, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).
 
 ## Further details
 

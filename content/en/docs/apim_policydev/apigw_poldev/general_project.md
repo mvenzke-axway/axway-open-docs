@@ -37,31 +37,27 @@ Alternatively, select **File** > **Save All** to save the changes to all open u
 
 When a project is loaded in Policy Studio, you can select **Tasks** > **Deploy** from the main menu to deploy saved changes to a running API Gateway instance at any time. Alternatively, click the **Deploy** button in the toolbar.
 
-For more details, see [Deploy configuration](/docs/apim_administration/apigtw_admin/deploy_get_started/#deploy-api-gateway-configuration).
+For more details, see [Manage API Gateway deployments](/docs/apim_administration/apigtw_admin/deploy_get_started/).
 
 ## Add an API to a project
 
 When a project is loaded in Policy Studio, you can select **Tasks** > **Add REST API** from the main menu to add an API to the project.
 
-For more details, see [Develop REST APIs in Policy Studio](/docs/apim_policydev/apigw_poldev/web_services/register_rest_apis/).
+For more details, see [Develop REST APIs in Policy Studio](/docs/apim_policydev/apigw_web_services/register_rest_apis/).
 
 ## Virtualize a web service
 
 When a project is loaded in Policy Studio, you can select **Tasks** > **Virtualize a Service** from the main menu to use the API Gateway to virtualize a web service.
 
-For more details, see [Register and secure web services](/docs/apim_policydev/apigw_poldev/web_services/).
+For more details, see [Register and secure web services](/docs/apim_policydev/apigw_web_services/).
 
 ## Change the project passphrase
 
-You can use the `projchangepass` command to change the encryption passphrase for a Policy Studio project. For more information on `projchangepass`, see
-[Automate processes for continuous integration](/csh?context=460&product=prod-api-gateway-77)
-in the
-[API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).
+You can use the `projchangepass` command to change the encryption passphrase for a Policy Studio project. For more information on `projchangepass`, see [Packaging and deployment tools](/docs/apigtw_devops/deploy_package_tools/).
 
-{{< alert title="Note" color="primary" >}}It is important to distinguish between the passphrase used by a project on the local file system and the passphrase used by an API Gateway group configuration on a running API Gateway instance. For details on specifying a different passphrase for runtime, see [Deploy configuration](../CommonTopics/deploy_wizard.htm). {{< /alert >}}
+{{< alert title="Note" color="primary" >}}It is important to distinguish between the passphrase used by a project on the local file system and the passphrase used by an API Gateway group configuration on a running API Gateway instance. For details on specifying a different passphrase for runtime, see [Manage API Gateway deployments](/docs/apim_administration/apigtw_admin/deploy_get_started/).{{< /alert >}}
 
-For more details on configuring encryption passphrases, see the
-[API Gateway Administrator Guide](/docs/apim_administration/apigtw_admin/).
+For more details on configuring encryption passphrases, see the [API Gateway Administrator Guide](/docs/apim_administration/apigtw_admin/).
 
 ## Export configuration packages
 
@@ -105,4 +101,4 @@ To unlock a server connection, perform the following steps:
 5. Upload the files back to the server's `conf/fed` directory.
 6. Restart the Admin Node Manager.
 
-For more details on **Management Services**, see [Management services](/docs/apim_policydev/apigw_poldev/gw_instances/general_services/#management-services).
+For more details on **Management Services**, see [Management services](/docs/apim_policydev/apigw_gw_instances/general_services/#management-services).

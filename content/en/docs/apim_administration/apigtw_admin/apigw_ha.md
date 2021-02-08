@@ -12,7 +12,7 @@ This section includes recommendations on topics such as load balancing, commonly
 
 ## HA in production environments
 
-The following diagram shows an overview of a Gateway platform running in an HA production environment:
+The following diagram shows an overview of an API Gateway platform running in an HA production environment:
 
 ![API Gateway High Availability](/Images/APIGateway/admin_ha_config.png)
 
@@ -57,7 +57,7 @@ API Gateway supports integration with a wide range of third-party Java Message S
 * OpenJMS
 * JBoss Messaging
 
-API Gateway can act as a JMS client (for example, polling messages from third-party JMS products or sending message to them). For details on configuring the gateway client connections to JMS systems, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/). For details on configuring HA in supported third-party JMS systems, see the user documentation available from your JMS provider.
+API Gateway can act as a JMS client (for example, polling messages from third-party JMS products or sending message to them). For details on configuring the gateway client connections to JMS systems, see the [API Gateway Policy Developer Guide](/docs/apim_policydev/). For details on configuring HA in supported third-party JMS systems, see the user documentation available from your JMS provider.
 
 API Gateway also provides an embedded Apache ActiveMQ server in each API Gateway instance. For more details, see [Embedded Apache ActiveMQ](#embedded-apache-activemq).
 
@@ -80,15 +80,13 @@ You can use the **Remote Host Settings** in Policy Studio to configure how API G
 * Allowing the gateway to send HTTP 1.1 requests to a destination server when that server supports HTTP 1.1, or resolving inconsistencies in how the destination server supports HTTP.
 * Setting timeouts, session cache size, input/output buffer size, and other connection-specific settings for a destination server. For example, if the destination server is particularly slow, you can set a longer timeout.
 
-For details on how to configure **Remote Host Settings** in Policy Studio, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
-
 ## Distributed caching
 
 In an HA production environment, caching is replicated between each gateway instance using a distributed caching system. In this scenario, each gateway has its own local copy of the cache, but registers a cache event listener that replicates messages to the caches on other gateway instances. This enables the put, remove, expiry, and delete events on a single cache to be replicated across all other caches.
 
 In the distributed cache, there is no master cache controlling all caches in the group. Instead, each cache is a peer in the group that needs to know where all the other peers in the group are located. Peer discovery and peer listeners are two essential parts of any distributed cache system.
 
-For more details on configuring distributed cache settings, see the topic on Global Caches in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/). API Gateway distributed caching system is based on Ehcache. For more details, see <http://ehcache.org/>.
+For more details on configuring distributed cache settings, see [Configure caching](/docs/apim_policydev/apigw_poldev/general_cache/). API Gateway distributed caching system is based on Ehcache. For more details, see <http://ehcache.org/>.
 
 ## External Connections
 
@@ -104,7 +102,7 @@ You can use **External Connections** settings in Policy Studio to configure how 
 * Tivoli
 * Radius Clients
 
-For details on how to configure **External Connections** in Policy Studio, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/). For details on how to configure HA for any external third-party systems, see the product documentation provided by your third-party vendor.
+For details on how to configure **External Connections** in Policy Studio, see the [API Gateway Policy Developer Guide](/docs/apim_policydev/). For details on how to configure HA for any external third-party systems, see the product documentation provided by your third-party vendor.
 
 {{< alert title="Note" color="primary" >}}When configuring connections to server hosts, it is recommended that you specify server host names instead of IP addresses, which are less stable and are subject to change in a Domain Name System (DNS) environment.{{< /alert >}}
 
@@ -126,9 +124,11 @@ For more details on installing and configuring an external Cassandra database fo
 
 ## Embedded Apache ActiveMQ
 
-API Gateway provides an embedded Apache ActiveMQ broker in each gateway instance. In a HA production environment, multiple ActiveMQ broker can work together as a network of brokers in a group of gateways. This requires setting up a shared directory that is accessible from all gateway instances—for example, using Storage Area Network (SAN) or Network File System (NFSv4).
+API Gateway provides an embedded Apache ActiveMQ broker in each gateway instance. In a HA production environment, multiple ActiveMQ brokers can work together as a network of brokers in a group of API Gateways. This requires setting up a shared directory that is accessible from all gateway instances—for example, using Storage Area Network (SAN) or Network File System (NFSv4).
 
-In this shared network of ActiveMQ brokers, each gateway can start a local embedded ActiveMQ broker, which listens on a configured TCP port (`61616` by default). This port is accessible from both the local gateway and remote clients using the load balancer.
+When setting up a shared directory, do not use OCFS2, NFSv3, or other software where exclusive file locks do not work reliably. For details, see [Apache ActiveMQ Shared File System Master Slave](http://activemq.apache.org/shared-file-system-master-slave.html).
+
+In this shared network of ActiveMQ brokers, each API Gateway can start a local embedded ActiveMQ broker, which listens on a configured TCP port (`61616` by default). This port is accessible from both the local gateway and remote clients using the load balancer.
 
 For details on how to configure and manage embedded Apache ActiveMQ, see the following:
 

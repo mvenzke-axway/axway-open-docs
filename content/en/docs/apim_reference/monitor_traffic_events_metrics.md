@@ -1,7 +1,7 @@
 {
 "title": "Traffic monitoring and metrics settings in Policy Studio",
 "linkTitle": "Traffic monitoring and metrics settings",
-"weight":"52",
+"weight":"100",
 "date": "2019-10-14",
 "description": "Configure settings for open traffic event logs, traffic monitoring, and real-time monitoring metrics in Policy Studio."
 }
@@ -105,10 +105,9 @@ Select whether to record the sent payload data for the message transaction. This
 
 Select whether to record the received payload data for the message transaction. This is enabled by default.
 
-These settings are global for all traffic passing through the API Gateway. You can override these persistence settings at the port level when configuring an HTTP or HTTPS interface. For more details, see [Configure HTTP services](/csh?context=610&product=prod-api-gateway-77) in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+These settings are global for all traffic passing through the API Gateway. You can override these persistence settings at the port level when configuring an HTTP or HTTPS interface.
 
-Details of inbound and outbound transactions are also written to the transaction event log. If recording of inbound or outbound transactions is disabled in **Traffic Monitor**
-settings, transaction data will not be written to the event log. For more details, see [Transaction event log settings](/docs/apim_administration/apigtw_admin/log_event_settings).
+Details of inbound and outbound transactions are also written to the transaction event log. If recording of inbound or outbound transactions is disabled in **Traffic Monitor** settings, transaction data will not be written to the event log. For more details, see [Transaction event log settings](/docs/apim_reference/log_global_settings/#transaction-event-log-settings).
 
 **Transaction File Management Settings**:
 

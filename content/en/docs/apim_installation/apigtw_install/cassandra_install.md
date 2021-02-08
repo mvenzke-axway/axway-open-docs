@@ -15,7 +15,7 @@ Apache Cassandra is required to store data for API Manager (for example, API cat
 
 ### Supported Cassandra versions
 
-API Gateway supports Apache Cassandra version 2.2.12. For more details on Apache Cassandra, see <http://cassandra.apache.org/>.
+API Gateway supports Apache Cassandra version 2.2.12. For more details, see [Apache Cassandra](http://cassandra.apache.org/) home page.
 
 For details on upgrading your Cassandra version, see [Upgrade Apache Cassandra](/docs/apim_installation/apigw_upgrade/upgrade_cassandra/).
 

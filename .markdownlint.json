@@ -6,7 +6,9 @@
     'MD013': false,
     'MD026': {'punctuation': '.,;:!'},
     'MD029': {'style': 'ordered'},
+    'MD031': {'list_items': false},
     'MD040': false,
     'MD041': false,
     'MD046': {'style': 'fenced'},
+    'MD047': false,
 }

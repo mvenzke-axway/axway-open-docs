@@ -3,6 +3,7 @@
 "linkTitle": "Glossary",
 "weight":"99",
 "date": "2019-11-07",
+"hide_readingtime": "true",
 "description": "Reference to AMPLIFY API Management and AMPLIFY Central terminology."
 }
 
@@ -28,6 +29,10 @@ API Manager
 
 : Web-based API administration and partner management tool that is layered on API Gateway. API administrators use API Manager to administer the managed APIs that are exposed to API consumers.
 
+API package
+
+: The complete package of artifacts associated with an API registered in API Manager. This is used to export and import the API in a single package to enable promotion from sandbox to production APIs.
+
 API Portal
 
 : Self-service developer portal that enables client application developers to browse and consume APIs for use in their applications.
@@ -37,6 +42,9 @@ API Portal
 Base64
 
 : Method of encoding 8-bit characters as ASCII printable characters. It is typically used to encode binary data so that it may be sent over text-based protocols such as HTTP and SMTP. Base64 is a scheme where 3 bytes are concatenated, and split to form 4 groups of 6-bits each. Each 6-bits is translated to an encoded printable ASCII character, using a table lookup. The specification is described in RFC 2045.
+
+Back-end API
+: Used in context of the API-Manager. Is the actual REST API that is routed to, secured, and exposed on the network (for example, application server), or in the Cloud (for example, Twitter). This REST API can be registered manually in API Manager, or by importing a Swagger or Web Application Description Language (WADL) definition in API Manager.
 
 ## C
 
@@ -71,6 +79,10 @@ Domain
 Filter
 
 : Executable rule that performs a specific type of processing on a message. For example, the Message Size filter rejects messages that are greater or less than a specified size. Many categories of message filters are available with API Gateway (for example, Authentication, Authorization, Content filtering, Conversion, Trust, and so on). In Policy Studio, a filter is displayed as a block of business logic that forms part of an execution flow known as a policy.
+
+Front-end API
+
+: Used in context of the API-Manager. Is the virtualized publicly exposed REST API in API Manager that is hosted on the API Gateway, and which client applications invoke (for example, iPhone or Android client apps). By default, the front-end API is the same as the back-end API, proxying the API as is. However, you can edit the front-end API to present an enriched, public-facing API to client applications.
 
 ## G
 

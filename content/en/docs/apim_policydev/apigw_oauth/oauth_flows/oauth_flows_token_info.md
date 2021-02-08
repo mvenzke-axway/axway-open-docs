@@ -6,7 +6,7 @@ date: 2019-11-18
 description: Use the token information service to validate that an access token was issued by the API Gateway.
 ---
 
-The OAuth token information service responds to requests for information on a specified OAuth 2.0 access token. A request to the `tokenInfo` service is an HTTP `GET` request for information in a specified OAuth 2.0 access token.
+The OAuth token information service responds to requests for information on a specified OAuth 2.0 access token. A request to the `tokenInfo` service is an HTTP `POST` request for information in a specified OAuth 2.0 access token.
 
 ![OAuth 2.0 Token Info](/Images/OAuth/APIgw_token_info.png)
 
@@ -16,10 +16,10 @@ The endpoint for the token information service is as follows:
 https://HOST:8089/api/oauth/tokeninfo
 ```
 
-Getting information about a token from the authorization server only requires a `GET`request to the token info endpoint. For example:
+Getting information about a token from the authorization server only requires a `POST` request to the token info endpoint. For example:
 
 ```
-GET /api/oauth/tokeninfo HTTP/1.1
+POST /api/oauth/tokeninfo HTTP/1.1
 Host:192.168.0.48:8080
 access_token=4eclEUX1N6oVIOoZBbaDTI977SV3T9KqJ3ayOvs4gqhGA4
 ```
@@ -29,12 +29,6 @@ This request includes the following parameter:
 | Parameter      | Description                                                                                                       |
 |----------------|-------------------------------------------------------------------------------------------------------------------|
 | `access_token` | Required. A token that you want information about (for example:`4eclEUX1N6oVIOoZBbaDTI977SV3T9KqJ3ayOvs4gqhGA4`). |
-
-The following example uses this parameter:
-
-```
-https://apigateway/api/oauth/tokeninfo?access_token=4eclEUX1N6oVIOoZBbaDTI977SV3T9KqJ3ayOvs4gqhGA4
-```
 
 ## Run the sample client
 

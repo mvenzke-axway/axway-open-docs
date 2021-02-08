@@ -1,9 +1,9 @@
 {
 "title": "Monitoring and logging filters",
-"linkTitle": "Monitoring and logging filters",
-"weight": 85,
-"date": "2019-10-17",
-"description": "Logging filters including log message payload, and monitoring filters including Axway Sentinel filters and the alert filter."
+  "linkTitle": "Monitoring and logging filters",
+  "weight": 85,
+  "date": "2019-10-17",
+  "description": "Logging filters including log message payload, and monitoring filters including Axway Sentinel filters and the alert filter."
 }
 
 ## Log message payload filter
@@ -354,7 +354,7 @@ to identify events. Every tracked object contains a unique name, version number,
 
 Every tracked event must specify a tracked object, and this tracked object must already be defined in Sentinel. A tracked event can also contain attributes, and the attributes must already be defined as tracked object attributes in Sentinel.
 
-For more details, see the[API Gateway Sentinel Interoperability Guide](/bundle/APIGateway_77_Sentinel_InteropGuide_allOS_en_HTML5).
+For more details, see the [API Gateway Sentinel Interoperability Guide](https://docs.axway.com/bundle/APIGateway_77_Sentinel_InteropGuide_allOS_en_HTML5).
 
 Configure the following settings on the **Sentinel Event**
 window:
@@ -373,7 +373,7 @@ The **Tracked object**
 section enables you to specify the tracked object to use in the Sentinel event.
 
 {{< alert title="Note" color="primary" >}}Tracked objects must exist in your Sentinel database before you can start using Sentinel to monitor your applications and track their activities. For more information on defining tracked objects in Sentinel, see the *Sentinel Configuration Guide*
-available on [https://support.axway.com](https://support.axway.com/).{{< /alert >}}
+available from [Axway Support](https://support.axway.com/).{{< /alert >}}
 
 **Use the following tracked object**:
 Select this option and click the browse button to select a Sentinel tracked object to use. If no tracked objects are already defined, right-click **Sentinel Tracked Objects**

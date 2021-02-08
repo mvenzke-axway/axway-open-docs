@@ -1,12 +1,10 @@
 ---
 title: Configure back-end authentication for an API
 linkTitle: Configure back-end authentication
-weight: 5
+weight: 60
 date: 2019-07-30
 description: Learn how to configure back-end authentication for an API.
 ---
-
-*Estimated reading time*: 2 minutes
 
 ## Before you start
 

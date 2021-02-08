@@ -58,7 +58,7 @@ Solution
     ./kpsadmin
     ```
 
-For more information on using `kpsadmin`, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
+For more information on using `kpsadmin`, see the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/).
 
 ## Logs do not persist when container stops
 
@@ -74,4 +74,4 @@ Problem
 : Distributed Ehcache is not supported in a container deployment.
 
 Solution
-: You can use Apache Cassandra as a distributed data store. This involves using the KPS scripting API, which enables you to perform CRUD operations and interact directly with a KPS. For details, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
+: You can use Apache Cassandra as a distributed data store. This involves using the KPS scripting API, which enables you to perform CRUD operations and interact directly with a KPS. For details, see the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/).

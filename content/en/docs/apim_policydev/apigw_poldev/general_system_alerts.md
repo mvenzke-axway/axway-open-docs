@@ -110,7 +110,7 @@ Amazon SNS is a managed push messaging service that you can used to send push no
 2. Enter a name for this alert destination.
 3. In **AWS Credential**, select your AWS security credentials (API key and secret) that API Gateway uses when connecting to Amazon SNS.
 4. Select the region appropriate for your deployment.
-5. In **Client settings**, select the AWS client configuration API Gateway uses when connecting to Amazon SNS. For more details, see [Configure Amazon SQS queue listener](/docs/apim_policydev/apigw_poldev/gw_instances/general_aws_poller).
+5. In **Client settings**, select the AWS client configuration API Gateway uses when connecting to Amazon SNS. For more details, see [Configure Amazon SQS queue listener](/docs/apim_policydev/apigw_gw_instances/general_aws_poller).
 6. In **Topic ARN**, enter the topic Amazon Resource Name (ARN) to send alerts to.
 7. When you create a topic, Amazon SNS assigns it a unique ARN that includes the service name (for example, SNS), the region, the AWS ID of the user, and the topic name. The ARN is returned as part of the API call to create the topic.
 

@@ -32,7 +32,7 @@ When you select the **Enable application scopes** setting, you can configure the
 
 During the OAuth authorization process, the OAuth authorization server asks a resource owner to authorize access to a given set of scopes requested by the client application. If the resource owner accepts the authorization request, the client application can interact with the OAuth authorization server to obtain an access token and subsequently access the resource owner's protected resources.
 
-OAuth authorizations are stored in the Authorizations table in the OAuth KPS collection. This is a hidden KPS collection that is not visible in Policy Studio by default. For more information on viewing hidden KPS collections in Policy Studio, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
+OAuth authorizations are stored in the Authorizations table in the OAuth KPS collection. This is a hidden KPS collection that is not visible in Policy Studio by default. For more information on viewing hidden KPS collections in Policy Studio, see the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/).
 
 There is only one authorization record per client application/resource owner. When a client application requests authorization and a record already exists for the client application/resource owner, the resource owner is only asked to grant access to any additional scopes requested, and not to the scopes previously authorized. If the resource owner grants access, the authorization record is updated to include the additional scopes.
 
@@ -40,7 +40,7 @@ There are several ways to view the OAuth authorizations:
 
 * API Manager – See [View and revoke OAuth authorizations in API Manager](#Revoke).
 * API Manager REST API – For more information, see the [Product APIs page](https://docs.axway.com/category/api) on the Axway Documentation portal.
-* `kpsadmin` tool – For more information, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
+* `kpsadmin` tool – For more information, see the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/).
 
 ### View and revoke OAuth authorizations in API Manager{#Revoke}
 

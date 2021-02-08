@@ -1,12 +1,12 @@
 {
 "title": "Resolver filters",
-"linkTitle": "Resolver filters",
-"weight": 98,
-"date": "2019-10-17",
-"description": "Identify incoming XML messages based on SOAP action, SOAP operation name, or relative path."
+  "linkTitle": "Resolver filters",
+  "weight": 98,
+  "date": "2019-10-17",
+  "description": "Identify incoming XML messages based on SOAP action, SOAP operation name, or relative path."
 }
 
-All resolver filters use the regular expression syntax specified by `java.util.regex.Pattern`. For more details, see <http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html>
+All resolver filters use the regular expression syntax specified by `java.util.regex.Pattern`. For more details, see [Class Pattern](http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html).
 
 ## SOAP action resolver filter
 

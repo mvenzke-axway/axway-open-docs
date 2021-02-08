@@ -96,7 +96,7 @@ This section describes how to add Kerberos principals for the intermediary Kerbe
     * **Principal Name**: `<Service Principal Name for the back-end service>` (for example, `HOST/BackEndService.axway.com@AXWAY.COM`)
     * **Principal Type**: `NT_USER_NAME`
 
-For more details on the fields and options in this configuration window, see [Configure Kerberos principals](/docs/apim_policydev/apigw_poldev/external_connections/common_client_credentials/#configure-kerberos-principals).
+For more details on the fields and options in this configuration window, see [Configure Kerberos principals](/docs/apim_policydev/apigw_external_connections/common_client_credentials/#configure-kerberos-principals).
 
 ## Configure API Gateway policy
 
@@ -114,7 +114,7 @@ This section describes for unconstrained credential delegation using Policy Stud
     **Mechanism**: `SPNEGO_MECHANISM`.
     **Extract delegated credentials**: Select this option.
 
-Selecting **Extract delegated credentials** means that API Gateway extracts the Kerberos client’s TGT from the SPNEGO token after the client has been authenticated. API Gateway can then use the TGT to request service tickets to other Kerberos services on behalf of the Kerberos client. For more details on the fields and options in this configuration window, see [Configure Kerberos services](/docs/apim_policydev/apigw_poldev/external_connections/kerberos_service/).
+Selecting **Extract delegated credentials** means that API Gateway extracts the Kerberos client’s TGT from the SPNEGO token after the client has been authenticated. API Gateway can then use the TGT to request service tickets to other Kerberos services on behalf of the Kerberos client. For more details on the fields and options in this configuration window, see [Configure Kerberos services](/docs/apim_policydev/apigw_external_connections/kerberos_service/).
 
 ### Configure a Kerberos client for the delegated credentials
 
@@ -135,7 +135,7 @@ Selecting **Extract delegated credentials** means that API Gateway extracts the 
     * **Synchronize to Avoid Replay Errors at Service**: Deselect this option to improve performance.
     * **Refresh when remaining validity is `<value>` seconds**: Set to `300`.
 
-For more details on the fields and options in this configuration window, see [Configure Kerberos clients](/docs/apim_policydev/apigw_poldev/external_connections/common_client_credentials/#configure-kerberos-clients).
+For more details on the fields and options in this configuration window, see [Configure Kerberos clients](/docs/apim_policydev/apigw_external_connections/common_client_credentials/#configure-kerberos-clients).
 
 ### Configure a Kerberos profile for the intermediary Kerberos service
 

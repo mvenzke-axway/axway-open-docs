@@ -1,12 +1,10 @@
 ---
 title: Secure an API with JWT
 linkTitle: Secure an API with JWT
-weight: 4
+weight: 40
 date: 2019-07-30
 description: Learn how to secure your API using a JWT token.
 ---
-
-*Estimated reading time*: 6 minutes
 
 ## Before you start
 

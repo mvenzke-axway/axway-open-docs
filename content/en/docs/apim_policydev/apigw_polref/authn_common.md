@@ -1,9 +1,9 @@
 {
 "title": "Authentication filters",
-"linkTitle": "Authentication filters",
-"weight": 30,
-"date": "2019-10-17",
-"description": "Commonly used authentication filters, including API key, HTTP basic, and SAML."
+  "linkTitle": "Authentication filters",
+  "weight": 30,
+  "date": "2019-10-17",
+  "description": "Commonly used authentication filters, including API key, HTTP basic, and SAML."
 }
 
 ## API key authentication filter
@@ -14,8 +14,8 @@ filter enables you to securely authenticate an API key with the API Gateway.
 API keys include a key ID that identifies the client responsible for the API service request. This key ID is not a secret, and must be included in each request. API keys can also include a confidential secret key used for authentication, which should only be known to the client and to the API service. You can use the **Authenticate API Key**
 filter to specify where to find the API key ID and secret key in the request message, and to specify timestamp and expiry options.
 
-An example use case for this filter would be a client accessing a REST API service to invoke specific methods (for example, `startVM()`
-or `stopVM()`). To invoke these methods, you are required to provide your API key ID and secret key to the API Gateway. You can keep the secret key private by sending the request over HTTPS.
+An example use case for this filter would be a client accessing a REST API service to invoke specific methods, for example, `startVM()`
+or `stopVM()`. To invoke these methods, you are required to provide your API key ID and secret key to the API Gateway. You can keep the secret key private by sending the request over HTTPS.
 
 Alternatively, you can use the secret key to generate an HMAC digital signature. This means that the secret key is not sent in the request, but is inferred instead, because the message must have been signed using the required secret key. When the API service receives the request, it uses the API key ID to look up the corresponding secret key, and uses it to validate the signature and confirm the request sender.
 
@@ -24,7 +24,7 @@ The API Gateway supports the following API key types:
 * Simple API keys including a key ID only. The API key ID is included in all requests to authenticate the client.
 * Amazon Web Services style API keys including a key ID and a secret key, which are used together to securely authenticate the client. The API key ID is included in all requests to identify the client. The secret key is known only to the client and the API Gateway.
 
-For more details on authenticating Amazon Web Services API keys, go to <http://s3.amazonaws.com/doc/s3-developer-guide/RESTAuthentication.html>.
+For more details on authenticating Amazon Web Services API keys, see [Authenticating REST Requests](http://s3.amazonaws.com/doc/s3-developer-guide/RESTAuthentication.html).
 
 Configure the following general settings:
 
@@ -33,8 +33,7 @@ Enter a suitable name for this filter in your policy.
 
 **KPS Alias**:
 Enter the alias name of the Key Property Store (KPS) used to store the API keys. Defaults to the example `ClientRegistry`
-supplied with the API Gateway. For details on storing API keys in the Client Application Registry, see the
-[API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/).
+supplied with the API Gateway.
 
 **Field Containing Secret**:
 Enter the name of the field in the KPS that contains the secret. Defaults to `secretKey`.
@@ -883,7 +882,7 @@ tab allow for these alternative routing configurations.
 Select this option to route to the specified URL. You can enter the URL in the text box, or specify the URL as a selector so that the URL is built dynamically at runtime from the specified message attributes (for example `${host}:${port}`, or `${http.destination.protocol}://${http.destination.host}:${http.destination.port}`).
 
 You can configure SSL settings, credential profiles for authentication, and other settings for the direct connection using the tabs in the **Connection Details**
-group. For more details, see [Connect to URL filter](/docs/apim_policydev/apigw_polref/connection_to_url/#connect-to-url-filter).
+group. For more details, see [Connect to URL filter](/docs/apim_policydev/apigw_polref/routing_common/#connect-to-url-filter).
 
 **Delegate routing to the following policy**:
 Select this option to use a dedicated routing policy to send messages on to the STS. Click the browse button next to the **Routing policy**

@@ -1,9 +1,9 @@
 {
 "title": "Additional content filtering filters",
-"linkTitle": "Additional content filtering filters",
-"weight": 65,
-"date": "2019-10-17",
-"description": "Additional filters for content filtering, including threatening content and content validation."
+  "linkTitle": "Additional content filtering filters",
+  "weight": 65,
+  "date": "2019-10-17",
+  "description": "Additional filters for content filtering, including threatening content and content validation."
 }
 
 ## Content validation filter
@@ -232,7 +232,7 @@ You can edit or remove existing regular expressions by selecting the expression 
 or **Delete**
 button.
 
-This filter uses the regular expression syntax specified by `java.util.regex.Pattern`. For more details, go to <http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html>.
+This filter uses the regular expression syntax specified by `java.util.regex.Pattern`. For more details, see [Class Pattern](http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html).
 
 ### MIME type settings
 

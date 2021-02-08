@@ -56,7 +56,7 @@ The connection between API Gateway and PassPort requires that communication is p
 
 The first connection from API Gateway to PassPort initiates registration. A public-private key pair is created and a Certificate Signing Request (CSR) is submitted to PassPort. While the CSR is pending, the repository is unable to process any requests. However, registration is a one-off event, and when complete, it does not need to be repeated.
 
-For more information on PassPort integration, see the [API Gateway PassPort Interoperability Guide](/bundle/APIGateway_77_PassPort_InteropGuide_allOS_en_HTML5).
+For more information on PassPort integration, see the [API Gateway PassPort Interoperability Guide](https://docs.axway.com/bundle/APIGateway_77_PassPort_InteropGuide_allOS_en_HTML5).
 
 ### Certificate storage, validation, and revocation
 

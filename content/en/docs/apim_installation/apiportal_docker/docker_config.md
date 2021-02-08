@@ -1,6 +1,7 @@
 {
   "title":"Customize API Portal topology in Docker",
   "linkTitle":"Customize API Portal topology",
+  "draft": "true",
   "weight":"3",
   "date":"2019-08-09",
   "description":"customize your Docker-based API Portal topology to suit your environment"
@@ -38,16 +39,16 @@ The following table describes which API Portal assets should be stored in a Doc
 
 The Docker sample package includes a sample `docker-compose.yml` file. This file describes:
 
-- The services and containers to run
-- The properties to run those services and containers with
-- The correct sequence to start those services
+* The services and containers to run
+* The properties to run those services and containers with
+* The correct sequence to start those services
 
 The `docker-compose.yml` file enables you to run API Portal using a single `docker-compose up` command.
 
 To run API Portal you need to have at least two services:
 
-- Database
-- API Portal
+* Database
+* API Portal
 
 **Database service example**:
 
@@ -55,11 +56,11 @@ To run API Portal you need to have at least two services:
   db:
        image: mysql:5.6
         networks:
-        - apiportal
+        * apiportal
         env_file:
-        - .env
+        * .env
         volumes:
-        - "apiportal-db:/var/lib/mysql"
+        * "apiportal-db:/var/lib/mysql"
 ```
 
 **API Portal service example**:
@@ -68,21 +69,21 @@ To run API Portal you need to have at least two services:
   webapp:
     build: .
     depends_on:
-    - db
+    * db
     ports:
-    - "443:443"
+    * "443:443"
     networks:
-    - apiportal
+    * apiportal
     env_file:
-    - .env
+    * .env
     volumes:
-    - "apiportal-cert:/opt/axway/apiportal/htdoc/administrator/components/com_apiportal/assets/cert"
-    - "apiportal-templates:/opt/axway/apiportal/htdoc/templates"
-    - "apiportal-language:/opt/axway/apiportal/htdoc/language"
-    - "apiportal-adm-language:/opt/axway/apiportal/htdoc/administrator/language"
-    - "apiportal-conf:/etc/httpd/conf"
-    - "apiportal-confd:/etc/httpd/conf.d"
-    - "apiportal-encryption:/apiportal/encryption"
+    * "apiportal-cert:/opt/axway/apiportal/htdoc/administrator/components/com_apiportal/assets/cert"
+    * "apiportal-templates:/opt/axway/apiportal/htdoc/templates"
+    * "apiportal-language:/opt/axway/apiportal/htdoc/language"
+    * "apiportal-adm-language:/opt/axway/apiportal/htdoc/administrator/language"
+    * "apiportal-conf:/etc/httpd/conf"
+    * "apiportal-confd:/etc/httpd/conf.d"
+    * "apiportal-encryption:/apiportal/encryption"
 ```
 
 ## Run API Portal using docker-compose up
@@ -127,7 +128,7 @@ APIMANAGER_PORT=8075
 # optional variables
 APIPORTAL_SSO_ON=1 – enable sso, default is 0
 APIPORTAL_SSO_PATH=sso – entrypoint for sso (default is sso)
-APIPORTAL_SSO_ENTITY_ID=asdf -sso client entity id (default is empty) 
+APIPORTAL_SSO_ENTITY_ID=asdf -sso client entity id (default is empty)
 APIPORTAL_SSO_WHITELIST=keycloak.int.acme.com – whitelist containing allowed sso hostname or ip (default is empty)
 APIPORTAL_LOGIN_PROTECTION_ON=1 – enable login protection (default is 0)
 APIPORTAL_LOGIN_PROTECTION_ATTEMPTS_BEFORE_RECAPCHA=3 – login attempts before recapcha (default is 3)

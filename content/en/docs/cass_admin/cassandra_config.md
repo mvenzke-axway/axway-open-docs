@@ -11,10 +11,10 @@ description: >
 To tolerate the loss of one Cassandra node and to ensure 100% data consistency, API Gateway requires at a minimum the following Cassandra cluster configuration running in a production class environment:
 
 * Three Cassandra nodes (with one seed node)
-      * Other nodes contact the seed node when joining the Cassandra cluster to get required cluster information, therefore you must start the seed node first.
-      * It is not recommended to make all Cassandra nodes a seed, as they produce traffic overhead.
+    * Other nodes contact the seed node when joining the Cassandra cluster to get required cluster information, therefore you must start the seed node first.
+    * It is not recommended to make all Cassandra nodes a seed, as they produce traffic overhead.
 * `Replication factor` setting set to `3` for the system_auth and API Management keyspaces, so each node holds 100% of the data.
-  * Without this configuration, the user permissions are not replicated to other nodes. Therefore, they cannot be checked, and requests to them are rejected. In this scenario, if the node that stores the user permissions goes down, the client (API Manager) cannot login to other nodes, and the cluster becomes unavailable.
+    * Without this configuration, the user permissions are not replicated to other nodes. Therefore, they cannot be checked, and requests to them are rejected. In this scenario, if the node that stores the user permissions goes down, the client (API Manager) cannot login to other nodes, and the cluster becomes unavailable.
 * `QUORUM` read/write consistency to ensure that you are reading from a quorum of Cassandra nodes (two) every time.
   {{% alert title="Caution" color="warning" %}}
   `Eventual` consistency is not supported in a production environment due to a risk of stale or missing data.
@@ -119,7 +119,7 @@ From the command line, execute the following commands to create a new user:
 
 ### Configure the Cassandra client connection
 
-This section assumes that you have already set up a HA API Gateway environment. For details, see [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+This section assumes that you have already set up a HA API Gateway environment. For details, see [API Gateway Administrator Guide](/docs/apim_administration/apigtw_admin/).
 
 In Policy Studio, open your gateway group configuration.
 
@@ -134,8 +134,8 @@ To update the Cassandra client configuration for API Gateway, perform the follow
 
 #### Configure the API Gateway domain
 
-1. Ensure API Gateway has been installed on the gateway 1 and gateway 2 nodes. For details, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
-2. Ensure an API Gateway domain has been created on the gateway 1 node using `managedomain`. For more details, see [Configure an API Gateway domain](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/page/Content/AdminGuideTopics/makegateway.htm).
+1. Ensure API Gateway has been installed on the gateway 1 and gateway 2 nodes. For details, see the [API Gateway Installation Guide](/docs/apim_installation/apigtw_install/).
+2. Ensure an API Gateway domain has been created on the gateway 1 node using `managedomain`. For more details, see [Configure an API Gateway domain](/docs/apim_administration/apigtw_admin/makegateway/).
 
 #### Configure the API Gateway Cassandra client connection
 
@@ -152,8 +152,8 @@ You can automate these steps by running the `updateCassandraSettings.py` script 
 
     If you installed the **Custom** or **Standard** setup, you must configure OAuth or API Manager settings in Policy Studio to create the required KPS collections. For more details, see:
 
-    * [Deploy OAuth configuration](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/page/Content/OAuthGuideTopics/deploy_oauth_config.htm).
-    * [Configure API Manager Cassandra client settings](#configure-api-manager-cassandra-client-settings)
+    * [Configure OAuth](/docs/apim_policydev/apigw_oauth/)
+    * [Configure API Manager Cassandra client settings](#configure-api-gateway-cassandra-client-settings)
 
 2. Select **Environment Configuration > Key Property Stores > API Server > Data Sources > Cassandra Storage**, and click **Edit**.
 3. In the **Read Consistency Level** and **Write Consistency Level** fields, select **QUORUM**.
@@ -163,7 +163,7 @@ You can automate these steps by running the `updateCassandraSettings.py` script 
     * **Authorization Code Stores > Authz Code Store**
     * **Client Access Token Stores > OAuth Client Access Token Store**
   
-    By default, OAuth uses EhCache instead of Cassandra. For more details on OAuth, see the [API Gateway OAuth User Guide](/bundle/APIGateway_77_OAuthUserGuide_allOS_en_HTML5/).
+    By default, OAuth uses EhCache instead of Cassandra.
 
 #### Deploy the configuration
 
@@ -174,8 +174,8 @@ You can automate these steps by running the `updateCassandraSettings.py` script 
 
 To update the Cassandra client configuration for API Manager, perform the following steps:
 
-1. Ensure the API Gateway and API Manager components have been installed on the gateway 1 and gateway 2 nodes. These can be local or remote to Cassandra installations. For details, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
-2. Ensure an API Gateway domain, group, and instance have been created on the gateway 1 node using `managedomain`. For more details, see [Configure an API Gateway domain](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/) in the API Gateway Administrator Guide.
+1. Ensure the API Gateway and API Manager components have been installed on the gateway 1 and gateway 2 nodes. These can be local or remote to Cassandra installations. For details, see the [API Gateway Installation Guide](/docs/apim_installation/apigtw_install/).
+2. Ensure an API Gateway domain, group, and instance have been created on the gateway 1 node using `managedomain`. For more details, see [Configure an API Gateway domain](/docs/apim_administration/apigtw_admin/makegateway/) in the API Gateway Administrator Guide.
 3. Start the first gateway instance in the group. For example:
 
     ```

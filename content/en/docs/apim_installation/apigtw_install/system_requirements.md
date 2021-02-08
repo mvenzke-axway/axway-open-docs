@@ -1,12 +1,10 @@
 {
 "title": "System requirements",
-"linkTitle": "System requirements",
-"weight":"4",
-"date": "2019-10-02",
-"description": "Supported platforms and other system requirements for API Gateway, and specific requirements for API Gateway components."
+  "linkTitle": "System requirements",
+  "weight": "4",
+  "date": "2019-10-02",
+  "description": "Supported platforms and other system requirements for API Gateway, and specific requirements for API Gateway components."
 }
-
-{{< alert title="Note" color="primary" >}}Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apim_installation/apigtw_install/install_dev_tools/). API Gateway and API Manager do not support Windows.{{< /alert >}}
 
 ## Operating systems and hardware
 
@@ -14,38 +12,57 @@ This section describes the operating system requirements for API Gateway.
 
 ### Linux
 
-**Supported versions**:
+API Gateway supports the following software versions:
 
-* CentOS 6.x, 7.x
+* CentOS 6.x, 7.x, 8.x (CentOS 8.x is supported from [7.7.20200530](/docs/apim_relnotes/20200530_apimgr_relnotes/) update onward.)
 * Oracle Linux 6.x, 7.x
-* Red Hat Enterprise Linux 6.x, 7.x
+* Red Hat Enterprise Linux 6.x, 7.x, 8.x (Red Hat Enterprise Linux 8.x is supported from [7.7.20200530](/docs/apim_relnotes/20200530_apimgr_relnotes/) update and later updates only.)
 * SUSE Linux Enterprise Server 11.x, 12.x
 
-**Hardware prerequisites**:
+API Gateway supports the following hardware:
 
-* Supports 64-bit Linux running on 64-bit hardware
-* Intel Core or AMD Opteron at 2Ghz with Dual Core or faster
-
-### Windows
-
-(Policy Studio, Configuration Studio, Package and Deployment Tools only)
-
-**Supported versions**:
-
-* Windows 10
-* Windows 8.1
-
-**Hardware prerequisites**:
-
-* Supports 32-bit Windows on both 32-bit hardware and 64-bit hardware
+* 64-bit Linux running on 64-bit hardware
 * Intel Core or AMD Opteron at 2Ghz with Dual Core or faster
 
 {{< alert title="Note" color="primary" >}}When new Linux kernels and distributions are released, Axway modifies and tests its products for stability and reliability on these platforms.
 Axway makes every effort to add support for new kernels and distributions in a timely manner. However, until a kernel or distribution is added to this list, its use with API Gateway is not supported. Axway endeavors to support any generally popular Linux distribution on a release that the vendor still supports.{{< /alert >}}
 
+Your Linux system must have the `LANG` environment variable set. If this variable is not configured correctly, your system might have issues handling Unicode characters in file names. A full installation of Linux should configure this for you automatically. If you are running the API Gateway in a Docker image that you have built, set this variable in your Dockerfile as follows:
+
+ ```
+ENV LANG=en_US.UTF-8
+```
+
+This variable is set for you in EMT mode.
+
+In CentOS 8.x and Red Hat Enterprise Linux 8.x `glibc` no longer includes `libnsl` library. This was included in earlier releases and is required by the API Gateway. To install the library:
+
+```
+sudo yum install libnsl
+```
+
+### Windows
+
+Windows is supported only for a limited set of developer tools, see [Install developer tools on Windows](/docs/apim_installation/apigtw_install/install_dev_tools/). API Gateway and API Manager do not support Windows.
+
+This section addresses Policy Studio, Configuration Studio, and Package and Deployment tools only.
+
+Developer tools supports the following software versions:
+
+* Windows 10
+* Windows 8.1
+
+Developer tools supports the following hardware:
+
+* 32-bit Windows on both 32-bit hardware and 64-bit hardware
+* Intel Core or AMD Opteron at 2Ghz with Dual Core or faster
+
 ### Disk space and RAM requirements
 
 The disk space and RAM requirements for Linux platforms are:
+
+* Disk space: minimum 4 GB, 50 GB recommended
+* Physical memory (RAM): minimum 8 GB
 
 The disk space and RAM requirements for the developer tools on Windows platforms are:
 
@@ -67,9 +84,11 @@ API Gateway and API Manager support the following relational databases to store 
 
 * MySQL Server 5.6, 5.7
 * MariaDB 5.5, 10.1
-* Microsoft SQL Server 2012, 2014
-* Oracle 11.2, 12.1
+* Microsoft SQL Server 2016, 2017, and 2019
+* Oracle 12.2, 18c, and 19c
 * IBM DB2 10.5
+
+{{< alert title="Note" color="primary" >}}If you are using MariaDB you must use the MySQL JDBC driver with the MySQL database connection URL (for example, `jdbc:mysql://DB_HOST:3306/reports`) instead of the provided MariaDB version. You must also ensure that you are using a MySQL JDBC driver version 5.1.x or earlier (for example, 5.1.47), as later versions (for example, 6.x, 8.x) are not currently supported.{{< /alert >}}
 
 For more details, see [Configure the metrics database](/docs/apim_installation/apigtw_install/metrics_db_install).
 
@@ -158,19 +177,19 @@ http://localhost:8040/
 
 ## Software and license keys
 
-Axway products are delivered electronically from <https://support.axway.com/>. A welcome email notifies you that your products are ready for download.
+Axway products are delivered electronically from [Axway Support](https://support.axway.com/). A welcome email notifies you that your products are ready for download.
 
 When you are ready, perform the following tasks:
 
 1. Check your authorization.
 2. Check the hardware and system requirements.
 3. Obtain license keys.
-4. Download the installation setup file from <https://support.axway.com/>.
+4. Download the installation setup file from [Axway Support](https://support.axway.com/).
 5. Install products.
 
 ### Check your authorization
 
-Verify that you can log in to Axway Support at <https://support.axway.com/>. If you do not have an account, follow the instructions in your welcome email.
+Verify that you can log in to [Axway Support](https://support.axway.com/). If you do not have an account, follow the instructions in your welcome email.
 
 Log in to download or access:
 
@@ -197,7 +216,7 @@ You must have a valid Axway license file to install the following API Gateway co
 
 You can obtain an evaluation trial license to enable you to evaluate the API Gateway features. However, you must have a full license to enable all API Gateway features for use in a non-evaluation environment (for example, development, testing, or production). To obtain an evaluation trial license or a full license, contact your Axway Account Manager.
 
-{{< alert title="Note" color="primary" >}}You can install an Admin Node Manager in isolation without an API Gateway license. For more information, see [Install the Admin Node Manager](/docs/apim_installation/apigtw_install/install_node_manager/).{{< /alert >}}
+You can install an Admin Node Manager in isolation without an API Gateway license. For more information, see [Install the Admin Node Manager](/docs/apim_installation/apigtw_install/install_node_manager/).
 
 **McAfee license file**:
 
@@ -217,7 +236,7 @@ This section lists additional prerequisites for installing API Gateway.
 
 On Linux, you must ensure that the installation executable has the appropriate permissions in your environment. For example, you can use the `chmod` command to update the file permissions.
 
-### `/tmp` directory mounted with noexec
+### /tmp directory mounted with noexec
 
 If your Linux system has the `/tmp` directory mounted with `noexec`, you must complete some additional steps before installing or running API Gateway.
 
@@ -237,21 +256,20 @@ After completing the installation and before starting the services:
 1. Create a new temporary directory that has `exec` privileges (for example, `/opt/Axway-7.7/tmp`).
 2. If you installed Cassandra during API Gateway installation, edit the file `CASSANDRA_INSTALL_DIR/conf/cassandra-env.sh` and add the following line:
 
-    ```
-    JVM_OPTS="$JVM_OPTS -Djava.io.tmpdir=<TheNewTmpDir>"
-    ```
-
+   ```
+   JVM_OPTS="$JVM_OPTS -Djava.io.tmpdir=<TheNewTmpDir>"
+   ```
 3. Create or edit the file `VDISTDIR/apigateway/conf/jvm.xml`, and add the following:
 
-    ```xml
-    <ConfigurationFragment>
-        <VMArg name="-Djava.io.tmpdir=<TheNewTmpDir>
-    </ConfigurationFragment>
-    ```
+   ```xml
+   <ConfigurationFragment>
+       <VMArg name="-Djava.io.tmpdir=<TheNewTmpDir>
+   </ConfigurationFragment>
+   ```
 
 ### Service packs
 
-Service packs for API Gateway are available from <https://support.axway.com/>. If any service packs are available for API Gateway 7.7, download and apply them when the installation completes.
+Service packs for API Gateway are available from [Axway Support](https://support.axway.com/). If any service packs are available for API Gateway 7.7, download and apply them when the installation completes.
 
 For more information on applying a service pack, see [Update API Gateway](/docs/apim_installation/apigtw_install/install_service_packs).
 

@@ -18,7 +18,6 @@ assignees: ''
 
 <!--Give the URL of the page or section that contains the problem.-->
 
-
 ## Suggestions for a fix
 
 <!--If you have specific ideas about how we can fix this, let us know. -->

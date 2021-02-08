@@ -16,7 +16,7 @@ The following applies in this scenario:
 
 * API requests can no longer be serviced by the API Gateway instance that is not running in DC 1.
 * API requests will be serviced by the remaining API Gateway instance in DC 1.
-* You must restart the API Gateway instance that is not running in DC 1. For more details, see [Start API Gateway](/docs/apim_installation/apigtw_install/install_gateway##start-api-gateway).
+* You must restart the API Gateway instance that is not running in DC 1.
 
 ## One Cassandra node is down
 
@@ -26,8 +26,8 @@ In this case, one Cassandra node is down in DC 1:
 
 The following applies in this scenario:
 
-* Cassandra is inherently HA and can tolerate the loss of one Cassandra node only in a datacenter (DC 1 in this case). This ensures 100% data consistency when Cassandra is configured for multiple datacenters. For more details, see [Configure Cassandra for multiple datacenters](/docs/apim_installation/apigtw_install/multi_datacenter_config#cassandra_multiple).
-* You must restart the Cassandra node that is not running in DC 1. For details, see [Manage Apache Cassandra](/docs/cass_admin/cassandra_manage/).
+* Cassandra is inherently HA and can tolerate the loss of one Cassandra node only in a datacenter (DC 1 in this case). This ensures 100% data consistency when Cassandra is configured for multiple datacenters. For more details, see [Configure Cassandra for multiple datacenters](/docs/apimgmt_multi_dc/multi_datacenter_config/#cassandra_multiple).
+* You must restart the Cassandra node that is not running in DC 1.
 
 {{< alert title="Note" color="primary" >}}When a node has been absent from a cluster for a time, it is brought back into the cluster after restart, and becomes eventually consistent by design. Node repair is required after re-integration into the cluster. For more details, see [Perform essential Cassandra operations](/docs/cass_admin/cassandra_ops/).{{< /alert >}}
 
@@ -58,9 +58,8 @@ There is a risk that end-users may need to re-initiate sessions using the follow
 
 To restart the datacenter:
 
-1. Restart each of the Cassandra nodes. For details, see [Manage Apache Cassandra](/docs/cass_admin/cassandra_manage/).
-2. When all Cassandra nodes are running normally and have synchronized with the rest of the cluster in DC2, you can restart the gateway instances. For details, see [Start API Gateway](/docs/apim_installation/apigtw_install/install_gateway#start-api-gateway).
-    * The gateway should not be restarted prior to a successful restart of all Cassandra nodes.
+1. Restart each of the Cassandra nodes.
+2. When all Cassandra nodes are running normally and have synchronized with the rest of the cluster in DC2, you can restart the API Gateway instances. The API Gateway should not be restarted prior to a successful restart of all Cassandra nodes.
 
 {{< alert title="Note" color="primary" >}}You should run the `nodetool repair` command on each of the three Cassandra nodes in DC 1 when the datacenter has been down for more than two hours.{{< /alert >}}
 
@@ -79,12 +78,11 @@ The following applies in this scenario:
 * For the following data types stored in Cassandra, both datacenters are not synchronized until the network recovers, and then automatically resynchronize:
     * API Manager catalog, client registry, web-based settings
     * API Gateway KPS custom table structure
-
 * For the following file based data types, a single API Gateway Manager web console cannot access both datacenters while the network is down, and can only access each datacenter separately:
     * API Gateway logs
     * API Gateway traffic monitoring
 
-{{< alert title="Note" color="primary" >}}If the network connection has been down for more than two hours, the following steps are recommended:{{< /alert >}}
+If the network connection has been down for more than two hours, the following steps are recommended:
 
 * Run `nodetool repair` on each of the six nodes in the Cassandra cluster to ensure that the data has synchronized. For more details, see [Perform essential Cassandra operations](/docs/cass_admin/cassandra_ops/).
 * Restart the API Gateway instances to resynchronize data from Cassandra (potentially in both datacenters if Cassandra changes have occurred in both datacenters).

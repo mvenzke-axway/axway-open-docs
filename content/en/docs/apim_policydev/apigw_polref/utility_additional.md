@@ -453,7 +453,7 @@ filter include the following:
 * DOM processing on the XML request or response
 
 For more details on using scripts to extend API Gateway, see the
-[API Gateway Developer Guide](/bundle/APIGateway_78_DeveloperGuide_allOS_en_HTML5).
+[API Gateway Developer Guide](/docs/apigtw_devguide/).
 
 ### Write a custom script
 

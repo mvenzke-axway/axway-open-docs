@@ -278,7 +278,7 @@ filter is used to return the cached response to the client.
 
 ### Routing
 
-If a response for this request could not be located in the cache, the API Gateway routes the request to the service, and waits for a response. For more details on how to route messages, see [Get started with Policy Studio](/apigw_poldev/gs_concepts/).
+If a response for this request could not be located in the cache, the API Gateway routes the request to the service, and waits for a response.
 
 ### Cache Attribute
 

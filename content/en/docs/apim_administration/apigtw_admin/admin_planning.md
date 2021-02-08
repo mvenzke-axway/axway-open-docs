@@ -40,7 +40,7 @@ Supplier A is creating a service that will accept Purchase Order (PO) documents 
 * The supplier already has an LDAP directory and would like to use it to store the customer accounts.
 * The supplier must be able prove that the message came from the customer.
 
-These requirements can be achieved using a policy that includes processing for Threatening Content and checking the XML Signature, which verifies the certificate against the LDAP directory. For details on how to develop API Gateway policies using Policy Studio, see the [API Gateway Policy Developer Guide](/docs/apigtw_poldev/).
+These requirements can be achieved using a policy that includes processing for Threatening Content and checking the XML Signature, which verifies the certificate against the LDAP directory.
 
 ## Traffic analysis
 
@@ -55,7 +55,7 @@ In the real world, messages do not arrive in a continuous stream with a fixed si
 You should adhere to the following guidelines when analyzing message traffic:
 
 * Use the **Traffic** tab in the API Gateway Manager web console to analyze message traffic. For more details, see [Monitor services in API Gateway Manager](/docs/apim_administration/apigtw_admin/monitor_service).
-* Use the [API Gateway Analytics](/docs/apigw_analytics/) web console to analyze historical message traffic.
+* Use the [API Gateway Analytics](/docs/apimanager_analytics/) web console to analyze historical message traffic.
 * Use the [Embedded Analytics](https://docs.axway.com/bundle/EmbeddedAnalyticsAPIM_allOS_en_HTML5/) web dashboards to analyze API, infrastructure, and client application health and API usage.
 * Take traffic distribution into account when calculating performance requirements.
 * Take message size distribution into account when running performance tests.

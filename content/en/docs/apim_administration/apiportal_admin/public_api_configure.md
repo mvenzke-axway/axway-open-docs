@@ -1,9 +1,11 @@
 ---
 title: Configure Public API mode
 linkTitle: Configure Public API mode
-weight: 13
-date: 2019-07-30
-description: Expose APIs and applications publicly to users who are not logged in to your API Portal.
+weight: 70
+date: 2019-07-30T00:00:00.000Z
+description: >-
+  Expose APIs and applications publicly to users who are not logged in to your
+  API Portal.
 ---
 
 Public API mode enables you to expose non-business critical APIs and their methods so that your API consumers can access them without creating a user account or logging in.
@@ -18,33 +20,43 @@ The user experience in public API mode is different than when signed in:
 
 * On the API Portal landing page, the Sign In button is replaced with an Explore button that goes to API Catalog.
 * The items in the main navigation menu have the following changes:
+
     * API Catalog displays only the APIs and methods configured to be exposed in Public API mode, but is available normally.
     * If not disabled, the Applications page is available as read-only. The Usage tab on the Applications page is always disabled.
     * The Monitoring and Users pages are unavailable.
 * The user profile information is unavailable.
 
-Public API mode only affects your APIs and applications. Joomla! articles, blogs, or forums are not included in Public API mode. You can manage how these are exposed by changing their **Access** settings in JAI.
+Public API mode affects your APIs and applications. Joomla! articles, blogs, or forums are not included in Public API mode. You can manage how these are exposed by changing their **Access** settings in JAI.
 
-## Configure APIs and applications in API Manager
+## Configure settings for Public API mode in API Manager
 
 For Public API mode access, create a separate organization and user in API Manager, and give that organization access to any APIs and applications that you want to expose publicly.
 
 1. In API Manager, add a new organization (for example, `Public API Org`).
 2. Add a user account for Public API mode access.
 
-    * Enable the user.
-    * Set **Organization** to the Public API organization you created (`Public API Org`)
-    * Set **Role** to `User`.
-
+   * Enable the user.
+   * Set **Organization** to the Public API organization you created (`Public API Org`)
+   * Set **Role** to `User`.
 3. Select **Change password**, and set the password for the Public API mode user.
+4. Write down the login name and password you configure for the Public API mode user. You will need them later when configuring the Public API mode in JAI.
+5. Disable password expiration. Go to **Settings > API Manager settings > General settings**, and disable **Enable password expiry.**
+6. Select the APIs to expose publicly. Go to **Frontend API**, select the APIs to expose (they must be in **Published** state), click **Managed selected > Grant access**, set **Grant API access** to **The following organizations**, and add and select your Public API mode organization.
 
-    Make a note of the login name and password you configure for the Public API mode user. You will need them later when configuring the Public API mode in JAI.
+    {{< alert title="Tip" color="primary" >}}You can import two versions of a back-end API: one that contains only non-business critical information and is exposed in Public API mode, and a full version which is not exposed without a user login.{{< /alert >}}
+7. Select the applications to expose publicly. Go to **Clients > Applications**, ensure that the organization of the applications is set to your Public API mode organization and the application has access to the required APIs, then share the application with the Public API mode user you created. It is recommended to only provide rights to view the application.
 
-4. Select the APIs to expose publicly. Go to **Frontend API**, select the APIs to expose (they must be in **Published** state), click **Managed selected > Grant access**, set **Grant API access** to **The following organizations**, and add and select your Public API mode organization.
+## Encrypt the Public API mode user password
 
-    {{< alert title="Tip" >}} You can import two versions of a back-end API: one that contains only non-business critical information and is exposed in Public API mode, and a full version which is not exposed without a user login. {{< /alert >}}
+If you are using the Public API mode in API Portal you must run a script to encrypt the Public API mode user password and specify a directory to store the encryption key.
 
-5. Select the applications to expose publicly. Go to **Clients > Applications**, ensure that the organization of the applications is set to your Public API mode organization and the application has access to the required APIs, then share the application with the Public API mode user you created. It is recommended to only provide rights to view the application.
+```
+sudo sh ./apiportal_encryption.sh
+```
+
+The directory is created along with a file. The last segment of the directory is the file name, for example: `/sample/directory/for/encryption/key` creates an empty file named "key" in the desired directory.
+
+If you have already had a Public API mode user configured, re-enter the user account password in JAI to encrypt and store the script correctly. For more details see [Encrypt the Public API user password in unattended mode](/docs/apim_installation/apiportal_install/install_unattended/#encrypt-the-public-api-user-password-in-unattended-mode).
 
 ## Enable Public API mode in API Portal
 
@@ -54,6 +66,8 @@ Public API mode is disabled by default. You must enable it in JAI, and add the l
 2. Switch **Enable Public API** to **Yes**.
 3. In **Public API Account Login**, enter the login name of the Public API mode user account you created.
 4. In **Public API Account Password**, enter the password of the Public API mode user account you created, and click **Save**.
+
+{{< alert title="Note" color="primary" >}}API Portal will not accept the password if you have never signed in with the public mode user when `Change password on first login` option is enabled in API Manager. In this case, you must first sign in with the public mode user to set a new password, then continue with the configuration.{{< /alert >}}
 
 ## Hide applications in Public API mode
 

@@ -1,7 +1,7 @@
 {
 "title": "Cassandra settings in Policy Studio",
 "linkTitle": "Cassandra settings",
-"weight":"04",
+"weight":"50",
 "date": "2019-10-14",
 "description": "Configure settings for the external Apache Cassandra database in Policy Studio."
 }
@@ -76,11 +76,11 @@ Select whether to use Secure Sockets Layer (SSL) to establish secured connection
 
 * **Trusted certificates**:
 
-Click to select the list of certificates or certificate authorities trusted when validating Cassandra server certificates. This is required when SSL is enabled. For details on importing certificates, see [Manage X.509 certificates and keys](/docs/apim_administration/general_certificates/).
+Click to select the list of certificates or certificate authorities trusted when validating Cassandra server certificates. This is required when SSL is enabled.
 
 * **Client certificate**:
 
-Click to select the client certificate and key to use if client authentication is required by the Cassandra server (also known as SSL mutual authentication). For details on importing certificates, see [Manage X.509 certificates and keys](/docs/apim_administration/general_certificates/).
+Click to select the client certificate and key to use if client authentication is required by the Cassandra server (also known as SSL mutual authentication).
 
 * **Accepted cipher suites**:
 
@@ -121,8 +121,9 @@ This is a unique namespace used to define data replication on cluster nodes. Def
 **Initial replication strategy**:
 
 Specifies the initial Cassandra replication strategy used to determine the nodes where replicas are placed:
-    * **Simple Strategy**: Use this setting for a single data center and one rack only. This is the default setting. If you ever intend more than one datacenter, use the Network Topology Strategy instead.
-    * **Network Topology Strategy**: This setting is recommended for most deployments because it is much easier to expand to multiple datacenters when required by future expansion.
+
+* **Simple Strategy**: Use this setting for a single data center and one rack only. This is the default setting. If you ever intend more than one datacenter, use the Network Topology Strategy instead.
+* **Network Topology Strategy**: This setting is recommended for most deployments because it is much easier to expand to multiple datacenters when required by future expansion.
 
 **Initial replication**:
 

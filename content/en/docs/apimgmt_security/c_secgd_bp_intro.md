@@ -42,7 +42,7 @@ For a list of default ports that are opened by the API Gateway components, see [
 
 The default idle session timeout for the API Gateway Manager web UI is 12 hours. It is recommended that you change this timeout to 120 minutes or less. For details, see [Change default session timeout for API Gateway Manager](/docs/apim_installation/apigtw_install/post_overview/#change-default-session-timeout-for-api-gateway-manager).
 
-## Correct upgrade procedure
+## Service packs and patches
 
 In the event of a possible vulnerability discovered in the product, you must be able to apply the patch or new service pack as soon as possible. Make sure you have the correct procedure to complete the upgrade. Always use the latest version of the product, if possible, as it contains fixes to known vulnerabilities.
 
@@ -53,7 +53,7 @@ For more information on upgrade procedures, see the following sections:
     * [Update API Gateway](/docs/apim_installation/apigtw_install/install_service_packs/)
 * API Gateway and API Manager container deployment:
     * [Upgrade a container deployment](/docs/apim_installation/apigw_containers/container_upgrade/)
-    * [Apply a patch or service pack](/docs/apim_installation/apigw_containers/container_patch_sp/)
+    * [Apply a patch, update, or service pack](/docs/apim_installation/apigw_containers/container_patch_sp/)
 * API Portal:
     * [Upgrade API Portal](/docs/apim_installation/apiportal_install/upgrade_automatic/)
     * [Upgrade API Portal docker deployment](/docs/apim_installation/apiportal_docker/upgrade_docker/)
@@ -284,6 +284,12 @@ Outside upgrade, the following files in API Portal are modified by specific act
 * `*.*` custom CSS files in `INSTALL_DIR/templates/purity_iii/css/`: The custom CSS file can be modified.
 
 All other files are modified at runtime and cannot be verified using a monitoring tool.
+
+## Unusual behavior and automated tools detection
+
+The web UI and REST APIs available from the products make them susceptible to attacks on the Internet. Therefore, besides the protection described in this document, we strongly recommend that you also implement additional protection, such as `proxies` and `WAF`, to secure connections. These tools enable you to detect unusual behavior and to identify connections from an automated tool. Make sure to receive alerts when using these tools, and to secure involved users and their addresses.
+
+At a minimum, you should perform a periodic review of the log and audit to deductively detect any issues.
 
 ## API Portal certificate verification
 

@@ -4,7 +4,7 @@ linkTitle = "Axway-Open-Docs"
 
 +++
 
-{{< blocks/cover title="Documentation for AMPLIFY API Management and AMPLIFY Central" image_anchor="top" height="full" color="primary" >}}
+{{< blocks/cover title="Documentation for AMPLIFY API Management, AMPLIFY Central, and AMPLIFY Shared Services" image_anchor="top" height="full" color="primary" >}}
 <div class="mx-auto">
 	<a class="btn btn-lg btn-primary mr-3 mb-4" href="{{< relref "/docs" >}}">
 		Learn More <i class="fas fa-arrow-alt-circle-right ml-2"></i>
@@ -13,15 +13,13 @@ linkTitle = "Axway-Open-Docs"
 		Repository <i class="fab fa-github ml-2 "></i>
 	</a>
 	<p class="lead mt-5">You can now contribute to the documentation directly!</p>
-	<div class="mx-auto mt-5">
 		{{< blocks/link-down color="info" >}}
-	</div>
 </div>
 {{< /blocks/cover >}}
 
 
 {{% blocks/lead %}}
-This website makes it easy for you to contribute directly to the user documentation for AMPLIFY API Management and AMPLIFY Central. 
+This website makes it easy for you to contribute directly to the user documentation for AMPLIFY API Management, AMPLIFY Central, and AMPLIFY Shared Services. 
 
 Help us to improve the documentation for our customers!
 
@@ -35,8 +33,8 @@ Help us to improve the documentation for our customers!
 {{< /blocks/section >}}
 
 {{< blocks/section  color="dark" >}}
-{{% blocks/feature icon="fa-lightbulb" title="API Gateway" url="/docs/apimgr_concepts/apigtw_introduction/" %}}
-API Gateway is a server-side application you can use to manage, deliver, and secure APIs. 
+{{% blocks/feature icon="fa-lightbulb" title="API Gateway" url="/docs/api_mgmt_overview/api_mgmt_components/apigateway/" %}}
+API Gateway manages, delivers, and secures enterprise APIs, applications, and consumers. 
 {{% /blocks/feature %}}
 
 
@@ -64,13 +62,44 @@ Design a custom API and import it into AMPLIFY Central. Add security to your API
 {{% /blocks/feature %}}
 
 
-{{% blocks/feature icon="fa-lightbulb" title="DevOps" url="/docs/central/cli_getstarted/" %}}
+{{% blocks/feature icon="fa-lightbulb" title="DevOps" url="/docs/central/cli_central/" %}}
 Integrate AMPLIFY Central in your existing DevOps infrastructure using the AMPLIFY CLI or AMPLIFY Central DevOps API.
 {{% /blocks/feature %}}
 
 
-{{% blocks/feature icon="fa-lightbulb" title="Microservice Mesh Governance (BETA)" url="/docs/central/hybrid_overview" %}}
+{{% blocks/feature icon="fa-lightbulb" title="Microservice Mesh Governance (BETA)" url="/docs/central/mesh_management" %}}
 Centrally manage APIs and microservices across multiple cloud and on-premise environments.
 {{% /blocks/feature %}}
 
+{{< /blocks/section >}}
+
+
+{{< blocks/section color="primary" >}}
+<div class="col-12">
+    <h1 class="text-center">AMPLIFY Shared Services</h1>
+</div>
+{{< /blocks/section >}}
+
+{{< blocks/section color="secondary">}}
+<div class="col row justify-content-center">
+{{% blocks/feature icon="fa-lightbulb" title="Support Portal API" url="/docs/shared_services/supportapi/" %}}
+Retrieve and update [Axway Support](https://support.axway.com)
+support requests, business service requests and customer enhancements requests.
+{{% /blocks/feature %}}
+</div>
+{{< /blocks/section >}}
+
+
+{{< blocks/section color="primary" >}}
+<div class="col-12">
+    <h1 class="text-center">Axway Streams</h1>
+</div>
+{{< /blocks/section >}}
+
+{{< blocks/section color="secondary">}}
+<div class="col row justify-content-center">
+{{% blocks/feature icon="fa-lightbulb" title="Event-driven API with Streams" url="https://streams-open-docs.netlify.app/docs/" %}}
+Learn how to create your first event-driven API with Streams.
+{{% /blocks/feature %}}
+</div>
 {{< /blocks/section >}}

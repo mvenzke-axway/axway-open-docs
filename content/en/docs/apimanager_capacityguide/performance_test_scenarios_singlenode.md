@@ -14,19 +14,19 @@ The following test cases represent realistic customer scenarios and cover both R
 
 The following scenarios test the performance of API Manager as a proxy.
 
-### Pass through
+### API Manager proxy pass through
 
 The purpose of this test is to assess the impact to transactions per second when invoking an unsecured API in API Manager.
 
 A back-end REST service is virtualized in API Manager and exposed as an API with the inbound security profile set to **Pass Through**. The traffic generator invokes the API, and API Manager proxies the traffic to the back-end.
 
-### API key
+### API Manager proxy API key
 
 The purpose of this test is to measure the performance of invoking a single API secured with an API Key and virtualized in API Manager.
 
 The traffic generator invokes the API with the inbound security profile set to **API Key** in API Manager. API Manager validates the API Key and proxies the request to the back-end service.
 
-### HTTP Basic
+### API Manager proxy HTTP Basic
 
 The purpose of this test is to measure the performance of invoking a single API secured with an HTTP Basic authentication and virtualized in API Manager.
 
@@ -38,19 +38,19 @@ The traffic generator invokes the API with the inbound security profile set to *
 
 This scenario tests OAuth token generation and validation when the client application details are stored in the client application registry on API Manager. API Gateway is acting both as the authorization server and the resource server. APIs are configured to use the OAuth inbound security profile. In the token validation flow, a successful request is routed on to the back-end server like in a real-world scenario.
 
-### Client credentials
+### API Manager OAuth client credentials
 
 This test uses the OAuth client credentials grant type when invoking the APIs.
 
 The traffic generator requests an OAuth token from API Gateway, and API Gateway returns the generated OAuth token to the traffic generator. The traffic generator then invokes the protected API in API Manager, the request header containing the OAuth Token. API Gateway validates the OAuth token and routes the request to the back-end service.
 
-### Resource owner
+### API Manager OAuth resource owner
 
 This test uses the OAuth resource owner grant type when invoking the APIs.
 
 The traffic generator requests an OAuth token from API Gateway, and API Gateway returns the generated OAuth token to the traffic generator. The traffic generator the invokes the protected API in API Manager, the request header containing the OAuth Token. API Gateway validates the OAuth token and routes the request to the back-end service.
 
-### JWT
+### API Manager OAuth JWT
 
 This test uses the OAuth JWT grant type when invoking the APIs.
 
@@ -60,19 +60,19 @@ The traffic generator generates a JWT bearer token and sends the token in a requ
 
 This scenario tests OAuth token validation when the client application details are stored in the client application registry on API Gateway. API Gateway is also acting both as the authorization server and the resource server. APIs are configured to use the OAuth inbound security profile. In token validation flow, a successful request is routed on to the back-end server like in a real-world scenario.
 
-### Client credentials
+### API Gateway OAuth client credentials
 
 This test uses the OAuth client credentials grant type when invoking the APIs.
 
 The traffic generator requests an OAuth token from API Gateway, and API Gateway returns the generated OAuth token to the traffic generator. The traffic generator then invokes the protected API in API Gateway, the request header containing the OAuth Token. API Gateway validates the OAuth token and routes the request to the back-end service.
 
-### Resource owner
+### API Gateway OAuth resource owner
 
 This test uses the OAuth resource owner grant type when invoking the APIs.
 
 The traffic generator requests an OAuth token from API Gateway, and API Gateway returns the generated OAuth token to the traffic generator. The traffic generator the invokes the protected API in API Gateway, the request header containing the OAuth Token. API Gateway validates the OAuth token and routes the request to the back-end service.
 
-### JWT
+### API Gateway OAuth JWT
 
 This test uses the OAuth JWT grant type when invoking the APIs.
 
@@ -82,7 +82,7 @@ The traffic generator generates a JWT bearer token and sends the token in a requ
 
 The following scenarios test the performance of API Gateway in SOAP requests.
 
-### Pass through
+### API Gateway SOAP pass through
 
 The purpose of this test is to assess the impact to transactions per second when placing API Gateway between the traffic generator and the back-end service.
 
@@ -90,13 +90,13 @@ A simple policy uses a **Connect to URL** filter to route requests directly to t
 
 The traffic generator sends requests to API Gateway. API Gateway uses a **Connect to URL** filter to route requests directly to the back-end service and returns the received responses back to the traffic generator.
 
-### Reflect
+### API Gateway SOAP reflect
 
 The purpose of this test is to measure the reliability and performance between the traffic generator and API Gateway.
 
 The traffic generator sends requests to API Gateway, and API Gateway responds back to the traffic generator. No traffic goes to the back-end service.
 
-### WSDL virtualization
+### API Gateway SOAP WSDL virtualization
 
 The purpose of this test is to measure the performance of sending traffic through a WSDL service virtualized in API Gateway.
 
@@ -104,19 +104,19 @@ In this scenario, a back-end WSDL web service is imported into API Gateway and d
 
 The traffic generator sends requests to API Gateway. API Gateway forwards requests to the back-end service and returns the received responses back to the traffic generator. Incoming requests are parsed, validated, and schema-validated before being sent to the back-end service.
 
-### HTTP Basic
+### API Gateway SOAP HTTP Basic
 
 The purpose of this test is to measure the performance of authenticating a user against the local user store on API Gateway using a **HTTP Basic** filter.
 
 The traffic generator invokes the authentication policy in API Gateway. After the authentication, API Gateway routes the request to the back-end service.
 
-### WSS10 user name token encryption
+### API Gateway SOAP WSS10 user name token encryption
 
 The purpose of this test is to measure the performance of authenticating a user against the local user store on API Gateway using a WS-Security user name.
 
 The traffic generator invokes the policy in API Gateway. API Gateway validates the username token included in the request using the **WS-Security Username Token** filter, and encrypts the request using a symmetric key from the certificate store on API Gateway. Finally, API Gateway routes the request to the back-end service.
 
-### XSLT conversion
+### API Gateway SOAP XSLT conversion
 
 The purpose of this test is to measure the performance of message transformation using the **XSLT** filter.
 

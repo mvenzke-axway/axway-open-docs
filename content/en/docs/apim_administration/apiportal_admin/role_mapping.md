@@ -1,11 +1,10 @@
 ---
 title: Configure user groups mapping
 linkTitle: Configure user groups mapping
-weight: 21
+weight: 80
 date: 2019-07-30
 description: Map API Manager user roles to Joomla! user groups.
 ---
-
 As an API Portal administrator you can map user roles from API Manager to Joomla! Administrator Interface (JAI) user groups (Roles), and provide these user groups with limited or full access to API Portal features. This allows for API Manager users to create contents, like for example, articles, categories, and menu items in JAI.
 
 * A single API Manager role can be mapped to multiple Joomla! user groups.
@@ -75,11 +74,11 @@ To make all API Manager users whose email domain is `acmecompany` authors in JAI
 
 After the first time that users with an **acmecompany** email domain log in to API Portal, they will be able to see all features available for the **Author** group in JAI.
 
-### Map all API Manager users of a user role to a user group in JAI
+### Map all Organization Admins to Administrators in JAI
 
 To make all API Manager Organization Admins as administrators in JAI:
 
-1. On the User Groups Mapping table, click the **Developer** checkbox in the **Administrator** role.
+1. On the User Groups Mapping table, click the **Org. Admin** checkbox in the **Administrator** role.
 2. Click **Save**.
 
-After the first time that users with API Manager Organization Admins role log in to API Portal, they will be able to see all features available for the **Administrator** group in JAI.
+After the first time that users with API Manager Organization Admin role log in to API Portal, they will be able to see all features available for the **Administrator** group in JAI.

@@ -3,7 +3,8 @@ title: Configure API Gateway with the metrics database
 linkTitle: Configure API Gateway with the metrics database
 weight: "3"
 date: 2019-10-07
-description: Configure an API Gateway instance and Node Manager to store metrics on historic traffic in a relational database.
+description: Configure an API Gateway instance and Node Manager to store metrics
+  on historic traffic in a relational database.
 ---
 
  When API Gateway is configured to store metrics in a relational database, you can configure monitoring in API Gateway Analytics or API Manager to view data stored in the metrics database, or write custom SQL queries to retrieve metrics data as required.
@@ -32,7 +33,7 @@ To configure the API Gateway connection to the metrics database, perform the fol
 1. Expand the **Environment Configuration > External Connections > Database Connections** node in the Policy Studio tree.
 2. Right-click the **Default Database Connection** tree node, and select **Edit**.
 3. Configure the database connection to point to your metrics database.
-4. Verify that your database connection is configured correctly by clicking the **Test Connection** button on the **Configure Database Connection** dialog.
+4. Ensure that Policy Studio can make a network connection to the database server, and click the **Test Connection** button on the **Configure Database Connection** dialog to verify that the connection to the database is configured successfully. This enables you to detect any configuration errors at design time instead at runtime.
 
 You can troubleshoot your database connection by viewing the contents of your server `.trc` file in the `INSTALL_DIR/apigateway/trace` directory. For more details, see [Configure API Gateway diagnostic trace](/docs/apim_administration/apigtw_admin/tracing/).
 
@@ -44,8 +45,7 @@ To configure the API Gateway instance to write transaction audit log data to the
 2. Select the **Database** tab, and select **Enable logging to database**.
 3. Select the **Default Database Connection** from the drop-down list if appropriate. Alternatively, select a database connection that you have configured. You must ensure that your database connection points to your metrics database.
 
-{{< alert title="Tip" color="primary" >}}To write the content of message transactions to the database, you must also configure the **Log Message Payload** filter in your policies (for example, at the start and end of the policy). For more details, see the
-[API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}To write the content of message transactions to the database, you must also configure the **Log Message Payload** filter in your policies (for example, at the start and end of the policy).{{< /alert >}}
 
 ## Configure the API Gateway to write to the transaction event log
 

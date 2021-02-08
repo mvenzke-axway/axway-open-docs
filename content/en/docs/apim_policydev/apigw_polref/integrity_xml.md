@@ -1005,6 +1005,11 @@ This indicates to the application validating the signature that the signature it
 Select this option to include a `<CarriedKeyName>`
 element in the `<EncryptedKey>` block that is generated when using a symmetric signing key.
 
+**Include Transforms**:
+Select this option to include a `<Transforms>` element in the `<Reference>` block to explain the transformation chain applied before hashing the content.
+
+{{< alert title="Note" color="primary" >}}This option must be selected when **Create Enveloped Signature** is selected.{{< /alert >}}
+
 ## XML signature verification filter
 
 In addition to validating XML signatures for authentication purposes, the API Gateway can also use XML signatures to prove message integrity. By signing an XML message, a client can be sure that any changes made to the message do not go unnoticed by the API Gateway. Therefore by validating the XML signature on a message, the API Gateway can guarantee the *integrity*

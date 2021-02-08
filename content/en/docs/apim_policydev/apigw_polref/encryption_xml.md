@@ -1,9 +1,9 @@
 {
 "title": "XML encryption filters",
-"linkTitle": "XML encryption filters",
-"weight": 91,
-"date": "2019-10-17",
-"description": "XML encryption and decryption filters and settings."
+  "linkTitle": "XML encryption filters",
+  "weight": 91,
+  "date": "2019-10-17",
+  "description": "XML encryption and decryption filters and settings."
 }
 
 ## XML encryption settings filter
@@ -502,7 +502,7 @@ The **What to Encrypt**
 tab is used to identify parts of the message that must be encrypted. Each encrypted part is replaced by an `<EncryptedData>`
 block, which contains all information required to decrypt the block.
 
-You can use *any*
+You can use any
 combination of **Node Locations**, **XPaths**, and the nodes contained in a **Message Attribute**
 to specify the nodes that are required to be encrypted.
 

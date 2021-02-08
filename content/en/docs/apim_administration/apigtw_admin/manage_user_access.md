@@ -36,7 +36,7 @@ Re-enter the user's password to confirm.
 
 **Signing Key**:
 
-Click to load the user certificate from the **Certificate Store**. For details on how to create and import certificates, see [Manage X.509 certificates and keys](/docs/apim_administration/general_certificates).
+Click to load the user certificate from the **Certificate Store**. For details on how to create and import certificates, see [Manage certificates and keys](/docs/apim_administration/apigtw_admin/general_certificates/).
 
 You can also specify optional user attributes on the **Attributes** tab, which is explained in the next section.
 

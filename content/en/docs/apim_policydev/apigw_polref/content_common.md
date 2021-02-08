@@ -1,9 +1,9 @@
 {
 "title": "Content filtering filters",
-"linkTitle": "Content filtering filters",
-"weight": 60,
-"date": "2019-10-17",
-"description": "Commonly used filters for filtering and validating messages based on their content. Includes query string validation, HTTP header validation, and JSON schema validation."
+  "linkTitle": "Content filtering filters",
+  "weight": 60,
+  "date": "2019-10-17",
+  "description": "Commonly used filters for filtering and validating messages based on their content. Includes query string validation, HTTP header validation, and JSON schema validation."
 }
 
 ## Query string validation filter
@@ -26,7 +26,7 @@ and **Black list**
 libraries of regular expressions under the **Environment Configuration** > **Libraries**
 node in the Policy Studio tree.
 
-This filter uses the regular expression syntax specified by `java.util.regex.Pattern`. For more details, go to <http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html>.
+This filter uses the regular expression syntax specified by `java.util.regex.Pattern`. For more details, see [Class Pattern](http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html).
 
 The request query string is the portion of the URL that comes after the `?`
 character, and contains the request parameters. It is typically used for HTTP `GET`

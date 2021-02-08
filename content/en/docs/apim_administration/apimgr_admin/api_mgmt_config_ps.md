@@ -1,7 +1,7 @@
 {
     "title": "Configure API Manager settings in Policy Studio",
     "linkTitle": "Configure settings in Policy Studio",
-    "weight": "2",
+    "weight": "20",
     "date": "2019-09-17",
     "description": "Configure settings that apply to API Manager and the underlying API Gateway in Policy Studio."
 }
@@ -17,8 +17,6 @@ To create a Policy Studio project with API Manager configuration, perform the fo
     * API Gateway instance
     * API Gateway configuration directory
     * `.fed`, `.pol`, or `.env` file
-
-For more details on creating projects, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
 ## Configure API Manager server settings
 
@@ -41,7 +39,7 @@ Administrator Distinguished Name (DN)
 Community Organization Name
 : Enter the organization name for the 'Community' organization. The default is `Community`.
 
-{{< alert title="Note" color="primary" >}}The default API administrator user name and password set in Policy Studio are used only when configuring the initial connection to Apache Cassandra. After Cassandra has been configured (for example, after you have deployed this configuration to API Gateway) changing the credentials in Policy Studio has no effect, and you must use API Manager to change the administrator credentials. For more information, see [Account settings](/docs/apim_administration/apimgr_admin/api_mgmt_config_web/#account-settings).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}The default API administrator user name and password set in Policy Studio are used only when configuring the initial connection to Apache Cassandra. After Cassandra has been configured (for example, after you have deployed this configuration to API Gateway) changing the credentials in Policy Studio has no effect, and you must use API Manager to change the administrator credentials. For more information, see [Account settings](/docs/apim_reference/api_mgmt_config_web/#account-settings).{{< /alert >}}
 
 ### Alerts
 
@@ -53,7 +51,7 @@ You can enable or disable alerts in the API Manager web interface. You can chang
 
 The **API Listeners** settings enable you to configure API Gateway listeners to service API Manager-registered APIs. Defaults to `Portal Listener`.
 
-This window only displays listeners that do not have a relative path resolver on the `/` relative path. For more details on API Gateway listeners, relative paths, and resolvers, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+This window only displays listeners that do not have a relative path resolver on the `/` relative path. For more details on API Gateway listeners, relative paths, and resolvers, see the [API Gateway Policy Developer Guide](/docs/apim_policydev/).
 
 ### API Promotion
 
@@ -85,7 +83,7 @@ The **Identity Provider** settings enable you to integrate API Manager with a wi
 
 API Manager provides sample external identity provider configuration. For more details, see [Configure external LDAP identity providers](/docs/apim_administration/apimgr_admin/api_mgmt_config_external/).
 
-The **Identity Provider** settings are used only to configure integration of API Manager with external user repositories. All other API Manager data is stored using a Key Property Store (KPS) in an Apache Cassandra cluster. For more details, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
+The **Identity Provider** settings are used only to configure integration of API Manager with external user repositories. All other API Manager data is stored using a Key Property Store (KPS) in an Apache Cassandra cluster.
 
 ### Monitoring
 
@@ -141,14 +139,14 @@ To notify an API administrator or trigger other internal processes you can use t
 
 If you select **In external storage**, you must specify an external storage mechanism:
 
-* **Automatic (adapt to KPS storage configuration)**: The data is stored externally as configured in the Key Property Store (KPS). This is the default option. For more details, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
+* **Automatic (adapt to KPS storage configuration)**: The data is stored externally as configured in the Key Property Store (KPS). This is the default option.
 * **Use database**: To store your data in a relational database, select this option, and specify the database connection that you want to use in **Environment Configuration** > **External Connections** > **Database Connections**.
 * **Use Cassandra**: To store your data in an Apache Cassandra database, select this option.
 * **Cassandra consistency levels**: When **Use Cassandra** is selected, you can configure **Read** and **Write** consistency levels for the Cassandra database. These settings control how up-to-date and synchronized a row of data is on all of its replicas. For high availability, you must ensure that the Cassandra read and write consistency levels are both set to `QUORUM`.
 
-For more details on consistency levels, see <http://docs.datastax.com/en/archived/cassandra/2.2/cassandra/dml/dmlConfigConsistency.html>
+For more details on consistency levels, see [How is the consistency level configured](http://docs.datastax.com/en/archived/cassandra/2.2/cassandra/dml/dmlConfigConsistency.html).
 
-{{< alert title="Note" color="primary" >}} Quota data is not shared for those quotas created in API Manager with a time window less than the value configured in Policy Studio, irrespective of the storage selected. This could impact on throttling in an HA environment, where multiple API Gateways are servicing requests and contributing to total message counts.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Quota data is not shared for those quotas created in API Manager with a time window less than the value configured in Policy Studio, irrespective of the storage selected. This could impact on throttling in an HA environment, where multiple API Gateways are servicing requests and contributing to total message counts.{{< /alert >}}
 
 ### Inbound Security Policies
 

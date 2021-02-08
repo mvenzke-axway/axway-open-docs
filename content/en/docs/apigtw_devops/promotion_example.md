@@ -156,7 +156,7 @@ For example, assuming a first cycle promotion using the example environmentalize
 
 The administrator can add, edit, or remove new certificates, keys, users, and user groups in Configuration Studio in the same way as in Policy Studio. For more details, see the following topics:
 
-* [Manage certificates and keys](/docs/apim_administration/general_certificates/)
+* [Manage certificates and keys](/docs/apim_administration/apigtw_admin/general_certificates/)
 * [Manage users](/docs/apim_administration/apigtw_admin/manage_user_access/)
 
 If a certificate reference has been environmentalized, such as in the **Sample Active Directory Connection**, you must create or import a testing environment certificate in Configuration Studio. This makes the certificate available for selection when the environmentalized settings are edited in the **Environment Settings** tree in Configuration Studio.

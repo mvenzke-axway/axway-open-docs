@@ -31,6 +31,8 @@ cd emt_containers-<version>
 ./build_gw_image.py -h
 ```
 
+See [Best practices for running API management in Docker containers](/docs/apim_howto_guides/apigw_in_containers/) for additional information.  
+
 The following examples show how you can use the script to build API Gateway Docker images.
 
 ### Create an API Gateway image using defaults
@@ -187,7 +189,7 @@ Use the `docker run` command to start the API Gateway container.
 The following example shows how to run an API Manager-enabled API Gateway container in the background on a specific port:
 
 ```
-docker run -d --name=apimgr --network=api-gateway-domain -p 8075:8075 -p 8065:8065 -p 8080:8080 -v /tmp/events:/opt/Axway/apigateway/events -e EMT_ANM_HOSTS=anm:8090 -e CASS_HOST=casshost1 -e METRICS_DB_URL=jdbc:mysql://metricsdb:3306/metrics?useSSL=false -e METRICS_DB_USERNAME=root -e METRICS_DB_PASS=my_db_pwd -e EMT_TRACE_LEVEL=DEBUG api-gateway-my-group:1.0
+docker run -d --name=apimgr --network=api-gateway-domain -p 8075:8075 -p 8065:8065 -p 8080:8080 -v /tmp/events:/opt/Axway/apigateway/events -e EMT_ANM_HOSTS=anm:8090 -e CASS_HOST=casshost1 -e METRICS_DB_URL=jdbc:mysql://metricsdb:3306/metrics?useSSL=false -e METRICS_DB_USERNAME=db_user1 -e METRICS_DB_PASS=my_db_pwd -e EMT_TRACE_LEVEL=DEBUG api-gateway-my-group:1.0
 ```
 
 This example performs the following:
@@ -202,18 +204,6 @@ This example performs the following:
 * Sets the `EMT_ANM_HOSTS` environment variable to `anm:8090` in the container. This enables the API Gateway to communicate with the Admin Node Manager container on port `8090`. The API Gateway is now visible in the API Gateway Manager topology view.
 
 ![API Gateway container in topology view](/Images/ContainerGuide/gw_mgr_topology.png)
-
-### Start an API Gateway container with topology logging enabled
-
-If you have started an Admin Node Manager with topology logging enabled, you must specify the gateway host identity in the `EMT_PARENT_HOST` environment variable to identify the host of the log records, and restart the host.
-
-The following example shows how to set `acme-DC1-server2` as the name of the parent host in the topology log records.
-
-```
-docker run -e EMT_PARENT_HOST=acme-DC1-server2 ... api-gateway-my-group:1.0
-```
-
-{{< alert title="Note" color="primary" >}} If you do not specify this variable, the topology log records for the gateway will contain the value `<UNKNOWN>` for the parent host.{{< /alert >}}
 
 ### Mount volumes to persist logs outside the API Gateway container
 
@@ -245,3 +235,5 @@ The `EMT_DEPLOYMENT_ENABLED` environment variable is provided as a convenience f
 ## Further information
 
 For more information on the environment variables that you can specify at runtime, see [Environment variables reference](/docs/apim_installation/apigw_containers/container_env_variables/#environment-variables-reference).
+
+For more information on usage tracking for on-premise products purchased on a subscription basis, see [Configure usage tracking](/docs/apim_installation/apigw_containers/configure_edge_agent).

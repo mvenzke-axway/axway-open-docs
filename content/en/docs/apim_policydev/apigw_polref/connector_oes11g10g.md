@@ -1,9 +1,9 @@
 {
 "title": "Oracle Entitlements Server filters",
-"linkTitle": "Oracle Entitlements Server filters",
-"weight": 116,
-"date": "2019-10-17",
-"description": "Integrate with Oracle Entitlements Server 10g or 11g."
+  "linkTitle": "Oracle Entitlements Server filters",
+  "weight": 116,
+  "date": "2019-10-17",
+  "description": "Integrate with Oracle Entitlements Server 10g or 11g."
 }
 
 ## Oracle Entitlements Server 11g authorization filter
@@ -14,25 +14,17 @@ This filter enables you to configure API Gateway to delegate authorization to OE
 
 Configure the following fields:
 
-**Name**:
-Enter an appropriate descriptive name for this filter.
+**Name**: Enter an appropriate descriptive name for this filter.
 
-**Resource**:
-Enter the URL for the target resource to be authorized (for example, web service). Alternatively, if this policy is reused for multiple services, enter a URL using selectors, which are expanded at runtime to the value of the specified attributes. For example:
+**Resource**: Enter the URL for the target resource to be authorized (for example, web service). Alternatively, if this policy is reused for multiple services, enter a URL using selectors, which are expanded at runtime to the value of the specified attributes. For example:
 
 ```
 ${http.destination.protocol}://${http.destination.host}:${http.destination.port}${http.request.uri}
 ```
 
-**Action**:
-Enter the HTTP verb (for example, `POST`, `GET`, `DELETE`, and so on). Alternatively, if this policy is reused for multiple services, enter a selector, which is expanded at runtime to the value of the specified attribute (for example, `${http.request.verb}`).
+**Action**: Enter the HTTP verb (for example, `POST`, `GET`, `DELETE`, and so on). Alternatively, if this policy is reused for multiple services, enter a selector, which is expanded at runtime to the value of the specified attribute (for example, `${http.request.verb}`).
 
-**Environment/Context attributes**:
-Click **Add**
-to specify optional Application Contexts as name-value pairs. Enter a **Name**
-and **Value**
-in the **Properties**
-dialog. Repeat to specify multiple properties.
+**Environment/Context attributes**: Click **Add** to specify optional Application Contexts as name-value pairs. Enter a **Name** and **Value** in the **Properties** dialog. Repeat to specify multiple properties.
 
 ## Oracle Entitlements Server 10g authorization filter
 
@@ -42,30 +34,22 @@ This filter enables you to configure API Gateway to delegate authorization to OE
 
 ### Settings
 
-Configure the following fields on the **Settings**
-tab:
+Configure the following fields on the **Settings** tab:
 
-**Resource**:
-Enter the URL for the target resource (for example, web service). Alternatively, if this policy is reused for multiple services, enter a URL using message attribute selectors, which are expanded at runtime to the value of the specified attribute. For example:
+**Resource**: Enter the URL for the target resource (for example, web service). Alternatively, if this policy is reused for multiple services, enter a URL using message attribute selectors, which are expanded at runtime to the value of the specified attribute. For example:
 
 ```
 ${http.destination.protocol}://${http.destination.host}:${http.destination.port}${http.request.uri}
 ```
 
-**Resource Naming Authority**:
-Enter `apigatewayResource`
-to match the Naming Authority Definition loaded in the OES 10g settings. For more details, see
+**Resource Naming Authority**: Enter `apigatewayResource` to match the Naming Authority Definition loaded in the OES 10g settings. For more details, see
 [Oracle Security Service Module settings (10g)](/docs/apim_policydev/apigw_poldev/security_server_settings/#configure-oracle-security-service-module-settings-10g).
 
-**Action**:
-Enter the HTTP verb (for example, `POST`, `GET`, `DELETE`, and so on). Alternatively, if this policy is reused for multiple services, enter a message attribute selector, which is expanded at runtime to the value of the specified attribute (for example, `${http.request.verb}`).
+**Action**: Enter the HTTP verb (for example, `POST`, `GET`, `DELETE`, and so on). Alternatively, if this policy is reused for multiple services, enter a message attribute selector, which is expanded at runtime to the value of the specified attribute (for example, `${http.request.verb}`).
 
-**Action Naming Authority**:
-Enter `apigatewayAction`
-to match the Naming Authority Definition loaded in the OES 10g settings.
+**Action Naming Authority**: Enter `apigatewayAction` to match the Naming Authority Definition loaded in the OES 10g settings.
 
-**How access request is processed**:
-Select one of the following options:
+**How access request is processed**: Select one of the following options:
 
 * `ONCE`
 * Specifies that the authorization query is only asked once for a resource and action.
@@ -76,15 +60,9 @@ Select one of the following options:
 
 ### Application Context
 
-Configure the following field on the **Application Context**
-tab:
+Configure the following field on the **Application Context** tab:
 
-**Application's Current Context**:
-Click **Add**
-to specify optional Application Contexts as name-value pairs. Enter a **Name**
-and **Value**
-in the **Properties**
-dialog. Repeat to specify multiple properties.
+**Application's Current Context**: Click **Add** to specify optional Application Contexts as name-value pairs. Enter a **Name** and **Value** in the **Properties** dialog. Repeat to specify multiple properties.
 
 ## Get roles from Oracle Entitlements Server 10g filter
 
@@ -92,35 +70,22 @@ This filter enables you to get the set of roles that are assigned to an identity
 
 ### Get roles settings
 
-Configure the following fields on the **Settings**
-tab:
+Configure the following fields on the **Settings** tab:
 
-**Resource**:
-Enter the URL of the target resource (for example, web service). Alternatively, if this policy is reused for multiple services, enter a URL using message attribute selectors, which are expanded at runtime to the value of the specified attribute. For example:
+**Resource**: Enter the URL of the target resource (for example, web service). Alternatively, if this policy is reused for multiple services, enter a URL using message attribute selectors, which are expanded at runtime to the value of the specified attribute. For example:
 
 ```
 ${http.destination.protocol}://${http.destination.host}:${http.destination.port}${http.request.uri}
 ```
 
-**Resource Naming Authority**:
-Enter `apigatewayResource`
-to match the Naming Authority Definition loaded in the OES 10g settings.
+**Resource Naming Authority**: Enter `apigatewayResource` to match the Naming Authority Definition loaded in the OES 10g settings.
 
-**Action**:
-Enter the HTTP verb (for example, `POST`, `GET`, `DELETE`, and so on). Alternatively, if this policy is reused for multiple services, enter a message attribute selector, which is expanded at runtime to the value of the specified attribute (for example, `${http.request.verb}`).
+**Action**: Enter the HTTP verb (for example, `POST`, `GET`, `DELETE`, and so on). Alternatively, if this policy is reused for multiple services, enter a message attribute selector, which is expanded at runtime to the value of the specified attribute (for example, `${http.request.verb}`).
 
-**Action Naming Authority**:
-Enter `apigatewayAction`
-to match the Naming Authority Definition loaded in the OES 10g settings.
+**Action Naming Authority**: Enter `apigatewayAction` to match the Naming Authority Definition loaded in the OES 10g settings.
 
 ### Get roles application context
 
-Configure the following field on the **Application Context**
-tab:
+Configure the following field on the **Application Context** tab:
 
-**Application's Current Context**:
-Click **Add**
-to specify optional Application Contexts as name-value pairs. Enter a **Name**
-and **Value**
-in the **Properties**
-dialog. Repeat to specify multiple properties.
+**Application's Current Context**: Click **Add** to specify optional Application Contexts as name-value pairs. Enter a **Name** and **Value** in the **Properties** dialog. Repeat to specify multiple properties.

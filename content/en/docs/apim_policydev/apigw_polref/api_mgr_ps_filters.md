@@ -1,19 +1,17 @@
 {
-    "title": "API management filters",
-    "linkTitle": "API management filters",
-    "weight": "200",
-    "date": "2019-09-17",
-    "description": "Use the API management filters within a policy to get information about API access, API proxies, client applications, application developers, and organizations from the API Manager Client Registry."
+"title": "API management filters",
+  "linkTitle": "API management filters",
+  "weight": "200",
+  "date": "2019-09-17",
+  "description": "Use the API management filters within a policy to get information about API access, API proxies, client applications, application developers, and organizations from the API Manager Client Registry."
 }
-
 The Client Registry is a repository of organizations, API consumers, and client applications that consume the APIs registered in API Manager. The Client Registry also contains the authentication credentials of the client applications, and authorization and quota policies defined at the organization and application level. The Client Registry is stored in a Key Property Store (KPS) backed by an Apache Cassandra database.
 
 Policy Studio includes API Management filters that provide read-only access to the Client Registry. These enable policy developers to develop policies in Policy Studio that leverage the information in the Client Registry.
 
 ## Read API access filter
 
-You can use the **Read API Access**
-filter to get information from the Client Registry about a particular organization's, or a particular application's, access to an API.
+You can use the **Read API Access** filter to get information from the Client Registry about a particular organization's, or a particular application's, access to an API.
 
 This filter stores the information in a message attribute (for example, `apimgmt.apiaccess`). You can use this filter within an alert handling policy (or any other policy) to read an organization's or an application's API access easily.
 
@@ -37,8 +35,7 @@ Enter the name of the message attribute to set. The default is `apimgmt.apiacces
 
 ## Read API proxy filter
 
-You can use the **Read API Proxy**
-filter to get information from the Client Registry about an API proxy.
+You can use the **Read API Proxy** filter to get information from the Client Registry about an API proxy.
 
 This filter stores the information in a message attribute (for example, `apimgmt.apiproxy`). You can use this filter within an alert handling policy (or any other policy) to get information about an API proxy easily.
 
@@ -90,11 +87,9 @@ This filter stores the information in a message attribute (for example, `apimgmt
 
 Configure the following fields on the **General settings** tab:
 
-**Application Developer ID selector**:
-Enter a selector expression with the name of the message attribute that contains the API consumer ID. ID is the key to the application developer record in the KPS. The value of the selector is expanded at runtime. The default is `${apimgmt.appdeveloper.id}`.
+**Application Developer ID selector**: Enter a selector expression with the name of the message attribute that contains the API consumer ID. ID is the key to the application developer record in the KPS. The value of the selector is expanded at runtime. The default is `${apimgmt.appdeveloper.id}`.
 
-**Name of attribute to set**:
-Enter the name of the message attribute to set. The default is `apimgmt.appdeveloper`.
+**Name of attribute to set**: Enter the name of the message attribute to set. The default is `apimgmt.appdeveloper`.
 
 ## Read application filter
 
@@ -114,9 +109,7 @@ Enter the name of the message attribute to set. The default is `apimgmt.applicat
 
 ### Example alert handling policy
 
-The following figure shows an example of an alert handling policy that uses the **Read Application**
-filter. This policy handles the alert generated when an application's access to an API is enabled. It uses the **Read Application**
-filter to get information about the application, which it then uses to populate an alert message.
+The following figure shows an example of an alert handling policy that uses the **Read Application** filter. This policy handles the alert generated when an application's access to an API is enabled. It uses the **Read Application** filter to get information about the application, which it then uses to populate an alert message.
 
 ![Example alert handling policy](/Images/docbook/images/api_mgmt/api_mgmt_alert_handling.png)
 

@@ -179,7 +179,7 @@ API Gateway must be able to trust X.509 certificates to establish SSL connection
 
 The **Certificate Store** contains all the certificates and keys that are considered to be trusted by the API Gateway. Certificates can be imported into or created by the certificate store. You can also assign a private key to the public key stored in a certificate, by importing the private key, or by generating one using the provided interface.
 
-For more information on importing and creating certificates and keys, see [Manage X.509 certificates and keys](../CommonTopics/general_certificates.htm).
+For more information on importing and creating certificates and keys, see [Manage certificates and keys](/docs/apim_administration/apigtw_admin/general_certificates/).
 
 ## API Gateway user store
 

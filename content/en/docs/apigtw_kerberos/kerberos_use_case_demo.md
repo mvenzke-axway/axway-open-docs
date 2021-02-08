@@ -56,7 +56,7 @@ Configure a user account for the Kerberos client principal. In this example, the
 
 ### Configure a user account for the Kerberos service
 
-1. Configure a user account for the Kerberos service as in [Configure a user account for the Kerberos client](configure-a-user-account-for-the-kerberos-client). In this example, the name of the service is `DemoService@AXWAY.COM`.
+1. Configure a user account for the Kerberos service as in [Configure a user account for the Kerberos client](#configure-a-user-account-for-the-kerberos-client). In this example, the name of the service is `DemoService@AXWAY.COM`.
 2. Map a Service Principal Name (SPN) to the user account. The Kerberos client uses the SPN to uniquely identify a service. To map the SPN, open a command prompt on the Windows Domain Controller, and enter the following command:
 
     ```

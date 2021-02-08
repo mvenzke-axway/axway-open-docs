@@ -194,7 +194,7 @@ managedomain --submit_cert --cert cert.pem
 
 ### Additional options
 
-You can use the `--is_admin` option to specify whether the process is an Admin Node Manager or Node Manager. For more details, see [Change a Node Manager to an Admin Node Manager](change-a-node-manager-to-an-admin-node-manager). See also [Additional certificate generation options](#additional-certificate-generation-options).
+You can use the `--is_admin` option to specify whether the process is an Admin Node Manager or Node Manager. For more details, see [Change a Node Manager to an Admin Node Manager](#change-a-node-manager-to-an-admin-node-manager). See also [Additional certificate generation options](#additional-certificate-generation-options).
 
 ## Add an API Gateway instance to the domain
 
@@ -372,7 +372,7 @@ does not talk to an Admin Node Manager when regenerating certificates. The order
 
 * You can use `managedomain` in interactive mode (option `24` ) to regenerate a subset of certificates on the host. If you regenerate the CA key and certificate, the Node Manager and all API Gateway certificates are automatically generated.
 
-If you do not regenerate the CA key and certificate, you can choose whether to regenerate the Node Manager certificate, and which API Gateway certificates to regenerate. For more details, see [Managedomain command reference](/docs/apim_administration/apigtw_admin/managedomain_ref).
+If you do not regenerate the CA key and certificate, you can choose whether to regenerate the Node Manager certificate, and which API Gateway certificates to regenerate. For more details, see [Managedomain command reference](/docs/apim_reference/managedomain_ref/).
 
 ### Reset passphrase for CA private key
 

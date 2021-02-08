@@ -1,7 +1,7 @@
 {
     "title": "Configure cloud application connectors",
     "linkTitle": "Configure cloud application connectors",
-    "weight": "14",
+    "weight": "140",
     "date": "2019-09-17",
     "description": "Connect to and manage cloud-based applications in API Manager."
 }
@@ -183,7 +183,7 @@ When you have configured the OAuth credentials in Policy Studio, you can virtual
     {{< alert title="Note" color="primary" >}}If the **Resource Owner Credentials** in the OAuth for Salesforce.com are configured as selectors (for example, `${oauth.resource.owner.id}` and `${oauth.resource.owner.password}`), these must be resolved by API Manager before calling Salesforce.com. The logic for resolving selectors depends on each use case, but an **Invoke Policy** security device is recommended. This enables you to use a custom policy to analyze incoming requests, and decide which resource owner credentials to use with Salesforce.com. The simplest case involves the client application sending the end user credentials in the request, and a policy mapping those credentials to the configured selectors.{{< /alert >}}
 
 6. On the **Outbound** tab, select the **OAuth** security device from the **Outbound authentication profile** setting.
-    Salesforce.com users and resources are bound to instances (such as `na1`, `ap1`,` eu1`). Upon successful OAuth authentication, Salesforce.com indicates the instance to be used in the API endpoint (for example, `eu5.salesforce.com`). When **OAuth** is selected as the **Outbound authentication profile**, the back-end API URL is dynamically assigned based on the Salesforce.com indication. This ensures that API manager routes to the Salesforce.com instance according to the end user authentication credentials.
+    Salesforce.com users and resources are bound to instances (such as `na1`, `ap1`, `eu1`). Upon successful OAuth authentication, Salesforce.com indicates the instance to be used in the API endpoint (for example, `eu5.salesforce.com`). When **OAuth** is selected as the **Outbound authentication profile**, the back-end API URL is dynamically assigned based on the Salesforce.com indication. This ensures that API manager routes to the Salesforce.com instance according to the end user authentication credentials.
 7. Select the OAuth credentials that you configured in Policy Studio as the **OAuth Provider Profile** (for example, the default **Salesforce.com Connector OAuth Credentials**).
 8. The response contents of Salesforce.com APIs can include relative links to other associated resources. Because the virtualized API in API Manager might present a different relative path to the consuming client application, URL rewriting might be necessary.
     A sample URL rewriting policy is available in Policy Studio under **Sample Policies** > **API Management URL Rewriting**. Click **Advanced**, and add this as a **Response policy** to leverage URL rewriting.
@@ -256,7 +256,7 @@ To configure client credentials for ServiceNow, perform the following steps:
 2. In the Policy Studio tree, select **Environment Configuration** > **External Connections** > **Client Credentials** > **HTTP Basic**, and click **Add** on the bottom right.
 3. Enter a **Profile Name** (for example, `ServiceNow Credentials`).
 4. Ensure **Choose Authentication Type** is set to **Basic**. Connecting to ServiceNow with **Digest** authentication is not supported.
-5. Enter your ServiceNow account credentials in the **Username** and **Password** fields. 
+5. Enter your ServiceNow account credentials in the **Username** and **Password** fields.
 
     Alternatively, you can enter an API Gateway selector (`${authentication.subject.id}`) in the **Username** field. This setting causes the ServiceNow connector in API Manager to prompt you for your ServiceNow credentials before importing APIs.
 
@@ -445,7 +445,7 @@ To configure client credentials for API Builder, perform the following steps:
 2. In the Policy Studio tree, select **Environment Configuration** > **External Connections** > **Client Credentials** > **HTTP Basic**, and click **Add** on the bottom right.
 3. Enter a **Profile Name** (for example, `API Builder Credentials`).
 4. Ensure **Choose Authentication Type** is set to **Basic**.
-5. Enter your API Builder account credentials in the **Username** and **Password** fields. 
+5. Enter your API Builder account credentials in the **Username** and **Password** fields.
 
     Alternatively, you can enter an API Gateway selector (`${authentication.subject.id}`) in the **Username** field. This setting causes the API Builder connector in API Manager to prompt you for your API Builder credentials before importing application APIs.
 
@@ -523,7 +523,7 @@ The following example shows a virtualized front-end API imported from API Build
 
 For more details on virtualizing APIs, see [Virtualize REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_virtualize_web/).
 
-For more details on API Builder, see [API Builder documentation](/bundle/API_Builder_allOS_en/).
+For more details on API Builder, see [API Builder documentation](https://docs.axway.com/bundle/API_Builder_allOS_en/).
 
 ## Configure a connector to route through a HTTP proxy
 

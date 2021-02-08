@@ -8,7 +8,7 @@
 #*       @global-owner1 @global-owner2
 
 # Global reviewers for this project
-* @alexearnshaw @andreamussap
+* @andreamussap
 
 # Order is important; the last matching pattern takes the most
 # precedence. When someone opens a pull request that only
@@ -17,11 +17,11 @@
 #*.js @js-owner
 
 # Config files
-*.html @alexearnshaw
-*.js    @alexearnshaw
-*.toml @alexearnshaw
-*.yml @alexearnshaw
-*.json @alexearnshaw
+*.html @andreamussap @winghonlai
+*.js    @andreamussap @winghonlai
+*.toml @andreamussap @winghonlai
+*.yml @andreamussap @winghonlai
+*.json @andreamussap @winghonlai
 
 # You can also use email addresses if you prefer. They'll be
 # used to look up users just like we do for commit author
@@ -34,43 +34,62 @@
 #/build/logs/ @doctocat
 
 # Theme and CMS config files
-/layouts/ @alexearnshaw
-/static/admin/ @alexearnshaw
+/layouts/ @andreamussap @winghonlai
+/static/admin/ @andreamussap @winghonlai
 
 # Documentation files for AMPCentral
-/content/en/docs/central/ @andreamussap @robertengaxway @georgiana-caras @stevenrcfox
+/content/en/docs/central/ @andreamussap
+/content/en/docs/catalog/ @andreamussap
+/content/en/docs/central/connect-api-manager/ @lbadenhop @cbordier
+/content/en/docs/central/connect-aws-gateway/ @lbadenhop @cbordier
+/content/en/docs/central/connect-azure-gateway/ @lbadenhop @cbordier
+
+# Documentation files for Streams
+# /content/en/docs/streams/ @andreamussap @allandenis38
+
+# Documentation files for Shared services
+/content/en/docs/shared_services/ @andreamussap @danailgrigorov
 
 # Documentation files for APIM
-/content/en/docs/apigtw_devguide/ @alexearnshaw @maherb4
-/content/en/docs/apigtw_devops/ @andreamussap @maherb4
-/content/en/docs/apigtw_kerberos/ @alexearnshaw @maherb4
-/content/en/docs/apim_administration/apigtw_admin/ @alexearnshaw @maherb4
-/content/en/docs/apim_administration/apimgr_admin/ @alexearnshaw @maherb4
-/content/en/docs/apim_administration/apiportal_admin/ @andreamussap @jowens-axway
-/content/en/docs/apim_installation/apigtw_install/ @alexearnshaw @maherb4
-/content/en/docs/apim_installation/apigw_containers/ @alexearnshaw @maherb4
-/content/en/docs/apim_installation/apigw_upgrade/ @alexearnshaw @maherb4
-/content/en/docs/apim_installation/apiportal_docker/ @andreamussap @jowens-axway
-/content/en/docs/apim_installation/apiportal_install/ @andreamussap @jowens-axway
-/content/en/docs/apim_policydev/apigw_kps/ @andreamussap @maherb4
-/content/en/docs/apim_policydev/apigw_oauth/ @alexearnshaw @maherb4
-/content/en/docs/apim_policydev/apigw_polref/ @andreamussap @maherb4
-/content/en/docs/apim_policydev/apigw_poldev/ @alexearnshaw @maherb4
-/content/en/docs/apim_reference/ @andreamussap @maherb4
-/content/en/docs/apim_relnotes/*apimgr_relnotes/ @alexearnshaw @maherb4
-/content/en/docs/apim_relnotes/*apip_relnotes/ @andreamussap @jowens-axway
-/content/en/docs/apimanager_analytics/ @andreamussap @maherb4
-/content/en/docs/apimanager_capacityguide/ @alexearnshaw @maherb4
-/content/en/docs/apimgmt_multi_dc/ @andreamussap @maherb4
-/content/en/docs/apimgmt_security/ @alexearnshaw @maherb4 @jowens-axway
-/content/en/docs/apimgr_concepts/ @alexearnshaw @maherb4
-/content/en/docs/apiportal_ha/ @andreamussap @jowens-axway
-/content/en/docs/cass_admin/ @andreamussap @maherb4
-/content/en/docs/glossary/ @andreamussap @maherb4
+/content/en/docs/api_mgmt_overview/ @andreamussap
+/content/en/docs/apigtw_auth_auth/ @andreamussap
+/content/en/docs/apigtw_devguide/ @andreamussap
+/content/en/docs/apigtw_devops/ @andreamussap
+/content/en/docs/apigtw_kerberos/ @andreamussap
+/content/en/docs/apim_administration/apigtw_admin/ @andreamussap
+/content/en/docs/apim_administration/apimgr_admin/ @andreamussap
+/content/en/docs/apim_administration/apimgr_sso/ @andreamussap
+/content/en/docs/apim_administration/apiportal_admin/ @andreamussap
+/content/en/docs/apim_administration/apiportal_sso/ @andreamussap
+/content/en/docs/apim_howto_guides/ @andreamussap
+/content/en/docs/apim_installation/apigtw_install/ @andreamussap
+/content/en/docs/apim_installation/apigw_containers/ @andreamussap
+/content/en/docs/apim_installation/apigw_upgrade/ @andreamussap
+/content/en/docs/apim_installation/apiportal_docker/ @andreamussap
+/content/en/docs/apim_installation/apiportal_install/ @andreamussap
+/content/en/docs/apim_policydev/apigw_external_connections/ @andreamussap
+/content/en/docs/apim_policydev/apigw_gw_instances/ @andreamussap
+/content/en/docs/apim_policydev/apigw_kps/ @andreamussap
+/content/en/docs/apim_policydev/apigw_oauth/ @andreamussap
+/content/en/docs/apim_policydev/apigw_poldev/ @andreamussap
+/content/en/docs/apim_policydev/apigw_polref/ @andreamussap
+/content/en/docs/apim_policydev/apigw_web_services/ @andreamussap
+/content/en/docs/apim_reference/ @andreamussap
+/content/en/docs/apim_relnotes/*apimgr_relnotes.md @andreamussap
+/content/en/docs/apim_relnotes/*apip_relnotes.md @andreamussap
+/content/en/docs/apimanager_analytics/ @andreamussap
+/content/en/docs/apimanager_capacityguide/ @andreamussap
+/content/en/docs/apimgmt_multi_dc/ @andreamussap
+/content/en/docs/apimgmt_security/ @andreamussap
+/content/en/docs/apiportal_ha/ @andreamussap
+/content/en/docs/cass_admin/ @andreamussap
+/content/en/docs/glossary/ @andreamussap
+
+# Documentation files for APIM ref arch
+/content/en/docs/apim-reference-architectures/ @andreamussap @NComandini @XmasRock @anartovich
 
 # Documentation guidelines and processes
-/content/en/docs/contribution_guidelines/ @alexearnshaw
-
+/content/en/docs/contribution_guidelines/ @andreamussap
 
 # The `docs/*` pattern will match files like
 # `docs/getting-started.md` but not further nested files like

@@ -60,7 +60,7 @@ If a node is down for more than 10 days, it should be replaced. For details on r
 There is no need to reinstall Cassandra from scratch. Instead, you can move the Cassandra data files and restore the `cassandra.yaml` configuration file if necessary (if you updated Cassandra
 configuration). Perform the following steps:
 
-1. Stop Cassandra. For details, see [Manage Apache Cassandra](cassandra_manage).
+1. Stop Cassandra. For details, see [Manage Apache Cassandra](/docs/cass_admin/cassandra_manage/).
 2. Move `CASSANDRA_HOME/data` to `CASSANDRA_HOME/data/OLD-DATA-DATE`.
 3. Restore `cassandra.yaml` in `CASSANDRA_HOME/conf` if necessary.
 
@@ -96,4 +96,4 @@ You can use Java Management Extensions to monitor and manage performance in a Ca
 
 ## Upgrade your Cassandra version
 
-For details on upgrading your Cassandra version, see [Upgrade Apache Cassandra](/bundle/APIGateway_77_UpgradeGuide_allOS_en_HTML5) in the API Gateway Upgrade Guide.
+For details on upgrading your Cassandra version, see [Upgrade Apache Cassandra](/docs/apim_installation/apigw_upgrade/upgrade_cassandra/) in the API Gateway Upgrade Guide.

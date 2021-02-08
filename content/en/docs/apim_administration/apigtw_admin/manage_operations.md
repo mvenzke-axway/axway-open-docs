@@ -14,16 +14,15 @@ You can also start and stop API Gateway instances using API Gateway Manager. For
 
 ### Prerequisites
 
-Before you can start API Gateway, you must first create a new domain that includes a gateway instance. If you installed the QuickStart tutorial, a sample API Gateway domain is automatically configured in your installation. Otherwise, you must create a new domain. For more details, see [Configure an API Gateway domain](/docs/apim_administration/apigtw_admin/makegateway).
+Before you can start API Gateway, you must first create a new domain that includes an API Gateway instance. If you installed the QuickStart tutorial, a sample API Gateway domain is automatically configured in your installation. Otherwise, you must create a new domain. For more details, see [Configure an API Gateway domain](/docs/apim_administration/apigtw_admin/makegateway).
 
-If you are using Apache Cassandra, before starting API Gateway, you must first ensure that Cassandra is running. For details on installing and running Cassandra, see the
-[API Gateway Installation Guide](/docs/apim_installation/apigtw_install/).
+If you are using Apache Cassandra, before starting API Gateway, you must first ensure that Cassandra is running. For details on installing and running Cassandra, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
 
 ### Set passphrases
 
 By default, data is stored unencrypted in the API Gateway configuration store. However, you can encrypt certain sensitive information such as passwords and private keys using a passphrase. When the passphrase has been set, this encrypts the API Gateway configuration data.
 
-You must enter the passphrase when connecting to the configuration data (for example, using the Policy Studio, or when the API Gateway starts up). For more details on configuring this passphrase, see [Configure an API Gateway encryption passphrase](/docs/apim_administration/general_passphrase#set-passphrases).
+You must enter the passphrase when connecting to the configuration data (for example, using Policy Studio, or when the API Gateway starts up). For more details on configuring this passphrase, see [Configure an API Gateway encryption passphrase](/docs/apim_administration/apigtw_admin/general_passphrase/).
 
 ### Start the Node Manager
 
@@ -54,12 +53,14 @@ To start the gateway instance and Policy Studio on Linux, perform the following 
 
     ```
     cd /usr/home/policystudio
-    ./policystudio"
+    ./policystudio
     ```
 
 5. When Policy Studio is starting up, you are prompted for connection details for API Gateway.
 
-You can enter the `startinstance` command without any arguments to display the servers registered on the machine. For example:
+#### Use `startinstance` without arguments
+
+Enter the `startinstance` command without any arguments to display the servers registered on the machine. For example:
 
 ```
 $ startinstance
@@ -73,49 +74,22 @@ startinstance -n "server2" -g "group2"
 
 If you have a single API Gateway instance on the host on which you run `startinstance`, that instance starts when you specify no arguments.
 
-**Startup options**:
+#### Startup options
 
 You can specify the following optional instance arguments to the `startinstance` command:
 
-`-b <file>`
-
-Specifies the boot-time trace destination.
-
-`-d`
-
-Runs as daemon/service.
-
-`-h <directory>`
-
-Specifies the service instance directory.
-
-`-k`
-
-Kills the instance.
-
-`-P`
-
-Prompts for a passphrase at startup.
-
-`-q`
-
-Runs in quiet mode (equivalent to `-Dquiet`).
-
-`-v`
-
-Changes to the installation instance directory on startup.
-
-`-s`
-
-Tests if the service is running .
-
-`-e`
-
-Specifies the end of arguments for `vshell`.
-
-`-D prop[=value]`
-
-Sets a configuration file property.
+| Option          | Description                                                |
+|-----------------|------------------------------------------------------------|
+| `-b <file>`       | Specifies the boot-time trace destination.                 |
+| `-d`              | Runs as daemon/service.                                    |
+| `-h <directory>`  | Specifies the service instance directory.                  |
+| `-k`              | Kills the instance.                                       |
+| `-P`              | Prompts for a passphrase at startup.                       |
+| `-q`              | Runs in quiet mode (equivalent to `-Dquiet`).                |
+| `-v`              | Changes to the installation instance directory on startup. |
+| `-s`              | Tests if the service is running.                          |
+| `-e`              | Specifies the end of arguments for `vshell`.                 |
+| `-D prop[=value]` | Sets a configuration file property.                        |
 
 The `-d`, `-s`, and `-k` options are designed for use with the service controller (for example, traditional SVR4 init, systemd, upstart, and so on). The `-d` option waits until the service is running before returning, and `-k` waits for the process to terminate. This means that when used in a script, the completion of the command indicates that the operation requested has completed.
 
@@ -127,7 +101,7 @@ startinstance -s -n InstanceName -g GroupName && echo Running
 
 ### Connect to API Gateway in Policy Studio
 
-When starting the Policy Studio, you are prompted for details on how to connect to the Admin Node Manager (for example, the server session, host, port, user name, and password). The default connection URL is:
+When starting Policy Studio, you are prompted for details on how to connect to the Admin Node Manager (for example, the server session, host, port, user name, and password). The default connection URL is:
 
 ```
 https://<HOST>:8090/api
@@ -159,19 +133,17 @@ When you need to shut down a gateway for any reason (for example, during an upgr
 
 To perform a zero downtime shutdown, follow these steps:
 
-1. Enable zero downtime shutdown in Policy Studio, and set the delay before shutdown. For more information, see [Zero downtime settings](/docs/apim_reference/additional_settings#zero-downtime-settings).
+1. Enable zero downtime shutdown in Policy Studio, and set the delay before shutdown. For more information, see [Zero downtime settings](/docs/apim_reference/general_settings/#zero-downtime-settings).
 2. Configure your load balancer to ping the Health Check LB policy periodically to determine if each API Gateway is healthy. This is available on the following default URL:
 
     ```
     http://APIGATEWAY_HOST:8080/healthchecklb
     ```
 
-3. Initiate shutdown of an API Gateway using the command line or API Gateway Manager. For more information, see [Start and stop the gateway](#start-and-stop-the-api-gateway) or [Manage API Gateway instances](/docs/apim_administration/apigtw_admin/managetopology#manage-api-gateway-instances).
+3. Initiate shutdown of an API Gateway using the command line or API Gateway Manager.
 4. When shutdown is initiated on the API Gateway:
     * The Health Check LB policy returns a `503 Service Unavailable` response. This indicates to the load balancer that the API Gateway is not available for traffic and the load balancer stops routing to it.
     * After the specified delay before shutdown (for example, 10 seconds), the API Gateway is shut down.
-
-
 
 ## API Gateway backup and disaster recovery
 
@@ -201,7 +173,7 @@ You must also back up all databases and third-party systems used with the API Ga
 * Any databases or third-party systems that the API Gateway connects to in External Connections
 
 {{< alert title="Note" color="primary" >}}
-You do not need to back up Policy Studio, Configuration Studio, or API Tester because these tools run in a temporary workspace when required. However, if you have modified any third-party dependencies on the **Preferences** page (for example, to connect to a specific database), you must also add the relevant `.jar` on the **Runtime Dependencies** page in your disaster recovery environment.{{< /alert >}}
+You do not need to back up Policy Studio or Configuration Studio because these tools run in a temporary workspace when required. However, if you have modified any third-party dependencies on the **Preferences** page (for example, to connect to a specific database), you must also add the relevant `.jar` on the **Runtime Dependencies** page in your disaster recovery environment.{{< /alert >}}
 
 ### Back up API Gateway
 
@@ -252,16 +224,16 @@ Similarly, to back up an API Gateway Analytics installation, you must back up fi
 
 For example, the following directories include API Gateway Analytics configuration, and will typically need to be backed up on a regular basis:
 
-    ```
-    <install-dir>\analytics\conf
-    <install-dir>\analytics\ext
-    ```
+```
+<install-dir>\analytics\conf
+<install-dir>\analytics\ext
+```
 
-    * This backs up the API Gateway Analytics installation only. You must also back up the metrics database separately. For more details, see the next section.
+This backs up the API Gateway Analytics installation only. You must also back up the metrics database separately.
 
 ### Back up databases and third-party systems
 
-You must back up all databases and third-party systems used with the gateway. For example, you can back a MySQL database by creating a dump file of the tables in use:
+You must back up all databases and third-party systems used with API Gateway. For example, you can back a MySQL database by creating a dump file of the tables in use:
 
 ```
 mysqldump -u root temp_backup > db_tables.dump
@@ -277,9 +249,9 @@ To ensure this, your backup and disaster recovery plan should include key metric
 
 ### Example of creating an API Gateway disaster recovery site
 
-This simple example shows how to create a disaster recovery site from a backup of a gateway production deployment. It assumes that both the disaster recovery site and the primary production site have the same version of API Gateway installed. In this scenario, the disaster recovery site is a cold standby, and the configuration from production is replicated using a backup of production configuration.
+This simple example shows how to create a disaster recovery site from a backup of an API Gateway production deployment. It assumes that both the disaster recovery site and the primary production site have the same version of API Gateway installed. In this scenario, the disaster recovery site is a cold standby, and the configuration from production is replicated using a backup of production configuration.
 
-**Back up the production environment**:
+#### Back up the production environment
 
 To back up the production environment, perform the following steps.
 
@@ -290,17 +262,16 @@ To back up the production environment, perform the following steps.
     * `apigateway/system/conf/nodemanager.xml`
     * `apigateway/ext`
 
-If you want the gateway and Node Manager to start up automatically on the new host, you should also include `/etc/init.d/vshell-*`.
+If you want the API Gateway and Node Manager to start up automatically on the new host, you should also include `/etc/init.d/vshell-*`.
 
 This includes separate startup scripts files for the Node Manager and API Gateway instances if an `init.d` script was created using `managedomain` during initial setup.
 
-You can create these at any time using `managedomain`, and choosing option `2`, Edit a host, for a Node Manager, or option `10`, Add script or service for an existing local API Gateway. For moredetails, see [Managedomain command reference](/docs/apim_administration/apigtw_admin/managedomain_ref).
+You can create these at any time using `managedomain`, and choosing option `2`, Edit a host, for a Node Manager, or option `10`, Add script or service for an existing local API Gateway. For more details, see [Managedomain command reference](/docs/apim_reference/managedomain_ref/).
 
 For example, the following command creates a `.tar` file running from the root directory:
 
 ```
-tar -cvf apigateway_backup.tar /opt/apigateway/conf /opt/apigateway/groups
-/opt/apigateway/system/conf/nodemanager.xml
+tar -cvf apigateway_backup.tar /opt/apigateway/conf /opt/apigateway/groups /opt/apigateway/system/conf/nodemanager.xml
 ```
 
 The following example creates a `.tar` file containing the startup scripts running from the root directory:
@@ -309,12 +280,12 @@ The following example creates a `.tar` file containing the startup scripts runni
 tar -cvf startup_scripts.tar /etc/init.d/vshell-*
 ```
 
-**Copy to the disaster recovery site**:
+#### Copy to the disaster recovery site
 
 To replicate to the disaster recovery site:
 
-1. Ensure the files are tarred before copying because this preserves the permissions and ownership of the files.
-2. Copy the created `.tar` file(s) from the primary production machine to the cold standby machine.
+1. Ensure that the files are tarred before copying because this preserves the permissions and ownership of the files.
+2. Copy the created `.tar` files from the primary production machine to the cold standby machine.
 3. Extract the files so that they are extracted in the same directories, overwriting existing files if necessary. The following example extracts the files from the root directory:
 
     ```
@@ -329,10 +300,10 @@ To replicate to the disaster recovery site:
 
 5. When all the files are copied over and extracted successfully, you should be able to start the Admin Node Manager and API Gateway instances the same way as in primary production site running the same topology and configurations.
 
-{{< alert title="Note" color="primary" >}}This example assumes that backups are collected on regular basis from the master node in the production site.{{< /alert >}}
+This example assumes that backups are collected on regular basis from the master node in the production site.
 
 ### Further information
 
 For details on how to back up and restore an Admin Node Manager for signing SSL certificates in an API Gateway domain, see [Configure Admin Node Manager high availability](/docs/apim_administration/apigtw_admin/admin_node_mngr).
 
-For details on how to back and restore internal data stored in Apache Cassandra (for example, API Gateway KPS data or API Manager data), see the [Apache Cassandra backup and restore](/docs/cass_admin/cassandra_bur/).
+For details on how to back and restore internal data stored in Apache Cassandra (for example, API Gateway KPS data or API Manager data), see [Apache Cassandra backup and restore](/docs/cass_admin/cassandra_bur/).

@@ -1,7 +1,7 @@
 {
     "title": "Upgrade metrics database for API Manager",
     "linkTitle": "Upgrade metrics database for API Manager",
-    "weight": 5,
+    "weight": 50,
     "date": "2019-10-07",
     "description": "Upgrade your metrics database to version 7.7."
 }
@@ -37,7 +37,7 @@ To roll back, you must perform the relevant SQL Restore operation to overwrite t
 
 If you have not already done so, you must use the `managedomain` tool to enable the Node Manager to process event logs from your API Gateway host, and to write metrics data to the metrics database.
 
-All API Gateway instances running on the host node generate transaction event log files. These files are all written to the same folder, and are collectively processed and aggregated by the Node Manager on the host, and then written to the metrics database. The metrics database provides the data for the graphical charts in the **Monitoring** view in API Manager, or for third-party tools such as Splunk. For more details on the transaction event log , see the [API Gateway Administrator Guide](/bundle/APIGateway_77_AdministratorGuide_allOS_en_HTML5/).
+All API Gateway instances running on the host node generate transaction event log files. These files are all written to the same folder, and are collectively processed and aggregated by the Node Manager on the host, and then written to the metrics database. The metrics database provides the data for the graphical charts in the **Monitoring** view in API Manager, or for third-party tools such as Splunk.
 
 To enable metrics in the new installation:
 

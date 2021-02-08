@@ -62,7 +62,7 @@ The next steps depend on your installation setup type:
 
 To use Cassandra with API Manager, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/). This is configured by default when API Manager is installed along with the QuickStart tutorial.
 
-To use Cassandra with OAuth, see [Deploy OAuth configuration](docs/apim_policydev/apigw_oauth/gw_server/#deploy-oauth-services).
+To use Cassandra with OAuth, see [Configure OAuth](/docs/apim_policydev/apigw_oauth/).
 
 The following diagram shows Cassandra in standalone mode with a default standard setup:
 

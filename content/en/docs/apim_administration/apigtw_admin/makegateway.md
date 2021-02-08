@@ -38,7 +38,7 @@ INSTALL_DIR/apigateway/posix/bin
 
 {{< alert title="Note" color="primary" >}}To register an API Gateway instance as a service on Linux, you must run the `managedomain` command as `root`.{{< /alert >}}
 
-For more details on `managedomain` options, see [Managedomain command reference](/docs/apim_administration/apigtw_admin/managedomain_ref).
+For more details on `managedomain` options, see [Managedomain command reference](/docs/apim_reference/managedomain_ref/).
 
 ## Register a host in a domain
 
@@ -99,7 +99,11 @@ To create an API Gateway instance, perform the following steps:
 
 ## Test the health of an API Gateway instance
 
-You can test the connection to the new API Gateway instance by connecting to the Health Check service. For example, enter the following default URL in your browser: <http://HOST:8080/healthcheck>
+You can test the connection to the new API Gateway instance by connecting to the Health Check service. For example, enter the following default URL in your browser:
+
+```
+http://HOST:8080/healthcheck
+```
 
 This should display a simple `<status>ok</status>` message.
 

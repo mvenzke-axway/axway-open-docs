@@ -101,7 +101,7 @@ The administrator must therefore find out about any selectorized scopes to be ap
 
 ### Client Application Registry storage and settings
 
-By default, OAuth client application data is stored in a Key Property Store (KPS) backed by an Apache Cassandra database. For more details on KPS, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5). For more details on Apache Cassandra, see [Administer Apache Cassandra](/docs/cass_admin/).
+By default, OAuth client application data is stored in a Key Property Store (KPS) backed by an Apache Cassandra database. For more details on KPS, see the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/). For more details on Apache Cassandra, see [Administer Apache Cassandra](/docs/cass_admin/).
 
 #### Relational database-backed Client Application Registry
 
@@ -123,7 +123,7 @@ If you change the encryption passphrase at any point, you must re-encrypt the da
 
 To re-encrypt the data, use the `kpsadmin` tool, and select the option to `Re-encrypt All`. This re-encrypts all data in all tables in a collection. You are prompted for the old passphrase (needed to decrypt the data). The data is then re-encrypted with the current API Gateway passphrase. Repeat this process for each KPS collection.
 
-For more information on the `kpsadmin` tool, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
+For more information on the `kpsadmin` tool, see the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/).
 
 ### Client Application Registry authentication settings
 

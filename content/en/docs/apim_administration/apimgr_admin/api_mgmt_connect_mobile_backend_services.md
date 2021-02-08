@@ -1,7 +1,7 @@
 {
     "title": "Connect to Axway Mobile Backend Services",
     "linkTitle": "Connect to Axway Mobile Backend Services",
-    "weight": "15",
+    "weight": "150",
     "date": "2019-09-17",
     "description": "Connect to Axway Mobile Backend Services from API Manager."
 }
@@ -39,7 +39,7 @@ User sessions and cookies must be saved and reused with each API call (if login 
 https://api.cloud.appcelerator.com/v1/reviews/create.json?key=<API_KEY>&_session_id=<SESSION_ID>
 ```
 
-For more details, see the [Mobile Backend Services documentation](/bundle/Mobile_Backend_Services_allOS_en/).
+For more details, see the [Mobile Backend Services documentation](https://docs.axway.com/bundle/Mobile_Backend_Services_allOS_en/).
 
 ## Create a Mobile Backend Services app
 
@@ -111,4 +111,4 @@ You can specify the Mobile Backend Services username and password that you creat
 
 {{< alert title="Note" color="primary" >}}Use the API Portal SDK generator rather than Mobile Backend Services SDK. {{< /alert >}}
 
-You can generate an SDK for virtualized Mobile Backend Services APIs in API Portal. SDK generation must first be enabled in API Portal, see [Enable SDK generator](/csh?context=2000&product=prod-api-portal-77) in the [API Portal Administrator Guide](/bundle/APIPortal_77_AdministratorGuide_allOS_en_HTML5).
+You can generate an SDK for virtualized Mobile Backend Services APIs in API Portal. SDK generation must first be enabled in API Portal, see [Customize API Catalog](/docs/apim_administration/apiportal_admin/customize_apicatalog_overview/).

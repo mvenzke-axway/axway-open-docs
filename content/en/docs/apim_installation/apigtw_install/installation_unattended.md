@@ -69,4 +69,4 @@ The following summarizes some of the more common options:
 * `--cassandraInstalldir`: Specify the Apache Cassandra installation directory, for example, `opt/db/cassandra`.
 * `--cassandraJDK`: Specify the location of your Java Runtime Environment for Apache Cassandra. The default value is `INSTALL_DIR/apigateway/Linux.x86_64/jre/bin`
 * `--startCassandra`: Specify whether the Apache Cassandra server starts after the installer completes. Set to `1` to start Cassandra after installation, or set to `0` if you do not * want Cassandra to start.
-* `--optionfile`: Specify options in a properties file. For more information on option files, go to <http://installbuilder.bitrock.com/docs/installbuilder-userguide.html>
+* `--optionfile`: Specify options in a properties file. For more information on option files, see [BitRock InstallBuilder User Guide 20](http://installbuilder.bitrock.com/docs/installbuilder-userguide.html).

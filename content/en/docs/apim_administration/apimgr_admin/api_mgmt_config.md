@@ -1,7 +1,7 @@
 {
     "title": "Set up API Manager",
     "linkTitle": "Set up API Manager",
-    "weight": "1",
+    "weight": "10",
     "date": "2019-09-17",
     "description": "Learn how to enable API Manager after installation, and how to configure it with signed certificates, monitoring,  and HTTP proxy servers."
 }
@@ -30,7 +30,7 @@ To enable API Manager, perform the following steps:
 
     {{< alert title="Note" color="primary" >}}The default API administrator user name and password set in Policy Studio are used only when creating the administrator account in Cassandra. After the account has been created in Cassandra, you cannot change the credentials in Policy Studio. You must use API Manager to change the administrator credentials. {{< /alert >}}
 
-5. Configure additional API Manager settings under **Server Settings > API Manager**. For example, you can specify custom policies that are called as traffic passes through API Manager. For more details, see [Configure API Manager settings in Policy Studio](http:///docs/apim_administration/apimgr_admin/api_mgmt_config_ps/).
+5. Configure additional API Manager settings under **Server Settings > API Manager**. For example, you can specify custom policies that are called as traffic passes through API Manager. For more details, see [Configure API Manager settings in Policy Studio](/docs/apim_administration/apimgr_admin/api_mgmt_config_ps/).
 6. Click the **Deploy** button in the toolbar to deploy the updated configuration to API Gateway.
 7. After deployment completes, enter the following URL in your browser to log in to apimanager: `https://HOSTNAME:8075`
 8. Log in using the API administrator credentials that you specified when installing API Manager, or when configuring API Manager in Policy Studio. For security reasons, you must change the default credentials.
@@ -43,7 +43,7 @@ The default certificates used to secure the ports for API Manager and its runtim
 
 To configure signed server certificates for these API Manager ports, perform the following steps in Policy Studio:
 
-1. Add the server certificates signed by a trusted Certificate Authority to the API Gateway certificate store, and ensure that their start and expiry dates are valid. For more details, see [Manage X.509 certificates and keys](/csh?context=619&product=prod-api-gateway-77) in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+1. Add the server certificates signed by a trusted Certificate Authority to the API Gateway certificate store, and ensure that their start and expiry dates are valid.
 2. Configure the API Manager port to use the signed server certificate:
 
     1. Select **Environment Configuration > Listeners > API Gateway > API Portal > Ports**.
@@ -55,8 +55,6 @@ To configure signed server certificates for these API Manager ports, perform the
     1. Select **Environment Configuration > Listeners > API Gateway > API Manager Traffic > Ports**.
     2. Double-click **Portal Traffic HTTPS Interface** on the right to open the **Configure HTTPS Interface** dialog. The default port is `8065`.
     3. On the **Network** tab, click **X.509 Certificate** to select the signed server certificate.
-
-For more details on configuring certificates for HTTPS interface ports, see the [Configure HTTP services](/csh?context=610&product=prod-api-gateway-77) in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
 
 ## Configure an API Manager monitoring database
 
@@ -103,4 +101,4 @@ The following JVM setting is also required when importing the API in API Manage
 
 ## Configure API Manager in a multi-datacenter environment
 
-For details on configuring API Manager for a large amount of APIs and data in a multi-datacenter environment, see [Configure API Management in multiple datacenters](/csh?context=303&product=prod-api-gateway-77) in the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+For details on configuring API Manager for a large amount of APIs and data in a multi-datacenter environment, see [Configure API Management in multiple datacenters](/docs/apimgmt_multi_dc/).

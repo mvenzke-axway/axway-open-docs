@@ -1,9 +1,9 @@
 {
 "title": "Complex selector expressions",
-"linkTitle": "Complex selector expressions",
-"weight":"60",
-"date": "2019-11-27",
-"description": "Use complex selector expressions to access configuration values dynamically at runtime."
+  "linkTitle": "Complex selector expressions",
+  "weight": "60",
+  "date": "2019-11-27",
+  "description": "Use complex selector expressions to access configuration values dynamically at runtime."
 }
 
 You can access configuration values dynamically at runtime using *selectors*. A selector is a special syntax that enables API Gateway configuration settings to be evaluated and expanded at runtime, based on metadata values (for example, from message attributes, a Key Property Store (KPS), or environment variables).
@@ -40,12 +40,12 @@ Gets the HTTP form post field called `grant_type`.
 ### Parameter from JSON content body
 
 ```
-${content.body.getJSON().get('access_token').getTextValue()}  
+${content.body.getJSON().findValue('access_token').textValue()}  
 ```
 
 If a body is of type `application/json` then it is automatically treated as a `com.vordel.mime.JSONBody`. A `JSONBody` object returns an `com.fasterxml.jackson.databind.JsonNode` object via a `getJSON()` call.
 
-For more information, see the [Javadoc for JsonNode class](http://static.javadoc.io/com.fasterxml.jackson.core/jackson-databind/2.7.4/index.html?com/fasterxml/jackson/databind/JsonNode.html).
+For more information, see the [Javadoc for JsonNode class](http://static.javadoc.io/com.fasterxml.jackson.core/jackson-databind/2.9.8/index.html?com/fasterxml/jackson/databind/JsonNode.html).
 
 For example, if the body contains the following JSON content:
 
@@ -158,4 +158,4 @@ For more information, see `java.util.ArrayList` and `java.lang.String` class int
 
 A Key Property Store (KPS) is an external data store of API Gateway policy properties, which is typically read frequently, and seldom written to. Using a KPS enables metadata-driven policies, whereby policy configuration is stored in an external data store, and looked up dynamically when policies are executed.
 
-For more information on KPS, see the [API Gateway Policy Developer Guide](/docs/apim_policydev/apigw_poldev/) and also the [API Gateway Key Property Store User Guide](https://docs.axway.com/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
+For more information on KPS, see the [API Gateway Policy Developer Guide](/docs/apim_policydev/apigw_poldev/) and also the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/).

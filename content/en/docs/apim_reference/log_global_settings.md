@@ -1,9 +1,9 @@
 {
 "title": "Transaction log settings in Policy Studio",
-"linkTitle": "Transaction log settings",
-"weight":"48",
-"date": "2019-10-14",
-"description": "Configure settings for API Gateway transaction audit, transaction access, and transaction event logging in Policy Studio."
+  "linkTitle": "Transaction log settings",
+  "weight": "80",
+  "date": "2019-10-14",
+  "description": "Configure settings for API Gateway transaction audit, transaction access, and transaction event logging in Policy Studio."
 }
 
 ## Transaction audit log settings
@@ -59,13 +59,14 @@ ${level} ${timestamp} ${id} ${text} ${filterType} ${filterName}
 ```
 
 The available logging properties are described as follows:
-    * **`level`**: The log level (`fatal` , `fail`, `success`).
-    * **`timestamp`**: The time that the message was processed in user-readable form. For more details, see **Date format** in [General settings](/docs/apim_administration/apigtw_admin/general_settings).
-    * **`id`**: The unique transaction ID assigned to the message.
-    * **`text`**: The text of the log message that was configured in the filter itself. In the case of the **Log Message Payload** filter, the `${payload}` selector contains the message that was sent by the client.
-    * **`filterName`**: The name of the filter that generated the log message.
-    * **`filterType`**: The type of the filter that logged the message.
-    * **`ip`**: The IP address of the client that sent the request.
+
+* `level`: The log level (`fatal` , `fail`, `success`).
+* `timestamp`: The time that the message was processed in user-readable form. For more details, see **Date format** in [General settings](/docs/apim_reference/general_settings/#general-settings).
+* `id`: The unique transaction ID assigned to the message.
+* `text`: The text of the log message that was configured in the filter itself. In the case of the **Log Message Payload** filter, the `${payload}` selector contains the message that was sent by the client.
+* `filterName`: The name of the filter that generated the log message.
+* `filterType`: The type of the filter that logged the message.
+* `ip`: The IP address of the client that sent the request.
 
 **Signing Key**:
 
@@ -111,13 +112,13 @@ To sign the log file, select a **Signing Key** from the Certificates Store that 
 
 Using this option, you can configure the API Gateway to log messages to an Oracle, SQL Server, or MySQL relational database.
 
-* Before configuring the API Gateway to log to a database, you must first create the database tables that the API Gateway writes to. For details on setting up tables for supported databases, see the [API Gateway Installation Guide](/bundle/APIGateway_77_InstallationGuide_allOS_en_HTML5/).
+Before configuring the API Gateway to log to a database, you must first create the database tables that the API Gateway writes to. For details on setting up tables for supported databases, see the [API Gateway Installation Guide](/docs/apim_installation/apigtw_install/).
 
 When you have set up the logging database tables, you can configure the API Gateway to log to the database. Click the **Database** tab, and select **Enable logging to database**. You can configure the following fields on the **Database** tab:
 
 **Connection**:
 
-Select an existing database from the **Connection** drop-down list. To add a database connection, click the **External Connections** button on the left, right-click the **Database connections** tree node, and select **Add a Database Connection**. For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+Select an existing database from the **Connection** drop-down list. To add a database connection, click the **External Connections** button on the left, right-click the **Database connections** tree node, and select **Add a Database Connection**.
 
 **Signing Key**:
 
@@ -141,7 +142,7 @@ To configure the API Gateway to send logging information to a remote syslog, cli
 
 **Syslog Server**:
 
-Select a previously configured **Syslog Server** from the list.For details on how to configure Syslog Server, see the topic on External Connections in the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+Select a previously configured **Syslog Server** from the list. For details on how to configure Syslog Server, see [Configure external connections](/docs/apim_policydev/apigw_external_connections/).
 
 **Format**:
 
@@ -182,32 +183,32 @@ s3.axway.com - fred [09/05/2012:18:27:12 00] "POST / HTTP/1.0" 200 596
 
 API Gateway supports the following subset of the Apache HTTP Server log format strings:
 
-| Log format string | Description                                                                |
-|-------------------|----------------------------------------------------------------------------|
-| **`%a`**          | Remote IP address.                                                         |
-| **`%A`**          | Local IP address.                                                          |
-| **`%b`**          | Bytes sent, excluding HTTP headers, in Common Log Format (for example, `-` instead of `0` if no bytes were sent).|
-| **`%B`**          | Bytes sent, excluding HTTP headers.                                        |
-| **`%D`**          | Time taken to process the request, in milliseconds.                        |
-| **`%h`**          | Remote host name.                                                          |
-| **`%H`**          | Request protocol.                                                          |
-| **`%I`**          | Current request thread name (can compare later with stack traces).         |
-| **`%l`**          | Remote logical user name (always `-`).                                    |
-| **`%m`**          | Request method.                                                            |
-| **`%p`**          | Local port.                                                                |
-| **`%q`**          | Query string (prepended with `?` if it exists, otherwise an empty string). |
-| **`%r`**          | First line of the request that originated at the client.                   |
-| **`%s`**          | HTTP status code returned to the client in the response.                   |
-| **`%t`**          | Date and time of the request in Common Log Format.                         |
-| **`%{format}t`**  | Date and time, in any format supported by `SimpleDateFormat`.               |
-| **`%T`**          | Time taken to process the request, in seconds.                             |
-| **`%u`**          | Remote user that was authenticated.                                        |
-| **`%U`**          | Requested URL path.                                                        |
-| **`%v`**          | Local server name.                                                         |
-| **`%{xxx}i`**     | Incoming request header, where `xxx` is the header name.                   |
-| **`%{xxx}o`**     | Outgoing request header, where `xxx` is the header name.                    |
-| **`%{xxx}c`**     | Cookie value, where `xxx` is the cookie name.                               |
-| **`%{xxx}r`**     | API Gateway message attribute, where `xxx` is the attribute name.           |
+| Log format string | Description                                                                                                       |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **`%a`**          | Remote IP address.                                                                                                |
+| **`%A`**          | Local IP address.                                                                                                 |
+| **`%b`**          | Bytes sent, excluding HTTP headers, in Common Log Format (for example, `-` instead of `0` if no bytes were sent). |
+| **`%B`**          | Bytes sent, excluding HTTP headers.                                                                               |
+| **`%D`**          | Time taken to process the request, in milliseconds.                                                               |
+| **`%h`**          | Remote host name.                                                                                                 |
+| **`%H`**          | Request protocol.                                                                                                 |
+| **`%I`**          | Current request thread name (can compare later with stack traces).                                                |
+| **`%l`**          | Remote logical user name (always `-`).                                                                            |
+| **`%m`**          | Request method.                                                                                                   |
+| **`%p`**          | Local port.                                                                                                       |
+| **`%q`**          | Query string (prepended with `?` if it exists, otherwise an empty string).                                        |
+| **`%r`**          | First line of the request that originated at the client.                                                          |
+| **`%s`**          | HTTP status code returned to the client in the response.                                                          |
+| **`%t`**          | Date and time of the request in Common Log Format.                                                                |
+| **`%{format}t`**  | Date and time, in any format supported by `SimpleDateFormat`.                                                     |
+| **`%T`**          | Time taken to process the request, in seconds.                                                                    |
+| **`%u`**          | Remote user that was authenticated.                                                                               |
+| **`%U`**          | Requested URL path.                                                                                               |
+| **`%v`**          | Local server name.                                                                                                |
+| **`%{xxx}i`**     | Incoming request header, where `xxx` is the header name.                                                          |
+| **`%{xxx}o`**     | Outgoing request header, where `xxx` is the header name.                                                          |
+| **`%{xxx}c`**     | Cookie value, where `xxx` is the cookie name.                                                                     |
+| **`%{xxx}r`**     | API Gateway message attribute, where `xxx` is the attribute name.                                                 |
 
 ### Aliases for commonly used patterns
 
@@ -263,7 +264,7 @@ For more details, see [Supported log format strings](#supported-log-format-strin
 
 {{< alert title="Note" color="primary" >}}These settings configure the access log at the API Gateway level. You must also configure the access log at the service level on a specific relative path. {{< /alert >}}
 
-For example, in the Policy Studio tree, select the relative path, right-click it in the **Resolvers** pane, and select **Edit**. Then click the **Logging Settings** tab, and select **Include in server access log records**. For more details, see the [API Gateway Policy Developer Guide](/bundle/APIGateway_77_PolicyDevGuide_allOS_en_HTML5/).
+For example, in the Policy Studio tree, select the relative path, right-click it in the **Resolvers** pane, and select **Edit**. Then click the **Logging Settings** tab, and select **Include in server access log records**.
 
 ### Redact sensitive details from the access log
 
@@ -329,17 +330,17 @@ Event log `header` entries contain details about the creation of the log file. F
 
 The fields in the header entries include the following:
 
-| Field           | Description                                                                                  |
-|-----------------|----------------------------------------------------------------------------------------------|
-| type            | `header`. Entries of type header identify the API Gateway group and instance, one record per log file.  |
-| logCreationTime | Time the event log file was created.                                                         |
-| hostname        | Name of the host the API Gateway process is running on.                                      |
-| domainId        | Topology ID of the API Gateway system.                                                       |
-| groupId         | API Gateway group ID.                                                                        |
-| groupName       | API Gateway group name.                                                                      |
-| serviceId       | API Gateway instance ID.                                                                     |
-| serviceName     | API Gateway instance name.                                                                   |
-| version         | API Gateway version.                                                                         |
+| Field           | Description                                                                                            |
+| --------------- | ------------------------------------------------------------------------------------------------------ |
+| type            | `header`. Entries of type header identify the API Gateway group and instance, one record per log file. |
+| logCreationTime | Time the event log file was created.                                                                   |
+| hostname        | Name of the host the API Gateway process is running on.                                                |
+| domainId        | Topology ID of the API Gateway system.                                                                 |
+| groupId         | API Gateway group ID.                                                                                  |
+| groupName       | API Gateway group name.                                                                                |
+| serviceId       | API Gateway instance ID.                                                                               |
+| serviceName     | API Gateway instance name.                                                                             |
+| version         | API Gateway version.                                                                                   |
 
 The following example shows the JSON format used for `header` events:
 
@@ -365,7 +366,7 @@ Event log `system` entries contain details about the API Gateway system. For exa
 The fields in the system entries include the following:
 
 | Field       | Description                                                                                        |
-|-------------|----------------------------------------------------------------------------------------------------|
+| ----------- | -------------------------------------------------------------------------------------------------- |
 | type        | `system`. Entries of type system contain CPU and memory information, written once every minute.    |
 | time        | Timestamp of the event (in milliseconds since the epoch, taken from `System.currentTimeMillis()`). |
 | diskUsed    | Percentage of disk used (disk on which the API Gateway instance is running: `$VINSTDIR`).          |
@@ -614,15 +615,17 @@ The following example shows the JSON format used for an HTTP `transaction` event
 
 #### Inbound and outbound transaction legs
 
-In this example, the `legs` data is based on traffic monitoring, and its `duration` fields provide useful information. Leg `0` is always the inbound transaction, so its `duration` value is the overall transaction duration observed by API Gateway. Subsequent legs are outbound calls, so their `duration` value represents the back-end transaction duration observed by API Gateway.
+In this example, the `legs` data is based on traffic monitoring. `Leg 0` is always the inbound transaction, and its `duration` value is the overall transaction duration observed by API Gateway. Subsequent `legs` are outbound calls, so their `duration` value represents the back-end transactions observed by API Gateway.
 
-* The `duration` value for leg `0` minus the sum of the duration of all subsequent legs should give you the time spent in the API Gateway for that transaction. In this example, this is 1843 ms – 566 ms = 1277 ms.
+The back-end duration for `leg 1` to `leg n`, typically from a [Connect To URL](/docs/apim_policydev/apigw_polref/routing_common/#connect-to-url-filter) filter, only includes the time taken for API Gateway to receive the response headers, and not the entire body. For this reason, API Gateway cannot accurately measure the time from the back-end `leg` `durations`, because the reply bodies can be received in the background.
+
+At this point, **Connect to URL** has an HTTP status and a filter return value so that it can move onto the next filter in the the circuit chain. The next filter, though, might need to wait until the entire body has been received before it can proceed.
+
+The service context is an abstract concept, and the `duration` at this level measures time spent in that context only. The service context might be set in an arbitrary place in a policy, so this information is typically not as useful as the `leg` data—unless in composite services scenarios.
+
+The top-level transaction `duration` is obtained separately, but should be similar to the `leg 0` value.
 
 For more information about transactions and legs, see [Introduction to transactions and legs in API Gateway](/docs/apim_administration/apigtw_admin/admin_open_logging/#introduction-to-transactions-and-legs).
-
-The service context is an abstract concept, and the `duration` at this level measures time spent in that context only. The service context might be set in an arbitrary place in a policy, so this information is typically not as useful as the leg data—unless in composite services scenarios.
-
-The top-level transaction `duration` is obtained separately, but should be similar to the leg `0` value.
 
 ### Event log alert entries
 
@@ -702,7 +705,7 @@ The following example shows the JSON format used for an HTTP `transaction` event
 }
 ```
 
-For details on `custom` event entries, see the [API Gateway Javadoc](https://support.axway.com/htmldoc/1433380). The `com.vordel.reporting.rtm.api.MetricGroup class` includes details on the Java API and the resulting metric event in the transaction event log.
+For details on `custom` event entries, see the [API Gateway Javadoc](https://support.axway.com/htmldoc/1444954). The `com.vordel.reporting.rtm.api.MetricGroup class` includes details on the Java API and the resulting metric event in the transaction event log.
 
 ### Configure the transaction event log
 

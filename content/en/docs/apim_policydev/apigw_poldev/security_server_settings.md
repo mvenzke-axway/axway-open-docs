@@ -146,7 +146,6 @@ dialog. Repeat to specify multiple properties.
 **Policy Domain Name**:
 Enter the OES Policy Domain name for the SSM instance. Policy Domains contain policy definitions (target resource, permission set, and policy). Policy Domain names share the same name as their Configuration names.
 
-
 ### Name authority definition settings
 
 Configure the following field on the **Name Authority Definition**
@@ -176,9 +175,7 @@ You can also configure trace options for the various APIs used by the Kerberos s
 
 Linux platforms ship with a native implementation of the GSS library, which API Gateway can leverage. You can specify the location of the GSS library in this configuration window.
 
-For more details on different Kerberos setups with API Gateway, see
-[API Gateway Kerberos Integration Guide](/bundle/APIGateway_77_IntegrationKerberos_allOS_en_HTML5)
-.
+For more details on different Kerberos setups with API Gateway, see the [API Gateway Kerberos Integration Guide](/docs/apigtw_kerberos/).
 
 ### Kerberos configuration file `krb5.conf`
 

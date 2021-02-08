@@ -10,13 +10,13 @@ Java Management Extensions (JMX) allows remote clients to connect to a JVM and m
 
 For more information on implementing an MBean interface, see the `FilterInterceptor` example. The sample code can be found in the `DEVELOPER_SAMPLES/FilterInterceptorLoadableModule` directory. The `FilterInterceptor` class implements the `FilterInterceptorMBean` interface.
 
-After you have set up your MBean, you need to tell the JMX infrastructure about the MBean so that it can be published to clients. This involves creating a unique name for the MBean and then registering it with the MBeanServer. For example:
+After you have set up your MBean, you must tell the JMX infrastructure about the MBean so that it can be published to clients. This involves creating a unique name for the MBean and registering it with the MBeanServer. For example:
 
 ```java
 ...
 try {
     MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
-    // Construct the ObjectName for the MBean we will register
+    // Construct the ObjectName for the MBean we will register.
     ObjectName name = new ObjectName(
       "example:type=FilterInterceptorMBean");
     mbs.registerMBean(this, name);
@@ -38,7 +38,7 @@ Follow these steps:
 
 2. Edit the `jvm.xml` file so that the contents are as follows:
 
-    ```xml
+    ```
     <ConfigurationFragment>
         <VMArg name="-Dcom.sun.management.jmxremote"/>
     </ConfigurationFragment>

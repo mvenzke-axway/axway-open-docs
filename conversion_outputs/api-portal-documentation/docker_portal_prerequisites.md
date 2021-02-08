@@ -1,1 +1,0 @@
-{"title":"Prerequisites","linkTitle":"Prerequisites","date":"2019-7-16","description":"Before you can run API Portal in Docker, you must have API Gateway and API Manager either installed on-premise or deployed in containers. It is recommended to deploy API Gateway and API Manager in separate containers. For more details, see ."} ﻿

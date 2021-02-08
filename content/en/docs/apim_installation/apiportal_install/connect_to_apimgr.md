@@ -1,11 +1,10 @@
 {
-    "title":"Connect API Portal to API Manager",
-    "linkTitle":"Connect API Portal to API Manager",
-    "weight":"7",
-    "date":"2019-08-09",
-    "description":"Connect API Portal to API Manager to leverage the user registry and API Catalog stored and managed in API Manager."
+"title": "Connect API Portal to API Manager",
+  "linkTitle": "Connect API Portal to API Manager",
+  "weight": "70",
+  "date": "2019-08-09",
+  "description": "Connect API Portal to API Manager to leverage the user registry and API Catalog stored and managed in API Manager."
 }
-
 Before you can use API Portal, you must connect it to at least one API Manager. You can also connect API Portal to multiple API Managers to expose APIs centrally in one place.
 
 ## Connect API Portal to a single API Manager
@@ -25,19 +24,21 @@ To connect API Portal to API Manager:
 
 API Portal is now connected to API Manager.
 
+To log into API Portal you must have a user configured in API Manager. For more information, see [Manage users](/docs/apim_administration/apimgr_admin/api_mgmt_admin/#manage-users). Note that, by default, only users with **Organization administrator** or **User** roles are allowed to login to API Portal.
+
 ## Connect API Portal to multiple API Managers
 
 This section describes how to configure API Portal to connect to more than one API Manager.
 
 ### Example architectures
 
-APIs are often hosted in several API Manager instances, for example, in multiple environments (sandbox, testing, production) or in multiple API Catalogs (for example, for internal users and for external users). Instead of linking API Portal to just one API Manager, you can configure API Portal to connect to multiple API Managers so that the exposed APIs can be explored centrally in one place.
+APIs are often hosted in several API Manager instances, for example, in multiple environments (sandbox, testing, production) or in multiple API Catalogs (for example, for internal users and for external users). You can configure API Portal to connect to multiple API Managers so that the exposed APIs can be explored centrally in one place.
 
-For example, you can configure API Portal as a centralized catalog presenting API across all environments:
+For example, you can configure API Portal as a centralized catalog presenting APIs across all environments:
 
 ![Illustration on how API Portal centralizes APIs from multiple environments](/Images/APIPortal/API_Portal_multiMgr_environment.png)
 
-This type of portal is recommended only for internal purposes and internal users.
+{{< alert title="Note" color="primary" >}}This type of portal is recommended only for internal purposes and internal users.{{< /alert >}}
 
 Alternatively, API Portal can pull APIs from different deployments. For example, you could host one API Manager with non-business critical APIs in a cloud, and another API Manager containing the APIs on confidential data on-premise. A single API Portal can connect to both deployments, and expose the APIs as configured in each API Manager:
 
@@ -47,7 +48,7 @@ Alternatively, API Portal can pull APIs from different deployments. For example
 
 API Managers and API Catalogs are configured normally, each API Manager controlling how the APIs in it are exposed.
 
-One of the API Managers is assigned as a master API Manager, and it controls all user operations, such as signing up and signing in to API Portal, forgotten password, and updates to user profiles. The rest of the API Managers act as slaves that automatically upon user login call the master API Manager using a specific policy for the user information, and then replicate the user and create API Portal user session cookies.
+One of the API Managers is assigned as a *master* API Manager, and it controls all user operations, such as signing up and signing in to API Portal, forgotten password, and updates to user profiles. The rest of the API Managers act as *slaves* that automatically upon user login call the *master* API Manager using a specific policy for the user information, replicate the user, and create API Portal user session cookies.
 
 Other operations in API Portal, such as managing organizations, APIs, and applications, are done separately for each API Manager as usual.
 
@@ -68,15 +69,15 @@ After a successful login, the user can see APIs and applications assigned to the
 
 Master API Manager
 
-: Organization X has application F that is shared with the user A.
-: Organization X has APIs C and D that are both assigned to application F.
+* Organization X has application F that is shared with the user A.
+* Organization X has APIs C and D that are both assigned to application F.
 
 Slave API Manager
 
-: Organization X has application Q that is shared with the user A.
-: Organization X has APIs G and H that are both assigned to application Q.
+* Organization X has application Q that is shared with the user A.
+* Organization X has APIs G and H that are both assigned to application Q.
 
-This means that when API Portal is connected to both API Managers, the user A sees the APIs C, D, G, and H listed in API Catalog, and applications F and Q on the Applications page. If API Portal was only connected to, say, master API Manager, the user A would see only APIs C and D, and application F.
+This means that when API Portal is connected to both API Managers, user A sees the APIs C, D, G, and H listed in API Catalog, and applications F and Q on the Applications page. If API Portal was only connected to the master API Manager, user A would see only APIs C and D, and application F.
 
 ### Prerequisites
 
@@ -90,7 +91,7 @@ For more details on installing and configuring API Manager, see the [API Gateway
 
 ### Configure synchronization policies for API Managers
 
-The slave API Managers communicate with the master API Manager using an external identity provider policy. A sample policy container `AuthoToMasterDynamicOrg.xml` is included in the API Portal installation package available from Axway Support at [https://support.axway.com](https://support.axway.com/).
+The slave API Managers communicate with the master API Manager using an external identity provider policy. A sample policy container `AuthoToMasterDynamicOrg.xml` is included in the API Portal installation package available from [Axway Support](https://support.axway.com/).
 
 You must import the policy container to Policy Studio, configure the sample policies to point to your master API Manager, configure your environment settings, and deploy the configuration to your slave API Manager. For more information on working in Policy Studio, see the [Develop in Policy Studio](/docs/apim_policydev/).
 
@@ -110,14 +111,16 @@ You must create a separate project for each slave API Manager to use separate co
 
 1. In the Policy Studio node tree, click **Environment Configuration > Listeners > API Gateway > API Portal > Ports**.
 2. Open the configured port, go to the **Mutual Authentication** tab, and check that **Ignore client certificates** is selected.
-3. In the node tree, click **Environment Configuration > Listeners > API Gateway > API Portal > Paths**, and under `/api/portal/`, double-click **API Manager API v1.2**, and click **Add**.
-4. Add a new servlet property:
-    * **Name**: `CsrfProtectionFilterFactory.refererWhitelist`
-    * **Value**: the login URL of the *master* API Manager (for example, `https://10.142.10.4:8075/api/portal/v1.3/login`)
-5. If you already have this servlet property, you can simply edit the value. If you list multiple URLs, separate them with a comma.
-6. Repeat the previous step on **API Manager API v1.3**.
+3. In the node tree, click **Environment Configuration > Listeners > API Gateway > API Portal > Paths.**, and under `/api/portal/`, double-click **API Manager API v1.3** or **API Manager API v1.4**, depending on [your API Portal version](/docs/apim_relnotes/20200930_apip_relnotes/#important-changes).
+4. Click **Add**.
+5. Add a new servlet property. The version of the API can be `1.3` or `1.4` depending on [your API Portal version](/docs/apim_relnotes/20200930_apip_relnotes/#important-changes).
+
+   * **Name**: `CsrfProtectionFilterFactory.refererWhitelist`
+   * **Value**: the login URL of the *master* API Manager (for example, `https://10.142.10.4:8075/api/portal/v1.3/login`)
+
+6. If you already have a servlet property, you can simply edit its value. If you list multiple URLs, separate them with a comma.
 7. In the node tree, click **Server Settings > General**, and ensure that **Server's SSL cert's name must match name of requested server** is not selected.
-8. Click **Server Settings > API Manager > Identity Provider**, select **Use external identity provider**.
+8. Click **Server Settings > API Manager > Identity Provider**, and select **Use external identity provider**.
 9. Set **Account authentication policy** to the **AuthenticateToMaster** policy and **Account information policy** to **Get Current Info**, and click **Save**.
 10. Deploy the configuration to API Gateway.
 
@@ -134,3 +137,9 @@ You must create a separate project for each slave API Manager to use separate co
 9. Repeat to add additional slave API Managers.
 
 API Portal is now connected to multiple API Managers.
+
+To log in in to API Portal you must have a user configured in API Manager. For more information, see [Manage users](/docs/apim_administration/apimgr_admin/api_mgmt_admin/index.html#manage-users). Note that, by default, only users with **Organization administrator** or **User** roles are allowed to login to API Portal.
+
+Watch this video to learn more about how to connect API Portal to multiple API Managers.
+
+{{< youtube n3ouU_sM09Y >}}

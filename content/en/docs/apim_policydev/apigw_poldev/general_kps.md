@@ -12,7 +12,7 @@ A KPS is typically used to store property values used in policies on a gateway. 
 
 {{< alert title="Caution" color="warning" >}}Do not edit the default KPS tables in Policy Studio unless under strict supervision from Axway Support. This includes the **API Server**, **OAuth**, or **API Portal** KPS tables available under **Environment Configuration > Key Property Stores**.{{< /alert >}}
 
-For more details on Key Property Stores, see the [API Gateway Key Property Store User Guide](/bundle/APIGateway_77_KPSUserGuide_allOS_en_HTML5).
+For more details on Key Property Stores, see the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/).
 
 ## KPS tables and collections
 

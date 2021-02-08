@@ -77,7 +77,7 @@ link is clicked:
 
 You can export API Gateway configuration data by right-clicking a Policy Studio tree node (for example, policy or policy container), and selecting the relevant export menu option (for example, **Export Policy**). The configuration is exported to an XML file, which you can then import into a different API Gateway configuration.
 
-{{< alert title="Note" color="primary" >}}For details on migrating API Gateway configuration between development, testing, and production environments, see the [API Gateway DevOps Deployment Guide](/bundle/APIGateway_77_PromotionGuide_allOS_en_HTML5/).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}For details on migrating API Gateway configuration between development, testing, and production environments, see the [API Gateway DevOps Deployment Guide](/docs/apigtw_devops/).{{< /alert >}}
 
 ### What is exported
 

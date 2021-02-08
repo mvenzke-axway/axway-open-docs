@@ -10,7 +10,7 @@
 
 This section describes how to use Policy Studio to configure an API Gateway policy manually. It also applies to cases where a web service definition is not available in a Web Services Description Language (WSDL) file, meaning that the policy used to protect a web service must be configured manually.
 
-However, the recommended way to configure a policy to protect a web service is to import the WSDL file for that service. If your web service has WSDL-based definitions, see [Configure policies from WSDL files](/docs/apim_policydev/apigw_poldev/web_services/general_policy_wsdl/).
+However, the recommended way to configure a policy to protect a web service is to import the WSDL file for that service. If your web service has WSDL-based definitions, see [Configure policies from WSDL files](/docs/apim_policydev/apigw_web_services/general_policy_wsdl/).
 
 The following steps outline how to manually create a policy to protect a web service and then test it.
 
@@ -120,9 +120,6 @@ Then if you select a different policy as the request policy in the Policy Studio
 
 ![Editing a Policy Shortcut](/Images/docbook/images/general/edit_global_policy_shortcut.gif)
 
-For more details on configuring these windows, see [Policy shortcut chain](/csh?context=512&product=prod-api-gateway-77)
-in the [API Gateway Policy Developer Filter Reference](/bundle/APIGateway_77_PolicyDevFilterReference_allOS_en_HTML5/).
-
 {{< alert title="Note" color="primary" >}}If you remove a label from a policy by deselecting it in the Policy Studio tree, any reference to that labeled policy is not called when evaluating the shortcut in the chain, irrespective of whether **Evaluate this shortcut when executing the chain** is selected (the **Active** status column in the table view). This corresponds with the behavior for a specific policy in the chain. If a link to a policy is not set for a shortcut, the link is not evaluated.{{< /alert >}}
 
 In this example, the table shows that the shortcut is configured to point to the labeled policy, but the label does not resolve to a policy (for example, it is unspecified because there is no policy in the specified role):
@@ -137,7 +134,7 @@ You can configure a global policy at the service level to run as part of a polic
 
 ![Global Policy Configured on Relative Path](/Images/docbook/images/general/path_global_policy.gif)
 
-For more details, see [Configure relative paths](/docs/apim_policydev/apigw_poldev/gw_instances/general_relative_path/).
+For more details, see [Configure relative paths](/docs/apim_policydev/apigw_gw_instances/general_relative_path/).
 
 ### Show global policies
 

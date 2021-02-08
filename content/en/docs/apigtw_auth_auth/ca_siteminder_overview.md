@@ -10,7 +10,7 @@ CA SiteMinder is a centralized web access management system that provides user a
 
 CA SiteMinder authenticates end users and authorizes them to access protected web resources. The gateway can request SiteMinder to authenticate end users using the user profiles stored in the SiteMinder server. SiteMinder decides whether the user should be authenticated, and the gateway then enforces this decision. API Gateway can also request SiteMinder to make authorization decisions on behalf of end users that have successfully authenticated to the gateway.
 
-Integration with CA SiteMinder requires CA SiteMinder version 12.52. For more information on CA SiteMinder, go to the [CA Technologies website](http://www.ca.com/usl).
+Integration with CA SiteMinder requires CA SiteMinder version 12.52. For more information on CA SiteMinder, go to the [CA Technologies website](https://www.broadcom.com/products/cyber-security/identity/siteminder).
 
 ## Flow description
 
@@ -125,7 +125,7 @@ To obtain this information, contact your SiteMinder administrator.
 3. Enter your agent name (`apigateway.axway.int`) and agent configuration object name (`V6HostConfObject`) you created in [Register API Gateway as the SiteMinder agent](#register-api-gateway-as-the-siteminder-agent).
 4. Click **Browse**, select the `SmHost.conf` file for your agent, and click **OK**.
 
-For more details on the fields and options in this configuration window, see [Configure SiteMinder/SOA Security Manager connections](/docs/apim_policydev/apigw_poldev/external_connections/connector_ca_connection/).
+For more details on the fields and options in this configuration window, see [Configure SiteMinder/SOA Security Manager connections](/docs/apim_policydev/apigw_external_connections/connector_ca_connection/).
 
 ### Configure SiteMinder authentication policy
 
