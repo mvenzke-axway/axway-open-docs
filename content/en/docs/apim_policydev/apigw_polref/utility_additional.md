@@ -73,7 +73,12 @@ The possible paths through this filter are as follows:
 
 This filter enables you to execute an external process from a policy. It can execute any external process (for example, start an SSH session to connect to another machine, run a script, or send an SMS message).
 
-The output of the external process is captured in two variables on the message whiteboard:  `exec.output` contains everything the process printed to the standard output stream, `STDOUT`, while `exec.error` contains everything that the process printed to the standard error stream, `STDERR`.  These variables may be empty if the program did not print any output to those streams.
+The output of the external process is captured in two variables on the message whiteboard:
+
+*  `exec.output`, which contains everything the process printed to the standard output stream, `STDOUT`.
+* `exec.error`, which contains everything that the process printed to the standard error stream, `STDERR`.
+
+These variables might be empty if the program did not print any output to those streams.
 
 For programs that output data to files, a [Load File Contents filter](docs/apim_policydev/apigw_polref/conversion_additional/index.html#load-file-contents-filter) may be needed to read the output.  Also, logic to clean up old files should be implemented in that case.
 
@@ -91,7 +96,7 @@ tab includes the following fields:
 
 **Working directory**: Specify the directory to run the command from. You can specify this using a selector that is expanded to the specified value at runtime. Defaults to `${environment.VINSTDIR}`, where `VINSTDIR` is the location of a running API Gateway instance.
 
-**Expected exit code**: Specify the expected exit code for the process when it has finished. The filter will follow the true path when this exit code is received from the process and false, otherwise.  Defaults to `0`, following the Unix convention that processes should return zero on success and non-zero on failure.
+**Expected exit code**: Specify the expected exit code for the process when it has finished. The filter will follow the `true` path when this exit code is received from the process, and it will follow the `false` path otherwise. By following the Unix convention that processes should return zero on success and non-zero on failure, this filter defaults to `0`.
 
 **Kill if running longer than (ms)**: Specify the number of milliseconds after which the running process is killed. Defaults to `60000`.
 
