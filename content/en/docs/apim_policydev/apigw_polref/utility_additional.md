@@ -80,7 +80,7 @@ The output of the external process is captured in two variables on the message w
 
 These variables might be empty if the program did not print any output to those streams.
 
-For programs that output data to files, a [Load File Contents filter](docs/apim_policydev/apigw_polref/conversion_additional/#load-file-contents-filter) may be needed to read the output.  Also, logic to clean up old files should be implemented in that case.
+For programs that output data to files, a [Load File Contents filter](/docs/apim_policydev/apigw_polref/conversion_additional/#load-file-contents-filter) might be needed to read the output. Also, in this case, you must ensure to implement a logic to clean up old files.
 
 Complete the following fields:
 
