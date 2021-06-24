@@ -75,12 +75,12 @@ This filter enables you to execute an external process from a policy. It can exe
 
 The output of the external process is captured in two variables on the message whiteboard:
 
-*  `exec.output`, which contains everything the process printed to the standard output stream, `STDOUT`.
+* `exec.output`, which contains everything the process printed to the standard output stream, `STDOUT`.
 * `exec.error`, which contains everything that the process printed to the standard error stream, `STDERR`.
 
 These variables might be empty if the program did not print any output to those streams.
 
-For programs that output data to files, a [Load File Contents filter](docs/apim_policydev/apigw_polref/conversion_additional/index.html#load-file-contents-filter) may be needed to read the output.  Also, logic to clean up old files should be implemented in that case.
+For programs that output data to files, a [Load File Contents filter](docs/apim_policydev/apigw_polref/conversion_additional/#load-file-contents-filter) may be needed to read the output.  Also, logic to clean up old files should be implemented in that case.
 
 Complete the following fields:
 
