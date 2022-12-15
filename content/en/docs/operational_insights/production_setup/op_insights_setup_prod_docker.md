@@ -11,7 +11,7 @@ This section covers advanced configuration topics that are required for a produc
 ## Before you start
 
 * Ensure that you have all [prerequisites](/docs/operational_insights/op_insights_prerequisites/) in place.
-* Ensure that you have applied the [basic configuration](docs/operational_insights/basic_setup).
+* Ensure that you have applied the [basic configuration](/docs/operational_insights/op_insights_basic_setup).
 
 ## Considerations to use Elasticsearch for multi-nodes
 
@@ -90,7 +90,7 @@ Before a document is sent to Elasticsearch, additional information for the proce
 API_MANAGER=https://my.apimanager.com:8075
 ```
 
-To configure multiple API Managers, see [Multiple API Managers](/docs/operational_insights/op_insights_multiple_apimanagers/).
+To configure multiple API Managers, see [Multiple API Managers](/docs/operational_insights/additional_features/op_insights_multiple_apimanagers/).
 
 ## Support for custom properties
 

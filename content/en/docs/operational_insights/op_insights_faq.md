@@ -16,11 +16,11 @@ The component can currently be operated in production without a subscription. If
 
 ## Do I need a specific API Gateway version to use this solution?
 
-Any API Gateway version that supports the [Open Traffic Event Log](/docs/apim_reference/monitor_traffic_events_metrics/#open-traffic-event-log-settings) is supported. The component has been tested with the API Management version 7.7 [July 2020](https://axway-open-docs.netlify.app/docs/apim_relnotes/20200730_apimgr_relnotes/) update.
+Any API Gateway version that supports the [Open Traffic Event Log](/docs/apim_reference/monitor_traffic_events_metrics/#open-traffic-event-log-settings) is supported. The component has been tested with the API Management version 7.7 [July 2020](/docs/apim_relnotes/20200730_apimgr_relnotes/) update.
 
 ## Will indexed data be deleted automatically?
 
-Yes. Each index created in Elasticsearch is assigned an Index Lifecycle Policy ([ILM](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html)). This controls how long data is retained for each data type. For more information, see [Configure the retention period](/docs/op_insights/production_setup/op_insights_setup_prod_docker/#configure-the-retention-period).
+Yes. Each index created in Elasticsearch is assigned an Index Lifecycle Policy ([ILM](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html)). This controls how long data is retained for each data type. For more information, see [Configure the retention period](/docs/operational_insights/production_setup/op_insights_setup_prod_docker/#configure-the-retention-period).
 
 ## Can I use my own existing Elasticsearch cluster?
 

@@ -111,7 +111,7 @@ To set up or change the user authorization, you must configure it in the `UNREST
 
 ## Setup with Helm
 
-To set up Operational Insights with Helm, see [setup Operational insights in your production environment]((/docs/operational_insights/production_setup/op_insights_setup_prod_helm)).
+To set up Operational Insights with Helm, see [setup Operational insights in your production environment](/docs/operational_insights/production_setup/op_insights_setup_prod_helm).
 
 ## Basic setup with Docker Compose
 
@@ -294,7 +294,7 @@ To start the Filebeat container, run:
 docker compose --env-file .env -f filebeat/docker-compose.filebeat.yml up -d
 ```
 
-Use `docker logs filebeat` to check the health of the container and that no errors are displayed. You can examine the indexes in Kibana (**Menu > Management > Stack Management > Index Management**) to check whether the indexes are filled with data. If you encounter any issues, see [Troubleshooting](/docs/operational_insights/op_insights_troubleshoot).
+Use `docker logs filebeat` to check the health of the container and that no errors are displayed. You can examine the indexes in Kibana (**Menu > Management > Stack Management > Index Management**) to check whether the indexes are filled with data. If you encounter any issues, see [Troubleshooting](/docs/operational_insights/op_insights_troubleshooting_tips).
 
 ### Where to go next
 

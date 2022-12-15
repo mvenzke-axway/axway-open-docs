@@ -12,9 +12,9 @@ Operational Insights is one of the components of Amplify Analytics, which also i
 
 This component works in combination with the analytics stack, Elasticsearch, Logstash, and Kibana (ELK), and allows you to observe millions of requests across different API Gateway instances over a long time frame. It allows you to use Elasticsearch as the data source for the Traffic Monitor, a built-in of API Gateway, allowing for increased scalability and performance.
 
-This section outlines how API Gateway can be integrated to use an existing ELK stack or the basic outline to deploy an ELK stack and connect to it.
+You can download Operational Insights from the [Axway repository](http://repository.axway.com).
 
-In the event you do not have an ELK stack, see [Elastic Overview](https://www.elastic.co/guide/en/elastic-stack/7.17/overview.html) documentation for details on configuring and managing an ELK stack.
+This section outlines how API Gateway can be integrated to use an existing ELK stack or the basic outline to deploy an ELK stack and connect to it. In the event you do not have an ELK stack, see [Elastic Overview](https://www.elastic.co/guide/en/elastic-stack/7.17/overview.html) documentation for details on configuring and managing an ELK stack.
 
 ## How it works
 

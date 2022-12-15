@@ -17,7 +17,7 @@ This section is focused on the integration layer between the API Gateway and the
 
 ## Prerequisite
 
-* You have familiarized yourself with Operational Insights by using its [basic setup](/docs/operational_insights/basic_setup/).
+* You have familiarized yourself with Operational Insights by using its [basic setup](/docs/operational_insights/op_insights_basic_setup/).
 
 ## Securing a kubernetes cluster
 

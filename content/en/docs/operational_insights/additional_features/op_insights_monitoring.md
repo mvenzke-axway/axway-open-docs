@@ -90,7 +90,7 @@ Follow these steps to activate APM:
     Application performance monitoring enabled. Using APM-Server: https://axway-elk-apm-server:8200
     ```
 
-3. Activate APM service in APIBuilder4Elastic. If no APM service is specified, then, the default is used (<https://apm-server:8200>). However, you can configure it yourself using the `APM_SERVER` parameter.
+3. Activate APM service in APIBuilder4Elastic. If no APM service is specified, the default is used (`https://apm-server:8200`). However, you can configure it yourself using the `APM_SERVER` parameter.
 
 ## Activate APM in Helm
 

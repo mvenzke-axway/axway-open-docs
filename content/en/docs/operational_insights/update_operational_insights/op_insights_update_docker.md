@@ -65,7 +65,7 @@ docker compose up -d
 
 Run these commands on all machines running APIBuilder, Logstash, and Memcache.
 
-If you have deployed Operational Insights on a Kubernetes cluster using Helm, see [Configure a basic setup for Helm charts](/docs/operational_insights/basic_setup/op_insights_setup_basic_helm/) for more information.
+If you have deployed Operational Insights on a Kubernetes cluster using Helm, see [Update Operational Insights in a Helm chart](/docs/operational_insights/update_operational_insights/op_insights_update_helm/) for more information.
 
 {{< alert title="Note" >}}When updating the API Builder component, it is important to change the `image` parameter in your `docker-compose.yaml` configuration file to point to the new API Builder image to be used. {{< /alert >}}
 

@@ -100,7 +100,6 @@ The following are the requirements specific to deploy Operational Insights on Do
 * Helm >= `3.3.0`.
 * `kubectl` installed and configured.
 * OpenShift (not yet tested).
-* [Required resources](/docs/operational_insights/op_insights_updatehelm/#required-resources).
 * [Ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) already installed.
 
 {{< alert title="Note" >}}

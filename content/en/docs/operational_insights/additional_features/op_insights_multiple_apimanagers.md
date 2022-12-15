@@ -20,7 +20,7 @@ apibuilder4elastic:
   apimgrUrl: "group-2|https://api-manager-1:8075, group-5|https://api-manager-2:8275"
 ```
 
-In this example, all events of `group-2` are enriched with the help of the API Manager (<https://api-manager-1:8075>) and of `group-5` accordingly with <https://api-manager-2:8275>.
+In this example, all events of `group-2` are enriched with the help of the API Manager (`https://api-manager-1:8075`) and of `group-5` accordingly with `https://api-manager-2:8275`.
 
 ### Configure different topologies and domains
 
