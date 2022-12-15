@@ -137,4 +137,4 @@ If the number of requests exceeds the configured limit during an active session,
 
 If the number of requests exceeds the configured limit during an unauthenticated session, a `403 Forbidden` error response is returned, and the IP address of the client is locked for the configured time.
 
-{{< alert title="Note" color="primary" >}}Request rate limiter for unauthenticated sections is only applicable to the `/forgotpassword` endpoint.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Request rate limiter for unauthenticated sections is only applicable to the `/forgotpassword` and `/register` endpoints.{{< /alert >}}
