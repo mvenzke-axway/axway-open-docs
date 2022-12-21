@@ -9,7 +9,7 @@ description: Follow this section to install API Gateway and API Manager using a 
 ## Prerequisites
 
 * Knowledge of, and preferably experience with using [Helm](https://helm.sh).
-* Download the API Gateway helm charts from [Axway repository](http://respository.axway.com/)
+* Download the API Gateway helm charts from [Axway repository](https://repository.axway.com)
 * You must have access to a Kubernetes cluster, for example in AWS, Azure, Openshift, and so on. For details on possible cloud based architectures, see [API management reference architectures](/docs/apim-reference-architectures/).
 * You must have a persistent storage with access mode of `RWO` and `RWX`, and which is exposed as a Kubernetes storage class, for example, OpenShift Container Storage, Azure Disks/Files, AWS EBS/EFS, nfs-client.
 
@@ -17,7 +17,7 @@ description: Follow this section to install API Gateway and API Manager using a 
 
 ## Download Docker images
 
-Download the latest Axway docker images from [Axway repository](http://respository.axway.com/) or alternatively, follow section [Generate custom API Management Docker images](/docs/apim_installation/apigw_containers/docker_scripts_prereqs/) to generate a custom Docker image.
+Download the latest Axway docker images from [Axway repository](https://repository.axway.com) or alternatively, follow section [Generate custom API Management Docker images](/docs/apim_installation/apigw_containers/docker_scripts_prereqs/) to generate a custom Docker image.
 
 ## Publish Docker images
 
