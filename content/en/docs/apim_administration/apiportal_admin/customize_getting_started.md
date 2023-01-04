@@ -270,6 +270,8 @@ For more information, see [T4 Page Builder](https://www.joomlart.com/documentati
 API Portal uses Joomla modules to render dynamic content (APIs, Applications, Users). Each module provides configuration which gives you control over the content rendered by the module.
 You can see what configuration options a module provides by clicking **Content > Site Modules**, and opening a module.
 
+Watch this video to learn more about applying your customizations and styling to the new T4 Template: {{< youtube EwnpLoCr-4s >}}
+
 ## Customize your logo
 
 Change the API Portal site logo using the Joomla! Media Manager.
@@ -397,3 +399,6 @@ Follow the steps below to configure menu items in the T4 template:
 6. Click **Menus > Manage > User Menu T4** and change the menu name from *user-menu-t4* to *user-menu*.
 7. Click **Menus > User Menu T4**, select the checkboxes for all menu items and click **... Actions > Publish**.
 8. (Optional) To preserve URLs format, click all menu items under both **Menus > User Menu T4** and **Menus > Main Menu T4** and remove *-t4* prefix from aliases.
+
+Watch this video to learn more about enabling T4 Template after upgrade:
+{{< youtube QNmU_CrE1Ic >}}

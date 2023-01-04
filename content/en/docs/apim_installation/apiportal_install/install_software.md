@@ -88,12 +88,11 @@ You must install the EasyBlog and EasyDiscuss components.
 1. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal host>/administrator`) using the default Joomla! administrator credentials.
 
    Contact your Axway Account Manager to retrieve the default administrator credentials. It is mandatory that you change these credentials when you first log in. If after the installation you experience difficulties with the Joomla! administrator password, you can try to reset the password. For more details, see [How do you recover or reset your admin password?](https://docs.joomla.org/How_do_you_recover_or_reset_your_admin_password%3F)
-2. Click **Components > EasyBlog**, and follow the instructions in the EasyBlog installer.
-3. If prompted to select the installation method, select **Installation via Directory**, select the package from the drop-down list, and follow the instructions in the installer to the finish.
+2. Click **Components > EasyBlog > Dashboard**, and follow the instructions in the EasyBlog installer.
+3. Click **Components > EasyDiscuss > Dashboard**, and repeat the component installation as described for EasyBlog.
 
    Do not install any of the modules and plugins unless you plan to use them. To prevent installing any modules, click **Modules** and deselect **Select All**, then repeat the same for **Plugins**.
-4. Click **Components > EasyDiscuss**, and repeat the component installation as described for EasyBlog.
-5. If a newer version is available for **EasyBlog** or **EasyDiscuss**, click **Update Now** to update the component.
+4. If a newer version is available for **EasyBlog** or **EasyDiscuss**, click **Update Now** to update the component.
 
 ## Uninstall API Portal software
 

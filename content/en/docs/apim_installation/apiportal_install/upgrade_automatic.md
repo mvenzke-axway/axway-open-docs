@@ -70,10 +70,10 @@ If you have a 7.7.x API Portal installation, you can upgrade to the latest versi
    tar xpvzf <package_name>.tgz
    ```
 
-3. Extract the Joomla! upgrade package (for example, `joomla-update-package-3.9.14-package.zip`) from the API Portal upgrade package to your local file system.
+3. Extract the Joomla! upgrade package (for example, `joomla-update-package-4.2.5.zip`) from the API Portal upgrade package to your local file system.
 4. Log in to the Joomla! Administrator Interface (JAI) (`https://<API Portal host>/administrator`).
-5. Click **Components > Joomla! Update**, and click the **Upload & Update** tab.
-6. Select the Joomla! upgrade package (for example, `joomla-update-package-3.9.14-package.zip`) from your file system.
+5. Click **System > Update > Joomla**, and click the **Upload and Update** button.
+6. Select the Joomla! upgrade package (for example, `joomla-update-package-4.2.5.zip`) from your file system.
 7. Click **Upload & Install**, and follow the displayed instructions.
 8. Enter the following to run the upgrade script:
 
@@ -143,12 +143,9 @@ After the upgrade, perform the following tasks.
 After upgrade, you must reinstall Easyblog and EasyDiscuss in JAI to update the component version and fix compatibility issues. The API Portal data related to the components (posts, attachments) is not affected.
 
 1. Log in to the JAI.
-2. Click **Components > EasyBlog**, and follow the instructions in the EasyBlog installer.
-3. If prompted to select the installation method, select **Installation via Directory**, select the available package from the drop-down list, and follow the instructions in the installer to the finish. Do not install any of the modules and plugins unless you plan to use them. To prevent installing any modules, click **Modules** and deselect **Select All**, then repeat the same for **Plugins**.
-4. Click **Components > EasyDiscuss**, and repeat the component installation as described for EasyBlog.
-5. If a newer version is available for **EasyBlog** or **EasyDiscuss**, click **Update Now** to update the component.
-
-{{< alert title="Note" color="primary" >}} To resolve a known issue (caused by EasyBlog) with broken menu paths when creating new custom menus for your API Portal in JAI, you must rebuild the menu paths. In JAI, select **Menus > Main Menu** and click **Rebuild**. You only need to rebuild the menu paths once after installation or upgrade. {{< /alert >}}
+2. Click **Components > EasyBlog > Dashboard**, and follow the instructions in the EasyBlog installer.
+3. Click **Components > EasyDiscuss > Dashboard**, and repeat the component installation as described for EasyBlog.
+4. If a newer version is available for **EasyBlog** or **EasyDiscuss**, click **Update Now** to update the component.
 
 ### Consolidate vhosts and .htaccess files (optional)
 
