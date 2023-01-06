@@ -1,33 +1,34 @@
 ---
-title: Localization of API Portal
-linkTitle: Localization
+title: Localization of API Portal - Purity III template
+linkTitle: Localization with Purity III
 weight: 60
 date: 2019-07-30T00:00:00.000Z
 description: You can localize the API Portal user interface to use another
-  language, or change time and date formats.
+  language.
 ---
-## Change API Portal language
 
-You can change the API Portal UI texts from the default English to another language.
+API Portal supports localization using a single language or multiple languages. When changing to a single language, existing elements like menus, pages, modules, and so on are translated to the desired language, and no additional copies of those elements are required, whereas when changing to multiple languages, all API Portal elements must be first cloned to each desired language, and then translated. After configuring support for multiple languages, you can enable a language switcher to your API Portal.
 
-### Install a language
+## Localize API Portal to a single language
+
+You can change the API Portal UI texts from the default English to another language.
+
+### Install a new language
 
 User interface strings are stored in language-specific resource files. To add these resource files for a new language, you must install the language.
 
 1. In the Joomla! Admin Interface (JAI) left menu, click **System > Languages** in the **Install** card.
 2. Find and select the language to install, and click **Install**.
 3. After the installation is finished, click **System > Languages** in the **Manage** card and ensure that **Site** is selected at the top of the page.
-4. To set the installed language as the default language of your API Portal, click the star button in the row for that language.
+4. To set the installed language as the default language of your API Portal, click the star button in the row for that language.
 
-   ![Install language](/Images/APIPortal/joomla_install_lang_j4.png)
+   {{< alert title="Tip" color="primary" >}}You can change the default language of JAI independent of your API Portal. Select **Administrator** on the **Languages: Installed** page and click the star button in the row for the required language. You can also select any of the installed languages when you log in to JAI.{{< /alert >}}
 
-   {{< alert title="Tip" color="primary" >}}You can change the default language of JAI independently from your API Portal. Select **Administrator** on the **Languages: Installed** page and click the star button in the row for the required language. You can also select any of the installed languages when you log in to JAI.{{< /alert >}}
+### Add API Portal UI strings to the installed language
 
-### Add API Portal UI strings to the installed language
+API Portal UI strings are not included in the installed language resource files, so you must add the required strings for the new language.
 
-API Portal UI strings are not included in the installed language resource files, so you must add the required strings for the new language.
-
-The UI strings are stored in initialization (`.ini`) files. Each language has its own `.ini` file that control the UI text shown in API Portal. By default, the API Portal UI strings are included only in the English (`en-GB.com_apiportal.ini` file). To change the language shown in API Portal, you must have a translation of the English `.ini` file for that language.
+The UI strings are stored in initialization (`.ini`) files. Each language has its own `.ini` file that control the UI text shown in API Portal. By default, the API Portal UI strings are included only in the English (`en-GB.com_apiportal.ini` file). To change the language shown in API Portal, you must have a translation of the English `.ini` file for that language.
 
 ### Add a translated UI string file
 
@@ -47,11 +48,11 @@ To upload language files:
 
 To translate labels or values of custom properties, you must add a new row to the translation `.ini` file, with the desired `key/value` pair, and ensure that the value of the key is in capital letters. For example, to translate a custom property with label "Environment" to French, add the following line to the translation file: `ENVIRONMENT="Environnement"`.
 
-## Provide API Portal in multiple languages
+## Localize API Portal to multiple languages
 
-You can provide API Portal in multiple languages at the same time to cater for your API consumers from different countries. The API consumers can use language-specific URLs to access API Portal in their own language.
+You can provide API Portal in multiple languages at the same time to cater for your API consumers from different countries. The API consumers can use language-specific URLs to access API Portal in their own language.
 
-Unlike when localizing API Portal to a single language, you are not simply substituting the language with another one. Instead, when providing several language versions of your API Portal, you must duplicate the API Portal elements and content for each language in addition to changing the UI texts.
+Unlike when localizing API Portal to a single language, you are not simply substituting the language with another one. Instead, when providing several language versions of your API Portal, you must duplicate the API Portal elements and content for each language in addition to changing the UI texts.
 
 You do not have to install a language to Joomla! before configuring the required components. However, it might help you to find the correct details when configuring a language.
 
@@ -59,7 +60,7 @@ You do not have to install a language to Joomla! before configuring the required
 
 To add a new content language and main menu, follow these steps:
 
-1. In the JAI left navigation menu, click **System > Content Languages**.
+1. In the JAI left navigation bar, click **Language(s) > Content Languages**.
 2. Click **New** to add a new content language.
 
    {{< alert title="Note" color="primary" >}}If you have already installed a new language, a corresponding content language will already exist for that language and you can skip steps 3 to 7, and continue from step 8.{{< /alert >}}
@@ -74,7 +75,7 @@ To add a new content language and main menu, follow these steps:
 
 ### Clone the main menu items
 
-You must duplicate the API Portal main menu for each language.
+You must duplicate the API Portal main menu for each language.
 
 1. In the JAI left menu, click **Menus** and select the main menu to clone.
 2. To clone all the menu items at once, click the Check All Items check box and click **Batch**.
@@ -90,45 +91,9 @@ You must duplicate the API Portal main menu for each language.
 
 ### Duplicate the page template styles
 
-You must duplicate your page template styles for each language. API Portal versions before [November 22](/docs/apim_relnotes/20221130_apip_relnotes/) ship with the Purity III template style by default, while API Portal installations from *November 22* onwards, ship with the [T4](https://www.joomlart.com/t4-framework) Page Builder template by default.
+You must also duplicate your page template styles for each language. By default, API Portal uses the Purity III template style.
 
-#### Use the T4 Page Builder template
-
-Follow this section to use the T4 base template:
-
-1. In JAI, from the left navigation menu, click **System > Site Template Styles** from the **Templates** card. The following image shows the Site Template Style list:
-
-   ![Site Template Styles list](/Images/APIPortal/APIPortal_localization/scr1_styles_list.png)
-2. Select **T4 - Page Builder** from the list, then click the **Duplicate** button.
-3. Click the newly duplicated style (This opens the T4 style editor).
-4. From the left navigation menu, click **Overview**, then change the name of the style to something informative. The following image shows the T4 Page Builder style editor:
-
-   ![T4 Page Builder Style Editor](/Images/APIPortal/APIPortal_localization/scr2_styles_editor.png)
-5. From the left navigation menu, click **Menu Assignment**, then select the menu items for the **Legal Menu** of the corresponding language. The following image shows the T4 Page Builder legal menu assignment.
-
-   ![T4 Page Builder legal menu assignment](/Images/APIPortal/APIPortal_localization/scr3_menu_assignment.png)
-
-6. Click the down arrow of the **Save** button, then click **Save & Close**.
-
-#### Use T4 API Portal default template
-
-1. In JAI, from the left navigation menu, click **System > Site Template Styles** from the **Templates** card.
-2. Select **T4 - Default** from the list, then click the **Duplicate** button.
-3. Click the newly duplicated style (This opens the T4 style editor).
-4. From the left navigation menu, click **Overview**, then change the name of the style to something informative.
-5. From the left navigation menu, click **Navigation**, then click **Clone selected navigation**. The following image shows the **Navigation** screen.
-
-   ![T4 Page Builder nav cloning](/Images/APIPortal/APIPortal_localization/scr4_nav_cloning.png)
-6. Enter a name for the newly cloned navigation and click the **Save** button. The following image shows the cloned navigation:
-   ![T4 Page Builder nsv clone selected](/Images/APIPortal/APIPortal_localization/scr6_nav_clone_selected.png)
-7. From the left navigation menu, click **Menu Assignment**, then select the menu items for the main menu and the user menu of the corresponding language.
-    ![T4 Page Builder API Portal menus assigned](/Images/APIPortal/APIPortal_localization/scr7_menu_assignment.png)
-
-8. Click the down arrow of the **Save** button, then click **Save & Close**.
-
-#### Use the Putity III
-
-1. In the JAI left navigation menu, click **System > Site Template Styles**.
+1. In the JAI left navigation bar, click **Templates > Styles**.
 2. Click your template style (for example, `purity_III - Default`) to open it.
 3. Click the arrow next to the **Save** button at the top left of the window, and select **Save as Copy**.
 4. Edit the **Style Name** to indicate the language (for example, `purity_III - fr`).
@@ -141,7 +106,7 @@ Follow this section to use the T4 base template:
 
 You must also duplicate your homepage template style for each language.
 
-1. In the JAI left navigation menu, click **System > Site Template Styles**.
+1. In the JAI left navigation bar, click **Templates > Styles**.
 2. Click **apiportal-homepage** template style to open it.
 3. Click the arrow next to the **Save** button at the top left of the window, and select **Save as Copy**.
 4. Edit the **Style Name** to update the name of your new homepage.
@@ -163,15 +128,15 @@ On the Home page layout there are available positions where you can add modules.
 
 ### Publish additional languages
 
-1. Ensure that you have completed all the steps described in [Change API Portal language](#change-api-portal-language) for each language you want to publish.
-2. In the JAI left navigation menu, click **System > Content Languages**.
+1. Ensure that you have completed all the steps described in [Localize API Portal to a single language](#localize-api-portal-to-a-single-language) for each language you want to publish.
+2. In the JAI left navigation bar, click **Language(s) > Content Languages**.
 3. Ensure that the **Status** for all the languages you want to publish is set to **Publish**.
 4. In the JAI left menu, click **System > Plugins**, and ensure the **System - Language Filter** plugin is enabled.
-5. Open your API Portal home page in a browser, and change the language code in the URL to one of the languages you have published. For example, change `https://<your API Portal URL>/en/` to `https://<your API Portal URL>/fr/`. You are redirected to the API Portal home page in that language.
+5. Open your API Portal home page in a browser, and change the language code in the URL to one of the languages you have published. For example, change `https://<your API Portal URL>/en/` to `https://<your API Portal URL>/fr/`. You are redirected to the API Portal home page in that language.
 
 ## Provide a language switcher
 
-You can provide API Portal in multiple languages, and enable your API consumers from different countries to change languages using a language switcher.
+You can provide API Portal in multiple languages, and enable your API consumers from different countries to change languages using a language switcher.
 
 To enable a language switcher, you need to have a main menu for each language you are providing (including one for English), and an additional main menu for all languages. Similarly, you need to have template styles for each language (including one for English), and an additional template style for all languages.
 
@@ -181,7 +146,7 @@ To install new languages, follow these steps:
 
 1. In the JAI left menu, click **System > Languages** in the **Install** card.
 2. Find and select the language to install, and click **Install**.
-3. In the JAI left navigation menu, click **Language(s) > Content Languages**.
+3. In the JAI left navigation bar, click **Language(s) > Content Languages**.
 4. Set the **Status** of the new language to **Published**.
 
 ### Create main menus
@@ -248,9 +213,15 @@ Finally, rename the original main menu:
 
 To enable a language switcher, you need to have template styles for each language you are providing (including one for English), and an additional template style for all languages.
 
+By default, API Portal uses the Purity III template style. After following this process you will have the following template styles:
+
+* purity_III - Default - English
+* purity_III - Default - French
+* purity_III - Default - All
+
 #### Duplicate the template style for the new language
 
-1. In the JAI left navigation menu, click **System > Site Templates Styles**.
+1. In the JAI left navigation bar, click **System > Site Templates Styles**.
 2. Click your template style (for example, `purity_III - Default`) to open it.
 3. Click the arrow next to the **Save** button at the top left of the window, and select **Save as Copy**.
 4. Edit the **Style Name** to indicate the language (for example, `purity_III - Default - French`).
@@ -274,40 +245,26 @@ Finally, edit the original template style for the English language:
 5. Click the **Assignment** tab, and assign the menu items from the English language to the template. To select or deselect all menu items, click the toggle button next to the main menu title.
 6. Click **Save & Close**.
 
-### Enable the language switcher
+## Enable the language switcher
 
-Follow the next sections to enable the language switcher accordingly with the template you have configure in your portal.
+Language switcher module allows site visitors to switch between languages by way of country flags based on the module configuration.
 
-#### T4 Page Builder Template
+Before enabling language switcher, you must perform all the steps described in [Localize API Portal to multiple languages](#localize-api-portal-to-multiple-languages) for each language, including English.
 
-To enable the language switcher, complete the following steps:
+{{< alert title="Note" color="primary" >}}To use the language switcher, you must also follow the [Localize API Portal to multiple languages](#localize-api-portal-to-multiple-languages) procedure to the English language, otherwise, you will not be able to switch your site from other languages back to English.
+{{< /alert >}}
 
-1. In JAI, from the left navigation menu, click **System > Site Modules**, then click **New**.
+To enable the language switcher, follow these steps:
+
+1. In the JAI left menu, click **System > Site Modules** and click **New**.
 2. Click **Language Switcher**.
-3. Enter a **Title**, and for **Position** select `Language Switcher`.
+3. Enter a **Title** and for **Position** select `Purity iii > Footer 1`.
 4. Click **Save & Close**.
-5. From the left navigation menu, click **System > Plugins** and ensure the **System - Language Filter** plugin is enabled.
+5. In the JAI left menu, click **System > Plugins**, and ensure the **System - Language Filter** plugin is enabled.
 6. Click the **System - Language Filter** plugin to open it.
 7. Set **Automatic Language Change** to `No`.
 8. Click **Save & Close**.
 
-The language switcher is now available on the header of each API Portal page. For example:
-
-![Language switcher on header](/Images/APIPortal/APIPortal_localization/scr9_lang_switch_fe.png)
-
-#### Purity III
-
-To enable the language switcher, complete the following steps:
-
-1. In JAI, from the left navigation menu, click **System > Site Modules**, then click **New**.
-2. Click **Language Switcher**.
-3. Enter a **Title**, and for **Position** select `Purity iii > Footer 1`.
-4. Click **Save & Close**.
-5. From the left navigation menu, click **System > Plugins** and ensure the **System - Language Filter** plugin is enabled.
-6. Click the **System - Language Filter** plugin to open it.
-7. Set **Automatic Language Change** to `No`.
-8. Click **Save & Close**.
-
-The language switcher is now available on the footer of each API Portal page. For example:
+The language switcher is now available on the footer of each API Portal page, as the following image shows:
 
 ![Language switcher on footer](/Images/APIPortal/lang_switcher_example.png)
