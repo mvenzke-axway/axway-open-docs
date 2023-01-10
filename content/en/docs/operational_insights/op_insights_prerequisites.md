@@ -26,7 +26,7 @@ Operational Insights is based on the [Elastic Stack](https://www.elastic.co/elas
 It is also possible to use existing components, such as an Elasticsearch cluster or a Kibana instance, to avail of the flexibility of using, for instance, an Elasticsearch service at AWS or Azure, or use Filebeat manually installed on the API Gateway machines.
 
 {{< alert title="Note" >}}
-Operational Insights has been tested with Elasticsearch version greater than 7.10.x.
+Operational Insights has been tested against Elasticsearch 7.17.3 helm charts and Elasticsearch 7.17.7 images.
 {{< /alert >}}
 
 ### API Gateway and API Manager

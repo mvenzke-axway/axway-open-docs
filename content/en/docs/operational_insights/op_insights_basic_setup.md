@@ -76,7 +76,7 @@ To configure the node manager to render log data from Elasticsearch, follow thes
 9. Copy the new configuration from the Policy Studio project folder (path on Linux, `/home/<user>/apiprojects/<project-name>`) back to the ANM folder (`<install-dir>/apigateway/conf/fed`).
 10. Restart the Admin Node Manager.
 
-{{< alert title="Note" color="primary" >}}An alternative to using the provided policy fragment, `nodemanager/policy-use-elasticsearch-api-7.7.0.xml`, is to [manually configure the Admin Node Manager Policy](/docs/operational_insights/additional_Features/op_insights_configure_anm). {{< /alert >}}
+{{< alert title="Note" color="primary" >}}An alternative to using the provided policy fragment, `nodemanager/policy-use-elasticsearch-api-7.7.0.xml`, is to [manually configure the Admin Node Manager Policy](/docs/operational_insights/additional_features/op_insights_configure_anm). {{< /alert >}}
 
 ### Configure Admin Node Manager per region
 
@@ -233,7 +233,7 @@ API_MANAGER_USERNAME=elkAdmin
 API_MANAGER_PASSWORD=elastic
 ```
 
-If you are using an existing Elasticsearch cluster and have therefore skipped sections [Setup Elasticsearch](#setup-elasticsearch) and [Setup Kibana](setup-kibana), you must now configure the Elasticsearch hosts, [any necessary users](/docs/operational_insights/production_setup/op_insights_setup_prod_docker/#activate-user-authentication), and the [Elasticsearch server certificates](#custom-certificates) as follows:
+If you are using an existing Elasticsearch cluster and have therefore skipped sections [Setup Elasticsearch](#setup-elasticsearch) and [Setup Kibana](#setup-kibana), you must now configure the Elasticsearch hosts, [any necessary users](/docs/operational_insights/production_setup/op_insights_setup_prod_docker/#activate-user-authentication), and the [Elasticsearch server certificates](#custom-certificates) as follows:
 
 ```bash
 ELASTICSEARCH_HOSTS=https://my-existing-elasticsearch-host1.com:9200, https://my-existing-elasticsearch-host2.com:9200, https://my-existing-elasticsearch-host3.com:9200
