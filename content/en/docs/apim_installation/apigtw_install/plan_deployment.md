@@ -48,6 +48,5 @@ For more details on a particular integration, see the appropriate integration or
 
 For more details on the versions of Axway products that API Gateway 7.7 interoperates with, see the following:
 
-* [API Gateway PassPort Interoperability Guide](https://docs.axway.com/bundle/APIGateway_77_PassPort_InteropGuide_allOS_en_HTML5)
 * [API Gateway Sentinel Interoperability Guide](https://docs.axway.com/bundle/APIGateway_77_Sentinel_InteropGuide_allOS_en_HTML5)
 * [API Gateway Validation Authority Interoperability Guide](https://docs.axway.com/bundle/APIGateway_77_VA_InteropGuide_allOS_en_HTML5)
