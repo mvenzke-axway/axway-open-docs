@@ -13,7 +13,7 @@ With API Portal, you can enable both internal and external client application (
 
 ## Key capabilities in API Portal
 
-API Portal is built on top of [Joomla!](http://www.joomla.org/), an open source CMS platform for developing and deploying websites.
+API Portal is built on top of [Joomla!](https://www.joomla.org), an open source CMS platform for developing and deploying websites.
 
 API Portal provides the following capabilities specifically for the organization administrator:
 
@@ -27,7 +27,7 @@ API Portal provides the following capabilities for both internal and external a
 * **Monitoring API usage** — App developers can register the API use of their applications through graphical real-time charts.
 * **Pricing** - You can provide specific pricing information relating to APIs, products, plans, and services.
 * **Help Center** — Provides a central point for links that you can use to offer additional information, for example, FAQs, documentation, discussion forums, or further contact information.
-* **[Blog](http://stackideas.com/easyblog)** and **[Discussion forums](http://stackideas.com/easydiscuss)** - These are Joomla! plugins from a third-party vendor that you can use to share information and interact with the developer community.
+* **[Blog](https://stackideas.com/easyblog)** and **[Discussion forums](https://stackideas.com/easydiscuss)** - These are Joomla! plugins from a third-party vendor that you can use to share information and interact with the developer community.
 * **Documentation** - You can use content management capabilities of Joomla! to provide additional content relating to your APIs, terms and conditions for their use, or best practices to your developer communities. The content can include PDF documents, images, and videos.
 
 ## Additional features – API Catalog view

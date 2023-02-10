@@ -137,7 +137,7 @@ The following are known issues for this update.
 | RDAPI-19586 | Retired API appears as "published" in Catalog                                                                                                                      |
 | RDAPI-19601 | Sharing section of Application issue when Organization of application changed                                                                                      |
 | RDAPI-19788 | Issue with pagination across multiple sections                                                                                                                     |
-| RDAPI-20255 | Application Quota not promoted by apimanger promote                                                                                                                |
+| RDAPI-20255 | Application Quota not promoted by apimanager-promote                                                                                                                |
 | RDAPI-20480 | swagger enum query parameters not validated                                                                                                                        |
 | RDAPI-20550 | renaming existing KPS collection in PS breaks ES store                                                                                                             |
 | RDAPI-20726 | How to get attribute value for apimgmt.application.id                                                                                                              |

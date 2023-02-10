@@ -744,7 +744,7 @@ This option is only enabled when you have elected to insert a Timestamp into the
 section below.
 
 * **Sign Attachments**:
-In addition to signing some or all contents of the SOAP message, you can also sign attachments to the SOAP message. To sign all attachments, select **Include Attachments**.A signed attachment is referenced in an XML signature using the *Content-Id* or *cid* of the attachment. The `URI` attribute of the `Reference` element corresponds to thisContent-Id. The following example shows how an XML signature refers to a sample attachment. It shows the wire format of the message and its attachment as they are sent tothe destination web service. Multiple attachments result in successive `Reference` elements.
+In addition to signing some or all contents of the SOAP message, you can also sign attachments to the SOAP message. To sign all attachments, select **Include Attachments**.A signed attachment is referenced in an XML signature using the *Content-Id* or *cid* of the attachment. The `URI` attribute of the `Reference` element corresponds to thisContent-Id. The following example shows how an XML signature refers to a sample attachment. It shows the wire format of the message and its attachment as they are sent to the destination web service. Multiple attachments result in successive `Reference` elements.
 
 ```
 POST /myAttachments HTTP/1.0

@@ -19,7 +19,7 @@ The WebSocket protocol can be summarized as follows:
 3. Messages can now flow bidirectionally between the server and the client over the WebSocket connection.
 4. Any participant in the data exchange can request the WebSocket connection be terminated by sending a `Close` request to the other participant.
 
-For a detailed description of the protocol, see [RFC 6455](http://tools.ietf.org/html/rfc6455).
+For a detailed description of the protocol, see [RFC 6455](https://www.rfc-editor.org/rfc/rfc6455).
 
 ## Configure a WebSocket connection
 

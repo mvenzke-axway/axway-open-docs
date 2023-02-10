@@ -260,4 +260,4 @@ docker run -d --name=apimgr --network=api-gateway-domain \
 
 ## Further Information
 
-For more information on how to build API Gateway, Admin Node Manger, or Analytics Docker images and run in a Docker container, see [Deploy API Gateway in containers](/docs/apim_installation/apigw_containers).
+For more information on how to build API Gateway, Admin Node Manager, or Analytics Docker images and run in a Docker container, see [Deploy API Gateway in containers](/docs/apim_installation/apigw_containers).

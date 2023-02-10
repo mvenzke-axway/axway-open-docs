@@ -8,7 +8,7 @@
 
 {{< alert title="Note" color="primary" >}}This feature has been deprecated and will be removed in a future release.{{< /alert >}}
 
-The API Gateway provides support for integration with remote systems over the Remote Authentication Dial In User Service (RADIUS) protocol. RADIUS is a client-server network protocol that provides centralized authentication and authorization for clients connecting to remote services. For more details, see the [RADIUS specification](http://tools.ietf.org/html/rfc2865).
+The API Gateway provides support for integration with remote systems over the Remote Authentication Dial In User Service (RADIUS) protocol. RADIUS is a client-server network protocol that provides centralized authentication and authorization for clients connecting to remote services. For more details, see the [RADIUS specification](https://www.rfc-editor.org/rfc/rfc2865).
 
 To configure a client connection to a remote server over the RADIUS protocol, under the **Environment Configuration > External Connections** tree node in the Policy Studio, select **RADIUS Clients
 > Add a RADIUS Client**. This topic explains how to configure the settings the **RADIUS Client**

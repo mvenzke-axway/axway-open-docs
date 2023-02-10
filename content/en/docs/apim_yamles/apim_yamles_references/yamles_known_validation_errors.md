@@ -26,7 +26,7 @@ Look into the file named `/home/user/yaml/External Connections/DB Connections/My
 **Severity**: ERROR
 
 ```
-entity=/External Connections/DB Connections/MySQL/local, type=DbConnection, field='maxWait', file=/home/user/yaml/External Connections/DB Connections/MySQL.yaml, message='Expected fo find data of type <long> but value is <9999999999999999999999999999999999>'
+entity=/External Connections/DB Connections/MySQL/local, type=DbConnection, field='maxWait', file=/home/user/yaml/External Connections/DB Connections/MySQL.yaml, message='Expected to find data of type <long> but value is <9999999999999999999999999999999999>'
 ```
 
 Look into the file named `/home/user/yaml/External Connections/DB Connections/MySQL.yaml`. It contains an entity of type `DbConnection` named `local`, with a field named `maxWait`. Its value is set to `9999999999999999999999999999999999`, and a `long` is expected by the model. Fix the field value to be an valid `long`. Max long value is `9.223372e+18 2⁶³-1`.

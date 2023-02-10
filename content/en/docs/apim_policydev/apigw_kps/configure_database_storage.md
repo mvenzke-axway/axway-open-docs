@@ -90,7 +90,7 @@ To enable OpenJPA debug logging:
 2. Add the following settings:
 
     ```
-    Change the level from "error" to "debug" in all the lines shown bellow:
+    Change the level from "error" to "debug" in all the lines shown below:
     <Root level="info">
     <Logger name="org.apache.openjpa.Tool" level="error" additivity="false">
     <Logger name="org.apache.openjpa.Runtime" level="error" additivity="false">
@@ -122,7 +122,7 @@ To disable OpenJPA debug logging:
 3. Restart the API Gateway.
 4. Verify that no debug statements are printed to the log.
 
-For more information on Apache OpenJPA logging, see the [Apache documentation](http://openjpa.apache.org/builds/2.2.2/apache-openjpa/docs/main.html).
+For more information on Apache OpenJPA logging, see the [Apache documentation](https://openjpa.apache.org/builds/2.2.2/apache-openjpa/docs/main.html).
 
 ## Per-table database storage
 

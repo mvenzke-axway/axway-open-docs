@@ -56,7 +56,7 @@ For HA, install API Portal on the first node, and then install it on each of th
 
 2. Install the EasyBlog and EasyDiscuss components on the first node as detailed in [Install Joomla! components](/docs/apim_installation/apiportal_install/install_software#install-joomla-components).
 
-    {{< alert title="Note" color="primary" >}}When you change the Joomla! admininstrator password on the first node, the password is changed for all nodes. {{< /alert >}}
+    {{< alert title="Note" color="primary" >}}When you change the Joomla! administrator password on the first node, the password is changed for all nodes. {{< /alert >}}
 
 3. Install API Portal on each of the other nodes as detailed in [Install API Portal as software installation](/docs/apim_installation/apiportal_install/install_software#install-api-portal-software). For each node:
 

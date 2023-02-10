@@ -240,7 +240,7 @@ The following lists changes for API Gateway, API Manager, and API Portal
 |Update       |New features and enhancements        |Deprecated features  |Release Date|
 |---------    |---               |---                  |---         |
 |7.6.2 SP5|The jre directory in Policy Studio/Configuration Studio must be remove before applying the Service Pack|- |17/07/2020|
-|7.6.2 SP4|JQuery upadated to 3.4.0 to fix security vulnerabilities.|- |19/07/2019 |
+|7.6.2 SP4|JQuery updated to 3.4.0 to fix security vulnerabilities.|- |19/07/2019 |
 |7.6.2 SP3|jQuery updated to 3.3.1 to fix security vulnerabilities.|- |18/04/2019 |
 |                                                                                                                       |JRE updated to 1.8.0_202 to fix security vulnerabilities.|- | |
 |7.6.2 SP2| |- | 17/12/2018|

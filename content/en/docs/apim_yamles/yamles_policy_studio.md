@@ -39,7 +39,7 @@ There are slight differences in how the **Environment Settings Items** are rende
 
 **Jump to configuration** behaves differently in YAML because of the nature of YAML supporting for the one-to-many mapping for its environmentalized variable.
 
-The following image shows the defined environnement variables in your XML project, where there is a single **Jump to configuration** link per entity.
+The following image shows the defined environment variables in your XML project, where there is a single **Jump to configuration** link per entity.
 
 ![Single Jump to configuration link for XML projects](/Images/apim_yamles/yamles_ps_e18n_xml_jump_to_config.PNG)
 

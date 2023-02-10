@@ -60,13 +60,13 @@ To configure the node manager to render log data from Elasticsearch, follow thes
 5. Configure your ANM with your Certificate Authority (CA) in the form of a `.p12` file to ensure the ANM can communicate with API Builder (See [custom certificates](#custom-certificates) for details on how to generate the certificate-key pair). Import the CA into Policy Studio as follows:
 
     * Navigate to **Environment Configuration > Certificates and Keys > Certificates**.
-    * Click **Create/Import > Import Certficate + Key**, then search and select your `CA.p12` file.
+    * Click **Create/Import > Import Certificate + Key**, then search and select your `CA.p12` file.
     * Click **Use Subject for the Alias Name**, then click **OK**.
 
 6. Navigate to the **Use Elasticsearch API** policy to configure the request to the Elasticsearch API to use the imported CA:
 
     * Double click **Connect to Elasticsearch API** and navigate to the **SSL** tab.
-    * In the **Trusted Certicates** tab, select the certificate that you have imported.
+    * In the **Trusted Certificates** tab, select the certificate that you have imported.
     * Click **Finish**.
 
         ![Connect Elasticsearch tick CA](/Images/op_insights/op_insights_node_manager_connect_elasticsearch_ca.png)

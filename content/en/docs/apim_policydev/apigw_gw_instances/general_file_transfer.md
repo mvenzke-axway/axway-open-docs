@@ -120,7 +120,7 @@ To enable an existing command, click **Edit**, select **Enabled**, and click **O
 
 ### Supported commands
 
-For a full list of supported commands, see <http://mina.apache.org/ftpserver-project/ftpserver_commands.html>.
+For a full list of supported commands, see <https://mina.apache.org/ftpserver-project/ftpserver_commands.html>.
 
 ## Access control settings
 

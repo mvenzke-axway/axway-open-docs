@@ -5,7 +5,7 @@
   "date": "2019-10-17",
   "description": "Configure API Gateway to poll an Amazon SQS queue."
 }
-Amazon Simple Queue Service (SQS) is a hosted message queuing service for distributing messages amongst machines. You can configure API Gateway to poll an Amazon SQS queue at a set rate. Any message found on the SQS queue in this interval can be sent to a policy for processing. For more information, see [Amazon SQS](http://aws.amazon.com/sqs/).
+Amazon Simple Queue Service (SQS) is a hosted message queuing service for distributing messages amongst machines. You can configure API Gateway to poll an Amazon SQS queue at a set rate. Any message found on the SQS queue in this interval can be sent to a policy for processing. For more information, see [Amazon SQS](https://aws.amazon.com/sqs/).
 
 To add a new Amazon SQS queue listener, in the Policy Studio tree, under the **Environment Configuration** > **Listeners** node, right-click the instance name (for example, **API Gateway**), and select **Amazon Web Services > Add SQS Queue Listener**.
 

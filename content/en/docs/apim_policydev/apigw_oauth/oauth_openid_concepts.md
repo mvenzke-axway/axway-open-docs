@@ -38,7 +38,7 @@ OAuth defines several different flows or message exchange patterns. The most com
 
 ## OpenID Connect 1.0
 
-OpenID Connect is specified in the [OpenID Connect 1.0 specification](http://openid.net/specs/openid-connect-core-1_0.html). OpenID Connect builds on the OAuth protocol and defines an interoperable way to use OAuth 2.0 to perform user authentication. OpenID Connect 1.0 is a simple identity layer on top of the OAuth 2.0 protocol. It enables clients to verify the identity of the user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the user.
+OpenID Connect is specified in the [OpenID Connect 1.0 specification](https://openid.net/specs/openid-connect-core-1_0.html). OpenID Connect builds on the OAuth protocol and defines an interoperable way to use OAuth 2.0 to perform user authentication. OpenID Connect 1.0 is a simple identity layer on top of the OAuth 2.0 protocol. It enables clients to verify the identity of the user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the user.
 
 OpenID Connect defines the following roles:
 

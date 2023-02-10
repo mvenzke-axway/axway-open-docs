@@ -10,7 +10,7 @@
 
 For details on how to install a database using `yum`, see the following:
 
-* [MySQL installation instructions](http://dev.mysql.com/doc/refman/5.6/en/linux-installation-yum-repo.html)
+* [MySQL installation instructions](https://dev.mysql.com/doc/refman/5.6/en/linux-installation-yum-repo.html)
 * [MariaDB installation instructions](https://mariadb.com/kb/en/mariadb/yum/)
 
 If your database is on a remote host, you must configure a MySQL client or a MariaDB client on the API Portal host.

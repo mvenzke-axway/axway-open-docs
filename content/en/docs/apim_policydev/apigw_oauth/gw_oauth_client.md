@@ -14,7 +14,7 @@ API Gateway can act as the client application in an OAuth 2.0 scenario, and as s
 * The resource owner's credentials are never shared with the client application
 * The access token is never shared with the resource owner's user agent
 
-{{< alert title="Note" color="primary" >}}This document assumes that you are familiar with both the terms and concepts described in the [OAuth 2.0 Authorization Framework](http://tools.ietf.org/html/rfc6749) and the OAuth server features of API Gateway.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}This document assumes that you are familiar with both the terms and concepts described in the [OAuth 2.0 Authorization Framework](https://www.rfc-editor.org/rfc/rfc6749) and the OAuth server features of API Gateway.{{< /alert >}}
 
 ## API Gateway OAuth client features
 
@@ -161,7 +161,7 @@ You can configure the scopes that a client application can access on the **Scope
 
 #### Configure SAML bearer
 
-You can configure SAML bearers on the **SAML Bearer** tab. According to the IETF draft document [SAML 2.0 Profile for OAuth 2.0](http://tools.ietf.org/html/draft-ietf-oauth-saml2-bearer-18), a SAML assertion can be used to request an access token when a client wishes to utilize an existing trust relationship, expressed through the semantics of the SAML assertion, without a direct user approval step at the authorization server. When a client application is configured to use the SAML grant type, a SAML assertion must be either configured/generated or made available on the message board.
+You can configure SAML bearers on the **SAML Bearer** tab. According to the IETF draft document [SAML 2.0 Profile for OAuth 2.0](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-saml2-bearer-18), a SAML assertion can be used to request an access token when a client wishes to utilize an existing trust relationship, expressed through the semantics of the SAML assertion, without a direct user approval step at the authorization server. When a client application is configured to use the SAML grant type, a SAML assertion must be either configured/generated or made available on the message board.
 
 To generate an assertion select the **Generate assertion using following configuration** option and complete the following fields:
 
@@ -187,7 +187,7 @@ The API Gateway uses a SAML template to generate the SAML assertion. The templat
 
 #### Configure JWT
 
-You can configure JWT on the **JWT** tab. This enables you to configure JWT for authorization grant, as defined by the IETF draft document [JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants](http://tools.ietf.org/html/draft-ietf-oauth-jwt-bearer-07).
+You can configure JWT on the **JWT** tab. This enables you to configure JWT for authorization grant, as defined by the IETF draft document [JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-jwt-bearer-07).
 
 {{< alert title="Note" color="primary" >}}API Gateway only supports the use of JWT as authorization grant and does *not* support JWT for client authentication.{{< /alert >}}
 

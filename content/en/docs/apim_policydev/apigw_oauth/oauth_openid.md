@@ -14,7 +14,7 @@ This section describes the concepts behind OpenID Connect and demonstrates how t
 
 ## OpenID Connect concepts
 
-OpenID Connect is specified in the [OpenID Connect 1.0 specification](http://openid.net/specs/openid-connect-core-1_0.html). It defines the following concepts:
+OpenID Connect is specified in the [OpenID Connect 1.0 specification](https://openid.net/specs/openid-connect-core-1_0.html). It defines the following concepts:
 
 * Claim: A piece of information about an authenticated user (for example, email or phone number).
 * Relying party (RP): OAuth 2.0 client application requiring end-user authentication and claims from an OpenID Connect identity provider. API Gateway can act as a relying party consuming services from a third party such as Google.

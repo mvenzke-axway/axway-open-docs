@@ -6,7 +6,7 @@
 "description": "Learn more about API Gateway Jython sample scripts that you can use to automate common administration tasks."
 }
 
-API Gateway contains several sample scripts that let you automate various common administration tasks. The scripts are based on the Java scripting interpreter, Jython ([http://www.jython.org](http://www.jython.org/)). Scripts can be extended to suit your needs by following the Jython language syntax. All Jython scripts can be found in the following location:
+API Gateway contains several sample scripts that let you automate various common administration tasks. The scripts are based on the Java scripting interpreter, Jython ([https://www.jython.org](https://www.jython.org)). Scripts can be extended to suit your needs by following the Jython language syntax. All Jython scripts can be found in the following location:
 
 ```
 INSTALL_DIR/apigateway/samples/scripts

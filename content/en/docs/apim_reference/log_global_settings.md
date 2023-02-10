@@ -127,7 +127,7 @@ The syntax used to specify the access log file is based on the syntax of availab
 %h %l %u %t "%r" %s %b
 ```
 
-The following extract from the `access.log` file illustrates the log format resulting from the default access log patern:
+The following extract from the `access.log` file illustrates the log format resulting from the default access log pattern:
 
 ```
 s1.axway.com - lisa [09/05/2012:18:24:48 00] "POST / HTTP/1.0" 200 429

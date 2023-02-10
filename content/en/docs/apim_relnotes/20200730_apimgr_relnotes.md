@@ -269,7 +269,7 @@ The following are known issues for this update.
 | RDAPI-19971 | nodemanager pid file is created with permissions that are too restrictive.                                                                                     |
 | RDAPI-20091 | In Policy Studio, when importing a policy fragment, deselected items are imported anyway.                                                                      |
 | RDAPI-20127 | Selector `${content.body.getJSON().get(0)}` not working.                                                                                                       |
-| RDAPI-20255 | Application Quota not promoted by `apimanger-promote`.                                                                                                         |
+| RDAPI-20255 | Application Quota not promoted by `apimanager-promote`.                                                                                                         |
 | RDAPI-20294 | Authorization code flow with OpenID produces invalid query string as response.                                                                                 |
 | RDAPI-20464 | PolicyStudio deployment errors (WSDL) after applying March 20 release.                                                                                         |
 | RDAPI-20474 | Swagger file size limit.                                                                                                                                       |

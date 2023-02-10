@@ -18,7 +18,7 @@ To generate an ID token the following claims are required:
 * `sub`
 * `aud`
 
-For more information on the required claims within an ID token, see the [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html).This filter enables you to specify the subject (`sub`), the issuer (`iss`), and the expiration time (`exp`) of the ID token. Other claims (for example, `iat`, `exp`, and `aud`) are handled internally. The JWT expiry in seconds is appended on to the current time to give the ID token an expiry.
+For more information on the required claims within an ID token, see the [OpenID Connect specification](https://openid.net/specs/openid-connect-core-1_0.html).This filter enables you to specify the subject (`sub`), the issuer (`iss`), and the expiration time (`exp`) of the ID token. Other claims (for example, `iat`, `exp`, and `aud`) are handled internally. The JWT expiry in seconds is appended on to the current time to give the ID token an expiry.
 
 This filter also enables you to specify how to sign the ID token, and to add additional claims to the ID token.
 
@@ -54,7 +54,7 @@ You can use the **Verify ID Token** filter to verify an OpenID Connect ID token 
 
 This filter requires the message attributes `openid.idtoken` and `oauth.client.application` to be on the message whiteboard. The filter parses the ID token into a JWT header and claim and validates the signature using either a JWK set, a certificate, or a client secret. On success the filter returns true and sets the ID token (`openid.idtoken`) `claim` and `sub`values on the message whiteboard.
 
-For more information on OpenID Connect, see the [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html).
+For more information on OpenID Connect, see the [OpenID Connect specification](https://openid.net/specs/openid-connect-core-1_0.html).
 
 Configure the following general settings for the **Verify ID Token** filter:
 

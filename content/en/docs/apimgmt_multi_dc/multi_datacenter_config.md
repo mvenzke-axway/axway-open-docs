@@ -498,7 +498,7 @@ To add a distributed cache, perform the following steps:
 
 You can leave all other settings on this dialog as default. For example, the required settings are displayed as follows in Policy Studio:
 
-![Disbributed cache for mutliple datacenters](/Images/APIGateway/multi-dc_dist_cache.png)
+![Disbributed cache for multiple datacenters](/Images/APIGateway/multi-dc_dist_cache.png)
 
 When the OAuth distributed cache has been configured, it can then be used by the OAuth Access Token Stores. For example, select **Environment Configuration > Libraries > OAuth2 Stores > Access Token Stores > OAuth Access Token Stores**, and right click to select **Edit Access Token Store**. Select **Store in a cache**, and click the browse button to select the OAuth distributed cache.
 

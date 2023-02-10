@@ -37,7 +37,7 @@ In this case, the Identity Provider (for example, Shibboleth, KeyCloak, Active D
 
 ## Internal error if API Gateway and IdP clocks out of sync
 
-When attempting to log in to API Manager using SSO, an Internal Error appers if the clock of your API Gateway server and your IdP server are not correctly synchronized.
+When attempting to log in to API Manager using SSO, an Internal Error appears if the clock of your API Gateway server and your IdP server are not correctly synchronized.
 
 To confirm the cause of the error, check the trace file:
 

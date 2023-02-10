@@ -145,7 +145,7 @@ You can configure the followingon the **Advanced (SSL)** tab:
 
     Following are some examples of cipher strings and their outcome:
 
-    * `FIPS:!SSLv3:!aNULL`: Enables FIPS-compatible TLSv1.2 ciphers and default TLS1.3 ciper suites (`TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256   TLS_AES_128_GCM_SHA256`).
+    * `FIPS:!SSLv3:!aNULL`: Enables FIPS-compatible TLSv1.2 ciphers and default TLS1.3 cipher suites (`TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256   TLS_AES_128_GCM_SHA256`).
     * `FIPS:!SSLv3:!aNULL::TLS_AES_256_GCM_SHA384`: Enables FIPS-compatible TLSv1.2 ciphers and only one TLSv1.3 cipher suite (`TLS_AES_256_GCM_SHA384`).
     * `FIPS:!SSLv3:!aNULL::`: Disables TLSv1.3 ciphers, only FIPS-compatible TLSv1.2 ciphers will be available.
     * `ECDHE-ECDSA-AES256-SHA384::TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_CCM_8_SHA256`: Enables specific TLSv1.2 cipher (`ECDHE-ECDSA-AES256-SHA384`) and two specific TLSv1.3 cipher suite (`TLS_CHACHA20_POLY1305_SHA256` and `TLS_AES_128_CCM_8_SHA256`.

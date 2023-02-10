@@ -6,7 +6,7 @@
   "description": "Upload data to Amazon S3 or send messages to Amazon SQS."
 }
 
-For more information on Amazon Simple Storage Service, see [Amazon S3](http://aws.amazon.com/s3/).
+For more information on Amazon Simple Storage Service, see [Amazon S3](https://aws.amazon.com/s3/).
 
 For detailed information on Amazon Web Services integration, see the *AWS Integration Guide* available from Axway Support.
 

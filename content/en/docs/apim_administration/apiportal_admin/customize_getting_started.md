@@ -34,7 +34,7 @@ This section describes how to customize your portal using the Purity III templat
 
 API Portal uses the Joomla! framework to extend the ThemeMagic feature. ThemeMagic is part of the Purity III template that is based on the T3 template framework. For more details on how to use and customize Purity III, see the [official Purity III documentation](https://www.joomlart.com/documentation/joomla-templates/purity-iii).
 
-With ThemeMagic, you have an administrative interface for creating or modifying themes, such as colors and fonts. Use the live preview to follow how your theme configuration looks before saving the changes. Themes are built using theming variables based on the [Less](http://lesscss.org/) language.
+With ThemeMagic, you have an administrative interface for creating or modifying themes, such as colors and fonts. Use the live preview to follow how your theme configuration looks before saving the changes. Themes are built using theming variables based on the [Less](https://lesscss.org/) language.
 
 #### Open ThemeMagic
 

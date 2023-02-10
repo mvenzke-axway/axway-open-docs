@@ -10,7 +10,7 @@
 
 The API Gateway can check the request *query string*
 to ensure that only properly configured name and value pairs appear. *Regular expressions*
-are used to test the attribute values. This enables you to make decisions on what to do with the message (for example, if the query sting value is `X`, route to service `X`).
+are used to test the attribute values. This enables you to make decisions on what to do with the message (for example, if the query string value is `X`, route to service `X`).
 
 You can configure the following sections on the **Validate Query String**
 window:
@@ -431,7 +431,7 @@ You can find the **JSON Schema Validation**
 filter in the **Content Filtering**
 category of filters in the Policy Studio. Drag and drop the filter on to the policy where you want to perform JSON schema validation.
 
-API Gateway supports [draft version 3](http://tools.ietf.org/html/draft-zyp-json-schema-04) and [draft version 4](http://tools.ietf.org/html/draft-zyp-json-schema-03) of the JSON Schema specification. For more details on JSON schemas, see [http://www.json-schema.org](http://www.json-schema.org/).
+API Gateway supports [draft version 3](https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-03) and [draft version 4](https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04) of the JSON Schema specification. For more details on JSON schemas, see [https://json-schema.org](https://json-schema.org).
 
 Configure the following settings:
 
@@ -445,8 +445,8 @@ Select one of the following options:
     node, and select **Add Schema**
     to load the schema from a `.json`
     file. Alternatively, you can configure schemas under the **Resources** > **JSON Schemas**
-    node in the Policy Studio tree. By default, the API Gateway provides the example JSON schemas available from [http://www.json-schema.org](http://www.json-schema.org/).
-* Select the **Use v4 draft validator** to validate against [draft version 4](http://tools.ietf.org/html/draft-zyp-json-schema-03) of the JSON Schema specification, or select **Use v3 draft validator** to validate against [draft version 3](http://tools.ietf.org/html/draft-zyp-json-schema-04) of the JSON Schema specification. The default is v4.
+    node in the Policy Studio tree. By default, the API Gateway provides the example JSON schemas available from [https://json-schema.org](https://json-schema.org/).
+* Select the **Use v4 draft validator** to validate against [draft version 4](https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-04) of the JSON Schema specification, or select **Use v3 draft validator** to validate against [draft version 3](https://datatracker.ietf.org/doc/html/draft-zyp-json-schema-03) of the JSON Schema specification. The default is v4.
 * **Use this class**: Enter the Java class name used to specify the JSON schema (for example, `com.vordel.samples.GeoLocationTest`), and enter the name of message attribute to store the created object (for example, `my.geo.location`).This option enables you to take incoming JSON message data and deserialize it into a Java object.
 
 ### Example using a Java class

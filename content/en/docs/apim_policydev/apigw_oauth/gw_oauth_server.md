@@ -11,7 +11,7 @@ OAuth 2.0 is an open standard for authorization that enables client applications
 The API Gateway can be used as an *authorization server*
 and as a *resource server*. An authorization server issues tokens to client applications on behalf of a resource owner for use in authenticating subsequent API calls to the resource server. The resource server hosts the protected resources, and can accept or respond to protected resource requests using access tokens.
 
-{{< alert title="Note" color="primary" >}}This guide assumes that you are familiar with the terms and concepts described in the [OAuth 2.0 Authorization Framework](http://tools.ietf.org/html/rfc6749).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}This guide assumes that you are familiar with the terms and concepts described in the [OAuth 2.0 Authorization Framework](https://www.rfc-editor.org/rfc/rfc6749).{{< /alert >}}
 
 ## API Gateway OAuth concepts
 

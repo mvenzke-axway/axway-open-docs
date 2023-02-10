@@ -361,15 +361,15 @@ You must first configure the certificates for the SSL server and client, and the
 
 ##### Create a certificate for the SSL server
 
-1. Ensure that your SSL certificate has been created and imported into the API Gateway certificate store. In Policy Studio, select **Environment Configuration** > **Certifcates and Keys** > **Certifcates** > **Create/Import**.
+1. Ensure that your SSL certificate has been created and imported into the API Gateway certificate store. In Policy Studio, select **Environment Configuration** > **Certificates and Keys** > **Certificates** > **Create/Import**.
 2. On the **Configure Certificate and Private Key** dialog, click **Edit** to configure the distinguished name. For example:
-   ![Configure SSL Certficate and Private Key](/Images/docbook/images/api_mgmt/api_mgmt_custom_policy_ssl_dname.png)
+   ![Configure SSL Certificate and Private Key](/Images/docbook/images/api_mgmt/api_mgmt_custom_policy_ssl_dname.png)
 3. Select the validity dates, and click **Use Subject**.
 4. Click **Sign Certificate** to create the certificate and keys.
 
 ##### Export the client certificate and key
 
-1. To select the client certificate that you wish to export, select **Environment Configuration** > **Certifcates and Keys** > **Certificates**, select the certificate, and click **Edit**.
+1. To select the client certificate that you wish to export, select **Environment Configuration** > **Certificates and Keys** > **Certificates**, select the certificate, and click **Edit**.
 2. Click **Export Certificate + Key** to set a password and export your SSL client certificate (`.p12` file). You will add this certificate to the list of certificates you trust when creating your HTTPS interface.
 
 ##### Create an HTTPS interface

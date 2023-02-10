@@ -86,7 +86,7 @@ In an HA production environment, caching is replicated between each gateway inst
 
 In the distributed cache, there is no master cache controlling all caches in the group. Instead, each cache is a peer in the group that needs to know where all the other peers in the group are located. Peer discovery and peer listeners are two essential parts of any distributed cache system.
 
-For more details on configuring distributed cache settings, see [Configure caching](/docs/apim_policydev/apigw_poldev/general_cache/). API Gateway distributed caching system is based on Ehcache. For more details, see <http://ehcache.org/>.
+For more details on configuring distributed cache settings, see [Configure caching](/docs/apim_policydev/apigw_poldev/general_cache/). API Gateway distributed caching system is based on Ehcache. For more details, see <https://ehcache.org>.
 
 ## External Connections
 

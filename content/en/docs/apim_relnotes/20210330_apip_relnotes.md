@@ -26,7 +26,7 @@ API Portal is available as a software installation or a virtualized deployment i
 
 API Portal unattended mode can use up to 24 parameters, all of which must be specified on the command line. From this update, this was made easier. You can specify the parameters in a configuration file by using the `--optionfile` parameter with API Portal `install` and `uninstall` scripts. For more information, see [Unattended installation](/docs/apim_installation/apiportal_install/install_unattended/).
 
-You can also watch [How to use a configuration file for simpler installations (unattended mode)](https://youtu.be/HqQ77Cj2s5E) demo video on Axway API Management YouTube chanel.
+You can also watch [How to use a configuration file for simpler installations (unattended mode)](https://youtu.be/HqQ77Cj2s5E) demo video on Axway API Management YouTube channel.
 
 ### Further Enhancements
 
