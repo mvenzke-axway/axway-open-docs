@@ -1,27 +1,27 @@
 {
-"title": "Upgrade Apache Cassandra",
-  "linkTitle": "Upgrade Apache Cassandra",
-  "weight": 30,
+"title": "Upgrade Apache Cassandra to 3.11.11",
+  "linkTitle": "Upgrade Apache Cassandra to 3.11.11",
+  "weight": 10,
   "date": "2019-10-07",
-  "description": "Learn how to upgrade your Cassandra environment from version 2.2.8 or 2.2.12 to version 3.11.11 with no downtime."
+  "description": "Upgrade your Cassandra environment from version 2.2.8 or 2.2.12 to version 3.11.11."
 }
 The upgrade process differs according to your environment:
 
-* For single-node environments, you can upgrade directly from version 2.2.8/2.2.12 to version 3.11.11.
+* For single-node environments, you can upgrade directly from version 2.2.8 or 2.2.12 to version 3.11.11.
 * For multi-node or multi-DC environments, you must first upgrade each node and data center individually to version 2.2.19, then to the target version of 3.11.11.
 
 {{< alert title="Note" color="primary" >}}It is possible to upgrade multi-node or multi-DC environments directly from 2.2.8/2.2.12 to version 3.11.11. However, this results in downtime of API Gateway and Cassandra during the upgrade process.{{< /alert >}}
 
 ## Before you start
 
-* You must upgrade your API Gateway to the [August 2021](/docs/apim_relnotes/20210830_apimgr_relnotes/) or a later release prior to upgrading your Cassandra environment to 3.11.11. This is because in this release we've implemented changes to the Cassandra client driver configuration to facilitate the upgrade process.
+* You must upgrade your API Gateway to the [August 2021](/docs/apim_relnotes/20210830_apimgr_relnotes/) release, or later, prior to upgrading your Cassandra environment to 3.11.11, because in this release we have implemented changes to the Cassandra client driver configuration to facilitate the upgrade process.
 * In multi-datacenter clusters:
 
     * Upgrade every node in one datacenter before upgrading another datacenter.
     * Upgrade and restart the nodes one at a time.
     * Other nodes in the cluster continue to operate at the earlier version until all nodes are upgraded.
 * When upgrading a cluster on a single-datacenter or multi-datacenter setup, you must avoid any schema changes until the entire cluster has been upgraded to the same version.
-* Running `nodetool repair` on a Cassandra node affects performance on a system running live traffic. We recommend that you perform the Cassandra upgrade in the evening or during a maintenance window when the load is minimal.
+* Running `nodetool repair` on a Cassandra node affects performance on a system running live traffic. We recommend that you perform the Cassandra upgrade in the evening or during a maintenance window, when the load is minimal.
 
 ## Update Cassandra's driver configuration in API Gateway
 
@@ -83,12 +83,12 @@ Perform the backup of your 2.2.8/2.2.12 data.
    ```
 2. Copy the `apigw-backup-tool` folder, located at `install_dir/apigateway/tools/` to your Cassandra node.
 3. Update the `/conf/apigw-backup-tool.ini` file to configure your backup. For more information, see [Apache Cassandra backup and restore](/docs/cass_admin/cassandra_bur#update-your-configuration-file).
-4. After the configuration is set and Cassandra is running, run the following command to validate the configuration:
+4. After the configuration is set and Cassandra is running, validate the configuration:
 
    ```
    apigw-backup-tool validateConfig
    ```
-5. While Cassandra is running, run the following command to create a backup in the `backup_root_dir` folder. The folder is configured in the `/conf/apigw-backup-tool.ini` file:
+5. While Cassandra is running, create a backup in the `backup_root_dir` folder. The folder is configured in the `/conf/apigw-backup-tool.ini` file:
 
    ```
    apigw-backup-tool backup -k <keyspace name> -s <snapshot name>
@@ -149,7 +149,7 @@ $./cassandra
 
 #### Repair and upgrade your tables
 
-After you upgrade Cassandra in all nodes, run the following commands to repair and upgrade your tables:
+After you upgrade Cassandra in all nodes, you must repair and upgrade your tables:
 
 1. Repair tables on your new installation:
 

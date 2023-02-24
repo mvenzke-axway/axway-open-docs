@@ -25,7 +25,8 @@ Multiple API Gateway instances in a group, each API Gateway instance on differen
 Usage:
 
 * Pre-production environment
-* Production environment
+
+{{< alert title="Note" >}}This is not a valid configuration for production use.{{< /alert>}}
 
 ## High availability with remote storage
 
@@ -127,6 +128,8 @@ API Gateway acts as a client of the Cassandra cluster as follows:
 
 * Strong consistency
   : Cassandra read and write consistency levels are both set to `QUORUM`. This, along with the replication factor of `3`, enables full availability in the event of one node loss.
+
+To avoid Cassandra and API Gateway taking up the same system resources, you must install them on different servers.
 
 You can have any number of gateway instances (all running either locally or remote to Cassandra). However, you must have at least two gateway instances for HA. This also applies to API Manager.
 

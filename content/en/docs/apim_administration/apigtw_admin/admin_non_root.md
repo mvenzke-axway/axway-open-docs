@@ -52,7 +52,7 @@ Use `patchelf` to patch the `vshell` binary with the absolute paths of the API G
 
 ```
 $ patchelf --force-rpath --set-rpath \
-"$VDISTDIR/platform/jre/lib/amd64/server:$VDISTDIR/platform/jre/lib/amd64:$VDISTDIR/platform/jre/lib/amd64/jli:$VDISTDIR/platform/lib/engines:$VDISTDIR/platform/lib:$VDISTDIR/ext/lib" \
+"$VDISTDIR/platform/jre/lib/amd64/server:$VDISTDIR/platform/jre/lib/amd64:$VDISTDIR/platform/jre/lib/amd64/jli:$VDISTDIR/platform/jre/lib/server:$VDISTDIR/platform/jre/lib:$VDISTDIR/platform/jre/lib/jli:$VDISTDIR/platform/lib/engines:$VDISTDIR/platform/lib:$VDISTDIR/ext/lib" \
 $VDISTDIR/Linux.x86_64/bin/vshell
 ```
 
@@ -60,7 +60,7 @@ Alternatively you can use `chrpath`, for example:
 
 ```
 $ chrpath -r \
-"$VDISTDIR/platform/jre/lib/amd64/server:$VDISTDIR/platform/jre/lib/amd64:$VDISTDIR/platform/jre/lib/amd64/jli:$VDISTDIR/platform/lib/engines:$VDISTDIR/platform/lib:$VDISTDIR/ext/lib" \
+"$VDISTDIR/platform/jre/lib/amd64/server:$VDISTDIR/platform/jre/lib/amd64:$VDISTDIR/platform/jre/lib/amd64/jli:$VDISTDIR/platform/jre/lib/server:$VDISTDIR/platform/jre/lib:$VDISTDIR/platform/jre/lib/jli:$VDISTDIR/platform/lib/engines:$VDISTDIR/platform/lib:$VDISTDIR/ext/lib" \
 $VDISTDIR/Linux.x86_64/bin/vshell
 ```
 
@@ -85,7 +85,7 @@ You also need to add API Gateway library paths to `jvm.xml`. To modify your `jvm
 3. Enter the following:
 
    ```
-   <VMArg name="-Djava.library.path=$VDISTDIR/$DISTRIBUTION/jre/lib/amd64/server:$VDISTDIR/$DISTRIBUTION/jre/lib/amd64:$VDISTDIR/$DISTRIBUTION/lib/engines:$VDISTDIR/ext/$DISTRIBUTION/lib:$VDISTDIR/ext/lib:$VDISTDIR/$DISTRIBUTION/jre/lib:$VDISTDIR/system/lib:$VDISTDIR/$DISTRIBUTION/lib"/>
+   <VMArg name="-Djava.library.path=$VDISTDIR/$DISTRIBUTION/jre/lib/amd64/server:$VDISTDIR/$DISTRIBUTION/jre/lib/amd64:$VDISTDIR/$DISTRIBUTION/lib/engines:$VDISTDIR/ext/$DISTRIBUTION/lib:$VDISTDIR/ext/lib:$VDISTDIR/$DISTRIBUTION/jre/lib:$VDISTDIR/$DISTRIBUTION/jre/lib/server:$VDISTDIR/system/lib:$VDISTDIR/$DISTRIBUTION/lib"/>
    ```
 
 ## Enable API Gateway processes to listen on privileged ports {#enable-processes-to-listen}

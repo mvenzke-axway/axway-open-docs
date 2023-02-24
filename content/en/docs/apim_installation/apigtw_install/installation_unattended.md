@@ -63,7 +63,7 @@ The following summarizes some of the more common options:
 
 * `--help`: Display available options and default settings.
 * `--mode`: Specify an installation mode.
-* `--acceptGeneralConditions`: Agree to the [Axway General Terms and Conditions](https://cdn.axway.com/u/Axway_General_Conditions_version_april_2014_eng%20(France).pdf). Must be set to `yes`.
+* `--acceptGeneralConditions`: Agree to the [Axway General Terms and Conditions](https://www.axway.com/sites/default/files/Legal_documents/License_general_conditions/Axway_General_Conditions_version_april_2014_eng_(France).pdf). Must be set to `yes`.
 * `--setup_type`: Specify a setup type (`standard`, `complete`, or `advanced`) (on Linux only).
 * `--enable-components`: Specify a comma-separated list of components to enable.
 * `--disable-components`: Specify a comma-separated list of components to disable.

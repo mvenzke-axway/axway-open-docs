@@ -78,7 +78,7 @@ The API Portal Docker images are no longer available in a downloadable zip file.
 This version of API Portal includes:
 
 * Fixes from all 7.7 updates released prior to this version. For details of all the update fixes included, see the corresponding [release note](/docs/apim_relnotes/) for each 7.7 update.
-* Additional fixes might be delivered as patches up to 15 months after the release date. You can find the list of patches available on top of this update on [Axway Support](https://support.axway.com/en/search/index/type/Downloads/q/20220830/ipp/100/product/545/version/3036/subtype/8). If no patches were created for this release, the link will return "No search results found".
+* Additional fixes might be delivered as patches up to 15 months after the release date. You can find the list of patches available on top of this update on [Axway Support](https://support.axway.com/en/search/index/type/Downloads/q/20221130/ipp/100/product/545/version/3036/subtype/8). If no patches were created for this release, the link will return "No search results found".
 
 ### Fixed security vulnerabilities
 

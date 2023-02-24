@@ -12,6 +12,16 @@ The trace log behavior can be modified through the `trace.xml` file or the syste
 
 {{< alert title="Note" color="primary" >}}The environment variables override the `trace.xml` file settings. This enables the logging behavior of individual containers to be defined at runtime.{{< /alert >}}
 
+### Redirect trace logs using system environment variables
+
+Ensure the following environment variables are passed to the container:
+
+```
+APIGW_LOG_TRACE_TO_FILE=false
+
+APIGW_LOG_TRACE_JSON_TO_STDOUT=true
+```
+
 ### Redirect trace logs using the trace.xml file
 
 Update the `INSTALL_DIR/apigateway/system/conf/trace.xml` file as follows:
@@ -26,16 +36,6 @@ Update the `INSTALL_DIR/apigateway/system/conf/trace.xml` file as follows:
 
 ```
 <FileTrace filename="@stdout" jsonOutput="true"/>
-```
-
-### Redirect trace logs using system environment variables
-
-Ensure the following environment variables are passed to the container:
-
-```
-APIGW_LOG_TRACE_TO_FILE=false
-
-APIGW_LOG_TRACE_JSON_TO_STDOUT=true
 ```
 
 ## Open traffic logs
@@ -60,4 +60,4 @@ APIGW_LOG_OPENTRAFFIC_OUTPUT=stdout
 
 For more information on trace logging and open traffic logging, see the [API Gateway Administrator Guide](/docs/apim_administration/apigtw_admin/). This guide also describes the open logging JSON schema.
 
-For more information on the environment variables that you can specify at runtime, see [Environment variables reference](/docs/apim_installation/apigw_containers/container_env_variables#environment-variables-reference).
+For more information on the environment variables that you can specify at runtime, see [Environment variables reference](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/container_runtime#environment-variables-reference).

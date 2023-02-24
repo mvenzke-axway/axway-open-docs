@@ -1,6 +1,6 @@
 ---
- title :  Development and deployment with API Gateway containers 
- linkTitle :  Development and deployment
+ title :  Promoting Configuration
+ linkTitle :  Promoting Configuration between environments
  weight: 95
  date :  2019-09-18 
  description :  Develop and test APIs and policies in a development environment, and promote and deploy them in other environments (for example, preproduction and production).

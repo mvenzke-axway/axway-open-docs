@@ -28,7 +28,7 @@ The **Compare Attribute** filter is used to check whether the `useOpsdb` paramet
 
 ![Skip Elasticsearch](/Images/op_insights/op_insights_skip_elasticsearch_useOpsdb.png)
 
-To make use of this optional parameter, you must configure it in your `<apigateway>/config/acl.json` file as an allowed parameter.
+To make use of this optional parameter, you must configure it in your `<apigateway>/conf/acl.json` file as an allowed parameter.
 
 ```bash
 "ops_get_messages" : { "path" : "/ops/search?protocol=&format=&from=&count=&order=&rorder=&ago=&field=&value=&op=&jmsPropertyName=&jmsPropertyValue=&useOpsdb=" },

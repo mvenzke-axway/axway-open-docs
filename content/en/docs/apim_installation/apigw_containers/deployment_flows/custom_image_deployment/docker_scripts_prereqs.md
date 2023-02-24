@@ -1,11 +1,12 @@
 ---
-title: Set up Docker environment
-linkTitle: Set up Docker environment
-weight: 30
+title: Docker environment prerequisites and setup
+linkTitle: Docker Prerequisites and setup
+weight: 31
 date: 2019-09-18T00:00:00.000Z
-description: Prerequisites and steps you must follow to set up your Docker environment.
+description: Prerequisites and steps to set up your Docker environment.
 ---
-## Before you start
+
+## Prerequisites
 
 Your system must meet the following prerequisites before you can run the scripts to build and deploy API Gateway in Docker containers.
 
@@ -13,9 +14,9 @@ Your system must meet the following prerequisites before you can run the scripts
 
 You must have the following installed on your local system:
 
-* Docker CE version 18.06 or later on CentOS 7
-* Python version 3.x or later
-* OpenSSL version 1.1 or later
+* Docker CE version 18.06 or later on CentOS 7.
+* Python version 3.x or later.
+* OpenSSL version 1.1 or later.
 
 {{< alert title="Note" color="primary" >}}Axway supports Red Hat Enterprise Linux 7 and CentOS Linux version 7 as the base image for Docker containers. Axway supports deployment on any host operating system, cloud provider, or container orchestration system supported by your Docker version. {{< /alert >}}
 
@@ -25,10 +26,10 @@ For more details on Docker system requirements, see [Docker](https://docs.docker
 
 You must download the following from [Axway Support](https://support.axway.com).
 
-* API Gateway Linux installer
+* API Gateway Linux installer.
 * Latest Docker sample scripts package for your API Gateway version. Choose the appropriate package from the [list of Docker scripts on Axway Support](https://support.axway.com/en/search/index/type/Downloads/q/Docker/ipp/50/product/324/subtype/47).
 
-#### Acceptance of General Conditions for license and subscription services
+### Acceptance of General conditions for license and subscription services
 
 To run API Gateway, API Manager, Admin Node Manager, or API Gateway Analytics containers you must accept Axway General Terms and Conditions:
 
@@ -36,18 +37,18 @@ _“You hereby accept that the Axway Products and/or Services shall be governed 
 
 To accept them, set the environment variable `ACCEPT_GENERAL_CONDITIONS` to `yes` when running each container.
 
-#### API Gateway licenses
+### API Gateway licenses
 
 You must have specific API Gateway licenses to run the following:
 
-* API Gateway container
-* Admin Node Manager or API Gateway container in Federal Information Processing Standard (FIPS) mode
-* API Manager-enabled API Gateway container
-* API Gateway Analytics container
+* API Gateway container.
+* Admin Node Manager or API Gateway container in Federal Information Processing Standard (FIPS) mode.
+* API Manager-enabled API Gateway container.
+* API Gateway Analytics container.
 
-#### Install the Docker scripts
+### Extract the Docker scripts
 
-Extract files from the Docker scripts package that you downloaded from [Axway Support](https://support.axway.com/)
+Extract files from the Docker scripts package that you downloaded from [Axway Support](https://support.axway.com/).
 
 ```
 tar -xvf APIGateway_7.7.YYYYMMDD-<bn>_DockerScripts.tar.gz
@@ -59,21 +60,21 @@ The extracted package includes the following:
 * Docker files
 * Quickstart demo
 
-#### Quickstart demo
+## Quickstart demo
 
 The Quickstart demo `quickstart.sh` script enables you to quickly deploy a demo of API Gateway in Docker containers. A `readme.md` is also provided, that describes the Quickstart demo and includes a topology diagram.
 
 This script builds a base API Gateway Docker image using an API Gateway Linux installer and a Docker image based on a standard CentOS7 operating system image.
 
-{{< alert title="Caution" color="warning" >}}Docker tries to download the latest CentOS image from a remote registry, which may potentially contain security vulnerabilities. Axway is not responsible for any third-party base O/S images. You must ensure that all base O/S images are up-to-date and apply any security patches if necessary. See [Create a base image based on custom CentOS7/RHEL7](/docs/apim_installation/apigw_containers/docker_script_baseimage#create-a-base-image-based-on-custom-centos7-rhel7) for details.{{< /alert >}}
+{{< alert title="Caution" color="warning" >}}Docker tries to download the latest CentOS image from a remote registry, which may potentially contain security vulnerabilities. Axway is not responsible for any third-party base O/S images. You must ensure that all base O/S images are up-to-date and apply any security patches if necessary. For more information, see [Create a base image based on custom CentOS7/RHEL7](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/docker_script_baseimage#create-a-base-image-based-on-custom-centos7-rhel7).{{< /alert >}}
 
-For the Quickstart help, run:
+To run the Quickstart help:
 
 ```
 ./quickstart.sh -h
 ```
 
-The `quickstart.sh` script is intended to simplify deployment of API Gateway in containers, especially for development environments and evaluation use. However, you can also use it as a starting point for customization and modify it to suit your own environment.
+The `quickstart.sh` script is intended to simplify the deployment of API Gateway in containers, especially for development environments and evaluation use. However, you can also use it as a starting point for customization and modify it to suit your own environment.
 
 To run the Discovery and Traceability agents as part of the Quickstart demo, you need a valid `da_env_vars.env` and `ta_env_vars.env` configuration files, as well as valid private and public keys to connect with Amplify Central. For more information about agents configuration files, see [Agent configuration](https://docs.axway.com/bundle/amplify-central/page/docs/connect_manage_environ/connect_api_manager/agent-variables/index.html).
 
@@ -83,7 +84,7 @@ To run the demo environment, set the following in the agents configuration files
 * `APIGATEWAY_HOST=apimgr`
 * `APIMANAGER_SSL_INSECURESKIPVERIFY=true`
 
-{{< alert title="Note" color="primary" >}}Server certificates signed by a trusted Certificate Authority should be used when attempting to utilize the demo script as part of a production environment with the `APIMANAGER_SSL_INSECURESKIPVERIFY=true` configuration variable removed. For more information, see [Configure signed certificates for API Manager ports](/docs/apim_administration/apimgr_admin/api_mgmt_config#configure-signed-certificates-for-api-manager-ports).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Server certificates signed by a trusted Certificate Authority (CA) should be used when attempting to utilize the demo script as part of a production environment with the `APIMANAGER_SSL_INSECURESKIPVERIFY=true` configuration variable removed. For more information, see [Configure signed certificates for API Manager ports](/docs/apim_administration/apimgr_admin/api_mgmt_config#configure-signed-certificates-for-api-manager-ports).{{< /alert >}}
 
 ## Create a Docker network
 
@@ -103,13 +104,13 @@ The example Quick Start API Gateway domain topology provided with the API Gatewa
 
 ![Example containerized API Gateway domain](/Images/ContainerGuide/container_gw_domain.png)
 
-This simple API Gateway domain topology is described as follows:
+This example API Gateway domain topology is described as follows:
 
 * Container 1 runs an Apache Cassandra database that stores API Manager data.
 * Container 2 runs a MySQL database that stores API Gateway metrics data.
-* Container 3 runs an API Gateway that writes transaction event logs, and includes API Manager is an optional component. For more details, see [Deploy API Manager or OAuth in Docker containers](/docs/apim_installation/apigw_containers/container_apimgr_oauth).
+* Container 3 runs an API Gateway that writes transaction event logs, and includes API Manager as an optional component. For more information, see [Deploy API Manager or OAuth in Docker containers](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/container_apimgr_oauth).
 * Container 4 runs an Admin Node Manager that generates metrics from transaction event logs, which are then read from the metrics database by API Manager and API Gateway Analytics.
-* Container 5 runs API Gateway Analytics, which is an optional standalone client of the metrics database. For more details, see [Deploy API Gateway Analytics in Docker containers](/docs/apim_installation/apigw_containers/container_apigateway_analytics).
+* Container 5 runs API Gateway Analytics, which is an optional standalone client of the metrics database. For more information, see [Deploy API Gateway Analytics in Docker containers](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/container_apigateway_analytics).
 * Container 6 runs the Discovery agent, which is used to discover new published APIs or any updated APIs. After the APIs are discovered, they are published to Amplify Central. For more information, see [Discovery agent](https://docs.axway.com/bundle/amplify-central/page/docs/connect_manage_environ/connect_api_manager/gateway-administation/index.html#discovery-agent).
 * Container 7 runs the Traceability agent, which is used to prepare the transaction events that are sent to Amplify platform. For more information, see [Traceability agent](https://docs.axway.com/bundle/amplify-central/page/docs/connect_manage_environ/connect_api_manager/gateway-administation/index.html#traceability-agent).
 
@@ -145,22 +146,22 @@ The above `docker run` command performs the following:
 
 ## Generate domain SSL certificates
 
-To secure the communications between the Admin Node Manager and API Gateways, you can use the `gen_domain_cert.py` script to generate a self-signed CA certificate for a domain, or a Certificate Signing Request (CSR) to be signed by an external Certificate Authority (CA).
+To secure the communication between the Admin Node Manager and API Gateways, you can use the `gen_domain_cert.py` script to generate a self-signed CA certificate for a domain, or a Certificate Signing Request (CSR) to be signed by an external Certificate Authority (CA).
 
-{{< alert title="Note" color="primary" >}}If you already have a domain certificate (for example, from another API Gateway installation) you can skip this section. You can specify your existing domain certificate (certificate and private key in .pem format) to the `build_anm_image.py` and `build_gw_image.py` scripts. You cannot use one domain certificate for both a container deployment and a classic deployment if they are running in parallel.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}If you already have a domain certificate (for example, from another API Gateway installation) you can skip this section. You can specify your existing domain certificate (certificate and private key in PEM format) to the `build_anm_image.py` and `build_gw_image.py` scripts. You cannot use one domain certificate for both a container deployment and a classic deployment if they are running in parallel.{{< /alert >}}
 
 ### Generate domain certificates script options
 
-You must specify the following as options when using the `gen_domain_cert.py` script:
+You must specify the following options when using the `gen_domain_cert.py` script:
 
-* Domain identifier
-* Passphrase for the domain private key
+* Domain identifier.
+* Passphrase for the domain private key.
 
 This script also supports additional options when generating certificates. For example:
 
-* Specify a signing algorithm (SHA256, SHA384, or SHA512)
-* Generate a CSR
-* Specify custom values for the fields in the domain certificate (for example, organization)
+* Specify a signing algorithm (SHA256, SHA384, or SHA512).
+* Generate a CSR.
+* Specify custom values for the fields in the domain certificate (for example, organization).
 
 For the latest script usage and options, run the script with no options, or with the `-h` option.
 
@@ -173,7 +174,7 @@ cd emt_containers-<version>
 
 The following example creates a certificate and private key using default values.
 
-{{< alert title="Caution" color="warning" >}} Do not use default options on production systems. The `--default-cert` option is provided only as a convenience for development environments.{{< /alert >}}
+{{< alert title="Caution" color="warning" >}} Do not use default options on production environments. The `--default-cert` option is provided only as a convenience for development environments.{{< /alert >}}
 
 ```
 cd emt_containers-<version>
@@ -182,9 +183,9 @@ cd emt_containers-<version>
 
 This example creates a default certificate and private key:
 
-* The certificate uses a domain identifier of `DefaultDomain`
-* The certificate and key are stored in the `certs/DefaultDomain` directory
-* The certificate uses a default passphrase
+* The certificate uses a domain identifier of `DefaultDomain`.
+* The certificate and key are stored in the `certs/DefaultDomain` directory.
+* The certificate uses a default passphrase.
 
 ### Generate a self-signed certificate and key
 
@@ -198,8 +199,8 @@ cd emt_containers-<version>
 This example creates a self-signed certificate and private key:
 
 * The certificate uses a domain identifier of `mydomain`.
-* The certificate and key are stored in the `certs/mydomain` directory
-* The certificate uses a specified passphrase
+* The certificate and key are stored in the `certs/mydomain` directory.
+* The certificate uses a specified passphrase.
 
 ### Generate a CSR
 
@@ -215,6 +216,6 @@ cd emt_containers-<version>
 
 This example creates a CSR that:
 
-* Uses a domain identifier of `mydomain`
-* Is stored in the `certs/mydomain` directory
-* Uses a specified passphrase and organization
+* Uses a domain identifier of `mydomain`.
+* Is stored in the `certs/mydomain` directory.
+* Uses a specified passphrase and organization.
