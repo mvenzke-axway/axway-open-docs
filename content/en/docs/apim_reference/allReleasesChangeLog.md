@@ -10,7 +10,7 @@ List of the major changes made in each release of API Gateway, API Manager, and 
 
 You can find the release notes for all service packs on [Axway Support](https://support.axway.com).
 
-## Version 7.7 2022
+## Version 7.7 2023
 
 |Update |New features and enhancements        |Important Changes    |Deprecated/Removed/EOS  |
 |---    |---                                  |---                  |---                     |
@@ -24,6 +24,12 @@ You can find the release notes for all service packs on [Axway Support](https://
 |    | |Serialization of XML payload |-  |
 |    | |XMLBody, JSONBody, and RawBody source is now private |-  |
 |**Update**       |**New features and enhancements**        | **Important Changes**   |**Deprecated/Removed/EOS**  |
+|[API Portal 7.7.20230228](/docs/apim_relnotes/20230228_apip_relnotes/)|Coming soon!  |-|- |
+
+## Version 7.7 2022
+
+|Update |New features and enhancements        |Important Changes    |Deprecated/Removed/EOS  |
+|---    |---                                  |---                  |---                     |
 |[API Gateway and Manager 7.7.20221130](/docs/apim_relnotes/20221130_apimgr_relnotes/)|New API Gateway Docker image|API Manager settings, Remote hosts input and output encodings can now be disabled  |-  |
 |    |Helm use of externalization |Changes in OAuth Login Form path  |-  |
 |    |Amplify Analytics Operational Insights|Traffic Monitor filter behavior change with threat protection  |-  |
