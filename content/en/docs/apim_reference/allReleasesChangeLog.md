@@ -14,6 +14,16 @@ You can find the release notes for all service packs on [Axway Support](https://
 
 |Update |New features and enhancements        |Important Changes    |Deprecated/Removed/EOS  |
 |---    |---                                  |---                  |---                     |
+|[API Gateway and Manager 7.7.20230228](/docs/apim_relnotes/20230228_apimgr_relnotes/)|Support for Cassandra 4.0.7|API Gateway preserves the charset value configured in the Set Message filter  |Axway PassPort  |
+|    |FIPS mode supported in the API Gateway Docker image |API Gateway Via header received-protocol version set to the version used by the upstream sender |Sentinel  |
+|    |API Gateway containerization documentation restructure |Docker Compose security configuration changes in Amplify Analytics Operational Insights |Client Application Registry  |
+|    | |Rate limiter added to unauthenticated APIs in API Manager |Localization in Policy Studio  |
+|    | |URIs removed from MIME threatening content filter |-  |
+|    | |Link to Axway General Terms and Conditions has been updated |-  |
+|    | |API Gateway SDK libraries updates |-  |
+|    | |Serialization of XML payload |-  |
+|    | |XMLBody, JSONBody, and RawBody source is now private |-  |
+|**Update**       |**New features and enhancements**        | **Important Changes**   |**Deprecated/Removed/EOS**  |
 |[API Gateway and Manager 7.7.20221130](/docs/apim_relnotes/20221130_apimgr_relnotes/)|New API Gateway Docker image|API Manager settings, Remote hosts input and output encodings can now be disabled  |-  |
 |    |Helm use of externalization |Changes in OAuth Login Form path  |-  |
 |    |Amplify Analytics Operational Insights|Traffic Monitor filter behavior change with threat protection  |-  |
