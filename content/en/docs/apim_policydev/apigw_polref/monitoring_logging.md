@@ -116,10 +116,11 @@ The category selected here identifies the category of filters to which this filt
 
 ## Service level agreement filter
 
-A service level agreement (SLA) is an agreement put in place between a web services host and a client of that web service in order to guarantee a certain minimum quality of service. It is common to see SLAs in place to ensure that a maximum number of messages do not result in a communications failure and that responses are received within an acceptable time frame. In cases where the conditions of the SLA are breached, it is crucial that an alert can be sent to the appropriate party.
+A service level agreement (SLA) is an agreement put in place between a web services host and a client of that web service in order to guarantee a certain minimum quality of service. It is common to see SLAs in place to ensure that a maximum number of messages do not result in a communications failure and that responses are received within an acceptable time frame. In cases where the conditions of the SLA are breached, it is crucial that an alert can be sent to the appropriate party. When one of the specified thresholds is breached, an alert is sent to a configured alert destination to ensure that interested parties are notified promptly of the SLA breach.
 
-When one of the specified thresholds is breached, an alert is sent to a configured alert destination to ensure that interested parties are notified promptly of the SLA breach. For more details on configuring system alerts, see the
-[Configure system alerts](/docs/apim_policydev/apigw_poldev/general_system_alerts/).
+Regardless of a breach, the SLA filter always returns `true` during the policy flow, and continues its execution after registering a message handler to collect data.
+
+The alert of a breach is sent separately from any invocation of the filter. The SLA logic and alerts take place in another thread. For that reason, we recommend you to place the SLA filter near the start of the policy, before anything else can fail and prevent the SLA filter from being executed. For more information on configuring system alerts, see [Configure system alerts](/docs/apim_policydev/apigw_poldev/general_system_alerts/).
 
 API Gateway satisfies these requirements by allowing SLAs to be configured at the policy level. You can configure SLAs to monitor the following types of problems:
 
