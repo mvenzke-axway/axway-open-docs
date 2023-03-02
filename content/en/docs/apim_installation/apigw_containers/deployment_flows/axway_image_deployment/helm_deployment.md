@@ -28,19 +28,19 @@ In a development environment, Cassandra can be run in containers, and the cluste
 
 1. In OpenShift, create a new project for the cassandra deployment:
 
-   ```bash
+   ```none
    kubectl create namespace cassandra
    ```
 
 2. Add the `bitnami` Helm repository to the project:
 
-   ```bash
+   ```none
    helm repo add bitnami https://charts.bitnami.com/bitnami
    ```
 
 3. Using the [`bitnami/cassandra`](https://github.com/bitnami/charts/blob/main/bitnami/cassandra) chart, install Cassandra by running a customized version of this sample command:
 
-   ```bash
+   ```none
    helm install cassandra bitnami/cassandra \
         --set podSecurityContext.enabled="false" \
         --set containerSecurityContext.enabled="false" \
@@ -60,13 +60,13 @@ If you are using metrics for analytics, follow this section to deploy a MySQL da
 
 1. Create a project for the MySQL instance:
 
-   ```bash
+   ```none
    kubectl create namespace metrics
    ```
 
 2. Prepare a `configmap` with the SQL file for the schema init:
 
-   ```bash
+   ```none
    echo 'CREATE DATABASE metrics; USE metrics;' | cat - mysql-analytics.sql > mysql-analytics-cm.sql
    kubectl create configmap mysql-metrics --from-file=mysql-analytics-cm.sql -n metrics
    ```
@@ -75,7 +75,7 @@ If you are using metrics for analytics, follow this section to deploy a MySQL da
 
 3. Install the Helm chart using [bitnami/mysql](https://github.com/bitnami/charts/tree/main/bitnami/mysql):
 
-   ```bash
+   ```none
    helm install mysql bitnami/mysql \
         --set primary.podSecurityContext.enabled="false" \
         --set primary.containerSecurityContext.enabled="false" \
@@ -100,7 +100,7 @@ To access the API Gateway Helm chart, go to [Axway repository](https://repositor
 
 Add the helm repository and perform a `helm pull` to get the latest version of the repository:
 
-```bash
+```none
 helm repo add axway https://helm.repository.axway.com --username=<client_id> --password=<client_secret>
 helm pull axway/apigateway-helm-prod-apigateway
 ```
@@ -109,7 +109,7 @@ helm pull axway/apigateway-helm-prod-apigateway
 
 To be able to view the helm `values.yaml` file you can run a `helm fetch` command on the added repository:
 
-```bash
+```none
 helm fetch axway/apigateway-helm-prod-apigateway --untar
 ```
 
@@ -119,7 +119,7 @@ This command creates a directory `apigateway` containing the complete chart, inc
 
 To access the Axway images that are referenced in the Helm chart from your kubernetes cluster, create a kubernetes secret with your Axway Service Account credentials and reference it in your customized values.yaml file.
 
-```bash
+```none
 kubectl create secret docker-registry regcred -n <namespace> --docker-server="https://repository.axway.com" --docker-username="<client_id>" --docker-password="<client_secret>"
 ```
 
@@ -135,7 +135,7 @@ Product license configuration can be added to each component individually by way
 
 The group ID can be set on the API Manager or API Traffic component. For example:
 
-```bash
+```none
 apimgr:
   groupId: 
     "APIMgrGroup"
@@ -151,7 +151,7 @@ Axway images are shipped with a default domain certificate. Customized domain ce
 
 If the domain certificates were generated with a passphrase, that passphrase must be configured within the global `domainkeypassphrase`. For example:
 
-```bash
+```none
 global:
   domainkeypassphrase:
     passphrase: "redacted"
@@ -161,7 +161,7 @@ global:
 
 Any component which uses an Entity Store with a passphrase can configure the passphrase in the `values` override file for that specific component. For example:
 
-```bash
+```none
 anm:
   espassphrase: "redacted"
 ```
@@ -170,7 +170,7 @@ anm:
 
 The following is an example of a customized `myvalues.yaml` file including an example of how to insert the contents of a valid license file.
 
-```bash
+```none
 nameOverride: gateway
 global:
   domainName: example.com
@@ -463,24 +463,24 @@ Follow these steps to install API Gateway using your customized `myvalues.yaml` 
 
 1. Create a namespace for your API Gateway Helm chart, for example:
 
-    ```bash
+    ```none
     kubectl create namespace mynamespace
     ```
 2. Use your customized file to install the chart. The following command will pick up all values from the original `values.yaml` and override them with any specific values from `myvalues.yaml`.
 
-    ```bash
+    ```none
     helm install apim -f myvalues.yaml -n mynamespace <repository.axway.com>
     ```
 
     If just using a modified `values.yaml` file, then run:
 
-    ```bash
+    ```none
     helm install -f values.yaml apim -n mynamespace axway/apigateway-helm-prod-apigateway
     ```
 
 3. After the installation is finished, check the deployment, for example:
 
-    ```bash
+    ```none
     kubectl get pods -n mynamespace
     ```
 
@@ -496,7 +496,7 @@ Follow these steps to install API Gateway using your customized `myvalues.yaml` 
 
 4. After all the pods are up and running, you should be able to reach your Admin Node Manager, your API Gateway, the API Manager, and the Analytics UI, if enabled. To check these, get the ingresses and use them to find the URL for each of the interfaces:
 
-    ```bash
+    ```none
     kubectl get ing -n mynamespace
     ```
 
@@ -528,7 +528,7 @@ Components can be configured to mount custom configurations, which can then be m
 
 `apigateway` and `analytics` configuration files must be in the same directory structure which mirrors the `/opt/Axway/apigateway` or `/opt/Axway/analytics` installation directories. For example:
 
-```bash
+```none
 apigateway
 ├── groups
 │   ├── certs
@@ -547,7 +547,7 @@ apigateway
 
 Configuration files can be copied to the persistent volumes using tools, such as `kubectl` and `scp`. For example:
 
-```bash
+```none
 # Copying a FED file to the API Manager component
 kubectl cp apimgr.fed <apimgr pod id>:/merge/fed
 
@@ -557,7 +557,7 @@ kubectl cp apigateway <apimgr pod id>:/merge/
 
 After the external configuration has been successfully copied to the relevant persistent volume, the deployment can be reloaded in order for the new configuration to be adopted to the relevant component. For example:
 
-```bash
+```none
 # Reload the API Manager deployment
 kubectl rollout restart deployment apigw-gateway-apimgr -n <namespace>
 ```

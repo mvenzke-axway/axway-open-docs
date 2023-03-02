@@ -27,7 +27,7 @@ When the new pods come up, they will come up with the upgraded configuration.
 
 After the upgrade is finished, check the deployment, for example:
 
-```bash
+```none
 kubectl get pods -n mynamespace
 ```
 

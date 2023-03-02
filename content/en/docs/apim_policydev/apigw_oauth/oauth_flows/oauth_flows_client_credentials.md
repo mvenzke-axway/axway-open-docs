@@ -35,7 +35,7 @@ grant_type=client_credentials
 
 Comma (`,`) and space ( ) characters are treated as delimiters when specified in the `scope` parameter. For example, if you send the following client token request, API Gateway returns an access token containing `"scope":"resource.WRITE resource.READ"`.
 
-```bash
+```none
 curl -ki https://localhost:8089/api/oauth/token --data-urlencode 'scope=resource.WRITE,resource.READ'
 ```
 
@@ -62,13 +62,13 @@ Pragma:no-cache
 
 The following Jython sample client sends a request to the authorization server using the client credentials flow:
 
-```bash
+```none
 INSTALL_DIR/samples/scripts/oauth/client_credentials.py
 ```
 
 To run the sample, open a shell prompt at `INSTALL_DIR/samples/scripts`, and execute the following command:
 
-```bash
+```none
 run oauth/client_credentials.py
 ```
 

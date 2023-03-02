@@ -18,7 +18,7 @@ description: API Gateway and API Manager updates are cumulative, comprising new
 
 If you are updating from version **7.7 March 2021**, you must manually remove the following jars from your `apigateway` directory.
 
-```bash
+```none
 rm ./system/lib/plugins/cassandra-datastax-impl-4.1.0-6.jar
 rm ./system/lib/plugins/cassandra-factory-4.1.0-6.jar
 rm ./system/lib/plugins/cassandra-api-4.1.0-6.jar
@@ -26,7 +26,7 @@ rm ./system/lib/plugins/cassandra-api-4.1.0-6.jar
 
 If you are updating from version **7.7 May 2021**, you must manually remove the following jars from your `apigateway` directory.
 
-```bash
+```none
 rm ./system/lib/plugins/cassandra-datastax-impl-4.1.0-7.jar
 rm ./system/lib/plugins/cassandra-factory-4.1.0-7.jar
 rm ./system/lib/plugins/cassandra-api-4.1.0-7.jar

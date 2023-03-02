@@ -96,7 +96,7 @@ After configuring the MySQL or MariaDB database server with certificates, you ne
 
 1. Log in to the database server as the `root` user:
 
-   ```bash
+   ```none
    mysql -u root –p
    ```
 2. Enter the following command:

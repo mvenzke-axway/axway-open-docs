@@ -38,7 +38,7 @@ Set the `METRICBEAT_NODE_NAME` parameter to a descriptive name, which will be di
 
 Start the Metricbeat container on each host:
 
-```bash
+```none
 docker compose --env-file .env -f metricbeat/docker compose.metricbeat.yml up -d
 ```
 
@@ -48,7 +48,7 @@ As a result of this command, a container `metricbeat` is started on each host wi
 
 Ensure the `SELF_MONITORING_ENABLED` parameter is set to `false`. Then, stop Elasticsearch, Kibana, Logstash, and Filebeat services and restart them with docker compose that they are no longer using self-monitoring. A docker restart is not sufficient here. For example:
 
-```bash
+```none
 docker stop kibana
 docker compose --env-file .env -f kibana/docker compose.kibana.yml up -d
 ```
@@ -73,7 +73,7 @@ Follow these steps to activate APM:
 
 1. Start the APM server. This launches the APM service as a Docker container. The configured Elasticsearch hosts (`ELASTICSEARCH_HOSTS`) and certificates are used to connect to Elasticsearch. If you want to have user login enabled, you also need to set the `APM_USERNAME` and `APM_PASSWORD` parameters. Ensure that the initial setup user have rights to create templates (for example, the elastic user).
 
-    ```bash
+    ```none
     docker compose --env-file .env -f apm/docker compose.apm-server.yml up -d
     ```
 
@@ -86,7 +86,7 @@ Follow these steps to activate APM:
 
 2. To make use of the APM service in APIBuilder4Elastic, you must set the `APM_ENABLED` parameter to `true` in your `.env` file. This will cause the API Builder process to attempt to connect to the configured APM server. During the startup of API Builder, at the very beginning, the following will be logged:
 
-    ```bash
+    ```none
     Application performance monitoring enabled. Using APM-Server: https://axway-elk-apm-server:8200
     ```
 
@@ -98,7 +98,7 @@ If you are deploying Operational Insights with Helm, follow this section:
 
 1. Start the APM server in your Helm chart. In your `local-values.yml` activate the APM server. Additionally, set the Elasticsearch cluster UUID to include the APM server in stack monitoring:
 
-    ```bash
+    ```none
        apm-server:
          enabled: true
          elasticsearchClusterUUID: 3hxrsNg6QXq2wSkVWGTD4A
@@ -106,7 +106,7 @@ If you are deploying Operational Insights with Helm, follow this section:
 
 2. Activate APM service in APIBuilder4Elastic in your Helm chart with the following parameters:
 
-    ```bash
+    ```none
     apibuilder4elastic:
       apmserver:
        # If you want to use an external APM-Server, you can configure the URL here. 

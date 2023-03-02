@@ -21,20 +21,20 @@ Follow the next sections to install API Portal dependencies from community repos
 
 Install and enable EPEL with Remi:
 
-```bash
+```none
 # for CentOS 7
 sudo yum install epel-release yum-utils
 sudo yum install http://rpms.remirepo.net/enterprise/remi-release-$(rpm -E '%{rhel}').rpm
 ```
 
-```bash
+```none
 # for RHEL 7
 yum install yum-utils
 yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm
 yum install http://rpms.remirepo.net/enterprise/remi-release-$(rpm -E '%{rhel}').rpm
 ```
 
-```bash
+```none
 # for RHEL 8
 sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm
 sudo subscription-manager repos --enable codeready-builder-for-rhel-8-$(arch)-rpms
@@ -48,13 +48,13 @@ Follow these steps to install Apache HTTP server:
 
 1. Install Apache HTTP Server and its SSL module:
 
-   ```bash
+   ```none
    # for CentOS 7 / RHEL 7
    sudo yum install httpd mod_ssl
    ```
 2. Enable and start the Apache service:
 
-   ```bash
+   ```none
    # for CentOS 7 and RHEL 7/8
    sudo systemctl enable --now httpd
    ```
@@ -70,13 +70,13 @@ Follow these steps to install Apache HTTP server:
     Then, run `sudo systemctl enable --now httpd` again.
 3. Verify that Apache service is active and running:
 
-   ```bash
+   ```none
    # for CentOS 7 and RHEL 7/8
    systemctl status httpd
    ```
 4. Open the TCP port 80 and 443 in the local firewall
 
-   ```bash
+   ```none
    # for CentOS 7 and RHEL 7/8
    sudo firewall-cmd --permanent --add-port=80/tcp
    sudo firewall-cmd --permanent --add-port=443/tcp
@@ -89,13 +89,13 @@ Follow these steps to install PHP:
 
 1. Install PHP:
 
-   ```bash
+   ```none
    # for CentOS 7 / RHEL 7
    sudo yum-config-manager --enable remi-php80
    sudo yum install php php-cli php-common php-gd php-json php-intl php-mbstring php-mysqlnd php-pdo php-xml php-pecl-zip
    ```
 
-   ```bash
+   ```none
    # for RHEL 8
    sudo dnf module reset php
    sudo dnf module install php:remi-8.0
@@ -103,25 +103,25 @@ Follow these steps to install PHP:
    ```
 2. Verify that PHP was installed. If the command fails, restart the bash session:
 
-   ```bash
+   ```none
    # for CentOS 7 and RHEL 7/8
    php -v
    ```
 3. Locate the `mpm` configuration file and make sure that line `LoadModule mpm_prefork_module modules/mod_mpm_prefork.so` is uncommented and all the other lines are commented out.
 
-   ```bash
+   ```none
    # for CentOS 7 and RHEL 7/8
    find /etc/httpd -name '*-mpm.conf'
    ```
 4. Verify that `php7_module` of Apache is enabled:
 
-   ```bash
+   ```none
    # for CentOS 7 and RHEL 7/8
    httpd -M | grep php
    ```
 5. Restart Apache and verify that it is working:
 
-   ```bash
+   ```none
    # for CentOS 7 and RHEL 7/8
    sudo systemctl restart httpd
    systemctl status httpd

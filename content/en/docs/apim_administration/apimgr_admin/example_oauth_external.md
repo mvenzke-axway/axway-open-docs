@@ -107,6 +107,6 @@ Follow these steps in API Manager:
 
 When the configuration is complete you can request a token from your OAuth server and access your API using it, for example:
 
-```bash
+```none
 curl --header "Authorization: Bearer my.JWT.token" https://apimanager:8065/api/example
 ```

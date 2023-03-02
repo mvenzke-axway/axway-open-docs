@@ -41,7 +41,7 @@ The payload part of an API request is not written directly to the open traffic e
 
 The following is an example of what a payload look like:
 
-```bash
+```none
 HTTP/1.1 200 OK
 Date:Wed, 13 Jan 2021 23:08:58GMT
 CSRF-Token:62325BA818F8203917CB61AE883346D7F7A206E564E26008CAC3ED37386B1B7B
@@ -84,7 +84,7 @@ Payload handling is enabled by default, so it is assumed that you provide the pa
 
 If you are using the **Region** feature, that is, collecting API Gateways of different Admin Node Manager domains into a central Elasticsearch instance, you must make the payload available to the API builder regionally separated. For example, if you have defined the region like, `REGION=US-DC1`, all traffic payload from these API Gateways must be made available to the API Builder as follows:
 
-```bash
+```none
 /var/log/payloads/us-dc1/<YYY-MM-DD>/<HH.MI>/<payloadfile>
 ```
 

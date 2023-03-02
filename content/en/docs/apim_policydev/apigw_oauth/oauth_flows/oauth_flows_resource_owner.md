@@ -39,7 +39,7 @@ grant_type=password&username=johndoe&password=A3ddj3w
 
 Comma (`,`) and plus (`+`) characters are treated as delimiters when specified in the `scope` parameter. For example, if you send the following client token request:
 
-```bash
+```none
 curl -ki https://localhost:8089/api/oauth/token --data-urlencode 'scope=resource.WRITE,resource.READ'
 ```
 
@@ -66,13 +66,13 @@ Pragma:no-cache
 
 The following Jython sample client sends a request to the authorization server using the resource owner password credentials flow:
 
-```bash
+```none
 INSTALL_DIR/samples/scripts/oauth/resourceowner_password_credentials.py
 ```
 
 To run the sample, open a shell prompt at `INSTALL_DIR/samples/scripts`, and execute the following command:
 
-```bash
+```none
 run oauth/resourceowner_password_credentials.py
 ```
 

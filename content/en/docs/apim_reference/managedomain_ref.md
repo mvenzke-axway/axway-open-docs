@@ -23,7 +23,7 @@ For an overview of the `managedomain` command, see [Configure an API Gateway dom
 
 To run in default command interpreter mode, enter `managedomain`, and press Tab to view and select options. For example:
 
-```bash
+```none
 Axway-7.7/apigateway/posix/bin>managedomain
 Running in command interpreter mode. Enter 'quit' to exit.
 Enter 'help' to view help topics. Enter 'help topic' to view help for a topic.
@@ -49,7 +49,7 @@ You must first run `initialize` to register the first host in the domain in orde
 
 You can view detailed help for each command and its parameters by entering `help` followed by the command name. The following example shows the help for the `initialize` command:
 
-```bash
+```none
 help initialize
 
 Register the first Node Manager and host in a new domain. This Node Manager will
@@ -135,7 +135,7 @@ You can run a command using tab completion to specify parameters. The following 
 create_instance <press TAB>
 ```
 
-```bash
+```none
 name                       group                      host
 instance_management_port   instance_services_port     passphrase
 yaml                       sign_with_generated        sign_with_user_provided    
@@ -152,7 +152,7 @@ The following example creates a new gateway instance with a specific name and gr
 create_instance name APIServer1 group Group1
 ```
 
-```bash
+```none
 Requesting CSR from Admin Node Manager...
 CSR received from Admin Node Manager.
 Requesting signed certificate from Admin Node Manager...
@@ -178,7 +178,7 @@ You can test the connection by visiting the URL: http://roadrunner:8080/healthch
 
 Tab completion is also available for some parameter values (instance names, group names and host names). The following example shows available instances for the `delete_instance` command:
 
-```bash
+```none
 delete_instance name <press TAB>
 
 APIServer1   APIServer2

@@ -34,7 +34,7 @@ This script also supports additional options when generating an API Gateway Anal
 
 For the latest script usage and options, run the script with no options, or with the `-h` option.
 
-```bash
+```none
 cd emt_containers-<version>
 ./build_aga_image.py -h
 ```
@@ -60,7 +60,7 @@ Use the metrics options to specify the URL, user name, and password for your met
 
 The followin example creates an API Gateway Analytics Docker image named `apigw-analytics` with a tag of `1.0`.
 
-```bash
+```none
 cd emt_containers-<version>
 ./build_aga_image.py --installer=apigw-installer.run --os=centos7 --license=/tmp/analytics_license.lic --default-user --merge-dir=/tmp/analytics --out-image=apigw-analytics:1.0
 ```
@@ -89,7 +89,7 @@ Use the metrics options to specify the URL, user name, and password for your met
 
 The following example creates an API Gateway Analytics Docker image named `apigw-analytics` with a tag of `1.0`.
 
-```bash
+```none
 cd emt_containers-<version>
 ./build_aga_image.py --installer=apigw-installer.run --os=centos7 --license=/tmp/analytics_license.lic --analytics-username=user1 --analytics-pass-file=/tmp/pass.txt --metrics-db-url=jdbc:mysql://metricsdb:3306/metrics --metrics-db-username=db_user1 --metrics-db-pass-file=/tmp/dbpass.txt --merge-dir=/tmp/analytics --out-image=apigw-analytics:1.0
 ```
@@ -107,7 +107,7 @@ Use the `docker run` command to start the API Gateway Analytics container.
 
 {{< alert title="Note" >}}API Gateway Analytics container **requires** you to enable the `ACCEPT_GENERAL_CONDITIONS` environment variable to acknowledge that you have read and accepted [Axway License, Support, and Service Agreement](https://cdn.axway.com/u/Axway_General_Conditions_version_april_2014_eng%20(France).pdf). {{< /alert >}}
 
-```bash
+```none
 docker run -it --name=analytics -p 8040:8040 --network=api-gateway-domain -v /tmp/reports:/tmp/reports -e ACCEPT_GENERAL_CONDITIONS=yes -e METRICS_DB_URL=jdbc:mysql://metricsdb:3306/metrics?useSSL=false -e METRICS_DB_USERNAME=db_user1 -e METRICS_DB_PASS=my_db_pwd apigw-analytics:1.0
 ```
 
@@ -121,6 +121,6 @@ This example performs the following:
 
 To run the container in the background, use the `-d` option, for example:
 
-```bash
+```none
 docker run -d --name=analytics -p 8040:8040 --network=api-gateway-domain -v /tmp/reports:/tmp/reports -e ACCEPT_GENERAL_CONDITIONS=yes -e  METRICS_DB_URL=jdbc:mysql://metricsdb:3306/metrics?useSSL=false -e METRICS_DB_USERNAME=db_user1 -e METRICS_DB_PASS=my_db_pwd apigw-analytics:1.0
 ```

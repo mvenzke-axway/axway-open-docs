@@ -14,7 +14,7 @@ An important aspect of Operational Insights solution is to store the API request
 
 From within your project's folder, where the `docker compose.yml` file is located, run the following:
 
-```bash
+```none
 docker compose inspect
 ```
 
@@ -31,7 +31,7 @@ The status of each container is shown depending on the services you enabled and 
 
 Check the filebeat log file within the running docker container.
 
-```bash
+```none
 docker exec -it apigateway-openlogging-elk_filebeat_1_3ad3117a1312 bash
 cd logs
 tail -f filebeat
@@ -53,7 +53,7 @@ ERROR   pipeline/output.go:100  Failed to connect to backoff(async(tcp://logstas
 
 If you do not see any errors after the harvester process is started, you can assume your files are processed. If the harvester does not start, you might need to validate that the Open Traffic Event log files are visible by listing the following directory within the running container:
 
-```bash
+```none
 ls -l /var/log/work
 -rw-rw-r--. 1 filebeat filebeat  2941509 Aug 13 12:38 group-2_instance-1_traffic.log
 -rw-rw-r--. 1 filebeat filebeat 20972249 Jul  7 19:32 group-2_instance-1_traffic_2020-07-07-1.log
@@ -65,7 +65,7 @@ ls -l /var/log/work
 
 Logstash writes to stdout, so you can view some log information by running the following:
 
-```bash
+```none
 docker logs logstash -f
 ```
 
@@ -98,7 +98,7 @@ In this case, the environment variable `API_BUILDER_URL` is not set for the ANM 
 
 Run the following command to monitor when the process starts:
 
-```bash
+```none
 docker logs elasticsearch1 --follow
 ```
 
@@ -121,13 +121,13 @@ ERROR: [1] bootstrap checks failed
 
 Run the following to increase it temporarily:
 
-```bash
+```none
 sudo sysctl -w vm.max_map_count=262144
 ```
 
 Alternatively, you can also run:
 
-```bash
+```none
 sudo vi /etc/sysctl.conf
 add vm.max_map_count=262144
 sudo service sysctl restart
@@ -143,7 +143,7 @@ You can find the index mapping in the API Builder container, `elasticsearch_conf
 
 To check whether the index mapping was applied correctly to an index, execute the following request. For example the Traffic-Summary index:
 
-```bash
+```none
 http://elasticsearch:9200/apigw-traffic-summary/_mapping
 ```
 
@@ -153,7 +153,7 @@ Then, check whether properties mappings defined in the configuration mentioned a
 
 To verify that the API Builder docker container is running, run:
 
-```bash
+```none
 docker logs apibuilder4elastic --follow
 ```
 
@@ -195,7 +195,7 @@ index.lifecycle.rollover_alias [apigw-traffic-summary] does not point to index [
 
 When an index is rolled, for example, because of the size of the configuration, time has been reached or because of an update, a new index is created based on the corresponding index template. In this template, the ILM rollover alias is configured, which does not match the index if it is regional. API Builder checks periodically (every 10 minutes) if the ILM rollover alias is correct and adjusts it if necessary. You can also start this modification manually:
 
-```bash
+```none
 docker exec apibuilder4elastic wget --no-check-certificate https://localhost:8443/api/elk/v1/api/setup/index/rolloverAlias -O/dev/null
 ```
 
@@ -218,7 +218,7 @@ The solution uses Memcached in API Builder and Logstash to avoid unnecessary dup
 
 Memcache is storing the data into slabs.
 
-```bash
+```none
 stats cachedump 2 0
 ITEM ignoredAPIs:###Health Check [19 b; 1610535266 s]
 ITEM ignoredAPIs:/healthcheck### [19 b; 1610535266 s]
@@ -232,7 +232,7 @@ You might also try `stats cachedump 1 0` instead.
 
 To get a key, for instance, the version check status, run:
 
-```bash
+```none
 get version_status:versionCheck
 VALUE version_status:versionCheck 1 89
 {I"
@@ -273,7 +273,7 @@ The following list some options to check the issue:
 
 If the Quarterly and Yearly API request processing dashboards do not display any data, check if the `apigw-traffic-summary-hourly-v<n>` transform job is running. The APIBuilder4Elastic application tries to create this job every hour. You can also start this with the following API request in the API Builder container:
 
-```bash
+```none
 docker exec apibuilder4elastic wget --no-check-certificate https://localhost:8443/api/elk/v1/api/setup/transform/apigw-traffic-summary
 ```
 

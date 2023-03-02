@@ -21,7 +21,7 @@ The first step to setup Operational Insights in your production environment usin
 
 The following example represents the most simple `myvalues.yaml` configuration, assuming the API Management Platform and Filebeat are running externally to the Kubernetes cluster as indicated in the Helm architecture [diagram](/docs/operational_insights/op_insights_basic_setup/#architecture-example).
 
-```bash
+```none
 apibuilder4elastic:
   image: "docker.repository.axway.com/apigateway-docker-prod/<VERSION_TAG>/apibuilder4elastic:<VERSION_TAG>"
   anmUrl: "https://my-admin-node-manager:8090"
@@ -49,7 +49,7 @@ Elasticsearch requires persistent volumes to function correctly. This can be con
 
 After a storage class is available, you must define it in the appropriate section of your `myvalues.ymal`. For example,
 
-```bash
+```none
 elasticsearch:
   enabled: true
   volumeClaimTemplate:
@@ -64,7 +64,7 @@ elasticsearch:
 
 After your Elasticsearch volumes are created and your `myvalues.yaml` file is configured, you can start the installation as follows. The Helm release name, `axway-elk`, is mandatory. For more information, see [FAQ - Why is the Helm release name axway-elk](/docs/operational_insights/op_insights_faq/#why-is-the-helm-release-name-axway-elk).
 
-```bash
+```none
 helm install -n apim-elk -f myvalues.yaml axway-elk <repository.axway.com>
 ```
 
@@ -72,7 +72,7 @@ helm install -n apim-elk -f myvalues.yaml axway-elk <repository.axway.com>
 
 To check the status of the deployment, pods, services, and son on, run the following commands:
 
-```bash
+```none
 # Check the installed release
 helm list -n apim-elk
 NAME            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION   
@@ -132,7 +132,7 @@ The following diagram illustrates the approach:
 
 The following is an example setup of the above configuration:
 
-```bash
+```none
 # The service exposing Logstash as a NodePort on 32001
 kubectl -n apim-elk get services axway-elk-apim4elastic-logstash -o wide
 NAME                              TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE   SELECTOR
@@ -149,7 +149,7 @@ ip-172-31-61-143.ec2.internal   Ready    control-plane,master   23h   v1.21.0   
 
 The following is an example of the configuration for the Filebeat Logstash output:
 
-```bash
+```none
 output.logstash:
   # Based on our tests, the more WorkerNodes you add, the more likely the traffic 
   # is evenly distributed
@@ -177,7 +177,7 @@ You can also use a load balancer to have a single entry point. You can reconfigu
 
 For example:
 
-```bash
+```none
 output.logstash:
   # Or as part of the .env:
   # LOGSTASH_HOSTS=172.31.51.209:32001,172.31.53.214:32001,172.31.54.120:32001
@@ -201,13 +201,13 @@ To enable the user authentication for a newly created Elasticsearch cluster, you
 
 Run the following command to generate the passwords for the default users.
 
-```bash
+```none
 kubectl -n apim-elk exec axway-elk-apim4elastic-elasticsearch-0 -- bin/elasticsearch-setup-passwords auto --batch --url https://localhost:9200
 ```
 
 The following example shows how to setup the Elasticsearch users in your `myvalues.yaml` and disable anonymous access.
 
-```bash
+```none
 apibuilder4elastic:
   secrets:
     elasticsearchUsername: "elastic"
@@ -245,7 +245,7 @@ You can use your own secrets, ConfigMaps, and son on to customize Operational In
 
 You can customize your Helm chart as follows:
 
-```bash
+```none
 helm create axway-elk-setup
 cd axway-elk-setup
 ```
@@ -256,13 +256,13 @@ The following example shows how you can create a secret that keeps the API Manag
 
 1. Create a secret:
 
-    ```bash
+    ```none
     kubectl create secret generic api-builder-secrets --from-literal=API_MANAGER_PASSWORD=changeme --from-literal=API_MANAGER_USERNAME=apiadmin -n apim-elk
     ```
 
 2. Reference the secret. Update your `myvalues.yaml` to reference the created secret. Additionally, you must declare the default `ConfigMap` if you do not want to manage that `ConfigMap` yourself.
 
-   ```bash
+   ```none
     apibuilder4elastic:
       envFrom:
         - configMapRef:
@@ -276,7 +276,7 @@ The following example shows how you can create a secret that keeps the API Manag
 
 3. Install or upgrade APIM4Elastic:
 
-    ```bash
+    ```none
     helm upgrade -n apim-elk -f myvalues.yaml axway-elk <repository.axway.com>
     ```
 
