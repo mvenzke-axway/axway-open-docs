@@ -108,7 +108,7 @@ Many products are available as prebuilt Docker images from repositories like Doc
 
 #### Sample commands for using IBM MQ container with TLS for testing
 
-```none
+```bash
 # 1) create self-signed server certificate (key + cert)
 $JAVA_HOME/jre/bin/keytool -genkey -keyalg RSA -keysize 2048 -dname "CN=localhost, OU=Axway, O=Testing, L=Frankfurt, ST=Hessen, C=DE" -validity 365 -keypass password -alias mq -keystore mykeystore.jks -storepass password
 

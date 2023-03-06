@@ -82,7 +82,7 @@ To change the JVM settings of an API Gateway instance, follow these steps:
 
 1. Create a file called `jvm.xml` in the following location:
 
-    ```none
+    ```bash
     INSTALL_DIR/apigateway/groups/GROUP_ID/INSTANCE_ID/conf
     ```
 

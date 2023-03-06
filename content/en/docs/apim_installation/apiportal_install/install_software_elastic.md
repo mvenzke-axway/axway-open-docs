@@ -98,7 +98,7 @@ You can workaround this issue by manually creating a schedule in `crontab` to pe
 1. Open a secure shell connection with your server.
 2. Type `sudo crontab -e` to open the crontab editor.
 3. Paste the following text into the editor:
-   ```none
+   ```bash
    * 1 * * * php '{APIPORTAL_INSTALL_DIRECTORY}/apifeed.php' --entry apis --logfile '{APIPORTAL_INSTALL_DIRECTORY}/logs/com_apiportal.apifeed.log' --errlogfile '{APIPORTAL_INSTALL_DIRECTORY}/logs/com_apiportal.apifeed.error.log'
    * 1 * * * php '{APIPORTAL_INSTALL_DIRECTORY}/apifeed.php' --entry applications --logfile '{APIPORTAL_INSTALL_DIRECTORY}/logs/com_apiportal.apifeed.log' --errlogfile '{APIPORTAL_INSTALL_DIRECTORY}/logs/com_apiportal.apifeed.error.log'
    ```

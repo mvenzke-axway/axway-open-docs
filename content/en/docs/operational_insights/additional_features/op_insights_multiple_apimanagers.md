@@ -10,11 +10,11 @@ If you have several API Managers within your domain, you must configure a mappin
 
 The following syntax is used to configure a mapping of the group:
 
-```none
+```bash
 API_MANAGER=group-2|https://api-manager-1:8075, group-5|https://api-manager-2:8275
 ```
 
-```none
+```bash
 # helm example update the apimgrUrl variable in the values.yaml:
 apibuilder4elastic:
   apimgrUrl: "group-2|https://api-manager-1:8075, group-5|https://api-manager-2:8275"
@@ -36,7 +36,7 @@ Also, in this case, the API Managers must be configured accordingly with the Reg
 
 Set the API MANAGER variable in the `.env` file to multiple API Managers:
 
-```none
+```bash
 API_MANAGER=https://my-apimanager-0:8075, group-1|https://my-api-manager-1:8175, group-5|https://my-api-manager-2:8275, group-6|US|https://my-api-manager-3:8375, group-6|eu|https://my-api-manager-4:8475
 ```
 
@@ -44,7 +44,7 @@ API_MANAGER=https://my-apimanager-0:8075, group-1|https://my-api-manager-1:8175,
 
 Update the `apimgrUrl` variable in the `values.yaml`:
 
-```none
+```bash
 apibuilder4elastic:
   apimgrUrl: "https://my-apimanager-0:8075, group-1|https://my-api-manager-1:8175, group-5|https://my-api-manager-2:8275, group-6|US|https://my-api-manager-3:8375, group-6|eu|https://my-api-manager-4:8475"
 ```

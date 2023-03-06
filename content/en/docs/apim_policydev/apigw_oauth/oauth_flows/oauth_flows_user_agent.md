@@ -74,7 +74,7 @@ Host:apigateway.com
 
 For example, the `curl`command to call a protected resource with an access token is as follows:
 
-```none
+```bash
 curl -H "Authorization:Bearer O91G451HZ0V83opz6udiSEjchPynd2Ss9" https://apigateway.com/oauth/protected
 ```
 
@@ -82,7 +82,7 @@ curl -H "Authorization:Bearer O91G451HZ0V83opz6udiSEjchPynd2Ss9" https://apigate
 
 The following Jython sample client creates and sends an authorization request for the implicit grant flow to the authorization server:
 
-```none
+```bash
 INSTALL_DIR/samples/scripts/oauth/implicit_grant.py
 ```
 
@@ -91,7 +91,7 @@ To run the sample, perform the following steps:
 1. Open a shell prompt at the `INSTALL_DIR/samples/scripts` directory.
 2. Execute the following command:
 
-    ```none
+    ```bash
     run oauth/implicit_grant.py
     ```
 

@@ -20,7 +20,7 @@ To remove files and folders which are not required in the base images:
 2. In the extracted package open the file `Dockerfiles/gateway-base/scripts/runInstall.sh`.
 3. Add a line starting with `rm -rf` to remove any files you do not require from the image. For example:
 
-    ```none
+    ```bash
     # removes some sample McAfee DAT files  
     /opt/Axway/apigateway/conf/plugin
     # removes the IBM-MQ driver, which might not be required in your environment  

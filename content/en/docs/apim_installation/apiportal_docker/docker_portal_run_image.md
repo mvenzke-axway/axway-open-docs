@@ -34,7 +34,7 @@ To get the ready-made Docker image, login to [Axway Repository](https://reposito
 
       This option requires a [Service Account](https://docs.axway.com/bundle/axwaycli-open-docs/page/docs/authentication/service_accounts/index.html) in Axway Platform with access to this artifact.
 
-      ```none
+      ```bash
       docker login docker.repository.axway.com --username <ServiceAccount_client_id> --password <ServiceAccountclient_secret>
       docker pull docker.repository.axway.com/apiportal-docker-prod/7.7/apiportal:7.7.20220830-BN903
       ```
@@ -43,7 +43,7 @@ To get the ready-made Docker image, login to [Axway Repository](https://reposito
 
       This option requires the [Axway CLI](https://docs.axway.com/bundle/axwaycli-open-docs/page/docs/index.html) and [Axway Repository CLI extension](https://docs.axway.com/bundle/axwaycli-open-docs/page/docs/extensions/axway_repository_cli/index.html) installed to be able to manage Docker images, Helm charts, and files stored in the Axway Central Repository.
 
-      ```none
+      ```bash
       axway auth login
       axway repository docker register
       axway repository docker pull docker.repository.axway.com/apiportal-docker-prod/7.7/apiportal:7.7.20220830-BN903
@@ -51,7 +51,7 @@ To get the ready-made Docker image, login to [Axway Repository](https://reposito
 
 2. Run the API Portal Docker container, for example:
 
-    ```none
+    ```bash
     docker run --name apiportal \
       -d -p 8080:80 \
       -e MYSQL_HOST=mysql.axway.com \
@@ -82,13 +82,13 @@ API Portal Docker container exposes Apache ports `80` and `443`. Port `443` is u
 
 To get help with the Docker image, run the following command:
 
-```none
+```bash
 docker container run --rm <apiportal-image-tag> --help
 ```
 
 To list the environment variables available in the Docker image, run the following command:
 
-```none
+```bash
 docker container run --rm <apiportal-image-tag> --env
 ```
 
@@ -316,7 +316,7 @@ REDIS_CACHE_TIMEOUT_SEC=600
 
 The following is an example of how to use the `env` file with `docker run` command:
 
-```none
+```bash
 docker container run --env-file .env \
   -e MYSQL_PASSWORD=very_secret_password \
   -e APACHE_SSL_PRIVATE_KEY="$(cat ~/certs/apiportal.key)" \
@@ -381,7 +381,7 @@ ${HOME}/certs/
 
 Ensure that you named the files exactly as they are expected inside the container. Then, you can configure the container using certificates by mounting the whole `"${HOME}/certs` directory:
 
-```none
+```bash
 docker container run <some-options> \
   -e APACHE_SSL_ON=1 -e MYSQL_SSL_ON=1 \
   -v "${HOME}/certs":/opt/axway/apiportal/certs:ro \
@@ -416,7 +416,7 @@ Do not modify the content of the following folders because they will be overwrit
 
 The following is an example of how you can create data volumes:
 
-```none
+```bash
 # create volumes
 docker volume create apiportal-etc
 docker volume create apiportal-enckey

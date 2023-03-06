@@ -542,7 +542,7 @@ In earlier API Manager versions, you could export API collections as a plain tex
 
 If you wish to generate a plain text export file, the administrator must add the following lines towards the start of the `INSTALL_DIR/apigateway/webapps/apiportal/vordel/apiportal/app/app.config` file, for example, before the `nodemanager` setting:
 
-```none
+```bash
 /* Flag to determine if API collections can be exported as clear text:
  - Set to false if API export as clear text is not allowed (exported file is always encrypted)
  - Set to true if API export as clear text is allowed (you can choose to encrypt the file or not)*/

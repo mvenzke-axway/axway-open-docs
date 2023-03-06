@@ -38,13 +38,13 @@ Follow these steps to setup Elasticsearch in a multi-node environment by creatin
 
 1. Setup the cluster nodes. Operational Insights is prepared to work with five nodes by default, but it can be extended to work with more nodes if necessary. To configure multiple hosts, add the following to your `.env` file:
 
-    ````none
+    ````bash
     ELASTICSEARCH_HOSTS=https://elasticsearch1:9200,https://elasticsearch:9200:9201
     ````
 
     Run the following command if you wish to change the name of the cluster:
 
-    ```none
+    ```bash
     ELASTICSEARCH_CLUSTERNAME=axway-apim-elasticsearch
     ```
     If you need to explicitly change the host configuration that is used by each node, use the `ELASTICSEARCH_PUBLISH_HOST<n>`, `ELASTICSEARCH_HOST<n>_HTTP`, and `ELASTICSEARCH_HOST<n>_TRANSPORT` parameters.
@@ -53,7 +53,7 @@ Follow these steps to setup Elasticsearch in a multi-node environment by creatin
 
     {{< alert title="Note" >}}You can skip this step if you have already initialized your Elasticsearch cluster. This is done in the [Setup Elasticsearch](/docs/operational_insights/basic_setup/#setup-elasticsearch) section of the basic setup for Docker Compose. {{< /alert >}}
 
-    ```none
+    ```bash
     docker compose --env-file .env -f elasticsearch/docker compose.es01.yml -f elasticsearch/docker compose.es01init.yml up -d
     ```
 
@@ -61,7 +61,7 @@ Follow these steps to setup Elasticsearch in a multi-node environment by creatin
 
 3. Add additional nodes. You can add cluster nodes at any time to increase available disk space or CPU performance. To achieve resilience, it is strongly recommended to set up three cluster nodes to also perform maintenance tasks such as updates. For more information see, [Designing for resilience](https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-design.html). It is also possible to have two Elasticsearch nodes running on the same machine. To add a cluster node, configure the `ELASTICSEARCH_HOSTS` parameter in your `env` file to include the new cluster node host, then run the following command:
 
-    ```none
+    ```bash
     # To add for instance a third node, `ELASTICSEARCH_HOSTS` must contain three nodes
     docker compose --env-file .env -f elasticsearch/docker compose.es03.yml up -d
     ```
@@ -120,7 +120,7 @@ Follow these steps to set up authentication and authorization for Elasticsearch 
 
     This step can be ignored if you are using an existing Elasticsearch cluster. Elasticsearch is initially configured with a number of built-in users that do not have a password by default. The first step is to generate passwords for these users. It is assumed that the following command is executed on the first `elasticsearch1` node:
 
-    ```none
+    ```bash
     docker exec elasticsearch1 /bin/bash -c "bin/elasticsearch-setup-passwords auto --batch --url https://localhost:9200"
     ```
 
@@ -136,7 +136,7 @@ Follow these steps to set up authentication and authorization for Elasticsearch 
 
 2. Setup passwords. You must update your `.env` file and set up all passwords for the previously listed users. If you are using an existing Elasticsearch cluster, you must use the passwords provided to you. The `.env` file contains information about each password and what it is used for. You can start by using the `elastic` user account to login and then create individual users and permissions as follows:
 
-    ```none
+    ```bash
     BEATS_SYSTEM_USERNAME=beats_system
     BEATS_SYSTEM_PASSWORD=<GENERATED_BEATS_PASSWORD>
     
@@ -155,7 +155,7 @@ Follow these steps to set up authentication and authorization for Elasticsearch 
 
 3. Disable anonymous user. In the `.env` file, uncomment the following line:
 
-    ```none
+    ```bash
     ELASTICSEARCH_ANONYMOUS_ENABLED=false
     ```
 
@@ -163,7 +163,7 @@ Follow these steps to set up authentication and authorization for Elasticsearch 
 
 4. Enable user authentication in Kibana. In your `.env` file, uncomment the following line to enable user authentication in Kibana:
 
-    ```none
+    ```bash
     KIBANA_SECURITY_ENABLED=true
     ```
 
@@ -255,7 +255,7 @@ The following steps show how to configure the retention period.
 
 4. Apply the configuration. Use the `RETENTION_PERIOD_CONFIG=./config/custom-retention-period.json` parameter from your `.env` file to reference your retention configuration file, then restart API Builder as follows:
 
-    ```none
+    ```bash
     docker compose stop apibuilder4elastic docker compose up
     ```
 

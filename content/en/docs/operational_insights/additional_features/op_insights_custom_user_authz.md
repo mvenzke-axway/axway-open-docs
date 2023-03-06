@@ -14,7 +14,7 @@ The following sections describe how to customize user authorization in your envi
 
 You can use an external HTTP service for authorization instead of the API Manager organizations to restrict the Elasticsearch result based on other criteria. To customize user authorization in Docker Compose, you must create a configuration file as follows:
 
-```none
+```bash
 # Copy the provided example from the docker release package
 cp ./config/authorization-config-sample.js ./config/myAuthzConfig.js
 # Customize your configuration file as needed
