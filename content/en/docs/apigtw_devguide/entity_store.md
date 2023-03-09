@@ -23,14 +23,14 @@ The following table lists the XML-based stores:
 
 | File name               | Description                                                                                                                  |
 |-------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| ```CertStore.xml```     | Contains certificates and private keys. Private keys are encrypted with the API Gateway passphrase.|
-| ```configs.xml```        | The federated store which imports all other component stores.                                                                |
-| ```EnvSettingsStore.xml```                      | Contains environment settings for the configuration.                                                                         |
-| ```ExtConnsStore.xml```                      | Contains the external connection information (for example, database, LDAP, and so on) that the runtime might connect to.     |
-| ```ListenersStore.xml```                      | Contains the configuration for the HTTP ports and protocols that API Gateway listens on to receive messages to be processed. |
-| ```PrimaryStore.xml```                      | Contains the policies and filters to be applied to messages received by API Gateway.                                         |
-| ```UserStore.xml```                      | User store containing user names and passwords and associated user roles.                                                    |
-| ```ResourcesRepository.xml```                      | Contains the resource information.                                                                                           |
+| `CertStore.xml`     | Contains certificates and private keys. Private keys are encrypted with the API Gateway passphrase.|
+| `configs.xml`        | The federated store which imports all other component stores.                                                                |
+| `EnvSettingsStore.xml`                      | Contains environment settings for the configuration.                                                                         |
+| `ExtConnsStore.xml`                      | Contains the external connection information (for example, database, LDAP, and so on) that the runtime might connect to.     |
+| `ListenersStore.xml`                      | Contains the configuration for the HTTP ports and protocols that API Gateway listens on to receive messages to be processed. |
+| `PrimaryStore.xml`                      | Contains the policies and filters to be applied to messages received by API Gateway.                                         |
+| `UserStore.xml`                      | User store containing user names and passwords and associated user roles.                                                    |
+| `ResourcesRepository.xml`                      | Contains the resource information.                                                                                           |
 
 ## Entity types
 

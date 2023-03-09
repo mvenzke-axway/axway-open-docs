@@ -118,10 +118,10 @@ The following table shows some example selectors when the option **Place query r
 
 | Selector Expression    | Result                 |
 |------------------------|------------------------|
-| ```${user.NAME[0]}```|John  |
-| ```${user.LASTNAME[0]}```|   Kennedy|
-|```${user.NAME[1]}```   |  Brian |
-|```${user.LASTNAME[1]}```  |  O’Connor |
+|`${user.NAME[0]}`|John  |
+|`${user.LASTNAME[0]}`|   Kennedy|
+|`${user.NAME[1]}`   |  Brian |
+|`${user.LASTNAME[1]}`  |  O’Connor |
 
 You can also use standard Java function calls on the attributes. For example:
 
@@ -140,10 +140,10 @@ The following table shows some example selectors:
 
 | Selector Expression    | Result                 |
 |------------------------|------------------------|
-| ```${user[0].memberOf[0]}```| ```CN=Operator,OU=Sales```|
-| ```${user[0].memberOf[1]}```| ```CN=Developer,OU=Dev``` |
-| ```${user[0].memberOf[2]}```| ```CN=Operator,OU=Support``` |
-| ```${user[1].memberOf[0]}```| ```CN=Operator,OU=Sales```|
+| `${user[0].memberOf[0]}`| `CN=Operator,OU=Sales`|
+| `${user[0].memberOf[1]}`| `CN=Developer,OU=Dev` |
+| `${user[0].memberOf[2]}`| `CN=Operator,OU=Support` |
+| `${user[1].memberOf[0]}`| `CN=Operator,OU=Sales`|
 
 You can also use standard Java function calls on the attributes. For example:
 

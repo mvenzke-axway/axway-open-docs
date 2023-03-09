@@ -375,7 +375,7 @@ Create a new style and assign it to the Home page.
 
 To modify the API Portal Terms and Conditions content, edit the following file:
 
-```NONE
+```none
 /opt/axway/apiportal/htdoc/components/com_apiportal/views/terms/tmpl/default.php
 ```
 
