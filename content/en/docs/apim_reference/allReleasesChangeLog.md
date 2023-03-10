@@ -24,7 +24,9 @@ You can find the release notes for all service packs on [Axway Support](https://
 |    | |Serialization of XML payload |-  |
 |    | |XMLBody, JSONBody, and RawBody source is now private |-  |
 |**Update**       |**New features and enhancements**        | **Important Changes**   |**Deprecated/Removed/EOS**  |
-|[API Portal 7.7.20230228](/docs/apim_relnotes/20230228_apip_relnotes/)|Coming soon!  |-|- |
+|[API Portal 7.7.20230228](/docs/apim_relnotes/20230228_apip_relnotes/)|Performance improvements  |New settings available for conditionally switching to single-column layout if the volume of endpoints are larger than the default|- |
+||Security improvements  |New **AuthToMaster** policy is available, which removes warnings previously seen on import|- |
+||  |The **Created By** field in Application catalog and details pages is changing in this release|- |
 
 ## Version 7.7 2022
 
