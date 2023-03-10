@@ -24,7 +24,7 @@ All TypeDocs for custom filters must:
 
 The following example shows how the TypeDoc lists the various fields that form the configuration data for the JabberFilter.
 
-```xml
+```
 <entityStoreData>
   <entityType name="JabberFilter" extends="Filter">
       <constant name="class" type="string"
@@ -40,7 +40,7 @@ The following example shows how the TypeDoc lists the various fields that form t
 
 You can also provide internationalized log messages by specifying an `<entity>` block of type `InternationationalizationFilter` in the `<entityStoreData>` elements. For example:
 
-```xml
+```
 <entityStoreData>
  <!-- Internationalization for logging / audit trail -->
  <entity xmlns="http://www.vordel.com/2005/06/24/entityStore"
@@ -77,7 +77,7 @@ The `Filter` class is responsible for the following tasks:
 
 The following code shows the members and methods of the `JabberFilter` class.
 
-```java
+```
 public class JabberFilter extends DefaultFilter {
 
     protected final void setDefaultPropertyDefs() {
@@ -116,7 +116,7 @@ The attributes are stored in sets of property definitions (`Set<PropDef>`). A pr
 
 In the case of the `JabberFilter` class, the `content.body` attribute, which is of type `com.vordel.mime.Body`, is required because the SOAP parameters must be extracted from the body of the HTTP request. The property definition is declared as follows:
 
-```java
+```
 protected final void setDefaultPropertyDefs() {
     reqProps.add(new PropDef(MessageProperties.CONTENT_BODY,
       com.vordel.mime.Body.class));
@@ -133,7 +133,7 @@ This is the API Gateway runtime component of the filter that is returned by the 
 
 The following code shows how the Processor attaches to the Filter class and uses its data to process the message. It gets the configuration data using selectors to set up a connection to an XMPP server, creates a chat, and sends a message to a chat participant. The complete code for the class is available in the `DEVELOPER_SAMPLES/jabber` directory.
 
-```java
+```
 public class JabberProcessor extends MessageProcessor {
 
     …
@@ -220,7 +220,7 @@ For more information on using declarative XML, see [Define user interfaces using
 
 The following declarative XML shows the elements needed to create the Jabber filter dialog:
 
-```xml
+```
 <ui>
  <panel columns="2">
   <NameAttribute />
@@ -289,7 +289,7 @@ The `JabberFilterUI` class, which is returned by the `getConfigPanelClass` metho
 
 The code for the `JabberFilterUI` class is as follows:
 
-```java
+```
 public class JabberFilterUI extends DefaultGUIFilter
 {
     public Vector<VordelPage> getPropertyPages() {
@@ -345,7 +345,7 @@ If you look at the `getPropertyPages` method of the `JabberFilterUI` class, you 
 
 The code for the `JabberFilterPage` class is as follows:
 
-```java
+```
 public class JabberFilterPage extends VordelPage
 {
     public JabberFilterPage() {
@@ -390,7 +390,7 @@ To define a mapping for the help page, follow these steps:
 1. Open the `csh.xml` file.
 2. Add the following XML to the file:
 
-    ```xml
+    ```
     <context id="jabber_help">
         <description>Jabber Filter</description>
         <topic label="Jabber Filter" href="Content/PolicyDevTopics/jabber.htm"/>
@@ -496,7 +496,7 @@ To register the type definition using Policy Studio, perform the following steps
 2. Select **File > Import > Import Custom Filters**.
 3. Browse to the `Typeset.xml` file. A TypeSet file is used to group together one or more TypeDocs. This enables multiple TypeDocs to be added to the entity store in batch mode. The `JabberTypeSet.xml` file includes the following:
 
-    ```xml
+    ```
     <typeSet>
         <!-- JabberFilter Typedoc -->
         <typedoc file="JabberFilterDesc.xml" />

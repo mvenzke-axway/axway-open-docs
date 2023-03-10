@@ -34,7 +34,7 @@ This section shows examples of using **JSON to XML** filter options.
 
 For example, the following incoming JSON message has multiple root elements:
 
-```json
+```
 {
   "firstName": "John",
   "lastName": "Smith",
@@ -62,7 +62,7 @@ For example, the following incoming JSON message has multiple root elements:
 
 If you enter `customer` in the **Virtual root element** field, this results in the following output XML:
 
-```xml
+```
 <?xml version="1.0" encoding="utf-8"?>
 <customer>
     <firstName>John</firstName>
@@ -89,7 +89,7 @@ If you enter `customer` in the **Virtual root element** field, this results in t
 
 For example, take the following incoming JSON message:
 
-```json
+```
 {
 "customer" :
 {
@@ -116,7 +116,7 @@ For example, take the following incoming JSON message:
 
 When the **Insert processing instructions into the output XML representing JSON array boundaries** option is selected, the output XML is as follows:
 
-```xml
+```
 <?xml version="1.0" encoding="utf-8"?>
 <customer>
     <first-name>Jane</first-name>
@@ -238,7 +238,7 @@ Content-Type: text/xml; charset="utf-8"
 MyHeader: FOO
 ```
 
-```xml
+```
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Body>
@@ -277,7 +277,7 @@ You can configure the following settings:
 
 **Node Source**: In the **Content** area, enter the JSON node to be inserted into the message. For example, the following node source represents a new car:
 
-```json
+```
 {
   "make":"Ford",
   "airbags":true,
@@ -406,7 +406,7 @@ Perform the following steps to configure the **Set Message** filter:
 
 You can use selectors representing the values of message attributes in the replacement text to insert message-specific data into the message body. For example, you can insert the authenticated user's ID into a `<Username>` element by using a `${authentication.subject.id}` selector as follows:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
     <soap:Header>
@@ -422,7 +422,7 @@ You can use selectors representing the values of message attributes in the repla
 
 Assuming the user authenticated successfully to the API Gateway, the message body is set as follows:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
     <soap:Header>
@@ -516,7 +516,7 @@ Content-ID: <http://example.org/myimage.gif>
 
 When the API Gateway receives this request, the **Insert MTOM Attachment** filter can be used to read the binary data in the MIME parts pointed to by the `<xop:Include>` elements embedded in the SOAP request. The binary data is then Base64-encoded and inserted into the message in place of the `<xop:Include>` elements. The resulting message is as follows:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
     <soap:Body>
@@ -541,7 +541,7 @@ Message Transmission Optimization Mechanism (MTOM) provides a way to send binary
 
 The following MTOM message contains a binary image that has been Base64-encoded so that it can be inserted as the contents of the `<image>` element:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
     <soap:Body>
@@ -666,7 +666,7 @@ To use this feature, select the **Use Message Attributes as Stylesheet Parameter
 
 The following example from an XSL stylesheet that uses parameters shows how to configure this:
 
-```xsl
+```
 <xsl:param name="authentication.subject.id"/>
 <xsl:param name="authentication.issuer.id"/>
 ```

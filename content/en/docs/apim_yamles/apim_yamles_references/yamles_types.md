@@ -16,7 +16,7 @@ Please refer to dedicated page for the [Entity Type files schema](/docs/apim_yam
 
 ## Simple type
 
-```yaml
+```
 name: JMSSession                       # name used in YAML entity file
 version: 5
 class: com.vordel.dwe.jms.JMSSession
@@ -64,7 +64,7 @@ loadorder: 1000100
 
 Consider the following types: `Process`, `JavaProcess` and `NetService`:
 
-```yaml
+```
 name: Process
 version: 0
 fields:
@@ -78,13 +78,13 @@ keyFields:
 abstract: true
 ```
 
-```yaml
+```
 name: JavaProcess
 version: 0
 abstract: true
 ```
 
-```yaml
+```
 name: NetService
 version: 5
 constants:
@@ -128,7 +128,7 @@ For a custom filter to be usable, it must inherit from `Filter` or a subtype of 
 
 The following is an example that takes a value from the query string or a HTTP header, and echoes it back using a size threshold and an extended MIME type.
 
-```yaml
+```
 ---
 name: EchoFilter
 version: 0
@@ -157,7 +157,7 @@ In the [Filter Type](#filter-type) example, the `EchoFilter` filter has child en
 
 A type definition for child type `ThresholdRange` can be added to `META-INF/types/Entity/RootChild/ThresholdRange.yaml` as shown below. This example entity can be used as independent entity elsewhere.
 
-```yaml
+```
 ---
 name: ThresholdRange
 version: 0
@@ -184,7 +184,7 @@ keyFields:
 
 The child entity type definition for `ExtendedMimeType` could be added to `META-INF/types/Entity/RootChild/LoadableModule/MimeType/ExtendedMimeType.yaml` which means that it extends the `MimeType` definition. The example below shows that a `description` field has been added.
 
-```yaml
+```
 ---
 name: ExtendedMimeType
 version: 0
@@ -200,7 +200,7 @@ fields:
 
 The following is a complete example of how you can use a custom filter in a policy when all of the type definitions are setup in the `types` directory.
 
-```yaml
+```
 ---
 type: FilterCircuit
 fields:

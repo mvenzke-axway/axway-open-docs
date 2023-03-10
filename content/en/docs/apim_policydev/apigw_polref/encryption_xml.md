@@ -27,7 +27,7 @@ Encryption takes place at the application-layer, and so the encrypted data can b
 
 Before explaining how to configure the API Gateway to encrypt XML messages, it is useful to examine an XML encrypted message. The following example shows a SOAP message containing information about Axway:
 
-```xml
+```
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
   <s:Body>
     <getCompanyInfo xmlns="www.axway.com">
@@ -40,7 +40,7 @@ Before explaining how to configure the API Gateway to encrypt XML messages, it i
 
 After encrypting the SOAP Body, the message is as follows:
 
-```xml
+```
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
   <s:Header>
     <Security xmlns="http://schemas.xmlsoap.org/ws/2003/06/secext" s:actor="Enc">
@@ -211,7 +211,7 @@ This is useful where a downstream Web service uses an alternative method to deci
 This is the default option, which places the certificate that contains the encryption key inside the `<EncryptedData>`. The following shows an example of a `<KeyInfo>`
 that has been produced using this option:
 
-```xml
+```
 <enc:EncryptedData xmlns:enc="http://www.w3.org/2001/04/xmlenc#">
   <dsig:KeyInfo>
     <dsig:X509Data>
@@ -231,7 +231,7 @@ The details of the public key used to encrypt the data are inserted into a `<Key
 block. The `<KeyValue>`
 block is only inserted when this option is selected.
 
-```xml
+```
 <enc:EncryptedData xmlns:enc="http://www.w3.org/2001/04/xmlenc#">
   ...
   <dsig:KeyInfo>
@@ -253,7 +253,7 @@ block is only inserted when this option is selected.
 If this is selected, the Distinguished Name of the certificate that contains the public key used to encrypt the data is inserted in an `<X509SubjectName>`
 element as shown in the following example:
 
-```xml
+```
 <enc:EncryptedData xmlns:enc="http://www.w3.org/2001/04/xmlenc#">
   ...
   <dsig:KeyInfo>
@@ -272,7 +272,7 @@ field. Typical values include Distinguished Names (DName) from X.509 certificate
 of a **Distinguished name attribute**
 by selecting the appropriate radio button.
 
-```xml
+```
 <enc:EncryptedData xmlns:enc="http://www.w3.org/2001/04/xmlenc#">
   ...
   <dsig:KeyInfo>
@@ -297,7 +297,7 @@ block provides a generic mechanism for applications to retrieve security tokens 
 attribute of the `<Reference>`
 element.
 
-```xml
+```
 <enc:EncryptedData xmlns:enc="http://www.w3.org/2001/04/xmlenc#">
   ...
   <dsig:KeyInfo>
@@ -398,7 +398,7 @@ and *axway_2*). The encryption key has been encrypted twice: once for
 
 {{< alert title="Note" color="primary" >}}The data itself is only encrypted once, while the encryption key must be encrypted for each recipient. For illustration purposes, only those elements relevant to the above discussion have been included in the following XML encrypted message.{{< /alert >}}
 
-```xml
+```
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
   <s:Header>
     <Security xmlns="http://schemas.xmlsoap.org/ws/2003/06/secext" s:actor="Enc Keys">
@@ -636,7 +636,7 @@ block that the API Gateway should decrypt.
 For example, the following skeleton SOAP message contains two `EncryptedData`
 blocks:
 
-```xml
+```
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
   <s:Header>...<s:Header>
   <s:Body>

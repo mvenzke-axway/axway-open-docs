@@ -117,7 +117,7 @@ To prevent this issue, set a `7 day TTL` on the repair history tables and remove
 
 1. Execute the following using `cqlsh` on one of the Cassandra nodes:
 
-   ```cql
+   ```
    ALTER TABLE system_distributed.repair_history WITH default_time_to_live = 604800;
    TRUNCATE system_distributed.repair_history;
    ALTER TABLE system_distributed.parent_repair_history WITH default_time_to_live = 604800;

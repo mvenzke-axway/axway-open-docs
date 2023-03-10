@@ -195,7 +195,7 @@ The passphrase policy is disabled by default. To enable it, perform the followin
 
 The following is a sample body, including all available configurations for updating the passphrase policy:
 
-```json
+```
 {
   "enabled" : true,
   "assertions" : [ {

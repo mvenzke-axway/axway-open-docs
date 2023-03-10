@@ -69,7 +69,7 @@ In cases where a JavaScript Object Notation (JSON) transaction fails, the API Ga
 
 You can add the **JSON Error** filter to a policy to return more meaningful error information to the client. For example, the following message extract shows the format of a JSON error raised when a **JSON Schema Validation** filter fails:
 
-```json
+```
 {
     "reasons":[
        {
@@ -99,7 +99,7 @@ The following configuration options are available in the **JSON Error Contents**
 
 **Show filter execution path**: Select this option to return the list of filters run on the message before the error occurred. For each filter listed in the JSON Error, the status is output (`Pass` or `Fail`). The following message extract shows a *filter execution path* returned in a JSON error:
 
-```json
+```
 "path" :{
    "policy" :"test_policy",
    "filters" :[ {
@@ -121,7 +121,7 @@ The following configuration options are available in the **JSON Error Contents**
 
 **Show current message attributes**: Select this option to return the message attributes present when the JSON error is generated to the client. The value of each message attribute is output as shown in the following example:
 
-```json
+```
 "attributes":[
    {
     "name":"circuit.exception",
@@ -184,7 +184,7 @@ For details on how to use the **Set Message** filter to generate customized faul
 
 In cases where a typical SOAP transaction fails, a *SOAP fault* can be used to convey error information to the SOAP client. The following message shows the format of a SOAP fault:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
    <env:Body>
@@ -219,7 +219,7 @@ The following configuration options are available in the **SOAP Fault Contents**
 
 **Show Filter Execution Path**: Select this option to return a SOAP fault containing the list of filters run on the message before the error occurred. For each filter listed in the SOAP fault, the status is given (`pass` or `fail`). The following message shows a *filter execution path* returned in a SOAP fault:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
    <env:Header></env:Header>
@@ -247,7 +247,7 @@ The following configuration options are available in the **SOAP Fault Contents**
 
 **Show Current Message Attributes**: Select this option to return the message attributes present at the time the SOAP fault was generated to the client. Each message attribute forms the content of a `<fault:attribute>` element, as shown in the following example:
 
-```xml
+```
 <fault:attributes>
    <fault:attribute name="circuit.failure.reason" value="null">
    <fault:attribute name="circuit.lastProcessor" value="HTTP Digest">

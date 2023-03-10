@@ -128,7 +128,7 @@ Alternatively, run the create user script located at `INSTALL_DIR/apigateway/sam
 3. Set the property `cqlsh_bin` with the path to Cqlsh, for example, `<CASSANDRA_HOME>/bin/cqlsh` and save your changes.
 4. Run the script `createuser.sh` by passing the username and password, and by setting non-superuser access and login access true. For example:
 
-    ```sql
+    ```
     ./createuser.sh -u <USERNAME> -p <PASSWORD> -s false -l true
     ```
 

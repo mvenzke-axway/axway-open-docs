@@ -62,7 +62,7 @@ The following example shows how to add a Jersey REST service to your API Gateway
 
 1. Annotate your Java class. The following example shows a code snippet of a Jersey-annotated Java class for the Smack API. The full class definition can be found in the `DEVELOPER_SAMPLES/restJabber` directory. You must replace the `username` and `password` in the sample code with appropriate values.
 
-    ```java
+    ```
     @Path("/jabber")
     public class RestJabberRequest {
 
@@ -215,7 +215,7 @@ curl --insecure --user UNAME:PWD https://127.0.0.1:8090/api/topology
 
 The result is a JSON response with a format similar to the following.
 
-```json
+```
 {
     "result": {
         "id": "50fd7b96-6e8f-401e-b38c-eb77891e3aeb",

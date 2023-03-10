@@ -28,7 +28,7 @@ UserAgent:API Gateway
 Content-Type:text/XML; utf-8
 ```
 
-```xml
+```
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Header>
    </soap:Header>
@@ -70,7 +70,7 @@ UserAgent:API Gateway
 Content-Type:text/XML; utf-8
 ```
 
-```xml
+```
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Body>
       <ns1:getTime xmlns:ns1="Some-URI">
@@ -115,7 +115,7 @@ UserAgent:API Gateway
 Content-Type:text/XML; utf-8
 ```
 
-```xml
+```
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Header></soap:Header>
    <soap:Body>

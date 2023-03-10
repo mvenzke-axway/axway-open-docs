@@ -123,7 +123,7 @@ The following sections cover the configuration specific to using Docker Compose.
 
 To simplify updates, it is recommended to create a symlink folder and rename the provided `env-sample` file to `.env` in each machine as follows:
 
-```bash
+```
 ln -s axway-apim-elk-v1.0.0 axway-apim-elk
 cd axway-apim-elk-v1.0.0
 cp env-sample .env
@@ -135,7 +135,7 @@ You should store your `.env` file as a central configuration file in a version m
 
 If an existing Elasticsearch cluster is already deployed, provide the required CA to allow certificate validation. Otherwise, a certificate must be created for each component. The script `config/certificates/quickgen_certs_and_keys.sh` creates the corresponding certificates and keys in the `config/certificates` folder. Afterwards, these certificates must be configured in the `.env` file:
 
-```bash
+```
 API_BUILDER_SSL_KEY=config/certificates/apibuilder4elastic.key
 API_BUILDER_SSL_CERT=config/certificates/apibuilder4elastic.crt
 API_BUILDER_SSL_KEY_PASSWORD=<YOUR_SSL_KEY_PASSWORD>
@@ -156,7 +156,7 @@ To setup Elasticsearch, open your `.env` file and configure the `ELASTICSEARCH_H
 
 You must change the following parameters before starting the cluster:
 
-```bash
+```
 ELASTICSEARCH_HOSTS=https://my-elasticsearch-host.com:9200
 ELASTICSEARCH_CLUSTERNAME=axway-apim-elasticsearch-prod
 ES_JAVA_OPTS="-Xms8g -Xmx8g"
@@ -164,19 +164,19 @@ ES_JAVA_OPTS="-Xms8g -Xmx8g"
 
 Run the following command to initialize a new Elasticsearch cluster, which runs the appropriate bootstrapping. Later, you can add more nodes to this single node cluster. Do not use the `init` extension when restarting the node:
 
-```bash
+```
 docker-compose --env-file .env -f elasticsearch/docker-compose.es01.yml -f elasticsearch/docker-compose.es01init.yml up -d
 ```
 
 Wait until the cluster has started, then call the following URL:
 
-```bash
+```
 curl -k GET https://my-elasticsearch-host.com:9200
 ```
 
 Result:
 
-```bash
+```
 {
   "name" : "elasticsearch1",
   "cluster_name" : "axway-apim-elasticsearch",
@@ -204,13 +204,13 @@ If you are using an existing Elasticsearch cluster, you can skip this section an
 
 All required parameters for Kibana are set by default in your `.env` file. Start Kibana with the following command:
 
-```bash
+```
 docker-compose --env-file .env -f kibana/docker-compose.kibana.yml up -d
 ```
 
 If running Kibana locally, access it by way of the following link:
 
-```none
+```
 https://localhost:5601
 ```
 
@@ -222,38 +222,38 @@ It is recommended to deploy Logstash, Memcached, and APIBuilder4Elastic componen
 
 Use the following parameter to specify where the Admin Node Manager or the API Manager can be found:
 
-```bash
+```
 ADMIN_NODE_MANAGER=https://my-admin-node-manager:8090
 ```
 
  If not using the default API Manager admin user and password, use the following parameters to specify the API Manager admin user details:
 
-```bash
+```
 API_MANAGER_USERNAME=elkAdmin
 API_MANAGER_PASSWORD=elastic
 ```
 
 If you are using an existing Elasticsearch cluster and have therefore skipped sections [Setup Elasticsearch](#setup-elasticsearch) and [Setup Kibana](#setup-kibana), you must now configure the Elasticsearch hosts, [any necessary users](/docs/operational_insights/production_setup/op_insights_setup_prod_docker/#activate-user-authentication), and the [Elasticsearch server certificates](#custom-certificates) as follows:
 
-```bash
+```
 ELASTICSEARCH_HOSTS=https://my-existing-elasticsearch-host1.com:9200, https://my-existing-elasticsearch-host2.com:9200, https://my-existing-elasticsearch-host3.com:9200
 ```
 
 Use the the main Docker Compose file to start all three components:
 
-```bash
+```
 docker-compose up -d
 ```
 
 Check that the docker containers for Logstash, API Builder, and Memached are running.
 
-```bash
+```
 [ec2-user@ip-172-31-61-59 axway-apim-elk-v1.0.0]$ docker ps
 ```
 
 Result:
 
-```none
+```
 CONTAINER ID        IMAGE                                       COMMAND                  CREATED             STATUS                 PORTS                              NAMES
 d1fcd2eeab4e        docker.elastic.co/logstash/logstash:7.12.2  "/usr/share/logstash…"   4 hours ago         Up 4 hours             0.0.0.0:5044->5044/tcp, 9600/tcp   logstash
 4ce446cafda1        apibuilder4elastic:v1.0.0                   "docker-entrypoint.s…"   4 hours ago         Up 4 hours (healthy)   0.0.0.0:8443->8443/tcp             apibuilder4elastic
@@ -262,7 +262,7 @@ d672f2983c86        memcached:1.6.6-alpine                      "docker-entrypoi
 
 It might take some time (2-3 minutes) until Logstash is finally started. You should expect to see the following when examining the Logstash logs:
 
-```none
+```
 docker logs logstash
 Pipelines running {:count=>6, :running_pipelines=>[:".monitoring-logstash", :BeatsInput, :Events, :DomainAudit, :TraceMessages, :OpenTraffic], :non_running_pipelines=>[]}
 Successfully started Logstash API endpoint {:port=>9600}
@@ -277,7 +277,7 @@ Filebeat must be configured and started to begin reading and sending your gatewa
 
 Add the following to your configuration. At this point you can already configure the Filebeat instances with a name and region if you like. The following instructions assume that you set up Filebeat based on `filebeat/docker-compose.filebeat.yml`.
 
-```bash
+```
 APIGATEWAY_LOGS_FOLDER=/opt/Axway/APIM/apigateway/logs/opentraffic
 APIGATEWAY_TRACES_FOLDER=/opt/Axway/APIM/apigateway/groups/group-2/instance-1/trace
 APIGATEWAY_EVENTS_FOLDER=/home/localuser/Axway-x.y.z/apigateway/events
@@ -290,7 +290,7 @@ Audit logs are optional. If you do not wish them indexed, just point them to an 
 
 To start the Filebeat container, run:
 
-```bash
+```
 docker compose --env-file .env -f filebeat/docker-compose.filebeat.yml up -d
 ```
 

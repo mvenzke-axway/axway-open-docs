@@ -50,7 +50,7 @@ The expected mounted directory (mount point location) structure is as follows:
 
 After you create a persisted store, you must add the Docker volume configuration to the Docker `run` command to start the container with the new runtime configuration. For example:
 
-```bash
+```
 # API Gateway
 docker run -d --name=apimgr --network=api-gateway-domain \
            -p 8075:8075 -p 8065:8065 -p 8080:8080 \
@@ -80,7 +80,7 @@ docker run -d -p 8040:8040 --name=analytics --network=api-gateway-domain \
 
 After the container is running, the files mounted within the Docker volumes are copied to the file system within the running container in its `/merge` directory. For example:
 
-```bash
+```
 .
 ├── merge
 │   ├── fed
@@ -105,7 +105,7 @@ Docker containers use the configuration specified during the image creation proc
 
 To verify that reconfigured files, mounted on Docker volumes, have been successfully found by the Docker container at runtime, you must add the `mandatoryFiles.yaml` configuration file to the `/merge/mandatoryFiles` Docker volume. This file lists the external configuration files, which must be mounted to the `/merge` directory in the running container. For example:
 
-```bash
+```
 required:
     - /merge/apigateway/groups/emt-group/emt-service/conf/envSettings.props
     - /merge/apigateway/groups/emt-group/emt-service/conf/jvm.xml
@@ -131,7 +131,7 @@ The sample configuration files can be retrieved from the running container. To g
 
 Policy configuration stored as a deployment package (.fed file) can be added to the Docker container runtime configuration by adding the `fed` file to the `/merge/fed` Docker volume:
 
-```bash
+```
 # API Gateway
 docker run -d --name=apimgr --network=api-gateway-domain \
            -p 8075:8075 -p 8065:8065 -p 8080:8080 \
@@ -157,7 +157,7 @@ YAML-based API Gateway policy configuration can be stored either as a deployment
 
 For configuration stored in a deployment package (.tar.gz file), mount the deployment package to the `/merge/yaml` Docker volume:
 
-```bash
+```
 docker run -d --name=apimgr --network=api-gateway-domain \
            -p 8075:8075 -p 8065:8065 -p 8080:8080 \
            -v /home/user/apigw/yaml.tar.gz:/merge/yaml \
@@ -170,7 +170,7 @@ docker run -d --name=apimgr --network=api-gateway-domain \
 
 For configuration stored in a directory, mount the source directory to the `/merge/yaml` Docker volume:
 
-```bash
+```
 docker run -d --name=apimgr --network=api-gateway-domain \
            -p 8075:8075 -p 8065:8065 -p 8080:8080 \
            -v /home/user/apigw/yaml:/merge/yaml \
@@ -183,7 +183,7 @@ docker run -d --name=apimgr --network=api-gateway-domain \
 
 All other configuration, such as `jvm.xml` and `envSettings.props`, can be added to the Docker container runtime configuration by way of the `/merge/apigateway` or `/merge/analytics` Docker volumes. You must store these configurations locally, in a directory structure which mirrors `/opt/Axway/apigateway` or `/opt/Axway/analytics` subfolder structure inside the Docker container. For example:
 
-```bash
+```
 apigateway
 ├── groups
 │   └── emt-group
@@ -200,7 +200,7 @@ This folder structure is then mounted to the `/merge/apigateway` or `/merge/anal
 
 After that, you can start API Gateway, Admin Node Manager, and Analytics Docker container as follows:
 
-```bash
+```
 # API Gateway
 docker run -d --name=apimgr --network=api-gateway-domain \
            -p 8075:8075 -p 8065:8065 -p 8080:8080 \
@@ -226,7 +226,7 @@ docker run -d -p 8040:8040 --name=analytics --network=api-gateway-domain \
 
 By default, Axway images contain the default domain certs. To update the domain certs, like other configurations such as jvm.xml, envSettings.props, and so on, domain certs can be added to the Docker container at runtime by way of the `/merge/apigateway` Docker volume. You must store these configurations locally, in a directory structure which mirrors `/opt/Axway/apigateway` subfolder structure inside the Docker container.
 
-```bash
+```
 apigateway
 ├── groups
    └── certs
@@ -245,7 +245,7 @@ During this process the Admin Node Manager (ANM) and API Gateway topology SSL ce
 
 Group ID can be set at runtime as an environment variable. All the containers in the group are built with same image, which means they contain the same configuration. For example:
 
-```bash
+```
 docker run -d --name=apimgr --network=api-gateway-domain \
            -p 8075:8075 -p 8065:8065 -p 8080:8080 \
            -v /tmp/emt/events:/opt/Axway/apigateway/events \

@@ -28,7 +28,7 @@ Follow these steps to install a Redis PHP extension on RHEL 7:
 
 1. Enable `rhel-server-rhscl-7-rpms` and `rhel-7-server-optional-rpms` repositories from RHSCL:
 
-   ```shell
+   ```
    sudo subscription-manager repos --enable rhel-server-rhscl-7-rpms
    sudo subscription-manager repos --enable rhel-7-server-optional-rpms
    sudo yum clean all
@@ -36,33 +36,33 @@ Follow these steps to install a Redis PHP extension on RHEL 7:
 
 2. Install `rh-php73-php-devel` and `rh-php73-php-pear` to enable `pecl` (which manages external PHP modules) and `phpize` (which will build `redis` PHP module)`:
 
-   ```shell
+   ```
    sudo yum install rh-php73-php-devel rh-php73-php-pear
    sudo ln -s $(which pecl) /usr/bin
    ```
 
 3. Install and enable `redis` PHP module:
 
-   ```shell
+   ```
    sudo pecl install redis
    echo "extension=redis.so" | sudo tee -a /etc/opt/rh/rh-php73/php.d/30-redis.ini
    ```
 
 4. Verify `redis` PHP module was successfully enabled:
 
-   ```shell
+   ```
    php -m | grep redis
    ```
 
 5. Restart Apache:
 
-   ```shell
+   ```
    sudo systemctl restart httpd24-httpd
    ```
 
 6. (Optional) Remove `rh-php73-php-devel` and `rh-php73-php-pear`:
 
-    ```shell
+    ```
     sudo yum remove rh-php73-php-devel rh-php73-php-pear
     ```
 
@@ -72,17 +72,17 @@ Follow these steps to install a Redis PHP extension on CentOS 7 or RHEL 8:
 
 1. Install `redis5` PHP module:
 
-   ```shell
+   ```
    sudo yum install php-pecl-redis5
    ```
 
 2. Verify `redis` PHP module is enabled:
-   ```shell
+   ```
    php -m | grep redis
    ```
 
 3. Restart Apache:
-   ```shell
+   ```
    sudo systemctl restart httpd
    ```
 

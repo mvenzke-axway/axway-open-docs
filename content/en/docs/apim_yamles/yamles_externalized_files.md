@@ -16,7 +16,7 @@ Some entities have fields that contain the content of a file, for example, a scr
 
 For example, the following YAML file contains a field `Set Backend message`, which content is stored in a JSON file:
 
-```yaml
+```
 ---
 type: FilterCircuit
 fields:
@@ -31,7 +31,7 @@ children:
 
 Content of `Get organizationId - Set Backend message.json`:
 
-```json
+```
 {
   "name": "${targetName}",
   "serviceType": "rest",

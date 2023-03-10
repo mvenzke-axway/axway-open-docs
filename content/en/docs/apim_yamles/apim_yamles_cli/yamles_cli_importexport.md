@@ -28,7 +28,7 @@ The `_fragment.yaml` file is used to control what data is exported from a source
 
 The following is an example of a `_fragment.yaml` file:
 
-```yaml
+```
 ---
 flags:
 - EXPORT_TYPES

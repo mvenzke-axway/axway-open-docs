@@ -41,7 +41,7 @@ The payload part of an API request is not written directly to the open traffic e
 
 The following is an example of what a payload look like:
 
-```bash
+```
 HTTP/1.1 200 OK
 Date:Wed, 13 Jan 2021 23:08:58GMT
 CSRF-Token:62325BA818F8203917CB61AE883346D7F7A206E564E26008CAC3ED37386B1B7B
@@ -84,7 +84,7 @@ Payload handling is enabled by default, so it is assumed that you provide the pa
 
 If you are using the **Region** feature, that is, collecting API Gateways of different Admin Node Manager domains into a central Elasticsearch instance, you must make the payload available to the API builder regionally separated. For example, if you have defined the region like, `REGION=US-DC1`, all traffic payload from these API Gateways must be made available to the API Builder as follows:
 
-```bash
+```
 /var/log/payloads/us-dc1/<YYY-MM-DD>/<HH.MI>/<payloadfile>
 ```
 
@@ -148,7 +148,7 @@ The following table represents a suggestion of which roles should be created to 
 
 The following is an example of an Elasticsearch role configuration:
 
-```json
+```
 POST /_security/role/axway_apigw_admin
 {
   "cluster": ["monitor", "manage_ilm", "manage_index_templates", "manage_transform" ],
@@ -185,7 +185,7 @@ The following table assumes that the same user is also be used for stack monitor
 
 The following is an example of an Elasticsearch user configuration:
 
-```json
+```
 POST /_security/user/axway_kibana_admin
 {
    "password" : "changeme",

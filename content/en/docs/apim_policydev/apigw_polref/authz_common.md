@@ -11,7 +11,7 @@ After successfully authorizing a client, the API Gateway can insert a Security A
 
 The following example of a signed SAML authorization assertion might be useful when configuring this filter.
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://.../soap/envelope/">
 <soap:Header xmlns:wsse="http://.../secext">
@@ -119,7 +119,7 @@ block can be used to authenticate either the end-user that authenticated to the 
 The following is a typical `<SubjectConfirmation>`
 block:
 
-```xml
+```
 <saml:SubjectConfirmation>
   <saml:ConfirmationMethod>
     urn:oasis:names:tc:SAML:1.0:cm:holder-of-key
@@ -238,7 +238,7 @@ Select this method to ensure that the generated signature is properly indented.
 The generated SAML authentication assertion can be encapsulated within a `<SecurityTokenReference>`
 block. The following example demonstrates this:
 
-```xml
+```
 <soap:Header>
   <wsse:Security
     xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"
@@ -307,7 +307,7 @@ For more details on XACML, see the [XACML specification](http://docs.oasis-open.
 
 The following example XACML request is used to illustrate the XACML request configuration settings explained in this topic:
 
-```xml
+```
 <Request xmlns="urn:oasis:names:tc:xacml:2.0:context:schema:os"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Subject>

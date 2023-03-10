@@ -17,7 +17,7 @@ This example illustrates the following aspects of the environmentalization:
 
 In the following example snippet, we assume that `ES_DB_PASSWORD` is set with a value encrypted by a passphrase and `ES_DB_HOST` is not set.
 
-```yaml
+```
 # A YAML Entity
 ---
 type: DbConnection
@@ -32,7 +32,7 @@ fields:
    timezoneAware: ${environment.IS_TIMEZONE_AWARE}
 ```
 
-```yaml
+```
 # value.yaml
 db:
   maxIdle: 1
@@ -41,7 +41,7 @@ db:
   host: '{{env "ES_DB_HOST" "staging.db.acme.com"}}'
 ```
 
-```yaml
+```
 # Processed result (in-memory at load time)
 ---
 type: DbConnection

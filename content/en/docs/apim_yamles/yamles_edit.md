@@ -49,7 +49,7 @@ This section covers the steps required to add a new certificate and private key 
 
 4. Create the `/Environment Configuration/Certificate Store/Axway.yaml` file in your YAML entity store:
 
-    ```yaml
+    ```
     ---
     type: Certificate
     fields:
@@ -62,7 +62,7 @@ This section covers the steps required to add a new certificate and private key 
 
 5. Edit another entity that requires a certificate and private key, for example, an `XML Signature filter` (see the `signingCert` field in the following example). It now points to the new certificate and private key via its YamlPK `/Environment Configuration/Certificate Store/Axway`.
 
-    ```yaml
+    ```
     ---
     type: FilterCircuit
     fields:
@@ -98,7 +98,7 @@ This section covers the steps required to add a new certificate and private key 
 
 If the YAML configuration you are adding the certificate and private key into is encrypted with a passphrase, you will need to encrypt the private key file. To encrypt the private key file `Axway-key.pem`, execute all the previous steps and also perform the following:
 
-```shell
+```
 cd apigateway/posix/bin
 ./yamles encrypt --file ~/yaml/Environment\ Configuration/Certificate\ Store/Axway-key.pem --source /home/user/yaml --passphrase changeme
 The file `/home/user/yaml/Environment Configuration/Certificate Store/Axway-key.pem` has been encrypted
@@ -139,7 +139,7 @@ If the entity instance you have created is a [container entity](/docs/apim_yamle
 
 Example:
 
-```yaml
+```
 ---
 type: NetService
 fields:
@@ -157,7 +157,7 @@ If the entity instance you have created is not a container entity:
 
 Example:
 
-```yaml
+```
 ---
 type: InetInterface
 fields:
@@ -217,7 +217,7 @@ YAML Entity Store exports lists without indentation.
 
 The following is an example of how YAML Entity Store writes a YAML file. This is done by tools, such as ES Explorer, when updating or creating and Entity.
 
-```yaml
+```
 type: FilterCircuit
 fields:
   name: ...
@@ -237,7 +237,7 @@ children:
 
 The following example is also supported:
 
-```yaml
+```
 type: FilterCircuit
 fields:
   name: ...

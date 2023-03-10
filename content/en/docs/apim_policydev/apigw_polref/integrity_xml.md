@@ -27,7 +27,7 @@ To use a signing key from the certificate store, select **Key in Store**, and cl
 
 The *Distinguished Name* of the selected certificate appears in the `X509SubjectName` element of the XML signature as follows:
 
-```xml
+```
 <dsig:X509SubjectName>
     CN=Sample,OU=R&D,O=Company Ltd.,L=Dublin 4,ST=Dublin,C=IE
 </dsig:X509SubjectName>
@@ -64,7 +64,7 @@ A `<wssc:DerivedKeyToken>` token can be used to derive a symmetric key from the 
 
 The following example shows the use of a derived key:
 
-```xml
+```
 <enc:EncryptedKey Id="Id-0000010b8b0415dc-0000000000000000">
 <enc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5"/>
   <dsig:KeyInfo>
@@ -117,7 +117,7 @@ This option enables you to omit all information about the signatory's certificat
 **Include Certificate**:
 This is the default option which places the signatory's certificate inside the XML signature itself. The following example shows an example of an XML signature using this option:
 
-```xml
+```
 <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" id="Sample">
   ...
   <dsig:KeyInfo>
@@ -136,7 +136,7 @@ This is the default option which places the signatory's certificate inside the X
 **Expand Public Key**:
 The details of the signatory's public key are inserted into a `KeyValue` block. The `KeyValue` block is only inserted when this option is selected.
 
-```xml
+```
 <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" id="Sample">
   ...
   <dsig:KeyInfo>
@@ -163,7 +163,7 @@ The details of the signatory's public key are inserted into a `KeyValue` block. 
 **Include Distinguished Name**:
 If this is selected, the Distinguished Name of the signatory's X.509 certificate is inserted in an `<X509SubjectName>` element as shown in the following example:
 
-```xml
+```
 <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" id="Sample">
   ...
   <dsig:KeyInfo>
@@ -183,7 +183,7 @@ If this is selected, the Distinguished Name of the signatory's X.509 certificate
 This option allows you insert a key identifier, or `KeyName`, to allow the recipient to identify the signatory. Enter an appropriate value for the `KeyName`
 in the **Value** field. Typical values include Distinguished Names (DName) from X.509 certificates, key IDs, or email addresses. Specify whether the specified value is a **Text value** of a **Distinguished name attribute** by selecting the appropriate setting.
 
-```xml
+```
 <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" id="Sample">
   ...
   <dsig:KeyInfo>
@@ -199,7 +199,7 @@ From previous examples, it is clear that the user's certificate is usually place
 
 The `SecurityTokenReference` block provides a generic way for applications to retrieve security tokens in cases where these tokens are not contained in the SOAP message. The name of the security token is specified in the `URI` attribute of the `Reference` element:
 
-```xml
+```
 <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" id="Sample">
   ...
   <dsig:KeyInfo>
@@ -276,7 +276,7 @@ Select the Id attribute used to dereference the signed element in the `dsig:Sign
 
 * *wsu:Id*: The default option references the signed data using a `wsu:Id` attribute. A `wsu:Id` attribute is inserted into the root node of the signed nodeset. This Id is then referenced in the generated XML signature as an indication of which nodes were signed. For example:
 
-    ```xml
+    ```
     <soap:Envelope xmlns:soap="...">
       <soap:Header>
         <wsse:Security xmlns:wsse="...">
@@ -319,7 +319,7 @@ Select the Id attribute used to dereference the signed element in the `dsig:Sign
 * *Id*: Select the `Id` option to use generic Ids (not bound to the WSU namespace) to dereference the signed data. Under this schema, the `URI` attribute of the `<Reference>`
 points at an Id attribute, which is inserted into the top-level node of the signed nodeset. In the following example, the Id specified in the signature matches the Id attribute inserted into the `<Body>` element, indicating that the signature applies to the entire contents of the SOAP body:
 
-    ```xml
+    ```
     <soap:Envelope xmlns:soap="....">
       <soap:Header>
         <dsig:Signature xmlns:dsig="...." Id="Id-0000011a101b167c-0000000000000013">
@@ -359,7 +359,7 @@ points at an Id attribute, which is inserted into the top-level node of the sign
 * *ID*: Select this option to use generic IDs (not bound to the WSU namespace) to dereference the signed data. Under this schema, the URI attribute of the `Reference`
 points at an ID attribute, which is inserted into the top-level node of the signed nodeset. In the following example, the URI specified in the Signature Reference node matches the ID attribute inserted into the `Body` element, indicating that the signature applies to the entire contents of the SOAP body:
 
-    ```xml
+    ```
     <soap:Envelope xmlns:soap="....">
       <soap:Header>
         <dsig:Signature xmlns:dsig="....">
@@ -400,7 +400,7 @@ points at an ID attribute, which is inserted into the top-level node of the sign
 attribute, which is inserted into the top-level node of the signed nodeset. In the following example, the URI specified in the Signature Reference node matches the `xml:id`
 attribute inserted into the `Body` element, indicating that the signature applies to the entire contents of the SOAP body:
 
-    ```xml
+    ```
     <soap:Envelope xmlns:soap="....">
       <soap:Header>
         <dsig:Signature xmlns:dsig="...." Id="Id-0000011a101b167c-0000000000000013">
@@ -441,7 +441,7 @@ attribute inserted into the `Body` element, indicating that the signature applie
 node of the signature is `“”`, which means that no id is used to refer to what is being signed. The `“”` URI means that the full document is signed. A signature of this type must be an enveloped signature. On the **Advanced** > **Options** tab, select **Create enveloped signature**. To sign the full document, on the **What to Sign** > **XPaths**
 tab, select the XPath named `The entire document`.
 
-    ```xml
+    ```
     <?xml version="1.0" encoding="utf-8"?>
     <soap:Envelope xmlns:soap="....">
       <soap:Header>
@@ -496,7 +496,7 @@ When signing the SAML assertion, this means to sign the XML that the `wsse:Secur
 
 The following shows an example SOAP header:
 
-```xml
+```
 <soap:Envelope xmlns:soap="....">
   <soap:Header>
     <wsse:Security xmlns:wsse="...." xmlns:wsu="...." ;
@@ -581,7 +581,7 @@ Alternatively, you can add a new XPath expression using the **Add** button. XPat
 
 An example of a SOAP message is as follows:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
     <soap:Header>
@@ -614,7 +614,7 @@ Select this option to use an XPath transform to reference the signed content. Yo
 
 To illustrate the use of XPath predicates, the following example shows how the SOAP message is signed when the `Sign SOAP Body` predicate is selected:
 
-```xml
+```
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
     <s:Body>
     <vs:getProductInfo xmlns:vs="http://www.axway.com">
@@ -627,7 +627,7 @@ To illustrate the use of XPath predicates, the following example shows how the S
 
 The default XPath expression (Sign SOAP Body) identifies the contents of the SOAP `Body` element, including the `Body` element itself. The following is the XML Signature produced when this XPath predicate is used:
 
-```xml
+```
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
   <s:Header>
     <dsig:Signature id="Sample" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
@@ -670,7 +670,7 @@ To do this, select the **Extract nodes from Selector Expression** check box, and
 **Append Signature to Root or SOAP Header**:
 If the message is a SOAP message, the signature is inserted into the SOAP `Header` element when this radio button is selected. The XML signature is inserted as an immediate child of the SOAP `Header` element. The following example shows a skeleton SOAP message which has been signed using this option:
 
-```xml
+```
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
  <s:Header>
   <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/..." id="Sample">
@@ -685,7 +685,7 @@ If the message is a SOAP message, the signature is inserted into the SOAP `Heade
 
 If the message is just plain XML, the signature is inserted as an immediate child of the root element of the XML message. The following example shows a non-SOAP XML message signed using this option:
 
-```xml
+```
 <PurchaseOrder>
     <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" id="Sample">
     ...
@@ -798,7 +798,7 @@ The following options are available:
 
 The **Expires In** fields enable the user to optionally specify the `wsu:Expires` for the `wsu:Timestamp`. If all fields are left at `0`, no `wsu:Expires` element is placed inside the `wsu:Timestamp`. The following example shows a `wsu:Timestamp` that has been inserted into a `wsse:Security` block:
 
-```xml
+```
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
     <s:Header>
     <wsse:Security>
@@ -862,7 +862,7 @@ You can include information about the namespaces (and their associated prefixes)
 A *PrefixList*
 attribute is used to list the prefixes of in-scope, but not visibly used elements and attributes. The following example shows how the `PrefixList` attribute is used in practice:
 
-```xml
+```
 <soap:Envelope xmlns:soap='http://schemas.xmlsoap.org/soap/envelope'>
   <soap:Header>
     <wsse:Security xmlns:wsse='http://docs.oasis-open.org/...
@@ -1035,7 +1035,7 @@ If the signature is present in a WS-Security block:
 
 The following is a skeleton version of a message where the XML signature is contained in the `sample` WS-Security block, (`soap-env:actor="sample"`):
 
-```xml
+```
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
     <s:Header>
     <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/04/secext" s:actor="sample">
@@ -1060,7 +1060,7 @@ If the signature is present in the SOAP header:
 
 The following is an example of an XML message where the XML signature is contained within the SOAP header:
 
-```xml
+```
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
     <s:Header>
     <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" id="s1">

@@ -35,7 +35,7 @@ To enable environmentalization, create a file named `values.yaml` in the root di
 
 The following is an example of environmentalization:
 
-```yaml
+```
 # Environmentalized entity in the YAML configuration
 ---
 type: "DbConnection"
@@ -46,7 +46,7 @@ fields:
    username: "{{db.username}}"
 ```
 
-```yaml
+```
 # Content of the values.yaml
 db:
   host: localhost
@@ -55,7 +55,7 @@ db:
 
 ```
 
-```yaml
+```
 # Resolved YAML Entity (in memory at runtime)
 ---
 type: "DbConnection"
@@ -70,7 +70,7 @@ fields:
 
 When you environmentalize references, the certificates also get environmentalized. For example:
 
-```yaml
+```
 # Environmentalized FilterCircuit entity in the YAML configuration
 ---
 type: FilterCircuit
@@ -86,14 +86,14 @@ children:
 # ...
 ```
 
-```yaml
+```
 # Content of the value.yaml
 ---
 certs:
   sign: /Environment Configuration/Certificate Store/Samples Test CA
 ```
 
-```yaml
+```
 # Resolved YAML Entity (in memory at runtime)
 ---
 type: FilterCircuit
@@ -111,7 +111,7 @@ children:
 
 The `values.yaml` above could also point to a system environment variable `CERT_DNAME` that would determine the certificate to be used at runtime.
 
-```yaml
+```
 # Content of the value.yaml
 certs:
   sign: /Environment Configuration/Certificate Store/{{env "CERT_DNAME"}}
@@ -151,7 +151,7 @@ All YAML files must be parsable.
 
 Because the `{` character is interpreted, the first character of a value must always be quoted. Files are parsed and they might be written again (in case the entity store is modified, for example, change of passphrase), so it is recommended to use single quotation.
 
-```yaml
+```
 ---
 type: "DbConnection"
 fields:
@@ -215,7 +215,7 @@ The following words are not allowed at the beginning of a `{{...}}` expression:
 
 Examples:
 
-```yaml
+```
 # Invalid because of reserved word
 null_user:
   name: ""
@@ -258,20 +258,20 @@ Follow these guidelines to avoid issues when using quotation marks in strings:
 
 Example of an environmentalization placeholder surrounded by single quotation marks:
 
-```yaml
+```
 fields:
   url: '{{foo.bar.url.value}}'
 ```
 
 Example to set `value` with `a message with 'single quotation marks'`:
 
-```yaml
+```
 value: "a message with ''single quotation marks'' "
 ```
 
 or
 
-```yaml
+```
 value: 'a message with ''''single quotation marks'''' '
 ```
 
@@ -283,7 +283,7 @@ This section presents environmentalization options for you to use in your `value
 
 Because the `{` character is interpreted, the first character of a value must always be quoted. Files are parsed and they might be written again (in case the entity store is modified, for example, change of passphrase), so it is recommended to use single quotation.
 
-```yaml
+```
 ---
 some_global_value: 42
 db:
@@ -310,7 +310,7 @@ The `values.yaml` file only accepts letters (including `_`) and digits (not at s
 
 To decouple where the value of an environment variable is coming from and where it is used, use the `{{env "XYZ"}}` syntax in the `values.yaml` file:
 
-```yaml
+```
 ---
 db:
   host: '{{env "DB_HOST"}}' # set a value in an environment variable per environment
@@ -318,7 +318,7 @@ db:
 
 To set a fixed value that does not change between all environments, change the `values.yaml` to:
 
-```yaml
+```
 ---
 db:
   host: db.com
@@ -326,14 +326,14 @@ db:
 
 Alternatively, to use a different `values.yaml` for each environment, set it as follows:
 
-```yaml
+```
 # values.yaml for staging
 ---
 db:
   host: staging.db.acme.com
 ```
 
-```yaml
+```
 # values.yaml for prod
 ---
 db:
@@ -342,7 +342,7 @@ db:
 
 This can all be done without changing the YAML file for the entity that always point to `db.host` environmentalized property:
 
-```yaml
+```
 #Some Entity.yaml
 ---
 type: DBConnection

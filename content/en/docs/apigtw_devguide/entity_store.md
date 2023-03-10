@@ -68,7 +68,7 @@ A field must be assigned a cardinality. The possible cardinalities are:
 
 The following shows an example.
 
-```xml
+```
 <field name="name" type="string" cardinality="1" isKey="true" />
 <field name="isEnabled" type="boolean" cardinality="1" default="true"/>
 <field name="hosts" type="string" cardinality="*"/>
@@ -81,13 +81,13 @@ The following shows an example.
 
 A field that refers to another entity within the same component entity store is called a *hard reference*. For example:
 
-```xml
+```
 <field cardinality="1" name="category" type="@Category">
 ```
 
 A field that refers to another entity in another component entity store is called a *soft reference*. For example:
 
-```xml
+```
 <field cardinality="1" name="repository" type="^AuthnRepositoryBase"/>
 ```
 

@@ -26,7 +26,7 @@ The `ActorAttribute` tag renders an SWT Combo widget with an optional Label. The
 
 **Sample XML**\
 
-```xml
+```
 <ui>
    <panel indent="15" margin="0">
      <ActorAttribute label="ACTOR_LABEL" field="actor" required="true" />
@@ -60,7 +60,7 @@ The `AgeAttribute` tag renders an SWT Label (optional), Text and Combo widgets, 
 
 **Sample XML**\
 
-```xml
+```
 <ui>
   <panel columns="3" margin="0">
     <AgeAttribute field="maxAge" label="AGE_LABEL" required="true"/>
@@ -100,7 +100,7 @@ The Combo widget is then populated with this list of instances that are compatib
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2">
   <AuthNRepositoryAttribute label="REPOSITORY_LABEL" field="repository"
@@ -130,7 +130,7 @@ The `binding` tag allows you to create a binding between various widgets.
 
 The binding below specifies a binding between a <ButtonAttribute> and two <ComboAttribute> attributes. The binding is controlled in the Enabler class.
 
-```xml
+```
 <ui>
  <ButtonAttribute field="sortFiles" label="SORT_FILES_LABEL"/>
  <panel columns="2" margin="0">
@@ -179,7 +179,7 @@ Each item in the bitmask is represented declaratively as a `choice` tag, which i
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel indent="15" margin="0">
   <BitMaskAttribute field="logMask" columns="3">
@@ -211,7 +211,7 @@ The `button` tag renders an SWT Button widget with the `SWT.PUSH` style applied.
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2">
   <button image="browse" label="BROWSE_TIP" tooltip="BROWSE_TIP" />
@@ -242,7 +242,7 @@ The `ButtonAttribute` tag renders an SWT Button widget with the `SWT.PUSH` style
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <group label="LOG_PAGE_ABORT_SECTION_LABEL">
   <ButtonAttribute field="abort" label="ABORT_PROCESSING_LABEL" span="2"/>
@@ -267,7 +267,7 @@ The `CategoryAttribute` tag renders an SWT Combo widget with either the `SWT.BOR
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <CategoryAttribute label="LOG_CATEGORY_LABEL"/>
 </ui>
@@ -291,7 +291,7 @@ The `CertDNameAttribute` tag renders a SWT Combo with a list of certificates.
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <CertDNameAttribute label="ISSUER_DNAME_LABEL"
   field="issuerName" required="true" />
@@ -324,7 +324,7 @@ When the Button is clicked a certificate selection dialog similar to the followi
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  `panel`
   <certSelector label="SECURITY_SERVER_CERTIFICATE" field="sslCertificate"
@@ -354,7 +354,7 @@ The `CertTreeAttribute` tag renders a JFace TreeViewer, populated with certifica
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  `panel`
   <CertTreeAttribute label="SSL_CERTIFICATES_LABEL" field="sslUsers"
@@ -399,7 +399,7 @@ The following example represents the multi-valued “options” entity field, of
 
 The `CheckboxGroupAttribute` tag is not restricted to having only `choice` tags as children. A good candidate is the `panel` container tag, as outlined in the example below. When the ‘User Defined’ choice is selected the children of the subsequent panel are enabled automatically. When the ‘User Defined’ choice is unselected, these children are disabled automatically.
 
-```xml
+```
     <ui>
         `panel`
             <CheckboxGroupAttribute field="options" label="Select Values">
@@ -438,7 +438,7 @@ The `CircuitChainTable` tag renders a Table widget. The table is populated with 
 
 **Sample XML**\
 
-```xml
+```
 <ui>
   <CircuitChainTable flavor="OperationCircuitReference"
    setOrderable="false" setCapabilities="EDIT"/>
@@ -467,7 +467,7 @@ The `ComboAttribute` tag renders an SWT Combo widget, backed by the specified en
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <group label="TRACE_SETTINGS_LABEL" columns="2" span="2">
   <ComboAttribute field="traceLevel" label="TRACE_LEVEL_LABEL"
@@ -499,7 +499,7 @@ The `comboBinding` tag allows you to create a binding between various widgets.
 
 The binding below specifies a binding between a ComboAttribute and a TextAttribute.
 
-```xml
+```
 <ui>
  <ComboAttribute field="extractMethod"
   label="JMS_CONSUMER_EXTRACTION_METHOD_LABEL"
@@ -535,7 +535,7 @@ The `ComboStackPanel` tag primarily renders an SWT Combo widget, backed by the s
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2">
   <NameAttribute />
@@ -593,7 +593,7 @@ The `Condition` tag introduces control statements.
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <Condition criteria="ifnot" property="httphostheader.disabled">
    <group label="HOST_HEADER_GROUP_NAME" columns="2" fill="false">
@@ -624,7 +624,7 @@ The `CronAttribute` tag renders an SWT Button widget and a SWT Text widget, back
 
 **Sample XML**\
 
-```xml
+```
 <ui>
    <CronAttribute field="expression"
     label="CRON_EXPRESSION_DIALOG_EXPRESSION_LABEL"
@@ -652,7 +652,7 @@ The `ContentEncodingAttribute` tag renders an SWT Text widget and a SWT Button w
 
 **Sample XML**\
 
-```xml
+```
 <ui>
    <ContentEncodingAttribute field="inputEncodings"
     label="inputEncodings" trackChanges="true"/>
@@ -678,7 +678,7 @@ The `DirectoryChooser` tag renders an SWT Label, Text and Button widget. When cl
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <group label="LOCATION_LABEL" span="2">
   <panel columns="2">
@@ -712,7 +712,7 @@ The `ESPKReferenceSummaryAttribute` tag renders an SWT Text and Button control. 
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <ESPKReferenceSummaryAttribute
   displayName="EMS_CONSUMER_SELECT_CONNECTION_DISP_NAME"
@@ -750,7 +750,7 @@ The `FieldTable` tag renders an SWT TableViewer, along with a bank of buttons to
 
 **Sample XML**\
 
-```xml
+```
 <ui>
    <panel columns="2">
      <TextAttribute field="cmdLine" label="CMD_LINE_LABEL" required="true" />
@@ -778,7 +778,7 @@ The `FileChooserText` tag renders an SWT Label, Text and Button widget. When cli
 
 **Sample XML**\
 
-```xml
+```
 <ui>
   <panel columns="2">
     <FileChooserText field="fileIn" label="FILE_LABEL" required="true" span="2" />
@@ -808,7 +808,7 @@ The `group` tag renders an SWT Group widget, which is usually used to group othe
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <group label="LOG_PAGE_CATEGORY_LABEL" columns="2">
   <CategoryAttribute label="LOG_CATEGORY_LABEL" required="true" />
@@ -834,7 +834,7 @@ The `HTTPStatusTableAttribute` tag renders a Table and a group SWT Buttons that 
 
 **Sample XML**\
 
-```xml
+```
 <ui>
   <HTTPStatusTableAttribute field="retryHTTPRanges" tableHeight="100" />
 </ui>
@@ -857,7 +857,7 @@ The <include> tag allows another declarative XML file to be included inline in t
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2">
   <include resource="AuditSettings-page.xml"
@@ -878,7 +878,7 @@ The `label` tag renders an SWT Label widget.
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2">
   <NameAttribute />
@@ -905,7 +905,7 @@ The `LifeTimeAttribute` tag renders a Label, Text, and a group of Spin controls,
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2">
   <panel span="2" columns="3" margin="0">
@@ -925,7 +925,7 @@ The above XML renders the following UI:
 
 The `NameAttribute` tag renders an SWT Label and accompanying Text widget. It is used to wrap the following TextAttribute:
 
-```xml
+```
 <TextAttribute field="name" label="NAME_LABEL" required="true" />
 ```
 
@@ -933,7 +933,7 @@ The label `NAME_LABEL` must exist in the appropriate `resource.properties` file.
 
 **Sample XML**\
 
-```xml
+```
 <ui>
   <panel columns="2">
     <NameAttribute />
@@ -960,7 +960,7 @@ The `MsgAttrAttribute` tag renders an SWT Label and accompanying Combo widget po
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2">
   <MsgAttrAttribute field="sourceAttribute"
@@ -989,7 +989,7 @@ The `MultiValueTextAttribute` tag is similar to the TextAttribute tag in that it
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2">
   <MultiValueTextAttribute field="extension" label="EXTENSION_LABEL"
@@ -1022,7 +1022,7 @@ The `NumberAttribute` tag renders an SWT Label and accompanying Text widget. The
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2">
   <NameAttribute />
@@ -1059,7 +1059,7 @@ The `panel` tag renders an SWT Composite widget, which is usually used to group 
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel span=”2” columns="2" indent=”15” margin=”0” label=”SETTINGS_PANEL”>
   <ReferenceSelector field="connectionFailurePolicy"
@@ -1097,7 +1097,7 @@ The `PasswordAttribute` tag renders an SWT Label and accompanying Text widget. T
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <group label="PROXY_SETTINGS_LABEL" columns="2" span="2">
   <TextAttribute field="username" label="PROXY_USERNAME_LABEL"/>
@@ -1138,7 +1138,7 @@ The following example represents the “logMaskType” entity field, of which th
 
 The `RadioGroupAttribute` tag is not restricted to just having 'choice' tags as children. A good candidate is the <panel> container tag, as outlined in the example below. When the ‘USE_FILTER’ choice is selected the children of the subsequent panel are enabled automatically. When the ‘USE_SERVICE’ choice is selected, these children are disabled automatically.
 
-```xml
+```
 <ui>
   <panel>
     <RadioGroupAttribute field="logMaskType" columns="1">
@@ -1182,7 +1182,7 @@ The `ReferenceSelector` tag renders an SWT Label, Text and Button control. When 
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel span="2" columns="2" indent="15" margin="0" label="SETTINGS_PANEL">
   <ReferenceSelector field="connectionFailurePolicy"
@@ -1216,7 +1216,7 @@ The `SamlAttribute` tag renders a SWT Combo with a list of SAML versions.
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <SamlAttribute label="SAML_VERSION_REQUIRED_LABEL"
   field="samlVersion" required="true" />
@@ -1255,7 +1255,7 @@ The following table shows the available methods and their meanings :
 
 **Sample XML**\
 
-```xml
+```
 <ui>
   <SamlSubjectConfirmationAttribute label="SAML_SUBJECT_CONF_METHOD_LABEL"
    required="true" />
@@ -1288,7 +1288,7 @@ To facilitate ease-of-use, one of the following tags must be a direct child of s
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <scrollpanel>
   <panel columns="2">
@@ -1326,7 +1326,7 @@ To facilitate ease-of-use, one of the following tags must be a direct child of s
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <section label="RS_STATUS_LABEL" expanded="true">
   <panel columns="2">
@@ -1358,7 +1358,7 @@ The `SigningKeyAttribute` tag renders a SWT Radio Button and a Tab Folder which 
 
 **Sample XML**\
 
-```xml
+```
 <ui>
   <SigningKeyAttribute
    subjectConfirmationNote="SUBJECT_CONFIRMATION_ASYMMETRIC_NOTE_LABEL"
@@ -1391,7 +1391,7 @@ The `SizeAttribute` tag renders an SWT Label (optional), Text, and Combo widgets
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="3" margin="0">
    <SizeAttribute field="maxDbSize" label="OPDB_MAX_DB_SIZE_LABEL" required="true"/>
@@ -1420,7 +1420,7 @@ The <SoftRefListAttribute> renders a SWT Combo  that shows a list of entities o
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <SoftRefListAttribute label="WS_USERNAME_TOKEN_REPOSITORY_NAME_LABEL"
   field="repository" refName="name"
@@ -1450,7 +1450,7 @@ The `SoftRefTreeAttribute` renders a jFace TreeViewer that shows the policies of
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2">
   <group label="POP_POLICY_LABEL" span="1" columns="1">
@@ -1489,7 +1489,7 @@ The `SpinAttribute` tag renders an SWT Text widget (and optionally, a Label widg
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="7">
   <SpinAttribute field="hrs" label="HOUR" required="true"
@@ -1518,7 +1518,7 @@ The `tab` tag renders an SWT TabItem widget. They must be direct children of the
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2" span="2">
   <tabFolder span="2">
@@ -1544,7 +1544,7 @@ The `tabFolder` tag renders an SWT TabFolder widget used to house TabItems (gene
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2" span="2">
   <tabFolder span="2">
@@ -1579,7 +1579,7 @@ The `TablePage` tag renders a jFace TableViewer that represents a list of entiti
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2">
   <TablePage type="Property"
@@ -1629,7 +1629,7 @@ The `text` tag renders an SWT Text widget.
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <text label="KEYPAIRS_PUBLICKEY_LABEL" multiline="true" vscroll="true"
   wrap="true" heightHint="100" widthHint="350" readOnly="true"/>
@@ -1662,7 +1662,7 @@ The `TextAttribute` tag renders an SWT Text widget (and optionally, a Label widg
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2">
   <TextAttribute field="name" label="EXCEPTION_NAME" required="true" />
@@ -1686,7 +1686,7 @@ This tag does not require any attributes.
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <panel columns="2">
   <TextAttribute field="name" label="EXCEPTION_NAME" required="true" />
@@ -1704,7 +1704,7 @@ The `validator` tag is used to include a validator class.
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <validator class="com.vordel.client.manager.filter.dirscan.DirectoryScannerDialogValidator" />
 </ui>
@@ -1724,7 +1724,7 @@ The `XPathAttribute` tag renders an SWT Combo widget and three SWT Button widget
 
 **Sample XML**\
 
-```xml
+```
 <ui>
  <XPathAttribute field="insertTokenLocationXPath"
   xpathGroup="XPathTokenInsertionLocationGroup" />

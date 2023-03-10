@@ -21,13 +21,13 @@ In a production environment we recommend you to follow these steps:
 
 For example, to update the ANM FED file with one that has been changed in Policy Studio, you first get the ANM FED configuration from the pod:
 
-```bash
+```
 kubectl cp apim-gateway-anm-d99989f5d-xt65x:/opt/Axway/apigateway/conf/fed my-anm-fed
 ```
 
 Next, use the Policy Studio option to create a project from an existing configuration to import the `my-anm-fed` directory. Make changes and export the changes as, for example,`my-changed-anm.fed`. Then, copy this file back to the merge directory of the pod and restart the ANM deployment. For example:
 
-```bash
+```
 kubectl cp my-changed-anm.fed apim-gateway-anm-d99989f5d-xt65x:/merge/fed
 kubectl rollout restart deployment apim-gateway-anm
 ```
@@ -36,13 +36,13 @@ kubectl rollout restart deployment apim-gateway-anm
 
 Similarly, if using YAML, you must export the changes you made via Policy Studio to a `.tar.gz` file, copy this file as `/merge/yaml` in the pod, and run a `kubectl` rollout restart of the deployment. For example, to change the the gateway YAML file, first get the file from the pod:
 
-```bash
+```
 kubectl cp apim-gateway-apitraffic-66fd47f896-466dw:/opt/Axway/apigateway/groups/emt-group/conf my-yaml
 ```
 
 Next, use the Policy Studio option to create a project from existing configuration to import the `my-yaml` directory. Make changes and export the changes as, for example, `my-changed-yaml.tar.gz`. Then, copy this file back to the merge directory of the `apitraffic` deployment. For example:
 
-```bash
+```
 kubectl cp my-changed-yaml.tar.gz apim-gateway-apitraffic-66fd47f896-466dw:/merge/yaml
 kubectl rollout restart deployment apim-gateway-apitraffic
 ```

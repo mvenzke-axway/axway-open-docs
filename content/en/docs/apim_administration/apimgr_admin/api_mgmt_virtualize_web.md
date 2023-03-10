@@ -46,7 +46,7 @@ When exporting Swagger 2.0 from API Manager Catalog with multiple traffic ports 
 
 For example, if an HTTPS traffic port of `8065` and an HTTP traffic port of `8066` are configured, and the host IP address is `127.0.0.1`, then the generated Swagger 2.0 definition will look like this:
 
-```json
+```
 {
   "swagger" : "2.0",
   "info" : {
@@ -542,7 +542,7 @@ In earlier API Manager versions, you could export API collections as a plain tex
 
 If you wish to generate a plain text export file, the administrator must add the following lines towards the start of the `INSTALL_DIR/apigateway/webapps/apiportal/vordel/apiportal/app/app.config` file, for example, before the `nodemanager` setting:
 
-```bash
+```
 /* Flag to determine if API collections can be exported as clear text:
  - Set to false if API export as clear text is not allowed (exported file is always encrypted)
  - Set to true if API export as clear text is allowed (you can choose to encrypt the file or not)*/

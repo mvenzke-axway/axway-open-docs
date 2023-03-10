@@ -36,7 +36,7 @@ On the **Request** tab, you can use the API Gateway selector syntax to evaluate 
 
     The following example shows the `Content-Type` followed by a Carriage Return Line Feed (CRLF), then the required message payload:
 
-    ```yaml
+    ```
     Content-Type: text/html
     
     <!DOCTYPE html>
@@ -53,7 +53,7 @@ On the **Request** tab, you can use the API Gateway selector syntax to evaluate 
 
     The following example shows an `Accept` header followed by a CRLF, but the *blank line* below the header is not visible.
 
-    ```yaml
+    ```
     Accept: */*
     
     ```
@@ -293,7 +293,7 @@ API Gateway can act as a proxy for clients of the secured web service. When a cl
 
 The following is an example of an HTTP request line that was made through a proxy, where `WEB_SERVICE_HOST` is the name or IP address of the machine hosting the destination web service:
 
-```yaml
+```
 POST http://WEB_SERVICE_HOST:80/myService HTTP/1.0
 ```
 

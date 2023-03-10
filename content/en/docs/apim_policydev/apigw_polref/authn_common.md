@@ -208,7 +208,7 @@ filter performs the second task. A separate authentication filter must be placed
 
 The following sample SOAP message contains a SAML authentication assertion:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
 <soap-env:Header xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/04/secext">
@@ -307,7 +307,7 @@ The client user name and password are encapsulated in a WS-Security `<wsse:Usern
 The following sample SOAP message contains two `<wsse:UsernameToken>`
 blocks:
 
-```xml
+```
 <?xml version="1.0" encoding="iso-8859-1"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
 <soap:Header>
@@ -354,7 +354,7 @@ element. Using this timestamp together with the details entered in this section,
 has expired. The `<wsu:Created>`
 element is as follows:
 
-```xml
+```
 <wsse:UsernameToken wsu:Id="axway"
   xmlns:wsu="http://schemas.xmlsoap.org/ws/2003/06/utility">
     <wsu:Created>2006.01.13T-10:42:43Z</wsu:Created>
@@ -638,7 +638,7 @@ Using WS-Trust, requests for tokens are placed in a `RequestSecurityToken`
 element. The STS returns the requested token in a `RequestSecurityTokenResponse`
 (RSTR) element in the SOAP `Body`. The following example is an extract from a token request message sent from the API Gateway to the STS:
 
-```xml
+```
 <soap:Body
   xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/
   oasis-200401-wss-wssecurity-utility-1.0.xsd"
@@ -1072,7 +1072,7 @@ A typical example would see a user authenticating to the API Gateway using HTTP 
 The following example shows the format of the `<wsse:UsernameToken>`
 token:
 
-```xml
+```
 <wsse:UsernameToken wsu:Id="axway"
   xmlns:wsu="http://schemas.xmlsoap.org/ws/2003/06/utility">
     <wsu:Created>2006.01.13T-10:42:43Z</wsu:Created>
@@ -1180,7 +1180,7 @@ After successfully authenticating a client, the API Gateway can insert a SAML (S
 You can refer to the following example of a signed SAML authentication assertion when configuring the **Insert SAML Authentication Assertion**
 filter:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
 <soap-env:Header xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/04/secext">
@@ -1290,7 +1290,7 @@ block can be used to authenticate the end user that authenticated to the API Gat
 The following is a typical `<SubjectConfirmation>`
 block:
 
-```xml
+```
 <saml:SubjectConfirmation>
   <saml:ConfirmationMethod>
     urn:oasis:names:tc:SAML:1.0:cm:holder-of-key
@@ -1407,7 +1407,7 @@ Select this method to ensure that the generated signature is properly indented.
 The generated SAML authentication assertion can be encapsulated within a `<SecurityTokenReference>`
 block. The following example demonstrates this:
 
-```xml
+```
 <soap:Header>
   <wsse:Security
     xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"

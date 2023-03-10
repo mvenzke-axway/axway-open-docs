@@ -24,7 +24,7 @@ The following sections describe how the declarative UI XML file for this dialog 
 
 The following code demonstrates how to load the declarative XML file within the Policy Studio class.
 
-```java
+```
 package com.vordel.client.manager.filter.oauth2.provider.authorize;
 
 import org.eclipse.swt.widgets.Composite;
@@ -53,7 +53,7 @@ public class OAuthAuthorizationRequestPage extends VordelPage {
 
 The following `declarative.xml` file defines the dialog in Policy Studio.
 
-```xml
+```
 <ui>
   <panel columns="2" span="2">
     <NameAttribute />

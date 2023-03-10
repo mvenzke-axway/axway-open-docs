@@ -70,7 +70,7 @@ wWVn7dS/ycwDg7Miqd1TU0YKTiOY//5i
 
 Copy and paste the string `wWVn7dS/ycwDg7Miqd1TU0YKTiOY//5i` into your yaml file for your `DbConnection`:
 
-```yaml
+```
 ---
 type: DbConnection
 fields:
@@ -126,7 +126,7 @@ You can also use [projdeploy](/docs/apim_reference/devopstools_ref#projdeploy-co
 
 The following snippet shows how the `change-passphrase` option affects the content of environmentalized YAML files. Encrypted data located in `values.yaml` is also changed unless it is an environment variable.
 
-```yaml
+```
 # Entity file
 ...
 fields:

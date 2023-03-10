@@ -107,7 +107,7 @@ The following Jython code examples show how you can use the KPS scripting API in
 
 ### Create a new record
 
-```java
+```
 from java.util import HashMap
 from com.vordel.kps import Table, ObjectExists
 def invoke(msg):
@@ -124,7 +124,7 @@ def invoke(msg):
 
 ### Update a record
 
-```java
+```
 from java.util import HashMap
 from com.vordel.kps import Table, ObjectNotFound
 def invoke(msg):
@@ -141,7 +141,7 @@ def invoke(msg):
 
 ### Extend TTL for a record
 
-```java
+```
 from java.util import HashMap
 from com.vordel.kps import Table, ObjectNotFound
 def invoke(msg):
@@ -159,7 +159,7 @@ def invoke(msg):
 
 ### Read a record
 
-```java
+```
 from com.vordel.kps import Table, ObjectNotFound
 
 def invoke(msg):
@@ -172,7 +172,7 @@ def invoke(msg):
 
 ### Delete a record
 
-```java
+```
 from com.vordel.kps import Table, ObjectNotFound
 
 def invoke(msg):

@@ -738,7 +738,7 @@ element.
 The following SOAP request contains a binary image that has been Base64-encoded so that it can be inserted as the contents of the `<image>`
 element:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
@@ -825,7 +825,7 @@ filter. Notice the use of the `${xsd.errors}`
 message attribute selector in the `<Reason>`
 element:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
 <env:Body>
@@ -854,7 +854,7 @@ element:
 At runtime, the error reported by the schema validator is set in the message.
 The following example shows a SOAP Fault containing a typical schema validation error:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
 <env:Body>

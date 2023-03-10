@@ -183,7 +183,7 @@ If you are already familiar with XPath and wish to configure the expression manu
 
 For example, consider the following SOAP message:
 
-```xml
+```
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Header>
     <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" id="sig1">
@@ -214,7 +214,7 @@ In this case, you must define a mapping for the `prod` namespace as follows:
 
 In another example, the element to be examined by the XPath expression belongs to a default namespace. Consider the following SOAP message:
 
-```xml
+```
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Header>
     <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" id="sig1">

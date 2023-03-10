@@ -49,7 +49,7 @@ It will output: `Y2hhbmdlbWU=`
 
 Then, set the value for the `password` to be `Y2hhbmdlbWU=` as follows:
 
-```yaml
+```
 ---
 type: DbConnection
 fields:
@@ -59,7 +59,7 @@ fields:
 
 Or, you can set the value for the `password` as follows:
 
-```yaml
+```
 ---
 type: DbConnection
 fields:
@@ -78,7 +78,7 @@ Your encrypted base64 encoded string content is:-
 
 Then, set the value for the `password` to be `7ScBASwwV19S+dgmMVbirMxkqGE4bl9nyyvw6nLyzfI=` as follows:
 
-```yaml
+```
 ---
 type: DbConnection
 fields:
@@ -220,13 +220,13 @@ body: *** Welcome ***
 
 In this case, a field in the file `/home/user/yamlconfig/Policies/Policy Library/Health Check.yaml` is set as follows:
 
-```yaml
+```
 body: *** Welcome ***
 ```
 
 but should be changed to
 
-```yaml
+```
 body: "*** Welcome ***"
 ```
 
@@ -263,7 +263,7 @@ WARNING: Found entities of different types at same level with same PK for parent
 
 This is generated at conversion time using the `fed2yaml` option. To fix after converting, edit the policy file (`/Policies/Some Policies/Test.yaml`), and rename one of the filters.  Update all references to the filters so that the correct YamlPK is used:
 
-```yaml
+```
 ---
 type: FilterCircuit
 fields:

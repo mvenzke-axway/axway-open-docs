@@ -16,7 +16,7 @@ The trace log behavior can be modified through the `trace.xml` file or the syste
 
 To redirect trace logs using environment variables, ensure the following environment variables are passed to the container:
 
-```none
+```
 APIGW_LOG_TRACE_TO_FILE=false
 APIGW_LOG_TRACE_JSON_TO_STDOUT=true
 ```
@@ -27,13 +27,13 @@ To redirect trace logs using using the `trace.xml` file, update the `INSTALL_DIR
 
 1. Disable the trace file on disk by commenting out the following line:
 
-   ```xml
+   ```
    <!--<FileRolloverTrace maxfiles="500" filename="%s\_%Y%m%d%H%M%S.trc"/>-->
    ```
 
 2. Enable JSON output by changing the `jsonOutput` property value to `true`:
 
-   ```xml
+   ```
    <FileTrace filename="@stdout" jsonOutput="true"/>
    ```
 
@@ -53,7 +53,7 @@ The open traffic log behavior can be modified through the Policy Studio settings
 
 Ensure the following environment variable is passed to the container:
 
-```none
+```
 APIGW_LOG_OPENTRAFFIC_OUTPUT=stdout
 ```
 

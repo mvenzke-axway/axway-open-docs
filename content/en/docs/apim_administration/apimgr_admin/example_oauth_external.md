@@ -10,7 +10,7 @@ In this example, the OAuth server returns a JWT bearer, and API Gateway analyzes
 
 Here is a sample payload from the JWT returned by the OAuth server:
 
-```json
+```
 {
  "jti": "6723520f-abe9-45ec-8b6f-5092455342a4",
  "exp": 1568363943,
@@ -107,6 +107,6 @@ Follow these steps in API Manager:
 
 When the configuration is complete you can request a token from your OAuth server and access your API using it, for example:
 
-```bash
+```
 curl --header "Authorization: Bearer my.JWT.token" https://apimanager:8065/api/example
 ```

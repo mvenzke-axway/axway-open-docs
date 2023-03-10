@@ -67,7 +67,7 @@ The following is an example of how to configure a project to use maven to build 
 
 The following is an example of the `pom.xml` file:
 
-```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -111,7 +111,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 The following is an example of the `archive.xml` file for the maven plugin:
 
-```xml
+```
 <assembly
 xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

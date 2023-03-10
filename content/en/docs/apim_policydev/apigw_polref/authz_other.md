@@ -37,7 +37,7 @@ table, click **Add**, and enter attributes in the dialog. For attribute checks i
 attribute from the following SAML `<Attribute Statement>`, and store it in the `attribute.lookup.list`
 map:
 
-```xml
+```
 <saml:AttributeStatement>
   <saml:Attribute Name="role" NameFormat="http://www.company.com">
     <saml:AttributeValue>admin</saml:AttributeValue>
@@ -356,7 +356,7 @@ If the information validates, the API Gateway authorizes the message for the res
 The following example of a SAML authorization assertion might be useful when configuring the **SAML Authorization**
 filter.
 
-```xml
+```
 <saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:1.0:assertion"
   xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
   MajorVersion="1" MinorVersion="0"
@@ -507,7 +507,7 @@ block can be used to authenticate the end user that authenticated to the API Gat
 The following is a typical `SubjectConfirmation`
 block:
 
-```xml
+```
 <saml:SubjectConfirmation>
   <saml:ConfirmationMethod>
     urn:oasis:names:tc:SAML:1.0:cm:holder-of-key

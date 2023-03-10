@@ -82,7 +82,7 @@ No. The component does not support AWS Elasticsearch Service because some import
 
 When Filebeat reports errors like the following, it might be that the registry is corrupted. When this happens, Filebeat basically stops for a second to send events, which might cause issues to stay real-time when running very high volume.
 
-```bash
+```
 Harvester could not be started on new file: /var/log/opentraffic/group-2_instance-1_traffic.log, Err: error setting up harvester: Harvester setup failed. Unexpected file opening error: file info is not identical with opened file. Aborting harvesting and retrying file later again
 ```
 
@@ -142,7 +142,7 @@ Yes, but be aware of which components have been updated between the current and 
 
 No, you cannot downgrade from a newer version to an older one. You will see the following error message:
 
-```none
+```
 cannot downgrade a node from version [7.16.1] to version [7.15.2]
 ```
 
@@ -168,7 +168,7 @@ If Elasticsearch is running in Kubernetes as a StatefulSet, you can increase the
 1. Ensure that the StorageClass you are using supports `volumeExpansion. allowVolumeExpansion: true`.
 2. Edit the existing PVC for already running PoDs and increase the capacity.
 3. Update the VolumeClaimTemplate in your Helm values:
-    ```bash
+    ```
     volumeClaimTemplate:
       accessModes: [ "ReadWriteOnce" ]
       storageClassName: gp2
@@ -177,11 +177,11 @@ If Elasticsearch is running in Kubernetes as a StatefulSet, you can increase the
           storage: 100Gi
     ```
 4. Delete the StatefulSet without deleting the pods:
-    ```bash
+    ```
     kubectl -n apim delete sts axway-elk-apim4elastic-elasticsearch --cascade=orphan
     ```
 5. Perform a Helm upgrade to reinstall the modified StatefulSet.
 6. Redeploy the PODs of the stateful set.
-    ```bash
+    ```
     kubectl -n apim rollout restart sts axway-elk-apim4elastic-elasticsearch
     ```

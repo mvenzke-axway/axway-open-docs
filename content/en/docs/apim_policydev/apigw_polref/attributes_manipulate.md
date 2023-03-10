@@ -224,7 +224,7 @@ You can also use other filters from the Attributes filter group to insert user a
 
 You can refer to the following example of a SAML attribute assertion when configuring this filter:
 
-```xml
+```
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
   xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance">
@@ -308,7 +308,7 @@ The settings on the **Subject Confirmation Method** tab determine how the `<Subj
 
 The following is a typical `<SubjectConfirmation>` block:
 
-```xml
+```
 <saml:SubjectConfirmation>
   <saml:ConfirmationMethod>
     urn:oasis:names:tc:SAML:1.0:cm:holder-of-key
@@ -373,7 +373,7 @@ The settings on the **Advanced** tab include the following fields.
 
 **Security Token Reference**: The generated SAML attribute assertion can be encapsulated in a `<SecurityTokenReference>` block. The following example demonstrates this:
 
-```xml
+```
 <soap:Header>
   <wsse:Security
      xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"

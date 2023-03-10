@@ -50,7 +50,7 @@ are updated to reflect the installation of the Java SSM. At minimum, the followi
 For example, to modify the classpath, place the following `jvm.xml`
 in the `conf` directory of the API Gateway installation:
 
-```xml
+```
 <!--Additional JVM settings to run with Oracle Entitlements Server BEA_HOME must be set to the location 
     where the SSM is installed -->
 <ConfigurationFragment>

@@ -30,7 +30,7 @@ The **Compare Attribute** filter is used to check whether the `useOpsdb` paramet
 
 To make use of this optional parameter, you must configure it in your `<apigateway>/conf/acl.json` file as an allowed parameter.
 
-```bash
+```
 "ops_get_messages" : { "path" : "/ops/search?protocol=&format=&from=&count=&order=&rorder=&ago=&field=&value=&op=&jmsPropertyName=&jmsPropertyValue=&useOpsdb=" },
 ```
 
@@ -38,7 +38,7 @@ If you do not configure this parameter, the ANM will return a `403` error.
 
 After enabling the parameter and forcing the use of OpsDB, you must send a request to the ANM Traffic Monitor. For example:
 
-```bash
+```
 https://admin-nodemanager:8090/api/router/service/instance-1/ops/search?useOpsdb=true
 ```
 
@@ -70,7 +70,7 @@ The **Set Attribute** filter, named **Set region filter**, creates a new attribu
 
 Example:
 
-```bash
+```
 region=${env.REGION == '[invalid field]' ? "" : env.REGION}
 ```
 
@@ -78,7 +78,7 @@ region=${env.REGION == '[invalid field]' ? "" : env.REGION}
 
 The **Scripting** filter, using Javascript, adds the **Region** filter, which is optional to the `http.request.rawURI` attribute.
 
-```javascript
+```
 function invoke(msg) {
     var httpRequestRawURI = msg.get("http.request.rawURI");
     var regionFilter = msg.get("regionFilter");

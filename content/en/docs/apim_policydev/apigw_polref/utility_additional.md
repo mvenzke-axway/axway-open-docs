@@ -337,7 +337,7 @@ To configure this filter, enter the quote in the **Quotes** text area. This quot
 The **Quote of the day**
 filter can also load a file containing a list of quotes at runtime. In this case, a random quote from the file is returned to the client in the SOAP response. Each quote should be delimited by a `%` character on a new line. This is analogous to the *BSD fortune format*. The format of this file is shown in the following example:
 
-```none
+```
 Most powerful is he who has himself in his own power.
 %
 All science is either physics or stamp collecting.
@@ -353,7 +353,7 @@ You can also enter the quotes in this format into the **Quotes** text area to ac
 
 The following example shows a SOAP response returned by the API Gateway to a client who requested the **Quote of the day** service:
 
-```xml
+```
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
    <s:Header/>
    <s:Body xmlns:axway/>="axway.com">
@@ -406,7 +406,7 @@ The API Gateway is a multi-threaded environment, therefore, at any one time mult
 
 For example, always use the following approach:
 
-```none
+```
 var myString = new java.lang.String("hello word");
 for (var i = 100; i < 100; i++) {
    java.lang.System.out.println(myString + java.lang.Integer.toString(i));
@@ -415,7 +415,7 @@ for (var i = 100; i < 100; i++) {
 
 Do not use the following approach:
 
-```none
+```
 myString = new java.lang.String("hello word");
 for (i = 100; i < 100; i++) {
    java.lang.System.out.println(myString + java.lang.Integer.toString(i));
@@ -518,7 +518,7 @@ Enter a cron expression or a message attribute that contains a cron expression i
 
 For example, the following cron expression blocks all messages received on April 27 and 28 2012, at any time except those received between 10:00:01 and 10:59:59.
 
-```none
+```
 * * 0-9,11-23 27-28 APR ? 2012
 ```
 
