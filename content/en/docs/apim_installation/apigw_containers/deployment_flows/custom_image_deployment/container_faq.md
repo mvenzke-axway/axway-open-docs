@@ -6,34 +6,32 @@ date: 2022-01-23
 description: Get answers to frequently asked questions (FAQ) about deploying API Gateway in containers.
 ---
 
-## Frequently asked questions about container deployments
-
 ### How do you deploy changes in configuration from Policy Studio?
 
 In a development environment only, you can set the `EMT_DEPLOYMENT_ENABLED` environment variable to `true` when starting an API Gateway Docker container. This enables you to deploy changes directly from Policy Studio to the container and to create Policy Studio projects from the running API Gateway container.
 
-In a production environment, API Gateway configuration (`.fed` file) is baked into the API Gateway Docker image. To deploy changes in API Gateway configuration you must export a `.fed` file from Policy Studio, rebuild the API Gateway Docker image, and restart the API Gateway Docker container.
+In a production environment, API Gateway configuration (FED file) is baked into the API Gateway Docker image. To deploy changes in API Gateway configuration, you must export a FED file from Policy Studio, rebuild the API Gateway Docker image, and restart the API Gateway Docker container.
 
 For more information, see [Development and deployment with API Gateway containers](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/docker_script_gwimage).
 
 ### How do you promote configuration through environments?
 
-The promotion flow in a container deployment is very similar to a classic deployment. However, because API Gateway configuration (`.fed` file) is baked into the API Gateway Docker image, you must export the policy package ( `.pol` file) and environment package (.`env` file) from Policy Studio, rebuild the API Gateway Docker image, and restart the API Gateway Docker container, at each stage in the promotion flow.
+The promotion flow in a container deployment is very similar to a classic deployment. However, because API Gateway configuration (FED file) is baked into the API Gateway Docker image, you must export the policy package (POL file) and environment package (ENV file) from Policy Studio, rebuild the API Gateway Docker image, and restart the API Gateway Docker container, at each stage in the promotion flow.
 
 For more information, see [Development and deployment with API Gateway containers](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/docker_script_gwimage).
 
 ### How do you promote APIs through environments?
 
-In a container deployment, you can promote APIs registered in API Manager in the same way as in a classic environment. See
+In a container deployment, you can promote APIs registered in API Manager in the same way as in a classic environment. For more information, See
 [Promote managed APIs between environments](/docs/apim_administration/apimgr_admin/api_mgmt_promote/).
 
 ### What API Gateway Manager functionality is not available?
 
 In a container deployment, you cannot perform the following in API Gateway Manager:
 
-* You cannot create or delete API Gateway groups and instances
-* You cannot start or stop API Gateways
-* You cannot deploy configuration packages to a group of API Gateway instances
+* You cannot create or delete API Gateway groups and instances.
+* You cannot start or stop API Gateways.
+* You cannot deploy configuration packages to a group of API Gateway instances.
 
 ### How do you persist logs?
 
@@ -45,14 +43,14 @@ For more information on using volumes to persist data, see the [Use volumes](htt
 
 The audit log directory and filename can be customized by utilizing the following environment variables:
 
-* **APIGW_AUDIT_LOG_DIR** - The directory into which audit logs are placed. Defaults to `VINSTDIR/logs`. `VINSTDIR` (the instance directory) is the location of the running server instance. For an API Gateway, this is the location where the server runs from. It is usually located in the `/groups/group-id/instance-id` directory, for classic mode, or the `/groups/emt-group/emt-service` directory for container mode. For a Node Manager, this the location where the product has been installed. It is usually located in the `/apigateway` directory. The value of this environment variable can itself be a selector, so as to facilitate the use of Java system properties and other environment variables as part of the name of the audit log directory.
-* **APIGW_AUDIT_LOG_NAME** - The name of the audit log file. Defaults to `audit.log`. The value of this environment variable can itself be a selector, so as to facilitate the use of Java system properties and other environment variables as part of the name of the audit log.
+* `APIGW_AUDIT_LOG_DIR`: The directory into which audit logs are placed. Defaults to `VINSTDIR/logs`. `VINSTDIR` (the instance directory) is the location of the running server instance. For an API Gateway, this is the location where the server runs from. It is usually located in the `/groups/group-id/instance-id` directory, for classic mode, or the `/groups/emt-group/emt-service` directory for container mode. For a Node Manager, this the location where the product has been installed. It is usually located in the `/apigateway` directory. The value of this environment variable can itself be a selector, so as to facilitate the use of Java system properties and other environment variables as part of the name of the audit log directory.
+* `APIGW_AUDIT_LOG_NAME`: The name of the audit log file. Defaults to `audit.log`. The value of this environment variable can itself be a selector, so as to facilitate the use of Java system properties and other environment variables as part of the name of the audit log.
 
 These environment variables can be specified in the `docker run` command for the API Gateway instance as follows:
 
-{{< alert title="Note" >}}`${environment.GROUPNAME}` and `${environment.INSTANCENAME}` are made available to the environment during API Gateway process startup. They are used here for illustrative purposes.{{< /alert >}}
+{{< alert title="Note" >}}`${environment.GROUPNAME}` and `${environment.INSTANCENAME}` are made available to the environment during API Gateway process startup. They are used here for illustrative purposes only.{{< /alert >}}
 
-```
+```bash
 docker run -d --name=apimgr --network=api-gateway-domain \
            -p 8075:8075 -p 8065:8065 -p 8080:8080 -v /tmp/events:/opt/Axway/apigateway/events \
            -e EMT_DEPLOYMENT_ENABLED=true -e EMT_ANM_HOSTS=anm:8090 -e CASS_HOST=casshost1 \
@@ -68,7 +66,7 @@ If there is a requirement to persist the audit logs to a directory on your host 
 
 {{< alert title="Note" >}}For a multi-instance/multi-group topology scenario, using `${environment.GROUPNAME}` and `${environment.INSTANCENAME}` guarantees that audit logs are persisted to separate 'group' directories, with a unique audit log name per instance.{{< /alert >}}
 
-```
+```bash
 docker run -d --name=apimgr --network=api-gateway-domain \
            -p 8075:8075 -p 8065:8065 -p 8080:8080 -v /tmp/events:/opt/Axway/apigateway/events \
            -v /tmp/audit:/opt/Axway/apigateway/groups/emt-group/emt-service/logs \
@@ -85,14 +83,14 @@ An alternative method of customizing the audit log directory and filename is by 
 
 {{< alert title="Note" >}}In this example, the JVM.XML file resides in the `/tmp/emt/configurationFiles/groups/emt-group/emt-service/conf` directory of the host machine.{{< /alert >}}
 
-```
+```xml
 <ConfigurationFragment>
     <Environment name="APIGW_AUDIT_LOG_DIR" value="$VINSTDIR/logs/$GROUPNAME"/>
     <Environment name="APIGW_AUDIT_LOG_NAME" value="$INSTANCENAME-audit.log"/>
 </ConfigurationFragment>
 ```
 
-```
+```bash
 docker run -d --name=apimgr --network=api-gateway-domain \
            -p 8075:8075 -p 8065:8065 -p 8080:8080 -v /tmp/events:/opt/Axway/apigateway/events \
            -v /tmp/emt/configurationFiles:/merge/apigateway \
@@ -107,15 +105,15 @@ docker run -d --name=apimgr --network=api-gateway-domain \
 
 You can customize the logs produced by API Gateway in Policy Studio by way of the following environment variables:
 
-* HOSTNAME - `${environment.HOSTNAME}`
-* GROUPNAME- `${environment.GROUPNAME}`
-* INSTANCENAME- `${environment.INSTANCENAME}`
+* `HOSTNAME`: `${environment.HOSTNAME}`
+* `GROUPNAME`: `${environment.GROUPNAME}`
+* `INSTANCENAME`- `${environment.INSTANCENAME}`
 
 These variables allow you to make the configuration generic, so that you can create unique log directories and filenames across a multi-node container environment.
 
 To customize logging for a multi-node environment, perform the following steps:
 
-1. In Policy Studio, create a project [from a .fed file](/docs/apim_policydev/apigw_poldev/gs_project#new-project-from-a-fed-file), pointing it to an existing API Gateway FED. Or, alternatively, create a project [from an existing configuration](/docs/apim_policydev/apigw_poldev/gs_project#new-project-from-existing-configuration) pointing to an existing directory that contains an XML or YAML configuration.
+1. In Policy Studio, create a project [from a FED file](/docs/apim_policydev/apigw_poldev/gs_project#new-project-from-a-fed-file), pointing it to an existing API Gateway FED. Or, alternatively, create a project [from an existing configuration](/docs/apim_policydev/apigw_poldev/gs_project#new-project-from-existing-configuration) pointing to an existing directory that contains an XML or YAML configuration.
 2. Click **Server Settings > Logging**.
 3. Click **Transaction Audit Log** and configure where you wish API Gateway to log transaction audit information:
 
@@ -124,7 +122,7 @@ To customize logging for a multi-node environment, perform the following steps:
    * Set **File Name** to `transactionLog-${environment.HOSTNAME}`.
    * Set **Directory** to `logs/transaction-${environment.HOSTNAME}`.
 
-   To log to an XML file, select the **XML File** tab  and configure the following:
+   To log to an XML file, select the **XML File** tab and configure the following:
    * Check **Enable logging to XML file**.
    * Set **File Name** to `transactionLog-${environment.HOSTNAME}`.
    * Set **Directory** to `logs/transaction-${environment.HOSTNAME}`.
@@ -138,7 +136,7 @@ To customize logging for a multi-node environment, perform the following steps:
 6. click **Traffic Monitor** and configure where you wish API Gateway to log traffic information:
     * Set **Transaction Directory** to `conf/opsdb.d/opsdb-${environment.HOSTNAME}`.
 
-You can rebake the updated API Gateway .fed file into an API Gateway Docker image, or you can use Docker volumes to update the configuration without having to rebake an image. For more information, see [Create an API Gateway with Docker volumes](/docs/apim_howto_guides/configuring_apigw_container/index.html).
+You can rebake the updated API Gateway FED file into an API Gateway Docker image, or you can use Docker volumes to update the configuration without having to rebake an image. For more information, see [Create an API Gateway with Docker volumes](/docs/apim_howto_guides/configuring_apigw_container/index.html).
 
 ### What license do you need to run?
 
@@ -148,24 +146,22 @@ You must have an appropriate license to run API Gateway or API Manager in a Dock
 
 To upgrade from API Gateway 7.5.3 (classic deployment) to API Gateway 7.7 (container deployment), you must first upgrade to a 7.7 classic deployment, and then migrate to a 7.7 container deployment.
 
-For information on upgrading to 7.7, see the
-[API Gateway Upgrade Guide](/docs/apim_installation/apigw_upgrade/)
-, and for more details on migrating to a container deployment, see [Migrate to container deployment](/docs/apim_installation/apigw_containers/container_migration).
+For information on upgrading to 7.7, see [API Gateway Upgrade](/docs/apim_installation/apigw_upgrade/), and for more details on migrating to a container deployment, see [Migrate to container deployment](/docs/apim_installation/apigw_containers/container_migration).
 
 ### How do you create API Gateway Docker images with customized configuration?
 
 When building your API Gateway or Admin Node Manager Docker images, you can specify a merge directory containing custom configuration, JAR files, and so on, to add to the Docker image. For detailed examples, see:
 
-* [Create an ANM image using existing ANM fed and customized configuration](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/docker_script_anmimage#create-an-admin-node-manager-image-using-existing-fed-and-customized-configuration)
-* [Create an API Gateway image using existing fed and customized configuration](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/docker_script_gwimage#create-an-api-gateway-image-using-existing-fed-and-customized-configuration)
+* [Create an ANM image using existing ANM fed and customized configuration](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/docker_script_anmimage#create-an-admin-node-manager-image-using-existing-fed-and-customized-configuration).
+* [Create an API Gateway image using existing fed and customized configuration](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/docker_script_gwimage#create-an-api-gateway-image-using-existing-fed-and-customized-configuration).
 
 ### How do you manage API Gateway topology?
 
 In a classic deployment, topology is managed internally through an Admin Node Manager communicating with Node Managers in API Gateway nodes.
 
-In a container deployment, the topology is externally managed by a cluster manager, such as Openshift or Kubernetes, and it manages the topology and communicates directly with each API Gateway. In this case, you cannot use the `managedomain` script or the API Gateway Manager web UI to manage your topology in a container deployment. Instead, you must use an orchestration tool. For more information on Openshift, see [Openshift Platform](https://docs.openshift.com/container-platform/4.9/welcome/index.html), or for more information on Kubernetes, see [Kubernetes](https://kubernetes.io/).
+In a container deployment, the topology is externally managed by a cluster manager, such as Openshift or Kubernetes, and it manages the topology and communicates directly with each API Gateway. In this case, you cannot use the `managedomain` script or the API Gateway Manager web UI to manage your topology in a container deployment. Instead, you must use an orchestration tool. For more information on Openshift, see [Openshift Platform](https://docs.openshift.com/container-platform/4.9/welcome/index.html), or for more information on Kubernetes, see [Kubernetes](https://kubernetes.io/) documentation.
 
-API Gateway, running in containers is fully supported on Openshift Container Platform (4.9) using an Axway provided Helm chart and Red Hat Universal Base Image 7 (UBI 7) based images built using the latest version of the containerization scripts.
+API Gateway running in containers is fully supported on Openshift Container Platform (4.9) using an Axway provided Helm chart and Red Hat Universal Base Image 7 (UBI 7) based images built using the latest version of the containerization scripts.
 
 ### How do you run API Gateway administration tools or scripts?
 
@@ -173,7 +169,7 @@ In a container deployment, you must connect to the running Admin Node Manager Do
 
 ### How do you set up API Manager metrics?
 
-To set up API Manager metrics you must first create an Admin Node Manager Docker image with metrics processing enabled, and then run the Admin Node Manager and API Gateway Docker containers using the `docker run -v` option to mount a volume for the API Gateway events directory.
+To set up API Manager metrics you must first create an Admin Node Manager Docker image with metrics processing enabled, then run the Admin Node Manager and API Gateway Docker containers using the `docker run -v` option to mount a volume for the API Gateway events directory.
 
 When starting the containers, you must also specify the connection details for the metrics database using environment variables. For an example, see [Create a metrics-enabled ANM image](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/docker_script_anmimage#create-a-metrics-enabled-admin-node-manager-image).
 
@@ -181,7 +177,7 @@ When starting the containers, you must also specify the connection details for t
 
 To run API Gateway in Kubernetes, you can use the [API Gateway Helm charts on GitHub](https://github.com/Axway/apigw-helm-charts).
 
-These Helm charts are not intended as a recommended setup, but something that you can use as a starting point and customize for your own environment.
+These Helm charts are not intended as a recommended setup, but as resources that you can use as a starting point and customize for your own environment.
 
 ### How do you run API Gateway with a persisted volume?
 

@@ -16,19 +16,19 @@ Solution
 
 1. Use the `docker exec` command to connect to the running Admin Node Manager Docker container.
 
-    ```
+    ```none
     docker exec -it <anm-container-id> bash
     ```
 
 2. Change to the `bin` directory.
 
-    ```
+    ```none
     cd /opt/Axway/apigateway/posix/bin
     ```
 
 3. Run the `setup-apimanager` script with the `--resetPassword` option.
 
-    ```
+    ```none
     ./setup-apimanager --resetPassword
     ```
 
@@ -42,23 +42,23 @@ Solution
 
 1. Use the `docker exec` command to connect to the running Admin Node Manager Docker container.
 
-    ```
+    ```none
     docker exec -it <anm-container-id> bash
     ```
 
 2. Change to the `bin` directory.
 
-    ```
+    ```none
     cd /opt/Axway/apigateway/posix/bin
     ```
 
 3. Run the `kpsadmin` tool.
 
-    ```
+    ```none
     ./kpsadmin
     ```
 
-For more information on using `kpsadmin`, see the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/).
+For more information on using `kpsadmin`, see [API Gateway Key Property Store User](/docs/apim_policydev/apigw_kps/).
 
 ## Logs do not persist when container stops
 
@@ -74,4 +74,4 @@ Problem
 : Distributed Ehcache is not supported in a container deployment.
 
 Solution
-: You can use Apache Cassandra as a distributed data store. This involves using the KPS scripting API, which enables you to perform CRUD operations and interact directly with a KPS. For details, see the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/).
+: You can use Apache Cassandra as a distributed data store. This involves using the KPS scripting API, which enables you to perform CRUD operations and interact directly with a KPS. For more information, see [API Gateway Key Property Store User](/docs/apim_policydev/apigw_kps/).

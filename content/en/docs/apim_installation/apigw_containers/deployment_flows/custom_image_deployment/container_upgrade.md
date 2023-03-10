@@ -52,7 +52,7 @@ To apply a patch, follow these steps:
 
 ## Apply an update
 
-Follow these instructions to apply an update (January 2020 (7.7.20200130) or later) or a service pack (7.7 SP1 or 7.7 SP2) to API Gateway version 7.7.
+Follow these instructions to apply an update ([January 2020](/docs/apim_relnotes/20200130_apimgr_relnotes/) or later) or a service pack (7.7 SP1 or 7.7 SP2) to API Gateway version 7.7.
 
 {{< alert title="Note" color="primary" >}}Before you start, check the release notes of the update or service pack for any specific instructions.{{< /alert >}}
 
