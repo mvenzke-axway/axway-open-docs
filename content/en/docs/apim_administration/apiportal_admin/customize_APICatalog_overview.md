@@ -21,11 +21,14 @@ You can customize the following in the API Catalog view of API Portal:
 * Set a payload size (in KB). If the response is bigger than the configured value, the response is downloaded as file. Defaults to blank, which means that downloads are disabled.
 * Swagger UI layout of REST APIs. You can choose from:
 
-    * **Multi-column**: A Two-column view, in which methods are listed on the left side, and the details of a selected method are listed on the right side. This is the default option in API Portal.
+    * **Multi-column**: A Two-column view, in which methods are listed on the left side, and the details of a selected method are listed on the right side. This is the default option in JAI.
     * **Single-column**: The official layout shipped with the Swagger UI.
-* Show or hide code examples in endpoint details when using Amplify rendering tool. Defaults to shown.
+* Define the maximum number of endpoints that can be rendered in multi-column layout. When this limit is exceeded, the layout automatically switches from multi-column to single-column. Defaults to 30 endpoints.
+* Show or hide code examples in endpoint details when using Amplify rendering tool. Defaults to `shown`.
 * Show or hide `externalDocs` along with its description.
 * Choose colors for the different methods.
+
+The following image shows the API Catalog options in JAI.
 
 ![Customize API catalog](/Images/APIPortal/api-catalog_j4.png)
 

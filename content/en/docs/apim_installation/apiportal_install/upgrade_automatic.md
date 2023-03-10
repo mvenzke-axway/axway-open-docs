@@ -30,11 +30,20 @@ Before you upgrade your API Portal, complete the following prerequisites. These 
 
 If you are using API Portal with applied patches, you must change the ownership of the installation path before applying an update:
 
-```
+```sh
 sudo chown -R apache:apache {ApiPortalInstallPath}
 ```
 
+Run the following commands to update your SELinux configuration:
+
+```sh
+sudo chcon -R -t httpd_sys_rw_content_t {ApiPortalInstallPath}
+sudo chcon -R -t httpd_sys_rw_content_t {EncryptionKeyDirectory}
+```
+
 `{apiportalInstallPath}` is the API Portal installation directory. API Portal is installed at `/opt/axway/apiportal/htdoc` by default.
+
+`{EncryptionKeyDirectory}` is the [Public API mode](/docs/apim_administration/apiportal_admin/public_api_configure/) encryption key directory.
 
 ## Upgrade using the cumulative upgrade script
 
