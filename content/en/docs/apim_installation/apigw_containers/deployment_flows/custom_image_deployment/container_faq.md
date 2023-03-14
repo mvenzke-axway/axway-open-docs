@@ -50,7 +50,7 @@ These environment variables can be specified in the `docker run` command for the
 
 {{< alert title="Note" >}}`${environment.GROUPNAME}` and `${environment.INSTANCENAME}` are made available to the environment during API Gateway process startup. They are used here for illustrative purposes only.{{< /alert >}}
 
-```
+```bash
 docker run -d --name=apimgr --network=api-gateway-domain \
            -p 8075:8075 -p 8065:8065 -p 8080:8080 -v /tmp/events:/opt/Axway/apigateway/events \
            -e EMT_DEPLOYMENT_ENABLED=true -e EMT_ANM_HOSTS=anm:8090 -e CASS_HOST=casshost1 \
@@ -66,7 +66,7 @@ If there is a requirement to persist the audit logs to a directory on your host 
 
 {{< alert title="Note" >}}For a multi-instance/multi-group topology scenario, using `${environment.GROUPNAME}` and `${environment.INSTANCENAME}` guarantees that audit logs are persisted to separate 'group' directories, with a unique audit log name per instance.{{< /alert >}}
 
-```
+```bash
 docker run -d --name=apimgr --network=api-gateway-domain \
            -p 8075:8075 -p 8065:8065 -p 8080:8080 -v /tmp/events:/opt/Axway/apigateway/events \
            -v /tmp/audit:/opt/Axway/apigateway/groups/emt-group/emt-service/logs \
@@ -83,14 +83,14 @@ An alternative method of customizing the audit log directory and filename is by 
 
 {{< alert title="Note" >}}In this example, the JVM.XML file resides in the `/tmp/emt/configurationFiles/groups/emt-group/emt-service/conf` directory of the host machine.{{< /alert >}}
 
-```
+```xml
 <ConfigurationFragment>
     <Environment name="APIGW_AUDIT_LOG_DIR" value="$VINSTDIR/logs/$GROUPNAME"/>
     <Environment name="APIGW_AUDIT_LOG_NAME" value="$INSTANCENAME-audit.log"/>
 </ConfigurationFragment>
 ```
 
-```
+```bash
 docker run -d --name=apimgr --network=api-gateway-domain \
            -p 8075:8075 -p 8065:8065 -p 8080:8080 -v /tmp/events:/opt/Axway/apigateway/events \
            -v /tmp/emt/configurationFiles:/merge/apigateway \

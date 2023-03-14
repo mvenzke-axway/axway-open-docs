@@ -99,20 +99,20 @@ To upgrade from before May 2022 to later releases, follow these steps:
 1. If your API Portal version is lower than [February 2022](/docs/apim_relnotes/20220228_apip_relnotes/), you must first upgrade to February 2022 as described in the previous sections.
 2. Establish an SSH connection to your API Portal server and locate the additional PHP settings directory:
 
-    ```
+    ```shell
     php --ini | grep -iF "scan for additional" | rev | cut -d' ' -f1 | rev
     ```
 
 3. Create an `apiportal.ini` file inside the additional PHP settings directory with the following content:
 
-    ```
+    ```ini
     post_max_size = 60m
     upload_max_filesize = 60m
     ```
 
 4. Restart the Apache server to reload the configuration. Depending on the installation type, the Apache service on your machine might have a name different from `httpd`.
 
-    ```
+    ```shell
     sudo systemctl restart httpd
     ```
 
@@ -125,7 +125,7 @@ To upgrade from before May 2022 to later releases, follow these steps:
 9. (Mandatory step only for when upgrading to API Portal November 2022 and later) Click **System > Plugins**, then search and disable the **Action Log - API Portal** plugin.
 10. Establish an SSH connection to your API Portal server and upgrade your product:
 
-    ```
+    ```shell
     sudo ./apiportal_upgrade.sh
     ```
 

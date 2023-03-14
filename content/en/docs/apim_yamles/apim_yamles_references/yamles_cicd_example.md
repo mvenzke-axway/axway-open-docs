@@ -32,7 +32,7 @@ Modifications such as changing the `values.yaml`, or adding prod-only data such 
 
 For example the following commands take a prod `values.yaml` and prod certificates and keys from a secure location, place them into the `tar.gz`:
 
-```
+```bash
 # Unzip the .tar.gz
 gunzip -d $WORKSPACE/${params.ARTIFACTORY_TAR_GZ_FILENAME}
 # Remove the default values.yaml from the tar

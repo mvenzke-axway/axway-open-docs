@@ -14,7 +14,7 @@ The following sections describe how to customize user authorization in your envi
 
 You can use an external HTTP service for authorization instead of the API Manager organizations to restrict the Elasticsearch result based on other criteria. To customize user authorization in Docker Compose, you must create a configuration file as follows:
 
-```
+```bash
 # Copy the provided example from the docker release package
 cp ./config/authorization-config-sample.js ./config/myAuthzConfig.js
 # Customize your configuration file as needed
@@ -41,7 +41,7 @@ Follow these steps to customize user authorization using Helm:
 
 1. Create a ConfigMap that creates your custom configuration file. For more information, see the `config/authorization-config-sample.js` sample file.
 
-    ```
+    ```yaml
     apiVersion: v1
     kind: ConfigMap
     metadata:
@@ -90,7 +90,7 @@ Follow these steps to customize user authorization using Helm:
 
 4. Mount the ConfigMap into the API Builder container and reference it in the configuration using the `values.yaml`:
 
-    ```
+    ```yaml
     apibuilder4elastic:
       extraVolumes:
       - name: my-authz-config
@@ -105,7 +105,7 @@ Follow these steps to customize user authorization using Helm:
 
 5. Configure APIBuilder4Elastic to use your custom configuration:
 
-    ```
+    ```yaml
     apibuilder4elastic:
       authzConfig: "./config/myAuthzConfig.js"
     ```

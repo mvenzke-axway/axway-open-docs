@@ -26,7 +26,7 @@ This script also supports additional options when generating an API Gateway imag
 
 For the latest script usage and options, run the script with no options, or with the `-h` option.
 
-```
+```bash
 cd emt_containers-<version>
 ./build_gw_image.py -h
 ```
@@ -43,7 +43,7 @@ Do not use default options on production systems. The `--default-cert` option is
 
 The following example creates an API Gateway Docker image named `api-gateway-defaultgroup` with a tag of `latest`
 
-```
+```bash
 cd emt_containers-<version>
 ./build_gw_image.py --license=/tmp/api_gw_license_complete.lic --default-cert --factory-fed
 ```
@@ -73,7 +73,7 @@ Use the `--merge-dir` option to specify the `apigateway` directory containing th
 
 The following example creates an API Gateway Docker image named `api-gateway-defaultgroup` with a tag of `latest`.
 
-```
+```bash
 cd emt_containers-<version>
 ./build_gw_image.py --license=/tmp/api_gw_api_mgr.lic --merge-dir /tmp/apigateway --default-cert --api-manager
 ```
@@ -88,7 +88,7 @@ This image has the following characteristics:
 
 This section shows how to create an API Gateway Docker image using a specified domain certificate and a default factory FED file.
 
-```
+```bash
 cd emt_containers-<version>
 ./build_gw_image.py --license=/tmp/api_gw_license_complete.lic --domain-cert=certs/mydomain/mydomain-cert.pem --domain-key=certs/mydomain/mydomain-key.pem --domain-key-pass-file=/tmp/pass.txt --factory-fed --parent-image=my-gw-base:1.0 --out-image=my-api-gateway:1.0
 ```

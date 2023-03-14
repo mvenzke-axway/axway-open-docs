@@ -97,7 +97,7 @@ A SAML (Security Assertion Markup Language) attribute assertion contains informa
 
 The following SAML attribute assertion contains three attributes, `"role"`, `"email"`, and `"dept"`. The **Retrieve from SAML Attribute Assertion** filter stores all three attributes and their values in the `attribute.lookup.list` message attribute.
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
   xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance">
@@ -222,7 +222,7 @@ The settings on the **Subject Confirmation** tab determine how the `<SubjectConf
 
 The following is a typical `<SubjectConfirmation>` block:
 
-```
+```xml
 <saml:SubjectConfirmation>
   <saml:ConfirmationMethod>
     urn:oasis:names:tc:SAML:1.0:cm:holder-of-key

@@ -16,19 +16,19 @@ Solution
 
 1. Use the `docker exec` command to connect to the running Admin Node Manager Docker container.
 
-    ```
+    ```none
     docker exec -it <anm-container-id> bash
     ```
 
 2. Change to the `bin` directory.
 
-    ```
+    ```none
     cd /opt/Axway/apigateway/posix/bin
     ```
 
 3. Run the `setup-apimanager` script with the `--resetPassword` option.
 
-    ```
+    ```none
     ./setup-apimanager --resetPassword
     ```
 
@@ -42,19 +42,19 @@ Solution
 
 1. Use the `docker exec` command to connect to the running Admin Node Manager Docker container.
 
-    ```
+    ```none
     docker exec -it <anm-container-id> bash
     ```
 
 2. Change to the `bin` directory.
 
-    ```
+    ```none
     cd /opt/Axway/apigateway/posix/bin
     ```
 
 3. Run the `kpsadmin` tool.
 
-    ```
+    ```none
     ./kpsadmin
     ```
 

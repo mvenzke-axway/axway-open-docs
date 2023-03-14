@@ -81,7 +81,7 @@ The following sections describe how to enable TLS algorithms manually.
 
 * **API Gateway and API Manager**: If you wish to enable these algorithms in your API Gateway or API Manager, add the `jdk.tls.disabledAlgorithms` Java security property to the jvm.xml file as follows, where `value` contains the desired list of disabled algorithms. For more information on the `jvm.xml` file, see [System property changes](/docs/apim_reference/system_props/).
 
-  ```
+  ```xml
   <SecurityProperty name="jdk.tls.disabledAlgorithms" value="jdk.tls.disabledAlgorithms=SSLv3, RC4, DES, MD5withRSA, \
     DH keySize &lt; 1024, EC keySize &lt; 224, 3DES_EDE_CBC, anon, NULL, \
     include jdk.disabled.namedCurves" />
@@ -303,7 +303,7 @@ The issue is caused by an inherent flaw in Swagger 2.0 as it only permits one ho
 
 For example, if an HTTPS traffic port of `8065` and an HTTP traffic port of `8066` are configured, and the host IP address is `127.0.0.1`, then the generated Swagger 2.0 definition will look like this:
 
-```
+```json
 {
   "swagger" : "2.0",
   "info" : {

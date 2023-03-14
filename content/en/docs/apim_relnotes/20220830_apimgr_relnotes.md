@@ -90,19 +90,19 @@ The default CSP header has been changed to improve security and remove reference
 
 For API Manager
 
-```
+```bash
 script-src 'self' 'unsafe-eval'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data: blob:; object-src 'self'; media-src 'self'; frame-src 'self'; frame-ancestors 'none'; upgrade-insecure-requests; manifest-src 'none'; connect-src 'self' https://*:8075 https://*:8065 https://portals-search-api.admin.axway.com; form-action 'self'; prefetch-src 'none'
 ```
 
 For API Gateway Manager
 
-```
+```bash
 script-src 'self' 'unsafe-eval'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data: blob:; object-src 'self'; media-src 'self'; frame-src 'self';frame-ancestors 'none'; upgrade-insecure-requests; manifest-src 'none'; connect-src 'self' https://portals-search-api.admin.axway.com; form-action 'self'; prefetch-src 'none'
 ```
 
 For API Gateway Analytics
 
-```
+```bash
 script-src 'self' 'unsafe-eval'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data: blob:; object-src 'self'; media-src 'self'; frame-src 'self'; frame-ancestors 'none'; upgrade-insecure-requests; manifest-src 'none'; connect-src 'self'; form-action 'self'; prefetch-src 'none'
 ```
 
@@ -228,7 +228,7 @@ The issue is caused by an inherent flaw in Swagger 2.0 as it only permits one ho
 
 For example, if an HTTPS traffic port of `8065` and an HTTP traffic port of `8066` are configured, and the host IP address is `127.0.0.1`, then the generated Swagger 2.0 definition will look like this:
 
-```
+```json
 {
   "swagger" : "2.0",
   "info" : {

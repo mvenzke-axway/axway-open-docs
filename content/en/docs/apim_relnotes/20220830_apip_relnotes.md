@@ -39,7 +39,7 @@ With this release, API Portal is using new lightweight endpoints to improve perf
 
 The endpoints are available at:
 
-```
+```none
 /api/portal/v1.4/discovery/apis/light
 ```
 

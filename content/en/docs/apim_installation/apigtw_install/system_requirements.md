@@ -263,7 +263,7 @@ After completing the installation and before starting the services:
    ```
 3. Create or edit the file `VDISTDIR/apigateway/conf/jvm.xml`, and add the following:
 
-   ```
+   ```xml
    <ConfigurationFragment>
        <VMArg name="-Djava.io.tmpdir=<TheNewTmpDir>"/>
    </ConfigurationFragment>

@@ -22,7 +22,7 @@ To upgrade configurations made with a [Technical Preview release](/docs/apim_rel
 2. Create a file named `_version.yaml` in the `META-INF` directory.
 3. Add the following content to your recently created `META-INF/_version.yaml` file:
 
-  ```
+  ```yaml
   ---
   version: 0.0.0
 

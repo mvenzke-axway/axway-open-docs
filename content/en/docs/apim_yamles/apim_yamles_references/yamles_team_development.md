@@ -43,7 +43,7 @@ They may be separately validated as follows:
 
 Note the use of `--allow-invalid-ref` for the `test-api` project as it has a reference to an entity in the `common-security` project in the `System/Global Properties.yaml` file:
 
-```
+```yaml
 ---
 type: GlobalProperties
 fields:

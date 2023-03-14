@@ -96,7 +96,7 @@ After configuring the MySQL or MariaDB database server with certificates, you ne
 
 1. Log in to the database server as the `root` user:
 
-   ```
+   ```bash
    mysql -u root –p
    ```
 2. Enter the following command:
@@ -115,7 +115,7 @@ After you have successfully enabled SSL on the server, you must [configure a use
 
 You must create a database for API Portal to store your configuration data on the database server. Log in to the database server and enter the following:
 
-```
+```mysql
 CREATE DATABASE <database name>;
 ```
 
@@ -138,7 +138,7 @@ If you do not want to use a secure connection, you can configure API Portal to 
 1. Connect to your database server.
 2. To configure a user account, enter the following:
 
-   ```
+   ```mysql
    CREATE USER '<user name>'@'<API Portal host>' IDENTIFIED BY '<your password>';
    GRANT ALL PRIVILEGES ON <database name>.* TO '<user name>'@'<API Portal host>' WITH GRANT OPTION;
    FLUSH PRIVILEGES;
@@ -157,7 +157,7 @@ To enable one-way authentication, create a user with the option `REQUIRE SSL`.
 
 1. Log in to the database server as the `root` user and enter the following:
 
-   ```
+   ```mysql
    CREATE USER '<user name>'@'<API Portal host>' IDENTIFIED BY '<password>' REQUIRE SSL;
    GRANT ALL PRIVILEGES ON <database name>.* TO '<user name>'@'<API Portal host>' WITH GRANT OPTION;
    FLUSH PRIVILEGES;
@@ -167,7 +167,7 @@ To enable one-way authentication, create a user with the option `REQUIRE SSL`.
 2. Copy the `ca.pem` CA certificate to `/etc/mysql/certs` on the machine on which you will install API Portal.
 3. Test the connection to the database server from the API Portal machine:
 
-   ```
+   ```shell
    # for MySQL client installed with MySQL package
    mysql -h <database host> -u <user name> -p \
        --ssl-ca=/etc/mysql/certs/ca.pem \
@@ -186,7 +186,7 @@ To enable two-way authentication, create a user with the option `REQUIRE X509`.
 
 1. Log in to the database server as the `root` user and enter the following:
 
-   ```
+   ```mysql
    CREATE USER '<user name>'@'<API Portal host>' IDENTIFIED BY '<password>' REQUIRE X509;
    GRANT ALL PRIVILEGES ON <database name>.* TO '<user name>'@'<API Portal host>' WITH GRANT OPTION;
    FLUSH PRIVILEGES;
@@ -199,7 +199,7 @@ To enable two-way authentication, create a user with the option `REQUIRE X509`.
    * `ca.pem`
 3. Test the connection to the database server from the API Portal machine:
 
-   ```
+   ```shell
    # for MySQL client installed with MySQL package
    mysql -h <database host> -u <user name> -p \
        --ssl-ca=/etc/mysql/certs/ca.pem \

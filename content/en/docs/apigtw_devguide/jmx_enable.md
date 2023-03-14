@@ -12,7 +12,7 @@ For more information on implementing an MBean interface, see the `FilterIntercep
 
 After you have set up your MBean, you must tell the JMX infrastructure about the MBean so that it can be published to clients. This involves creating a unique name for the MBean and registering it with the MBeanServer. For example:
 
-```
+```java
 ...
 try {
     MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();

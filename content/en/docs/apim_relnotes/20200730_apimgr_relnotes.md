@@ -81,7 +81,7 @@ In earlier versions of API Manager, the `/users` API returns a list of all the u
 
 To reduce the impact of this change, you can relax this restriction using a configuration flag. Set the flag in the `jvm.xml` file (it does not exist by default) under `groups/group-x/instance-y/conf`.
 
-```
+```xml
 <ConfigurationFragment>
     <VMArg name="-DAPIGW_TOGGLE_FEATURE_GET_ALL_USERS=true" />
 </ConfigurationFragment>
@@ -111,7 +111,7 @@ To import API Gateway Management API Swagger into API Manager API Catalog, you m
 
 Fields that contain confidential information are no longer returned in some API calls. For example, a call to `GET /api/portal/v1.3/proxies/` does not return the password in the `AuthenticationProfile.parameters\["password"]` field. For compatibility with earlier versions, you can continue to return confidential fields. Set the system property `com.axway.apimanager.api.model.disable.confidential.fields` to `false` in the `jvm.xml` file (it does not exist by default) under `groups/group-x/instance-y/conf`.
 
-```
+```xml
 <ConfigurationFragment>
     <VMArg name="-Dcom.axway.apimanager.api.model.disable.confidential.fields=false"/>
 </ConfigurationFragment>

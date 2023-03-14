@@ -45,7 +45,7 @@ To upgrade from before May 2022 to API Portal latest release, follow these steps
 
     {{% alert title="Note" %}}It is important that you use plain MySQL connection to ensure the `MYSQL_SSL_ON` environment variable is set to `0`, and `MYSQL_USER` and `MYSQL_PASSWORD` environment variables contain credentials for plain connection. For more information on how to create a plain MySQL account, see [Create a MySQL user account without TLS authentication](/docs/apim_installation/apiportal_install/install_software_configure_database/#configure-a-user-account-without-authentication).{{% /alert %}}
 
-    ```
+    ```shell
     docker container rm -f <feb22-container-name>
     docker container run \
       <old-parameters-from-prior-to-latest-container> <latest-image>

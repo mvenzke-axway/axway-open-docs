@@ -36,7 +36,7 @@ This type of file contains configuration (Entity) values.
 
 The following is an example template of an entity scheme file:
 
-```
+```yaml
 ---
 type: string       # Type name, should exist in META-INF/types
 fields:            # Name/value pair(s). Field names exist in the entity type
@@ -54,7 +54,7 @@ The `string` value can be any UTF-8 character, except two consecutive `{` that c
 
 The following are examples of entity scheme files:
 
-```
+```yaml
 ---
 type: DbConnection
 fields:
@@ -68,7 +68,7 @@ fields:
   timezoneAware: true                        # boolean
 ```
 
-```
+```yaml
 ---
 type: AuthnRepositoryDbGroup
 fields:
@@ -288,7 +288,7 @@ Examples:
 
 Entity files, used in a policy, contain two extra properties to group routing and logging related fields that are present for all sub-entity types of `Filter`.
 
-```
+```yaml
 ---
 type: string
 fields:
@@ -323,7 +323,7 @@ Property names cannot start with:
 
 Because the `values.yaml` file follows a free format, a proper schema definition does not apply as long as the file is YAML compliant.
 
-```
+```yaml
 ---
 property: { integer | long | boolean | 'placeholder' | string {text|base64|reference} | array 
   sub_property: idem
@@ -334,7 +334,7 @@ property: { integer | long | boolean | 'placeholder' | string {text|base64|refer
 
 Example:
 
-```
+```yaml
 ---
 db:
   user: scott
@@ -357,7 +357,7 @@ When exporting a fragment, the file can have any name and can be placed anywhere
 
 For more information, see [Import and export YAML configuration using CLI](/docs/apim_yamles/apim_yamles_cli/yamles_cli_importexport).
 
-```
+```yaml
 ---
 [flags: ] # useless for import
 - {EXPORT_ENTITIES | EXPORT_CLOSURE [EXPORT_TYPES | EXPORT_TRUNKS]}
@@ -379,7 +379,7 @@ For more information, see [Import and export YAML configuration using CLI](/docs
 
 Example:
 
-```
+```yaml
 ---
 flags:
 - EXPORT_TYPES # set but useless
@@ -396,7 +396,7 @@ cutBranchIfPresent:
 
 Missing `META-INF/_fragment.yaml` during import is equivalent to the following descriptor, which imports all entities without override:
 
-```
+```yaml
 ---
 flags:
 - EXPORT_ENTITIES
@@ -410,7 +410,7 @@ addIfAbsent:
 
 This file is mandatory in YAML configurations and must be located in `META-INF/_version.yaml`.
 
-```
+```yaml
 ---
 version: string # format is: {0-9}+.{0-9}+.{0-9}+
 ```
@@ -423,7 +423,7 @@ All entity types are located in the `META-INF/types` folder, in there own file. 
 
 In the following schema, `AnyTypeName` represents any other type amongst existing types in the configuration.
 
-```
+```yaml
 name: string                 # by convention, name is CamelCase (with leading capital) and contains only letters
 version: integer (non negative)
 [class]: string

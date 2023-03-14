@@ -151,7 +151,7 @@ INSTALL_DIR/apigateway/groups/<group>/<instance>/conf/service.xml
 
 To change the default behavior of the HTTP 1.1 settings, set `allowHTTP11` to `true`:
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <NetService provider="NetService">
 <!-- Configuration file for service. Note that if you wish for the user to enter a passphrase at     

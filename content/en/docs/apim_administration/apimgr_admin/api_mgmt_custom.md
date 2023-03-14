@@ -558,7 +558,7 @@ You can customize password validation for the API Manager user registration and 
 
 * To customize password validation for user registration, you must edit the following file:
 
-    ```
+    ```none
     INSTALL_DIR/apigateway/webapps/apiportal/vordel/apiportal/app-login/app.config
     ```
 
@@ -566,7 +566,7 @@ You can customize password validation for the API Manager user registration and 
 
 * To customize password validation for password changing, you must edit the following file:
 
-    ```
+    ```none
     INSTALL_DIR/apigateway/webapps/apiportal/vordel/apiportal/app/app.config
     ```
 

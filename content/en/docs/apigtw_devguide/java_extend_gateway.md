@@ -24,7 +24,7 @@ The loadable module object itself is informed when it is loaded, reconfigured, a
 
 The base `LoadableModule` interface has three methods. These are used on startup of the API Gateway, on shutdown of the API Gateway, or when a new configuration is deployed to the API Gateway. The following example shows the methods.
 
-```
+```java
 public interface LoadableModule {
 
     ...
@@ -77,7 +77,7 @@ All TypeDocs for `LoadableModule` classes must:
 
 The following definition lists the various fields that form the configuration data for the `TimerLoadableModule` class.
 
-```
+```xml
 <entityType name="TimerLoadableModule" extends="NamedLoadableModule">
     <constant name="_version" type="integer" value="0"/>
     <constant name="class" type="string"
@@ -101,7 +101,7 @@ The API Gateway server-side implementation class is responsible for creating a t
 
 The following code shows the members and methods of the `TimerLoadableModule` class:
 
-```
+```java
 public class TimerLoadableModule implements LoadableModule {
 
   Timer timer = null;
@@ -160,7 +160,7 @@ A `MessageCreationListener` class is used to track message creation. It is calle
 
 An example of its usage can be seen in the following `FilterInterceptor` class:
 
-```
+```java
 public class FilterInterceptor implements LoadableModule,
   MessageCreationListener, MessageListener, FilterInterceptorMBean
 {
@@ -224,7 +224,7 @@ In this example, the `FilterInterceptorLoadableModule` extends `NamedLoadableMod
 
 The following definition lists the various fields that form the configuration data for the `FilterInterceptorLoadableModule` class and declares an instance of the type.
 
-```
+```xml
 <entityStoreData>
   <entityType name="FilterInterceptorLoadableModule" extends="NamedLoadableModule">
     <constant name="class" type="string"
@@ -234,7 +234,7 @@ The following definition lists the various fields that form the configuration da
 </entityStoreData>
 ```
 
-```
+```xml
 <entityStoreData>
   <entity type="FilterInterceptorLoadableModule">
     <fval name="name">
@@ -244,7 +244,7 @@ The following definition lists the various fields that form the configuration da
 </entityStoreData>
 ```
 
-```
+```xml
 <typeSet>
   <typedoc file="FilterInterceptorLoadableModule.xml"/>
   <typedoc file="instance.xml"/>
@@ -266,7 +266,7 @@ The API Gateway server-side implementation class is responsible for monitoring m
 
 The following is an extract of the `FilterInterceptor` class that can be found in the `DEVELOPER_SAMPLES/FilterInterceptorLoadableModule/src` directory.
 
-```
+```java
 public class FilterInterceptor implements LoadableModule,
   MessageCreationListener, MessageListener, FilterInterceptorMBean
 {
@@ -353,7 +353,7 @@ INFO 26/Feb/2013:11:26:20.799 [1698] Circuit [Send Instant Message] has finished
 
 The following is a sample style sheet that can be used with the `removeType` script in the API Gateway to remove the `FilterInterceptorLoadableModule` and its instances from the primary entity store.
 
-```
+```xml
 <?xml version="1.0" ?>
 <stylesheet xmlns="http://www.w3.org/1999/XSL/Transform"
   version="1.0"

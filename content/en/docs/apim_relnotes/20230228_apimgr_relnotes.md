@@ -238,7 +238,7 @@ In API Manager, when you import an OAS definition, which contains a `PathItem` w
 
 Consider the following `PathItem` definition:
 
-```
+```json
    "/form-anyOf": {
       "post": {
         "requestBody": {
@@ -262,7 +262,7 @@ Consider the following `PathItem` definition:
 
 where the `TestAnyOf` schema is defined as:
 
-```
+```json
       "TestAnyOf": {
         "anyOf": [
           {
@@ -306,7 +306,7 @@ where the `TestAnyOf` schema is defined as:
 
 This results in the optional form parameters `name`, `age`, and `time` being generated and stored as part of the internal model for the API method. If the following body is sent as part of a runtime request, parameter validation will succeed and all parameters will be forwarded to the backend service, despite the underlying schema indicating that the request body must contain `anyOf` 'Cat' or 'Dog', but not both.
 
-```
+```json
 {code}
 name=felix&age=5&time=2022-12-31T22:59:01Z
 {code}

@@ -59,7 +59,7 @@ The related certificate and private key files in the YAML configuration will be 
 
 File: `Axway-converted.yaml`
 
-```
+```yaml
 ---
 type: Certificate
 fields:
@@ -138,7 +138,7 @@ The following is an example of an entity with an environmentalized URL, username
 
 **YAML configuration after conversion**:
 
-```
+```yaml
 ---
 type: LdapDirectory
 fields:
@@ -150,7 +150,7 @@ fields:
 
 **Content of values.yaml**:
 
-```
+```yaml
 LDAP_Connection:
   api_env_LDAP:
     url: ldap://api-env:389
@@ -169,7 +169,7 @@ The following is an example of an entity with an environmentalized certificate:
 
 **YAML configuration after conversion**:
 
-```
+```yaml
 ---
 type: FilterCircuit
 fields:
@@ -188,7 +188,7 @@ children:
 
 **Content of values.yaml**:
 
-```
+```yaml
 ---
 YAML_Demo:
   Connect_with_SSL:

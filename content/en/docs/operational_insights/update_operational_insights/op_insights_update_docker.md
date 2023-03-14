@@ -37,7 +37,7 @@ The following lists the overall steps to upgrade Operational Insights:
 
 The following example shows how to load and unpack a new release and apply your current configuration. Regardless of which components have changed, you must install the same release package on all your machines.
 
-```
+```bash
 # Perform these steps on all machines
 
 # Get and extract the release package
@@ -58,7 +58,7 @@ You can now update each component as described in the following sections.
 
 API Builder, Logstash, and Memcache work as a tight unit and, therefore, it is recommended to stop and update them together. Changes to Logstash do not mean that the Logstash version has changed, but that the Logstash pipeline configuration has changed. Use the new release to start Logstash. The following example shows an update to version `3.2.0`:
 
-```
+```bash
 docker compose stop
 docker compose up -d
 ```
@@ -75,7 +75,7 @@ If Filebeat changes with a version, you must update the corresponding configurat
 
 The following example shows how to update versions:
 
-```
+```bash
 docker stop filebeat
 docker compose --env-file .env -f filebeat/docker compose.filebeat.yml up -d
 ```
@@ -132,19 +132,19 @@ Follow these steps to update your Elasticsearch cluster:
 
 1. On the Elasticsearch node you would like to update, navigate into your ELK solution directory:
 
-    ```
+    ```bash
     cd axway-apim-elk-v4.0.3
     ```
 
 2. Stop the existing Elasticsearch container you would like to update:
 
-   ```
+   ```bash
    docker stop elasticsearch1
    ```
 
 3. Start a new Elasticsearch node (in this example, Elasticsearch Node1), which creates a new container based on the version you configured in your `.env` file:
 
-    ```
+    ```bash
     docker compose --env-file .env -f elasticsearch/docker compose.es01.yml up -d
     ```
 
@@ -156,19 +156,19 @@ To update Kibana, perform the following steps after adjusting the `ELASTIC_VERSI
 
 1. On the Kibana node you would like to update, navigate to the directory where you installed Operational Insights:
 
-    ```
+    ```bash
     cd axway-apim-elk-v4.0.3
     ```
 
 2. Stop the existing Kibana container:
 
-    ```
+    ```bash
     docker stop kibana
     ```
 
 3. Start a new Kibana container with the configured `ELASTIC_VERSION` in your `.env` file:
 
-    ```
+    ```bash
     docker compose --env-file .env -f kibana/docker compose.kibana.yml up -d
     ````
 
@@ -178,19 +178,19 @@ Follow these steps to update Logstash:
 
 1. On the Logstash node you would like to update, navigate to the directory where you installed Operational Insights:
 
-    ```
+    ```bash
     cd axway-apim-elk-v4.0.3
     ```
 
 2. Stop the existing Logstash container:
 
-    ```
+    ```bash
     docker stop logstash
     ```
 
 3. Start a new Logstash with the configured `ELASTIC_VERSION` in your `.env` file:
 
-    ```
+    ```bash
     docker compose up -d
     ```
 
@@ -202,19 +202,19 @@ Follow these steps to update Filebeat:
 
 1. On the Filebeat node you would like to update, navigate to the directory where you installed Operational Insights:
 
-    ```
+    ```bash
     cd axway-apim-elk-v4.0.3
     ```
 
 2. Stop existing filebeat container
 
-    ```
+    ```bash
     docker stop filebeat
     ````
 
 3. Start a new Filebeat with the configured ELASTIC_VERSION in your .env file
 
-    ```
+    ```bash
     docker compose --env-file .env -f filebeat/docker compose.filebeat.yml up -d
     ```
 

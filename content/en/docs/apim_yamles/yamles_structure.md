@@ -62,7 +62,7 @@ Example:
 
 ![_parent.yaml example](/Images/apim_yamles/yamles_parent_file_example.png)
 
-```
+```yaml
 # Monitoring Configuration/_parent.yaml
 ---
 type: RealtimeMonitoring
@@ -74,7 +74,7 @@ Child entity:
 
 * `Monitoring Configuration/Metrics Metadata/_parent.yaml`
 
-```
+```yaml
 # Monitoring Configuration/Metrics Metadata/_parent.yaml
 ---
 type: MetricsMetadata
@@ -142,7 +142,7 @@ See [YAML Schema](/docs/apim_yamles/apim_yamles_references/yamles_yaml_schema) f
 
 The following is an example of how to list all the possible elements you can encounter.
 
-```
+```yaml
 ---
 type: SomeFictionalType
 fields:
@@ -162,7 +162,7 @@ Multi value fields are only allowed if permitted by the type. All values in the 
 
 A file can contains a parent entity and its children. This is useful when the full hierarchy make sense as a whole.
 
-```
+```yaml
 ---
 type: SomeFictionalParentType
 fields:
@@ -191,7 +191,7 @@ Some common fields of the super type `Filter` have been customized for the YAML
 
 You can set `Filters` in any order in the YAML file, but when converting an XML `.fed` or importing an XML fragment with the `yamles fed2yaml` or `yamles frag2yaml` commands, the filters are ordered in a more logical way. The filter identified in the Policy as the start filter is placed first, followed by filters belonging to the "successful" path, as shown in the following example:
 
-```
+```yaml
 type: FilterCircuit
 fields:
   name: My too simple policy
@@ -263,7 +263,7 @@ A YamlPK is used when a field value is not a primitive value, such as integer or
 
 **Absolute references**: YamlPK string representations as described above. They always starts with `/`. They work everywhere.
 
-```
+```yaml
 type: AuthzCodePersist
 fields:
     name: Authz Code Store
@@ -280,7 +280,7 @@ In this example, you can see the entity pointing to a cache named `OAuth AuthZ 
 
 Example:
 
-```
+```yaml
 # YamlPK of this entity => /Policies/App Policies/Core Policy/Filter DB IP
 type: FilterCircuit
 fields:
@@ -336,7 +336,7 @@ corresponds to Portable ESPK (shorthand)
 
 or, the following ESPK (XML):
 
-```
+```xml
 <key type="CircuitContainer">
     <id field='name' value='App Policies'/>
     <key type="FilterCircuit">
@@ -388,7 +388,7 @@ YamlPK is not an immutable key, it is a concatenation of all the parent key fiel
 
 **Changing a key field changes the YamlPK value**: For example, there is an entity as follows, with YamlPK `/Policies/App Policies/Core Policy/Filter DB IP`:
 
-```
+```yaml
 ---
 type: FilterCircuit
 fields:  
@@ -397,7 +397,7 @@ name: Filter DB IP
 
 You then, edit the entity at some later point in time to be:
 
-```
+```yaml
 ---
 type: FilterCircuit
 fields:

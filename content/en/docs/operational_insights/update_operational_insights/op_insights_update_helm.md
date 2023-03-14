@@ -10,6 +10,6 @@ If a new Elastic version is installed as a result of an upgrade, you must ensure
 
 Example how to upgrade an existing release:
 
-```
+```bash
 helm upgrade -n apim-elk -f myvalues.yaml axway-elk ($PLACEHOLDER))
 ```

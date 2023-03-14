@@ -10,7 +10,7 @@
 
 In cases when user credentials are passed to the API Gateway in a non-standard way, the credentials can be copied into API Gateway message attributes, and authenticated against a specified authentication repository (for example, API Gateway user store, LDAP directory, or database) using an **Attribute Authentication** filter. For example, assume user credentials are passed to API Gateway in the following XML message:
 
-```
+```xml
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
   <s:Body>
     <ns:User xmlns:ns="http://www.user.com">
@@ -47,7 +47,7 @@ In any secure communications protocol, it is crucial that secured messages do no
 
 Typically, the timestamp contains `Created` and `Expires` times, which combine to define the lifetime of the timestamp. The following shows an example `wsu:Timestamp`:
 
-```
+```xml
 <wsu:Timestamp xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility">
   <wsu:Created>2009-03-16T16:32:22Z</wsu:Created>
   <wsu:Expires>2009-03-16T16:42:22Z</wsu:Expires>
@@ -106,7 +106,7 @@ The settings on the **Subject Confirmation** tab determine how the `<SubjectConf
 
 The following is a typical `<SubjectConfirmation>` block:
 
-```
+```xml
 <saml:SubjectConfirmation>
   <saml:ConfirmationMethod>
     urn:oasis:names:tc:SAML:1.0:cm:holder-of-key

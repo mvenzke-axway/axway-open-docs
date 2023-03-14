@@ -229,7 +229,7 @@ After you configure the navigation bar of your portal, you must create a new pag
 8. Enter a title for the new block.
 9. For the block content, paste the following code:
 
-    ```
+    ```html
     <!-- HEADER BLOCK -->
     <header class="header-block header-axway">
     <div class="header-wrap">

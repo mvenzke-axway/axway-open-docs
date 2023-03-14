@@ -27,13 +27,13 @@ When the new pods come up, they will come up with the upgraded configuration.
 
 After the upgrade is finished, check the deployment, for example:
 
-```
+```bash
 kubectl get pods -n mynamespace
 ```
 
 Result:
 
-```
+```none
 NAME                                       READY     STATUS    RESTARTS   AGE
 apim-gateway-aga-866946bb58-vsqlx          1/1       Running   0          72s
 apim-gateway-anm-58b5644777-jbzfl          1/1       Running   0          72s

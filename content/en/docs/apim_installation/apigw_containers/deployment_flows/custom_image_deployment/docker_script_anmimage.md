@@ -64,7 +64,7 @@ Use the metrics options to specify the URL, user name, and password file for you
 
 The following example creates an Admin Node Manager Docker image named `my-metrics-admin-node-manager` with a tag of `1.0`.
 
-```
+```bash
 cd emt_containers-<version>
 ./build_anm_image.py --domain-cert=certs/mydomain/mydomain-cert.pem --domain-key=certs/mydomain/mydomain-key.pem --domain-key-pass-file=/tmp/pass.txt --anm-username=gwadmin --anm-pass-file=/tmp/gwadminpass.txt --parent-image=my-gw-base:1.0 --out-image=my-metrics-admin-node-manager:1.0 --metrics --merge-dir=/tmp/apigateway
 ```

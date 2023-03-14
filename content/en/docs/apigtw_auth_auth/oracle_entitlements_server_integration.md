@@ -248,7 +248,7 @@ INSTALL_DIR/apigateway/conf/jvm.xml
 
 Edit this `jvm.xml` so that its contents are as follows, providing values for `OES_CLIENT_HOME` and `SM_NAME` that are based on the location where the OES client was installed and the SM name used when enrolling the OES client (`MySM`):
 
-```
+```xml
 <ConfigurationFragment>
 <!-- Change these ENV VARS to match the location where the OEM Client has
 been installed and configured -->
@@ -273,7 +273,7 @@ xml"/>
 
 The following is an example `jvm.xml` file for Windows:
 
-```
+```xml
 <ConfigurationFragment>
   <!-- Environment variables -->
   <!-- change these to match the location where the OEM Client has been installed and configured -->

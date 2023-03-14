@@ -101,7 +101,7 @@ The Zulu OpenJDK v8u265 changes the way API Gateway verifies wildcarded certific
 
 Examples of matching domain names:
 
-```
+```javascript
 SubjectAlternativeName [
  DNSName: *.com     // will match e.g. 'google.com'
  DNSName: *.*.com   // will match e.g. 'mail.google.com'
@@ -162,7 +162,7 @@ To suppress schema validation errors and relax the stricter validation of XML fi
 
   To reduce the impact of this change, you can relax this restriction using a configuration flag. Set the flag in the `jvm.xml` file (it does not exist by default) under `groups/group-x/  instance-y/conf`.
 
-  ```
+  ```xml
   <ConfigurationFragment>
       <VMArg name="-DAPIGW_TOGGLE_FEATURE_GET_ALL_USERS=true" />
   </ConfigurationFragment>
@@ -174,7 +174,7 @@ To suppress schema validation errors and relax the stricter validation of XML fi
 * **MIME types**: To import API Gateway Management API Swagger into API Manager API Catalog, you must add the `application/x-download` MIME type to the default list of MIME types in API Gateway. Select **Server Settings > General > Mime configuration** in the Policy Studio tree and add `application/x-download` to the MIME list. After the configuration is deployed to API Gateway, you can import the API Gateway Manager API Swagger into API Manager API Catalog.
 * **Confidential fields property**: Fields that contain confidential information are no longer returned in some API calls. For example, a call to `GET /api/portal/v1.3/proxies/` does not return the password in the `AuthenticationProfile.parameters\["password"]` field. For compatibility with earlier versions, you can continue to return confidential fields. Set the system property `com.axway.apimanager.api.model.disable.confidential.fields` to `false` in the `jvm.xml` file (it does not exist by default) under `groups/group-x/instance-y/conf`.
 
-  ```
+  ```xml
   <ConfigurationFragment>
       <VMArg name="-Dcom.axway.apimanager.api.model.disable.confidential.fields=false"/>
   </ConfigurationFragment>

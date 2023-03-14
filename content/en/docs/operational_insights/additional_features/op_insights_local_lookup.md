@@ -22,20 +22,20 @@ To enable the local lookup, perform the following steps:
 
 1. Add your config file. It is best to copy the delivered template, `config/api-lookup-sample.json`, to your `config/api-lookup.json` file.
 
-    ```
+    ```bash
     cp config/api-lookup-sample.json config/api-lookup.json
     ```
 
 2. In your `.env` file, configure the following environment variable to enable the configuration file to be used by API Builder:
 
-    ```
+    ```bash
     # For docker compose use case set the env variable and restart:
         API_BUILDER_LOCAL_API_LOOKUP_FILE=./config/api-lookup.json
         docker stop apibuilder4elastic
         docker compose up -d
     ```
 
-    ```
+    ```bash
     # For helm use case expose variable localAPILookup in **myvalues.yaml** file and run helm upgrade:
         localAPILookup: "./config/api-lookup.json"
         helm upgrade -n apim-elk -f myvalues.yaml axway-elk axway/aaoi-helm-prod
@@ -43,7 +43,7 @@ To enable the local lookup, perform the following steps:
 
     If an event is to be indexed, API builder will try to read this file and will acknowledge this with the following error if the file cannot be found:
 
-    ```
+    ```bash
     Error reading API-Lookup file: './config/api-lookup.json'
     ```
 
@@ -53,7 +53,7 @@ At this point, we intentionally refer to events and not APIs, because different 
 
 To ignore, for example, the Healthcheck API entirely, the following must be configured in the lookup file:
 
-```
+```bash
 {
     "/healthcheck": {
         "ignore": true,
@@ -68,13 +68,13 @@ To ignore, for example, the Healthcheck API entirely, the following must be conf
 
 This will ignore events based on the path (TransactionSummary and TransactionElement) and the policy name (CircuitPath). You can see the result in the API Builder log, on level INFO, with the following lines:
 
-```
+```log
 Return API with apiPath: '/healthcheck', policyName: '' as to be ignored: true
 ```
 
 or
 
-```
+```log
 Return API with apiPath: '', policyName: 'Health Check' as to be ignored: true
 ```
 

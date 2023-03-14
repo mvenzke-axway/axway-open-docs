@@ -82,7 +82,7 @@ To transform the raw data, Operational Insights delivers and automatically insta
 
 Long-term analytics data will only be available after approximately one hour of the start of the transformation. Until then, the corresponding dashboards will show errors. For example,
 
-```
+```none
 The field "name-of-a-field" associated with this object no longer exists. Please use another field. Please wait at least 1 hour for the data to be prepared accordingly or create the transformation job manually executing the following command in the APIBuilder4Elastic container:
 
 wget --no-check-certificate https://localhost:8443/api/elk/v1/api/setup/transform/apigw-traffic-summary
