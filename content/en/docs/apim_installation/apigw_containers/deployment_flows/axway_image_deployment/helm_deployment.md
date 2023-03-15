@@ -168,7 +168,11 @@ anm:
 
 ### Sample customized values file
 
-Click [MyValuesCustomized.yaml](/samples/apimanagement/containers/MyValuesCustomized.zip) to download an example of a customized `myvalues.yaml` file, including an example of how to insert the contents of a valid license file.
+Click [MyValuesCustomized.yaml](/samples/apimanagement/cassandra/MyValuesCustomized.yaml) to download an example of a customized `myvalues.yaml` file, including an example of how to insert the contents of a valid license file.
+
+[MyValuesCustomized.zip](/samples/apimanagement/cassandra/MyValuesCustomized.zip) - cassandra folder, Zip file.
+
+[myvaluescustomized.yaml](/samples/apimanagement/containers/myvaluescustomized.yaml) - containers folder, renamed file.
 
 ### Install API Gateway using your customized YAML file
 
