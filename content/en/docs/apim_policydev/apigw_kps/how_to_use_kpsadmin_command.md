@@ -154,7 +154,7 @@ To create the new data source, perform the following steps:
 
 #### Step 3: Restore collection data
 
-If you have made a backup in [Backup collection data using kpsadmin](#step-1-backup-collection-data-using-kpsadmin), to restore the collection data, perform the following steps:
+If you have made a backup in [Backup collection data using kpsadmin](#step-1-backup-collection-data), to restore the collection data, perform the following steps:
 
 1. Using `kpsadmin`, select option `22) Restore All`.
 2. Enter the backup UUID noted in step 1.

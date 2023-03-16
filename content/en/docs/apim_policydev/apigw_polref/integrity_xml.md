@@ -12,7 +12,7 @@ The API Gateway can sign both SOAP and non-SOAP XML messages. Attachments to the
 
 You can configure the **XML Signature Generation** filter to generate a symmetric key to sign the message symmetrically, and automatically populate the `symmetric.key` message attribute with the generated key, so that a successive filter, for example, the **XML-Encryption Settings** filter, can use that symmetric key.
 
-For more details on XML signature validating the integrity of the message, see [XML signature verification](#xml-signature-verification).
+For more details on XML signature validating the integrity of the message, see [XML signature verification filter](#xml-signature-verification-filter).
 
 ### Signing key settings
 

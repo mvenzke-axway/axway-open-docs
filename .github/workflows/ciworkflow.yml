@@ -20,14 +20,14 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Check out repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     # Use Node.js
     - name: Set up Node
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
-        node-version: '12.x'
+        node-version: 18
     # Runs markdownlint
     - name: Run markdown linter
       run: |
-        npm i -g markdownlint-cli@0.31.1
-        markdownlint "content/en/**/*.md"      
+        npm i -g markdownlint-cli@0.33.0
+        markdownlint "content/en/**/*.md"

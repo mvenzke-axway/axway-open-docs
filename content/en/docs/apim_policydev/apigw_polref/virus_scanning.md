@@ -27,8 +27,6 @@ directory is on your `LD_LIBRARY_PATH`.{{< /alert >}}
 
 Integration with Sophos requires Sophos SAV Interface version 4.8. You must add the required third-party binaries to your API Gateway and Policy Studio installations.
 
-See [Add third party binaries to API Gateway](#add-third-party-binaries-to-api-gateway) and [Add third party binaries to Policy Studio](#add-third-party-binaries-to-policy-studio).
-
 ### Configure Sophos antivirus
 
 All SAVI configuration options take the form of a name-value pair. Each name is unique and its corresponding value controls specific behavior in the Sophos antivirus library (for example, decompress `.zip` files to examine their content). You can specify these SAVI configuration settings in the **Sophos configuration settings** section:

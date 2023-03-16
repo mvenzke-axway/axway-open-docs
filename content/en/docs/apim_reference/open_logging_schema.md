@@ -216,7 +216,7 @@ Contains the details of a filter execution:
 | `filterTime`    | `integer` | Timestamp of when the filter was completed                                 |
 | `name`          | `string`  | Name of the filter                                                         |
 | `status`        | `string`  | Filter execution status Possible values are: ["`Pass`","`Fail`","`Error`"] |
-| `subPaths`      | `array`   | [Nested circuit paths executions](#Circuit-path)                           |
+| `subPaths`      | `array`   | Nested circuit paths executions                          |
 | `type`          | `string`  | Type of the filter                                                         |
 
 ## Transaction summary

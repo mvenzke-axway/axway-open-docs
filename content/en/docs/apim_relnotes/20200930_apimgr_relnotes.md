@@ -380,7 +380,7 @@ This update has the following prerequisites in addition to the [System requireme
    tools/filebeat-VERSION-PLATFORM
    ```
 3. If you have an existing Apache Cassandra installation, ensure that you back up your data (Cassandra and `kpsadmin`), and that the `JAVA_HOME` variable is set correctly in `cassandra.in.sh` and `cassandra.in.bat`.
-4. Remove the old Filebeat folder `/apigateway/tools/filebeat-5.2.0`. Check any customized files to see if they are compatible with the new version. See [Filebeat](#filebeat-v6-2-2) for more information.
+4. Remove the old Filebeat folder `/apigateway/tools/filebeat-5.2.0`. Check any customized files to see if they are compatible with the new version. See [Filebeat](#filebeat-v622) for more information.
 5. On Linux, remove existing capabilities on product binaries (which might prevent overwriting files):
 
    ```
@@ -432,14 +432,14 @@ To install the update on your existing API Gateway 7.7 server installation, perf
    ```
 
     {{< alert title="Note" color="primary" >}}You must extract the file into a new directory and not into the existing API Gateway installation directory.{{< /alert >}}
-4. Run the [`update_apigw.sh` script](#update-apigw-sh-script) from the directory into which you extracted the Update file (for example, `77update`) and specify  your API Gateway installation directory using the `--install_dir` option. For example:
+4. Run the [`update_apigw.sh` script](#update_apigwsh-script) from the directory into which you extracted the Update file (for example, `77update`) and specify  your API Gateway installation directory using the `--install_dir` option. For example:
 
    ```
    ./update_apigw.sh --install_dir /opt/Axway-7.7/
    ```
 5. Restart your Node Manager and API Gateway instances on the local machine.
 
-##### `update_apigw.sh` script
+##### update_apigw.sh script
 
 Run the `update_apigw.sh` script with the `--help` option to see the available options:
 

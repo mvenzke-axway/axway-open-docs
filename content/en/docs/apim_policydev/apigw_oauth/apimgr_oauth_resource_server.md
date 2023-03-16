@@ -38,11 +38,11 @@ There is only one authorization record per client application/resource owner. Wh
 
 There are several ways to view the OAuth authorizations:
 
-* API Manager – See [View and revoke OAuth authorizations in API Manager](#Revoke).
+* API Manager – See [View and revoke OAuth authorizations in API Manager](#view-and-revoke-oauth-authorizations-in-api-manager).
 * API Manager REST API – For more information, see the [Product APIs page](https://docs.axway.com/category/api) on the Axway Documentation portal.
 * `kpsadmin` tool – For more information, see the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/).
 
-### View and revoke OAuth authorizations in API Manager{#Revoke}
+### View and revoke OAuth authorizations in API Manager
 
 API Manager enables you to view and revoke OAuth authorizations that have been granted to client applications by resource owners. This enables you to manage all client application authorizations to access OAuth-protected APIs. This also means that resource owners do not need to reauthorize application requests.
 

@@ -47,9 +47,9 @@ The policy developer can configure an API connector in Policy Studio. To config
     * **Class**:
         The Java class for the API connector: `com.vordel.apiportal.api.connector.sf.SalesforceConnector`
     * **Client Credentials**:
-        Salesforce.com APIs require OAuth-based authentication. For more details, see [Configure OAuth client credentials for Salesforce.com](#configure-oauth-client-credentials-for-salesforce-com). You can also right-click the parent **Salesforce** node to edit the OAuth provider settings (for example, provider URLs and token stores). For more details, see [Configure OAuth provider settings for Salesforce.com](#configure-oauth-provider-settings-for-salesforce-com).
+        Salesforce.com APIs require OAuth-based authentication. For more details, see [Configure OAuth client credentials for Salesforce.com](#configure-oauth-client-credentials-for-salesforcecom). You can also right-click the parent **Salesforce** node to edit the OAuth provider settings (for example, provider URLs and token stores). For more details, see [Configure OAuth provider settings for Salesforce.com](#configure-oauth-client-credentials-for-salesforcecom).
     * **Max APIs/Import**:
-        Enter the maximum number of APIs that can be imported from the Salesforce.com cloud provider into a single API in API Manager. A very large number makes it harder for an API owner to manage. The Salesforce.com connector defaults to `100` APIs per import. For more details, see [Import Salesforce.com APIs in API Manager](#import-salesforce-com-apis-in-api-manager)
+        Enter the maximum number of APIs that can be imported from the Salesforce.com cloud provider into a single API in API Manager. A very large number makes it harder for an API owner to manage. The Salesforce.com connector defaults to `100` APIs per import. For more details, see [Import Salesforce.com APIs in API Manager](#import-salesforcecom-apis-in-api-manager)
     * **Custom Configuration**:
         Enter custom configuration details if any. For example, the supported versions for Salesforce.com are `{"apiVersion":"33"}` or `{"apiVersion":"34"}`.
 
@@ -414,7 +414,7 @@ Policy developers can configure an API connector in Policy Studio as follows:
     * **Client Credentials**:
         You must provide a user name and password to connect to API Builder. Click the browse button to configure the client credential required for API Builder. To configure new credentials, right-click the **Client Credentials** > **HTTP Basic** node, and select **Add HTTP Basic Credentials**. For more details, see [Configure credentials for API Runtime Services](#configure-credentials-for-api-runtime-services).
     * **Max APIs/Import**:
-        Enter the maximum number of application APIs that can be imported from the API Builder cloud API provider into API Manager. A very large number makes it harder for an application API owner to manage. The API Builder connector defaults to `10` application APIs per import. For more details, see [Import API Builder application APIs in API Manager](#import-api-builder-application-apis-in-api-manager).
+        Enter the maximum number of application APIs that can be imported from the API Builder cloud API provider into API Manager. A very large number makes it harder for an application API owner to manage. The API Builder connector defaults to `10` application APIs per import. For more details, see [Import API Builder application APIs in API Manager](#import-apibuilder-application-apis-in-api-manager).
     * **Merge APIs on import**:
         You must deselect this setting for API Builder application APIs. Each API Builder application API will be imported into API Manager as a separate back-end API.
     * **Custom Configuration**:

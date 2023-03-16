@@ -69,7 +69,7 @@ To import a WSDL file into the web service repository, complete the following st
 5. In the **Retrieve and Validate** window, enter a user name and a comment for this version of the WSDL. Click **Next**
 to continue.
 
-    {{< alert title="Note" color="primary" >}}If the WSDL fails validation, an error is displayed. For details, see [XML schema and WSDL document validation](#xml-schema-and-wsdl-document-validation) and [XML schema and WSDL document limitations](#xml-schema-and-wsdl-document-limitations){{< /alert >}}
+    {{< alert title="Note" color="primary" >}}If the WSDL fails validation, an error is displayed. For details, see [XML schema and WSDL document validation](/docs/apim_policydev/apigw_web_services/general_schema_cache/#xml-schema-and-wsdl-document-validation) and [XML schema and WSDL document limitations](/docs/apim_policydev/apigw_web_services/general_schema_cache/#xml-schema-and-wsdl-document-limitations){{< /alert >}}
 
 6. In the **WSDL Operations** window, select the operations to be exposed on the virtualized service and click **Next**. Alternatively, click **Select All** or **Select None** to select all or none of the operations defined in the WSDL file.
 7. On the **WS-Policy Options** window, select **Secure this virtualized service with a WS-Policy** to use a WS-Policy to secure the virtualized service. If you select this option, the **Secure Virtual Service** dialog is displayed at a later step, which enables you to configure WS-Policy settings between the client and API Gateway and generate policies that API Gateway uses to enforce for messages it receives from clients.

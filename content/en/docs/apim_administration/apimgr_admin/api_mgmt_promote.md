@@ -33,7 +33,7 @@ When using the `apimanager-promote` script, the high-level steps are as follows:
 1. Export the APIs and applications that you wish to promote from API Manager (as a `.dat` file in JSON format). For example, select the front-end APIs that you wish to export, and click **Manage selected** > **Export API collection**.
 
     Alternatively, you can export using the API Manager REST API. For more details, see [API Manager REST APIs](/docs/apim_reference/api_mgmt_rest_api/).
-2. Create your `promotion.properties` file to specify how your APIs and applications are promoted. See [Generate your promotion.properties file](#generate-your-promotion-properties-file).
+2. Create your `promotion.properties` file to specify how your APIs and applications are promoted. See [Generate your promotion.properties file](#generate-your-promotionproperties-file).
 3. Place your exported API and application files (`.dat`) and your generated `promotion.properties` file in the same directory.
 
     You must ensure that the respective files names are `api-*.dat`, `application-*.dat`, and `promotion.properties`, and change the file names if necessary.

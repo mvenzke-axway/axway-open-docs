@@ -16,7 +16,7 @@ Because Wireshark can trace any application acting either as the Kerberos client
 
 SPNEGO tokens are used only for the Client-Server Authentication Exchange (the `AP_REQ` and `AP_REP` Kerberos messages) between the client and service. The `AP_REP` the Kerberos client sends to the Kerberos service contains a service ticket encrypted with the service’s secret key. To view this data decrypted, you must import the service’s keytab to Wireshark.
 
-The messages sent between the client and the KDC to acquire TGTs and service tickets are not covered by SPNEGO. For information on how to view these messages in Wireshark, see [Use Wireshark to trace Authentication Service Exchange and Ticket-Granting Service Exchange](#wireshark-service-exchange).
+The messages sent between the client and the KDC to acquire TGTs and service tickets are not covered by SPNEGO. For information on how to view these messages in Wireshark, see [Use Wireshark to trace Authentication Service Exchange and Ticket-Granting Service Exchange](#use-wireshark-to-trace-authentication-service-exchange-and-ticket-granting-service-exchange).
 
 ### Import a Kerberos service keytab file into Wireshark
 
@@ -75,7 +75,7 @@ If you have the Kerberos client and Kerberos service running on separate machine
 
     ![Wireshark](/Images/IntegrationGuides/KerberosIntegration/Wireshark/wireshark_tracing_spnego_kerb_delegation_flags.png)
 
-## Use Wireshark to trace Authentication Service Exchange and Ticket-Granting Service Exchange {#wireshark-service-exchange}
+## Use Wireshark to trace Authentication Service Exchange and Ticket-Granting Service Exchange
 
 You can use Wireshark to trace the Kerberos traffic between the Kerberos client and the Kerberos KDC (Windows Domain Controller). This traffic relates to the Kerberos Authentication Service Exchange (`AS-REQ` and `AS-REP`) and the Ticket-Granting Service Exchange (`TGS-REQ` and `TGS-REP`) when the client requests the TGT and service ticket.
 
@@ -102,4 +102,4 @@ The Kerberos traffic is as follows:
 
 * The `AS-REQ` and `AS-REP` are generated at the startup of API Gateway, because this is when the TGT for the Kerberos client is requested from the KDC. The TGT is only re-requested when it expires, because the TGT is cached in API Gateway.
 * The `TGS-REQ` and `TGS-REP` are created when the Kerberos client sends a message to the Kerberos service to request the service ticket for the Kerberos service. The `TGS-REQ` is only sent from the Kerberos client on the first request, or when the service ticket has expired, because the service ticket is cached in API Gateway.
-* The service ticket is encrypted with the secret key of the Kerberos service. To view the content decrypted, you must have the keytab of the Kerberos service imported in the Wireshark. See [Use Wireshark to trace SPNEGO Kerberos authentication between the client and service](#wireshark-client-service).
+* The service ticket is encrypted with the secret key of the Kerberos service. To view the content decrypted, you must have the keytab of the Kerberos service imported in the Wireshark.

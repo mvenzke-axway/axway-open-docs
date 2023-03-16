@@ -14,7 +14,7 @@ filter.
 
 An example use case for this filter would be when files are sent to API Gateway over Secure Shell File Transfer Protocol (SFTP) in PGP-encrypted format. API Gateway can use the **PGP Decrypt and Verify**
 filter to decrypt the message, and then use threat detection filters to perform virus scanning. The clean files can be PGP-encrypted again using the **PGP Encrypt and Sign**
-filter before being sent over SFTP to their target destination. For more details, see [PGP encrypt and sign](#pgp-encrypt-and-sign).
+filter before being sent over SFTP to their target destination. For more details, see [PGP encrypt and sign filter](#pgp-encrypt-and-sign-filter).
 
 You can also use the **PGP Decrypt and Verify**
 filter to verify signed messages passing through the API Gateway pipeline. Signed messages received by API Gateway can be verified by validating the signature using the public PGP key of the message signer.

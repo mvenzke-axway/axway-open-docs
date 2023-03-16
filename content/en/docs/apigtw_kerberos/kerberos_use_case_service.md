@@ -34,7 +34,7 @@ The next sections describe the steps to configure the gateway as a Kerberos serv
 
 The most common client application in this scenario is a browser, so this example focuses on that. For instructions on how to configure your browser, see [Configure your browser to authenticate to API Gateway](#configure-your-browser-to-authenticate-to-api-gateway).
 
-The connection between the client application and API Gateway acting as the Kerberos service is by default unsecured. For security reasons, it is recommended to enable SSL/TLS connection in the Kerberos service. SSL/TLS is configured in the SSL port on the Kerberos service, but you must also configure your browser separately to use SSL/TLS connection. For more details, see [Configure browser authentication over SSL/TLS](#configure-browser-authentication).
+The connection between the client application and API Gateway acting as the Kerberos service is by default unsecured. For security reasons, it is recommended to enable SSL/TLS connection in the Kerberos service. SSL/TLS is configured in the SSL port on the Kerberos service, but you must also configure your browser separately to use SSL/TLS connection. For more details, see [Configure browser authentication over SSL/TLS](#configure-browser-authentication-over-ssltls).
 
 ## Configure a user account in Active Directory
 
@@ -88,7 +88,7 @@ You must map a Service Principal Name (SPN) to the user account you created (`ga
 
     This command creates an SPN `HTTP/gateway.axway.com@AXWAY.COM`, which is mapped to the user account (`gateway`).
 
-    The command also creates a keytab file for the account that you can use later when configuring the Kerberos service in Policy Studio. See [Configure Kerberos principal](/docs/apigtw_kerberos/kerberos_use_case_client#configure-kerberos-principals).
+    The command also creates a keytab file for the account that you can use later when configuring the Kerberos service in Policy Studio. See [Configure Kerberos principal](#configure-kerberos-principal).
 
 If you do not want to create a keytab file, you can use the following command:
 
@@ -243,7 +243,7 @@ You have now configured and deployed a simple Kerberos policy for SPNEGO authent
 
 The most common client application in this scenario is a standard browser. In addition to configuring API Gateway, you must also configure your browser to authenticate to API Gateway. For more details, see [Configure your browser to authenticate to API Gateway](#configure-your-browser-to-authenticate-to-api-gateway).
 
-By default, the connection between the browser and API Gateway acting as the Kerberos service is by default unsecured. For details how to change to a secured connection, see [Configure browser authentication over SSL/TLS](#configure-your-browser-to-use-ssl-tls-connection).
+By default, the connection between the browser and API Gateway acting as the Kerberos service is by default unsecured. For details how to change to a secured connection, see [Configure browser authentication over SSL/TLS](#configure-browser-authentication-over-ssltls).
 
 ## Configure your browser to authenticate to API Gateway
 
@@ -283,15 +283,15 @@ API Gateway authenticates the Kerberos user, passes the request to the back-end 
 
 The **Traffic Monitor** tab on the API Gateway Manager (`https://localhost:8090`) is an excellent place to view and troubleshoot the message flows. For more details, see [Monitor services in API Gateway Manager](/docs/apim_administration/apigtw_admin/monitor_service#monitor-services-in-api-gateway-manager).
 
-For details how to change the configuration to use a secure connection, see [Configure browser authentication over SSL/TLS](#configure-browser-authentication).
+For details how to change the configuration to use a secure connection, see [Configure browser authentication over SSL/TLS](#configure-browser-authentication-over-ssltls).
 
-## Configure browser authentication over SSL/TLS {#configure-browser-authentication}
+## Configure browser authentication over SSL/TLS
 
 The connection between the browser and API Gateway acting as the Kerberos service is by default unsecured. For security reasons, it is recommended to use a secure SSL/TLS connection when connecting to the API Gateway.
 
 This section describes the additional configuration steps required to enable a browser to authenticate to the API Gateway using SPNEGO over a secure SSL connection.
 
-The configuration of Kerberos principal, Kerberos service, and Kerberos service policy remains the same as with insecure connection. For details, see [Configure Kerberos principal](#configure_kerberos_principal) and [Configure API Gateway](#configure-api-gateway-policy).
+The configuration of Kerberos principal, Kerberos service, and Kerberos service policy remains the same as with insecure connection. For details, see [Configure Kerberos principal](#configure-kerberos-principal) and [Configure API Gateway](#configure-api-gateway-policy).
 
 The next sections describe how to enable SSL connection.
 
@@ -320,7 +320,7 @@ For more details on the fields and options in this configuration window, see [Ma
 
 For more details on the fields and options in this configuration window, see [Configure HTTP services](/docs/apim_policydev/apigw_gw_instances/general_services/).
 
-You must configure your browser to use secure connection as well. For more details, see [Configure your browser to use SSL/TLS connection](#configure-your-browser-to-use-ssl-tls-connection).
+You must configure your browser to use secure connection as well. For more details, see [Configure your browser to use SSL/TLS connection](#configure-your-browser-to-use-ssltls-connection).
 
 ## Configure your browser to use SSL/TLS connection
 

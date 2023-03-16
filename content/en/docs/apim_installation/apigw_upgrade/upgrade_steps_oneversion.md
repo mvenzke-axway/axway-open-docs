@@ -69,7 +69,7 @@ To install the update on your existing API Gateway 7.7 server installation, perf
 
 1. Ensure that your existing API Gateway instance and Node Manager have been stopped.
 2. Remove any previous patches from your `INSTALL_DIR/apigateway/ext/lib` and `INSTALL_DIR/apigateway/META-INF` directories (or the `ext/lib` directory in an API Gateway instance). All patches have already been included in API Gateway One Version, so you do not need to copy patches from a previous version.
-3. If you have used `setcap` to grant API Gateway permission to use privileged ports (see, [Allow the API Gateway to listen on privileged ports](#allow-the-api-gateway-to-listen-on-privileged-ports)), remove these permissions now because thy might prevent files from being overwritten.
+3. If you have used `setcap` to grant API Gateway permission to use privileged ports (see, [Allow API Gateway to listen on privileged ports](#allow-api-gateway-to-listen-on-privileged-ports)), remove these permissions now because thy might prevent files from being overwritten.
 
    ```
    setcap -r INSTALL_DIR/apigateway/platform/bin/vshell

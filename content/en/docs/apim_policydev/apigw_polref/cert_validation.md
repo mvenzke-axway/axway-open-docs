@@ -87,7 +87,7 @@ When the **Validate response** option is selected, you can also use the followin
 * **The response is valid until**: Select the **Expiration date** check box to use the `nextUpdate` field in the OCSP response as the expiration date. This is the default.   Alternatively, to override the expiration date in the response (for example, to set a longer expiration), deselect the **Expiration date** check box, enter a value in the text box, and select a time unit (days, hours, minutes, or seconds).
 * **A response with no expiration date is valid for**: Enter a value in the text box and select a time unit (days, hours, minutes, or seconds). The default value is 6 hours.
 
-For more information on the time validation logic, see [Time validation logic](#Time).
+For more information on the time validation logic, see [Time validation logic](#time-validation-logic).
 
 **Use nonce to prevent reply attack**:
 

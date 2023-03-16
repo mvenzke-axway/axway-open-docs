@@ -146,7 +146,7 @@ To download and run an API Portal 7.7 Docker container with the customizations 
 
     `$ docker volume create <encryption key volume>:/apiportal/encryption`
 
-7. Run a container from the new API Portal 7.7 Docker image, and specify the data volumes you created in [Create Docker data volumes for your API Portal customizations](#Create):
+7. Run a container from the new API Portal 7.7 Docker image, and specify the data volumes you created in "Create Docker data volumes for your API Portal customizations":
 
     ```
     docker run -it --name <new API Portal container> -e MYSQL_HOST=<IP of your DB container> -e MYSQL_PORT=<DB port> -e MYSQL_ROOT_PASSWORD=<root password> -e MYSQL_USERNAME=<username> -e MYSQL_PASSWORD=<user password> -e MYSQL_DBNAME=<database name> -p <host machine port>:<API Portal port> -v templates:/opt/axway/apiportal/htdoc/templates -v images:/opt/axway/apiportal/htdoc/images <imagename>:<version>

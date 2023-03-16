@@ -119,8 +119,6 @@ For example, for entity type `JSONSchema` key field is `URL`. If the value of UR
 * The entity will be identified (YamlPK) with `/Resources/JSON Schemas/http://json-schema.org/address`.
 * The entity will stored in `Resources/JSON Schemas/http(colon)(slash)(slash)json-schema.org(slash)address.yaml`
 
-For more information, see [Yaml PK section](#yamlpk-and-references).
-
 ### Best practices to name entities
 
 The following are best practices to name your entities:

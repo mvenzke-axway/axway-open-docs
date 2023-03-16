@@ -194,7 +194,7 @@ This update has the following prerequisites in addition to the [System requireme
    INSTALL_DIR/apigateway/platform/jre
    ```
 5. If you have an existing Apache Cassandra installation, ensure that you back up your data (Cassandra and `kpsadmin`), and that the `JAVA_HOME` variable is set correctly in `cassandra.in.sh` and `cassandra.in.bat`.
-6. Remove the old Filebeat folder `/apigateway/tools/filebeat-5.2.0`. Check any customized files to see if they are compatible with the new version. See [Filebeat](#filebeat-v6-2-2) for more information.
+6. Remove the old Filebeat folder `/apigateway/tools/filebeat-5.2.0`. Check any customized files to see if they are compatible with the new version. See [Filebeat](#filebeat-v622) for more information.
 7. On Linux, remove existing capabilities on product binaries (which might prevent overwriting files):
 
    ```

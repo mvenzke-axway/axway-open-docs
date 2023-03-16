@@ -58,7 +58,7 @@ cd AXWAY_HOME/apigateway/posix/bin
 
 ### Run setup-cassandra on remote Cassandra node
 
-On a remote Cassandra node, you first must ensure that the `setup-cassandra` script has been configured as described in [Remote Cassandra HA nodes](#remote-cassandra-ha-nodes). To run this script on a remote node:
+On a remote Cassandra node, you first must ensure that the `setup-cassandra` script has been configured as described in [Remote Cassandra HA nodes](#remote-cassandrahanodes). To run this script on a remote node:
 
 ```
 ./setup-cassandra.py <options>

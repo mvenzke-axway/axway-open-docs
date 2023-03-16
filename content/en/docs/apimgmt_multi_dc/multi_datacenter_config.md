@@ -23,15 +23,15 @@ The recommended configuration for each data type and its replication between dat
 * **API Gateway configuration**: You must deploy the API Gateway group configuration in both datacenters.
 * **API Gateway logs**: Does not apply (local file-based data only).
 * **API Gateway traffic monitoring**: Does not apply (local file-based data only).
-* **API Gateway KPS custom tables**: Automatic. It is recommended to use Cassandra with replication between datacenters. See [Configure Cassandra for multiple datacenters](#cassandra_multiple), or your RDBMS documentation.
+* **API Gateway KPS custom tables**: Automatic. It is recommended to use Cassandra with replication between datacenters. See [Configure Cassandra for multiple datacenters](#configure-cassandra-for-multiple-datacenters), or your RDBMS documentation.
 * **API Gateway OAuth token store**: It is recommended to use Ehcache, and to generate and use OAuth tokens in the same datacenter only. You should configure sticky sessions in your load balancer. See [Configure Ehcache in multiple datacenters](#configure-ehcache-in-multiple-datacenters).
 * **API Gateway throttling counters**: It is recommended to configure at least one distributed cache per datacenter and to avoid replication between datacenters. You should configure sticky sessions in your load balancer. See [Configure Ehcache in multiple datacenters](#configure-ehcache-in-multiple-datacenters).
 * **API Gateway custom cache**: It is recommended to configure at least one distributed cache per datacenter and to avoid replication between datacenters. You should configure sticky sessions in your load balancer. See [Configure Ehcache in multiple datacenters](#configure-ehcache-in-multiple-datacenters).
 
 ### API Manager data
 
-* **API Manager catalog, client registry, web-based settings**: Automatic. It is best to use Cassandra with replication between datacenters. See [Configure Cassandra for multiple datacenters](#cassandra_multiple).
-* **API Manager quota counters**: In memory only, or automatic when using external storage (Cassandra or RDBMS). See [Configure API Manager quota in multiple datacenters](#api-manager-quota). See also [Configure Cassandra for multiple datacenters](#cassandra_multiple), or your RDBMS documentation.
+* **API Manager catalog, client registry, web-based settings**: Automatic. It is best to use Cassandra with replication between datacenters. See [Configure Cassandra for multiple datacenters](#configure-cassandra-for-multiple-datacenters).
+* **API Manager quota counters**: In memory only, or automatic when using external storage (Cassandra or RDBMS). See [Configure API Manager quota in multiple datacenters](#configure-api-manager-quota-in-multiple-datacenters). See also [Configure Cassandra for multiple datacenters](#configure-cassandra-for-multiple-datacenters), or your RDBMS documentation.
 * **API Manager metrics**: Automatic. See your RDBMS documentation.
 
 ### API Gateway Analytics data
@@ -39,7 +39,7 @@ The recommended configuration for each data type and its replication between dat
 * **API Gateway Analytics configuration**: You must deploy the group configuration on both datacenters. For details on automating deployment processes, see the API Gateway DevOps Deployment Guide.
 * **API Gateway Analytics metrics**: See your RDBMS documentation.
 
-## Configure Cassandra for multiple datacenters {#cassandra_multiple}
+## Configure Cassandra for multiple datacenters
 
 Cassandra is required to store data for API Manager and to store custom KPS tables for API Gateway. For details on the recommended Cassandra architecture, see [Multi-datacenter deployment architecture](/docs/apimgmt_multi_dc#multi-datacenter-deployment-architecture).
 
@@ -234,7 +234,7 @@ On the first API Gateway host in DC1, perform the following steps:
     * **Initial replication**: `${env.CASS.REPL.FACTOR}`
     * **Hosts**: Add the environment variable settings that you set in `envSettings.props`. For example:
         ![Set Cassandra hosts using environment variables](/Images/APIGateway/cassandra_multi-dc_hosts.png)
-    * **Authentication**: Enter the Cassandra user name and password that you configured earlier. See [Configure the default system_auth keyspace](#configure-the-default-system-auth-keyspace).
+    * **Authentication**: Enter the Cassandra user name and password that you configured earlier. See [Configure the default system_auth keyspace](#configure-the-default-system_auth-keyspace).
     * **Security**: Select **Enable SSL**, and select a trusted certificate and client certificate. For example:
 8. Select **File > Configure API Manager** to configure API Manager settings.
 9. For all KPS collections, update the read and write consistency levels to **LOCAL_QUORUM**. For example, in the Policy Studio tree, select **Environment Configuration > Key Property Stores > API Server > Data Sources > Cassandra Storage**, and click **Edit**.
@@ -536,7 +536,7 @@ env.CACHE.ASYNC.INTERVAL=10
 
 {{< alert title="Note" color="primary" >}}The `env.CACHE.RMI.URL` environment variable should only include URLs for host machines in the same datacenter.{{< /alert >}}
 
-## Configure API Manager quota in multiple datacenters {#api-manager-quota}
+## Configure API Manager quota in multiple datacenters
 
 API Manager quotas enable you to manage the maximum message traffic rate that can be sent by applications to APIs for back-end protection. You can use the **Server Settings > API Manager > Quota Settings** in Policy Studio to configure how API Manager quota information is stored. By default, quotas are stored in external storage, and automatically adapt to the configured KPS storage mechanism. However, you can also explicitly configure a storage mechanism of Cassandra, RDBMS, or in memory only.
 

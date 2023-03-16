@@ -46,7 +46,7 @@ crw-rw-r-- 1 root admin 126, 0 /dev/pkp_nle_dev
 
 ## Patch vshell binary with static search paths
 
-When you enable processes running as non-root to listen on privileged ports using `setcap` (see [Enable API Gateway processes to listen on privileged ports](#enable-processes-to-listen)), certain environment variables are disabled as a security precaution. For this reason, you must make the locations of API Gateway library files available to the operating system.
+When you enable processes running as non-root to listen on privileged ports using `setcap` (see [Enable API Gateway processes to listen on privileged ports](#enable-api-gateway-processes-to-listen-on-privileged-ports)), certain environment variables are disabled as a security precaution. For this reason, you must make the locations of API Gateway library files available to the operating system.
 
 Use `patchelf` to patch the `vshell` binary with the absolute paths of the API Gateway library files. For example, run the following command:
 
@@ -88,7 +88,7 @@ You also need to add API Gateway library paths to `jvm.xml`. To modify your `jvm
    <VMArg name="-Djava.library.path=$VDISTDIR/$DISTRIBUTION/jre/lib/amd64/server:$VDISTDIR/$DISTRIBUTION/jre/lib/amd64:$VDISTDIR/$DISTRIBUTION/lib/engines:$VDISTDIR/ext/$DISTRIBUTION/lib:$VDISTDIR/ext/lib:$VDISTDIR/$DISTRIBUTION/jre/lib:$VDISTDIR/$DISTRIBUTION/jre/lib/server:$VDISTDIR/system/lib:$VDISTDIR/$DISTRIBUTION/lib"/>
    ```
 
-## Enable API Gateway processes to listen on privileged ports {#enable-processes-to-listen}
+## Enable API Gateway processes to listen on privileged ports
 
 Use the `setcap` command to enable processes running as non-root to listen on privileged ports. In this case, you must set the `CAP_NET_BIND` capability on the `vshell` binary, which enables the following processes to listen on privileged ports:
 

@@ -291,7 +291,7 @@ Install API Gateway 7.7 on each node in the multi-node topology where your old A
 
 ### Step 2 - Update and check the new installation on each node
 
-When the installation is complete, perform the new installation checks detailed in [Checklist for the new API Gateway 7.7 installation](#checklist-for-the-new-api-gateway-7-7-installation).
+When the installation is complete, perform the new installation checks detailed in [Checklist for the new API Gateway 7.7 installation](#checklist-for-the-new-api-gateway-77-installation).
 
 ### Step 3 - Export the data from the old installation and upgrade it on each node
 

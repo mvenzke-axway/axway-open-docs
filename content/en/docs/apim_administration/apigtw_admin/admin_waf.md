@@ -16,7 +16,7 @@ For more details on ModSecurity, see [Apache ModSecurity documentation](http://w
 
 ModSecurity provides very little protection on its own. However, you can configure the required protection by configuring The ModSecurity rules engine with a threat protection profile. Protecting against specific threats requires specific rules, and different vendors provide rules for specific threat protection capabilities.
 
-The Open Web Application Security Project (OWASP) [ModSecurity Core Rule Set (CRS) project](https://modsecurity.org/crs/) provides a popular rule set. You can use CRS version 2.x or 3.x. For more details on how to configure CRS version 3.x, see [Use OWASP ModSecurity CRS version 3.x](#use-owasp-modsecurity-crs-version-3-x). For more details on OWASP, see [OWASP website](https://www.owasp.org/).
+The Open Web Application Security Project (OWASP) [ModSecurity Core Rule Set (CRS) project](https://modsecurity.org/crs/) provides a popular rule set. You can use CRS version 2.x or 3.x. For more details on how to configure CRS version 3.x, see [Use OWASP ModSecurity CRS version 3.x](#use-owasp-modsecurity-crs-version-3x). For more details on OWASP, see [OWASP website](https://www.owasp.org/).
 
 For an example of how to write security rules yourself, see [How To Write A WAF Rule - Modsecurity Rule Writing](https://support.kemptechnologies.com/hc/en-us/articles/209635223-How-to-write-a-WAF-rule-Modsecurity-Rule-Writing).
 
@@ -42,7 +42,7 @@ If no threat protection profiles have been configured, perform the following:
 
     **Configuration directory**: Enter the name of the directory that stores the threat protection configuration file. When threat protection has been enabled, the embedded ModSecurity engine looks for threat protection rules configuration in this directory. API Gateway uses the OWASP ModSecurity CRS directory structure. The default is `${environment.VDISTDIR}/system/conf/threat-protection/default`.
 
-    **Configuration file**: Enter the threat protection configuration file name. The default value is `modsecurity.conf`. This file contains the engine global settings. See [Configure modsecurity.conf file](#configure-modsecurity-conf-file).
+    **Configuration file**: Enter the threat protection configuration file name. The default value is `modsecurity.conf`. This file contains the engine global settings. See [Configure the modsecurity.conf file](#configure-the-modsecurityconf-file).
 
     **Rules directory**: Enter the name of the subdirectory that stores the threat protection rules. When you download or create ModSecurity security rules, you must put them in this subdirectory. The embedded ModSecurity engine loads all `.conf` files in this directory. The default is `${environment.VDISTDIR}/system/conf/threat-protection/default/activated_rules`.
 
@@ -54,7 +54,7 @@ The recommended ModSecurity default configuration sets the engine mode to `SecRu
 
 You can also add threat protection profiles in **Environment Configuration > Libraries > Threat Protection Profiles > Add a Threat Protection Profile** in the Policy Studio tree.
 
-#### Configure `modsecurity.conf` file
+#### Configure the modsecurity.conf file
 
 Depending on your environment, you might need to configure the settings in the `modsecurity.conf` file. For example:
 

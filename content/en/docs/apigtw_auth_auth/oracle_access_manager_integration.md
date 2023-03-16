@@ -210,7 +210,7 @@ Create a new policy in Policy Studio called, for example, `OAM 11gR2 Authenticat
 
 #### Add the HTTP Basic Authentication filter
 
-Create an HTTP Basic Authentication filter and configure it to authenticate users against the OAM authentication repository created in [Configure the OAM authentication repository](#Configure_oam_auth_repo).
+Create an HTTP Basic Authentication filter and configure it to authenticate users against the OAM authentication repository created in [Configure the OAM authentication repository](#configure-the-oam-authentication-repository).
 
 1. Open the newly created `OAM 11gR2 Authentication and Authorization` policy.
 2. Drag an **HTTP Basic** filter from the **Authentication** category in the palette and drop it onto the canvas and configure it as follows.
@@ -225,7 +225,7 @@ Create an HTTP Basic Authentication filter and configure it to authenticate user
 
 The next step is to add the OAM Authorization filter, which will authorize authenticated users against OAM. Complete the following steps to configure the OAM Authorization filter:
 
-1. From the **Oracle Access Manager category** in the palette of Policy Studio, drag the **Authorization** filter and drop it onto the **HTTP Basic Authentication** filter created in [Add the HTTP Basic Authentication filter](#Add_http_basic_auth_filter). By dropping a filter directly on to another filter, the new filter will be automatically connected to the first filter with a `success` path.
+1. From the **Oracle Access Manager category** in the palette of Policy Studio, drag the **Authorization** filter and drop it onto the **HTTP Basic Authentication** filter created in [Add the HTTP Basic Authentication filter](#add-the-http-basic-authentication-filter). By dropping a filter directly on to another filter, the new filter will be automatically connected to the first filter with a `success` path.
 2. Configure the fields on the filter as follows.
     * **Name**: Enter a suitable name, such as `Authorization via OAM 11gR2`.
     * **Attribute Containing SSO Token**: Enter the name of the message attribute configured in the authentication repository earlier where the SSO token is stored, that is to say `oracle.sso.token`.
@@ -240,7 +240,7 @@ The next step is to add the OAM Authorization filter, which will authorize authe
 
 To display a success message to the user after successfully authorizing the user you can add a Set Message filter as follows.
 
-1. Drag a **Set Message** filter from the **Conversion** category in the palette and drop it onto the **OAM Authorization** filter created in [Add the OAM Authorization filter](#Add_oam_auth_filter).
+1. Drag a **Set Message** filter from the **Conversion** category in the palette and drop it onto the **OAM Authorization** filter created in [Add the OAM Authorization filter](#add-the-oam-authorization-filter).
 2. Configure the following fields on this filter:
     * **Name**: Enter `Set Success Message`.
     * **Content-type**: `text/plain`

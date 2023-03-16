@@ -98,7 +98,7 @@ To create an new LDAP Repository, perform the following steps:
 * **LDAP Directory**: Use the LDAP directory created in [Create an LDAP connection](#create-an-ldap-connection).
 * **Base Criteria**: Enter the LDAP node that contains the users.
 * **User Search Attribute**: Enter `cn`. This is the username entered at login time (in this case, `admin`).
-* **Authorization Attribute**: Enter `distinguishedName`. This is the username entered at login time (`admin`). The `authentication.subject.id` message attribute is set to the value of this LDAP attribute (see example below). The `authentication.subject.id` is used as the base criteria in the filter that loads the LDAP groups (the user’s roles). This enables you to narrow the search to a particular user node in the LDAP tree. For more details, see the **Retrieve Attributes from Directory Server** filter in [Configure a test policy for LDAP authentication and RBAC](#config-test-policy).
+* **Authorization Attribute**: Enter `distinguishedName`. This is the username entered at login time (`admin`). The `authentication.subject.id` message attribute is set to the value of this LDAP attribute (see example below). The `authentication.subject.id` is used as the base criteria in the filter that loads the LDAP groups (the user’s roles). This enables you to narrow the search to a particular user node in the LDAP tree. For more details, see the **Retrieve Attributes from Directory Server** filter in [Configure a test policy for LDAP authentication and RBAC](#configure-a-test-policy-for-ldap-authentication-and-rbac).
 
 An example value of the `authentication.subject.id` message attribute is as follows:
 
@@ -112,9 +112,9 @@ CN=admin, CN=Users,DC=kerberos3,DC=qa,DC=vordel,DC=comn
 
 This topic uses Microsoft Active Directory as an example LDAP repository. Other LDAP repositories such as Oracle Directory Server (formerly iPlanet and Sun Directory Server) and OpenLDAP are also supported.
 
-For an example of querying an Oracle Directory Server repository, see the **Retrieve Attributes from Directory Server** filter in [Configure a test policy for LDAP authentication and RBAC](#config-test-policy). For details on using OpenLDAP, see [Authentication and RBAC with OpenLDAP](/docs/apim_administration/apigtw_admin/general_rbac_openldap).
+For an example of querying an Oracle Directory Server repository, see the **Retrieve Attributes from Directory Server** filter in [Configure a test policy for LDAP authentication and RBAC](#configure-a-test-policy-for-ldap-authentication-and-rbac). For details on using OpenLDAP, see [Authentication and RBAC with OpenLDAP](/docs/apim_administration/apigtw_admin/general_rbac_openldap).
 
-## Configure a test policy for LDAP authentication and RBAC {#config-test-policy}
+## Configure a test policy for LDAP authentication and RBAC
 
 To avoid locking yourself out of Policy Studio, you can configure an example test policy for LDAP authentication and RBAC, which is invoked when a test URI is called on the server (and not a management services URI). Policy Studio provides an example policy named **Protect Management Interfaces (LDAP)** when the Admin Node Manager configuration is loaded.
 
