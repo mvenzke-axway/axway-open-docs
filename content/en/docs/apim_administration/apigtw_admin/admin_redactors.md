@@ -13,37 +13,67 @@ For example, sensitive data such as user passwords or credit card details can be
 
 ## API Gateway redaction configuration
 
-API Gateway installs a set of default rules that are applied to existing services such as Traffic Monitor, API Manager, and OAuth. In a new installation, API Gateway has default redaction rules for both Node Manager and group instances. The default redaction files are located at:
+API Gateway installs a set of default rules that are applied to existing services such as Traffic Monitor, API Manager, and OAuth. In a new installation, API Gateway has default redaction rules for both Node Manager and group instances.
 
-```
+The default redaction files are located at:
+
+```none
 apigateway/system/conf/nodemanagerRedaction.xml
+```
 
+```none
 apigateway/skel/instanceRedaction.xml
 ```
 
-When a new instance is created, the default instance redaction file is copied to `apigateway/groups/GROUP/INSTANCE/conf/instanceRedaction.xml` and no further configuration is required.
+When a new instance is created, the default instance redaction file is copied to the following location and no further configuration is required:
 
-On upgrading an existing installation, the files are extracted to the locations above and existing instances are not updated. To add these default rules to an upgraded instance, perform the following steps:
+```none
+apigateway/groups/GROUP/INSTANCE/conf/instanceRedaction.xml
+```
+
+On upgrading an existing installation, the files are extracted to the locations above, and existing instances are not updated.
+
+### Copy the default rules to an upgraded instance
+
+To add the default rules to an upgraded instance, perform the following steps:
 
 1. Copy the `instanceRedaction.xml` file to the `apigateway/groups/GROUP/INSTANCE/conf/` folder.
 2. Add a reference to it in the `apigateway/groups/GROUP/INSTANCE/conf/service.xml` file. For example:
 
-```
+    ```none
     <if exists="$VINSTDIR/conf/instanceRedaction.xml">
         <include file="$VINSTDIR/conf/instanceRedaction.xml"/>
     </if>
-```
+    ```
 
-You can configure additional custom rules in API Gateway configuration by adding a reference to include a *custom rules* file within the `apigateway/groups/GROUP/INSTANCE/conf/service.xml` file. Modifying the default files is not recommended as future upgrades might overwrite these files. To create custom redaction rules:
+### Configure additional custom rules in a single instance
+
+Follow this section to configure additional custom rules in a single instance's configuration, by adding a reference to include a *custom rules* file within the `apigateway/groups/GROUP/INSTANCE/conf/service.xml` file.
 
 1. Create a new redaction rules file, for example, `apigateway/groups/GROUP/INSTANCE/conf/redaction.xml`.
 2. Add a reference to the new file in the `apigateway/groups/GROUP/INSTANCE/conf/service.xml` file. For example:
 
-```
-    <if exists="$VINSTDIR/conf/instanceRedaction.xml">
+    ```
+    <if exists="$VINSTDIR/conf/redaction.xml">
         <include file="$VINSTDIR/conf/redaction.xml"/>
     </if>
+    ```
+
+    Modifying the default files is not recommended as future upgrades might overwrite these files.
+
+### Reuse custom rules in multiple instances
+
+If you wish to use the same redaction rules file for multiple instances, you can instead put the *custom rules* file into `apigateway/conf/redaction.xml`, then reference it in `service.xml`. For example:
+
 ```
+<if exists="$VDISTDIR/conf/redaction.xml">
+    <include file="$VDISTDIR/conf/redaction.xml"/>
+</if>
+```
+
+The `$VDISTDIR` variable refers to the API Gateway installation directory (for example, `apigateway/`), whereas the `$VINSTDIR` variable refers to the home directory of the instance (for example, `apigateway/groups/GROUP/INSTANCE/`).
+
+### Disable default rules
 
 To disable default rules, remove the redaction rules file, or its reference, from the `service.xml`. To disable individual rules, see section [Disable default redaction rules](#disable-default-redaction-rules).
 
