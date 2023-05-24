@@ -44,8 +44,8 @@ All Cassandra internal keyspaces begin with `system`, and should not be backed u
 
 Using `cqlsh`, execute the following command:
 
-```
-SELECT * from system.schema_keyspaces;
+```SQL
+SELECT * from system_schema.keyspaces;
 ```
 
 In the following example, `xxx_group_2` and `xxx_group_3` are API Management keyspaces:
