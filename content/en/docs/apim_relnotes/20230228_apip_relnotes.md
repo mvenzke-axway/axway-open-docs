@@ -129,6 +129,23 @@ The Content Security Policy (CSP) sets a policy that instructs the browser to on
 
 Related Issue: IAP-5970
 
+### Issue when upgrading Docker image from November 2022 to February 2023
+
+When attempting to upgrade the API Portal Docker image from November 2022 to February 2023, some customers are encountering an error during the Joomla! migration step. The error message reported is `Undefined constant "T4PATH_MEDIA"`.
+
+This error prevents the migration from completing successfully. The workaround for this issue is to disable the T4 System plugin before starting the upgrade to February 2023 by performing the following steps:
+
+1. Login to the Joomla! Administration Interface on <api_portal_host>/administrator
+2. Navigate to System > Manage > Plugins > T4 System
+3. Set Status = Disabled
+4. Save & Close.
+
+Once the upgrade is complete, re-enable this plugin.
+
+This issue was uncovered during testing of the May 2023 release, so as a result, another option is to upgrade straight to May 2023 from November 2022 where this issue is no longer present.
+
+Related Issue: IAP-6157
+
 ### Edit profile menu item cannot be edited
 
 Users cannot edit the **Profile** menu item because, on save, it shows an error for a missing required field, the **Menu item type**. There is no specific type for this menu item, and it should not be edited.
