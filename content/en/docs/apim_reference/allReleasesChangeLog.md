@@ -14,6 +14,23 @@ You can find the release notes for all service packs on [Axway Support](https://
 
 |Update |New features and enhancements        |Important Changes    |Deprecated/Removed/EOS  |
 |---    |---                                  |---                  |---                     |
+|[API Gateway and Manager 7.7.20230530](/docs/apim_relnotes/20230530_apimgr_relnotes/)|Policy Studio RCP Upgrade |Policy Studio upgrade   |Sun Access Manager has been retired   |
+|    |Set password history length |API Gateway Analytics PDF reports |Axway PassPort  |
+|    |Temporary passwords and user activation email link expiry |Operating system information removed from the config API |-  |
+|    |Support for Cassandra 4.0.9 |Traffic monitor in AAOI visibility when AAOI builder component is down |-  |
+|    |- |Quota restrictions period configuration updated in API Manager Quotas API |-  |
+|    |- |Data Maps cannot be updated |-  |
+|    |- |Update your custom Helm chart values file |-  |
+|    |- |Removal of ambiguity in the setting of service ports in API Gateway Helm chart |-  |
+|**Update**       |**New features and enhancements**        | **Important Changes**   |**Deprecated/Removed/EOS**  |
+|[API Portal 7.7.20230530](/docs/apim_relnotes/20230530_apip_relnotes/)|Support for new password in API Manager  |Temporary password expiring time and translation of appropriate error message|Removal of API Portal CSP implementation |
+|    |-  |Password history rules and translation of appropriate error message|- |
+|    |-  |Synchronize default login protection settings|- |
+|    |-  |CSP is not applied when using the new T4 template |-  |
+|    |- |Multi-catalog - API list displayed is not correct when creating an application |-  |
+|    |- |Multi-Organization - Incorrect API catalog data displayed |-  |
+|    |- |Inconsistent display of application quota data |-  |
+|**Update**       |**New features and enhancements**        | **Important Changes**   |**Deprecated/Removed/EOS**  |
 |[API Gateway and Manager 7.7.20230228](/docs/apim_relnotes/20230228_apimgr_relnotes/)|Support for Cassandra 4.0.7|API Gateway preserves the charset value configured in the Set Message filter  |Axway PassPort  |
 |    |FIPS mode supported in the API Gateway Docker image |API Gateway Via header received-protocol version set to the version used by the upstream sender |Sentinel  |
 |    |API Gateway containerization documentation restructure |Docker Compose security configuration changes in Amplify Analytics Operational Insights |Client Application Registry  |
