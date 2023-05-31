@@ -49,7 +49,7 @@ Cassandra is required to store data for API Manager and to store custom KPS tabl
 
 The following prerequisites apply to Cassandra in a multi-datacenter production environment:
 
-* Ensure that Cassandra version 4.0.7 is [installed](/docs/apim_installation/apigtw_install/cassandra_install/).
+* Ensure that Cassandra version 4.0.9 is [installed](/docs/apim_installation/apigtw_install/cassandra_install/).
 * You must have at least three Cassandra nodes per datacenter. Cassandra must be installed on each node in the cluster, but it should not be started until the Cassandra cluster is fully configured. For more information, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
 * Configure `JAVA_HOME` to a JRE 1.8 installation.
 * Each Cassandra node must have Python 2.7.x installed.

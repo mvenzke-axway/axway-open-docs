@@ -94,10 +94,6 @@ This category contains scripts to:
 
 This category contains scripts to provide OAuth 2.0 support.
 
-### `passport`
-
-This category contains scripts to create an Axway PassPort CSD based on the API service configuration. An Axway Component Security Descriptor (CSD) file is used when registering with Axway PassPort.
-
 ### `publish`
 
 This category contains scripts to add an entity type and any defined instances to an associated entity store.

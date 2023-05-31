@@ -159,6 +159,7 @@ The **XML** settings enable you to configure a range of options that affect how 
 * **Content assist**: Specifies whether to make suggestions and which strategy to use (for example, `Lax` or `Strict`).   * **Grammar constraints**: Specifies whether to use inferred grammar in the absence of DTD/Schema.
 
 **Syntax Coloring**: These settings enable you to associate specific colors with specific XML syntax elements (for example, attribute names, comment delimiters, or processing instruction content).
+{{< alert title="Note" color="primary" >}}Checkbox options are not persisted in XML Preferences settings. Functionality in this area cannot be changed as part of Eclipse RCP base components.{{< /alert >}}
 
 ## Viewing options
 

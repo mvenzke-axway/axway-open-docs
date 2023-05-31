@@ -84,6 +84,8 @@ To import a previously exported API, perform the following steps:
 4. Click **Import**.
 5. Press **F5** to reload the API Manager web console.
 
+{{< alert title="Note" color="primary" >}}Backward compatibility is not guaranteed for an API exported from a version of API Manager and imported to a previous version of API Manager.{{< /alert >}}
+
 ## Configure inbound request settings
 
 When you have virtualized a REST API to create a front-end API, you can edit and configure the inbound request settings between the client and the API Gateway (for example, for customized authentication, authorization, or monitoring). To configure inbound settings, perform the following steps in API Manager:
@@ -540,17 +542,23 @@ When you have registered the back-end REST API, you can select it in the list of
 
 In earlier API Manager versions, you could export API collections as a plain text file. Now, by default, to export API collections as plain text you must supply a password so that the generated file is encrypted.
 
-If you wish to generate a plain text export file, the administrator must add the following lines towards the start of the `INSTALL_DIR/apigateway/webapps/apiportal/vordel/apiportal/app/app.config` file, for example, before the `nodemanager` setting:
+If you wish to generate a plain text export file, set the following properties:
+
+* `com.axway.apimanager.api.export.cleartext.allowed` system property, set to `true` for the API Manager instance.
+* `allowAPIExportAsClearText`, set to `true` in the `INSTALL_DIR/apigateway/webapps/apiportal/vordel/apiportal/app/app.config` file.
+
+For example:
 
 ```bash
-/* Flag to determine if API collections can be exported as clear text:
- - Set to false if API export as clear text is not allowed (exported file is always encrypted)
- - Set to true if API export as clear text is allowed (you can choose to encrypt the file or not)*/
-
+/*
+Flag to determine if API collections can be exported as clear text
+Set this value to false if API Export as clear text is not allowed (i.e. the exported file is always encrypted)
+Set this value to true if API Export as clear text is allowed (i.e. the user can choose to encrypt the file or not)
+*/
 allowAPIExportAsClearText: true,
 ```
 
-If you change this setting, you must clear your browser cache so that the old setting is removed.
+After changing this setting, you must clear your browser cache so that the old setting is removed.
 
 When `allowAPIExportAsClearText` is set to `true`, the **Export API** dialog also includes an **Encrypt** option, which enables you to select whether to encrypt the export file using the specified password. For example:
 

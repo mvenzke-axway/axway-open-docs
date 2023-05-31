@@ -41,8 +41,7 @@ For details on how to configure different types of API Gateway and API Manager d
 
 ## Connection to other products
 
-API Gateway supports integration with a wide range of Axway products (for example,
-Axway PassPort) and third-party products (for example, LDAP, JMS, or database providers). The requirements for a deployment of API Gateway with such an integration differs based on the specific product being integrated.
+API Gateway supports integration with a wide range of Axway products and third-party products (for example, LDAP, JMS, or database providers). The requirements for a deployment of API Gateway with such an integration differs based on the specific product being integrated.
 
 For more details on a particular integration, see the appropriate integration or interoperability guide, available in the Axway Documentation portal at <https://docs.axway.com>.
 

@@ -111,12 +111,13 @@ The following are some examples of cipher strings:
 
 For more information on the syntax of this setting, see the [OpenSSL documentation](http://www.openssl.org/docs/apps/ciphers.html).
 
-The default cipher string of `FIPS:!SSLv3:!aNULL` performs the following:
+The default cipher string of `FIPS:!SSLv3:!aNULL:!TLSv1:!kRSA` performs the following:
 
-* Enables FIPS-compatible cipher suites only
-* Explicitly blocks cipher suites that require SSLv3 or lower
-* Forces the use of TLS v1.2 and TLS v1.3 protocols
-* Forbids unauthenticated cipher suites
+* Enables FIPS-compatible cipher suites only.
+* Explicitly blocks cipher suites that require SSLv3 or lower.
+* Forbids unauthenticated cipher suites.
+* Forces the use of TLS v1.2 and TLS v1.3 protocols.
+* Forbids cipher suites using RSA key exchange or authentication.
 
 ### Configure authentication settings
 

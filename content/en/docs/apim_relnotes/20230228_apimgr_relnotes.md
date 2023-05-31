@@ -124,7 +124,9 @@ As part of our software development life cycle, we constantly review our API Man
 
 ### Axway PassPort
 
-Axway PassPort is due for end of life (EOL) February 28th 2024. This is notice that we will remove support for use of PassPort with API Gateway from February 2024.
+Axway PassPort is due for end of life (EOL) May 2023. This is notice that we will remove support for use of PassPort with API Gateway from May 2023.
+
+*- This section was amended to update information about the EOL date.*
 
 ### Sentinel
 

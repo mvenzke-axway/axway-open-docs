@@ -19,7 +19,13 @@ A Service Provider (SP) protects access to requested resources, such as web site
 
 ### Identity Provider
 
-An Identity Provider (IdP) is a system that creates, maintains, and manages identity information for users, services, or systems, and provides authentication to other service providers (applications) within a network. An IdP is a trusted entity that users and servers can rely on when they are establishing a dialog that must be authenticated. The IdP sends an attribute assertion containing trusted information about the user to the SP. In an Axway deployment, the IdP is a third-party product.
+An Identity Provider (IdP) is a system that creates, maintains, and manages identity information for users, services, or systems, and provides authentication to other service providers (applications) within a network. In an Axway deployment, the IdP is a third-party product.
+
+An IdP has the following characteristics:
+
+* It is a trusted entity that users and servers can rely on when they are establishing a dialog that must be authenticated.
+* It can be configured to have Multi-Factor Authentication so that a central location for MFA can be utilized across a network.
+* It sends an attribute assertion containing trusted information about the user to the SP.
 
 ### User agent
 

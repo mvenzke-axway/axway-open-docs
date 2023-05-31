@@ -22,15 +22,15 @@ Follow these steps to configure API Manager in Policy Studio.
     * Enter a name for the Cassandra server (for example, `container_cassandra`).
     * Enter the name of the Cassandra container as the host name (for example, `cassandra228`).
     * Enter the port of the Cassandra container (for example, `9042`).
-
-4. Click **Next**.
-5. Enter the appropriate API Manager settings. For more information, see [Enable API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_config#enable-api-manager).
+4. If you are not running Cassandra in a container, you must set the cassandra keyspace name to a static value (for example, `x123_mygroup`).
+5. Click **Next**.
+6. Enter the appropriate API Manager settings. For more information, see [Enable API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_config#enable-api-manager).
 
     {{< alert title="Note" color="primary" >}}The default API administrator user name and password set in Policy Studio are used only when creating the administrator account in Apache Cassandra. After the account has been created in Cassandra, you cannot change the credentials in Policy Studio. You must use API Manager to change the administrator credentials. You can also reset the administrator password by running the `setup-apimanager` script with the option `--resetPassword` inside the Admin Node Manager container. For more information, see [Reset the default API administrator password](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/container_troubleshoot#reset-the-default-api-administrator-password).{{< /alert >}}
 
-6. Click **Finish**.
-7. Configure additional API Manager settings under **Server Settings > API Manager**. For example, you can specify custom policies that are called as traffic passes through API Manager.
-8. Select **File > Export** and select a package to export the configuration as a package (`fed`, `pol`, or `env`).
+7. Click **Finish**.
+8. Configure additional API Manager settings under **Server Settings > API Manager**. For example, you can specify custom policies that are called as traffic passes through API Manager.
+9. Select **File > Export** and select a package to export the configuration as a package (`fed`, `pol`, or `env`).
 
 ### Deploy API Manager-enabled API Gateway container
 

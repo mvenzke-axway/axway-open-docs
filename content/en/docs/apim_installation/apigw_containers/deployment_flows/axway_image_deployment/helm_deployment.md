@@ -3,10 +3,10 @@ title: Helm deployment
 linkTitle: Helm deployment
 weight: 22
 date: 2023-01-23
-description: Install API Gateway using Axway's public helm chart and public images.
+description: Install API Gateway using Axway's public Helm chart and public images.
 ---
 
-From API Gateway [November 2022](/docs/apim_relnotes/20221130_apimgr_relnotes/) update onwards, Axway public images and a public helm chart are available from [Axway repository](https://repository.axway.com/). This allows you to deploy the Admin Node Manager, API Gateway, API Manager, and if required, Axway Analytics, using Helm.
+From API Gateway [November 2022](/docs/apim_relnotes/20221130_apimgr_relnotes/) update onwards, Axway public images and a public Helm chart are available from [Axway repository](https://repository.axway.com/). This allows you to deploy the Admin Node Manager, API Gateway, API Manager, and if required, Axway Analytics, using Helm.
 
 ## Prerequisites
 
@@ -98,16 +98,16 @@ To access the API Gateway Helm chart, go to [Axway repository](https://repositor
 
 ### Add the Axway Helm repository
 
-Add the helm repository and perform a `helm pull` to get the latest version of the repository:
+Add the Helm repository and perform a `helm pull` to get the latest version of the repository:
 
 ```bash
 helm repo add axway https://helm.repository.axway.com --username=<client_id> --password=<client_secret>
 helm pull axway/apigateway-helm-prod-apigateway
 ```
 
-### Fetch the helm chart to examine the values file
+### Fetch the Helm chart to examine the values file
 
-To be able to view the helm `values.yaml` file you can run a `helm fetch` command on the added repository:
+To be able to view the Helm `values.yaml` file you can run a `helm fetch` command on the added repository:
 
 ```bash
 helm fetch axway/apigateway-helm-prod-apigateway --untar
@@ -117,10 +117,10 @@ This command creates a directory `apigateway` containing the complete chart, inc
 
 ### Create a Kubernetes secret for your Axway credentials
 
-To access the Axway images that are referenced in the Helm chart from your kubernetes cluster, create a kubernetes secret with your Axway Service Account credentials and reference it in your customized values.yaml file.
+To access the Axway images that are referenced in the Helm chart from your kubernetes cluster, create a kubernetes secret with your Axway Service Account credentials and reference it in your customized values.yaml file. The secret must be created in the namespace in which you will deploy the Axway public Helm chart.
 
 ```bash
-kubectl create secret docker-registry regcred -n <namespace> --docker-server="https://repository.axway.com" --docker-username="<client_id>" --docker-password="<client_secret>"
+kubectl create secret docker-registry regcred -n <namespace> --docker-server="docker.repository.axway.com" --docker-username="<client_id>" --docker-password="<client_secret>"
 ```
 
 ### Create a customized values.yaml file
@@ -131,11 +131,30 @@ Create a customized `values` file, for example, `myvalues.yaml`, and make your c
 
 Product license configuration can be added to each component individually by way of a Helm ConfigMap. The `license.lic` license file must be configured within the `License` ConfigMap. For more information, see section [Sample customized values file](#sample-customized-values-file).
 
+### Acceptance of General conditions for license and subscription services
+
+To run API Gateway, API Manager, Admin Node Manager, and API Gateway Analytics containers in Helm, you must accept Axway General Terms and Conditions:
+
+*“You hereby accept that the Axway Products and/or Services shall be governed exclusively by the [Axway General Terms and Conditions](https://www.axway.com/sites/default/files/Legal_documents/License_general_conditions/Axway_General_Conditions_version_april_2014_eng_(France).pdf), unless an agreement has been signed with Axway in which case such agreement shall apply.”*
+
+To accept them, set the `generalConditions.accept` parameter for each image that is pulled from the Axway repository. The parameter is described in the supplied `values.yaml` file.
+
+For example, in the Admin Node Manager image, set the parameter under the image section:
+
+```yaml
+anm:
+  image: 
+    repository: "admin-nodemanager"
+    tag: 7.7.0.20230530-3-ubi7
+    generalConditions:
+      accept: "yes"
+```
+
 ### Include a group ID configuration
 
 The group ID can be set on the API Manager or API Traffic component. For example:
 
-```bash
+```yaml
 apimgr:
   groupId: 
     "APIMgrGroup"
@@ -149,10 +168,13 @@ apitraffic:
 
 Axway images are shipped with a default domain certificate. Customized domain certificates can be loaded to the environment by way of the persistent volume mount point for `apigateway` configuration files. For more information, see [Mount component configuration](/docs/apim_installation/apigw_containers/deployment_flows/axway_image_deployment/helm_deployment#mount-a-component-configuration) section.
 
-If the domain certificates were generated with a passphrase, that passphrase must be configured within the global `domainkeypassphrase`. For example:
+If the domain certificates were generated with a passphrase, that passphrase must be configured within the global `domainkeypassphrase`. Additionally, in the `global` section of your custom values file, add the new `domainId` field, and give it a value for the domain ID. This value should match the domain ID used in the creation of your custom certificates.
 
-```bash
+ For example:
+
+```yaml
 global:
+  domainId: "prod"
   domainkeypassphrase:
     passphrase: "redacted"
 ```
@@ -161,7 +183,7 @@ global:
 
 Any component which uses an Entity Store with a passphrase can configure the passphrase in the `values` override file for that specific component. For example:
 
-```bash
+```yaml
 anm:
   espassphrase: "redacted"
 ```
@@ -179,7 +201,9 @@ Follow these steps to install API Gateway using your customized `myvalues.yaml` 
     ```bash
     kubectl create namespace mynamespace
     ```
-2. Use your customized file to install the chart. The following command will pick up all values from the original `values.yaml` and override them with any specific values from `myvalues.yaml`.
+2. Create a secret to access the Docker registry, as described in section [Create a Kubernetes secret for you Axway credentials](#create-a-kubernetes-secret-for-your-axway-credentials).
+
+3. Use your customized file to install the chart. The following command will pick up all values from the original `values.yaml` and override them with any specific values from `myvalues.yaml`.
 
     ```bash
     helm install apim -f myvalues.yaml -n mynamespace <repository.axway.com>
@@ -191,7 +215,7 @@ Follow these steps to install API Gateway using your customized `myvalues.yaml` 
     helm install -f values.yaml apim -n mynamespace axway/apigateway-helm-prod-apigateway
     ```
 
-3. After the installation is finished, check the deployment, for example:
+4. After the installation is finished, check the deployment, for example:
 
     ```bash
     kubectl get pods -n mynamespace
@@ -207,7 +231,7 @@ Follow these steps to install API Gateway using your customized `myvalues.yaml` 
     apim-gateway-apitraffic-6fc46d6788-s4mk9   0/1       Running   0          72s
     ```
 
-4. After all the pods are up and running, you should be able to reach your Admin Node Manager, your API Gateway, the API Manager, and the Analytics UI, if enabled. To check these, get the ingresses and use them to find the URL for each of the interfaces:
+5. After all the pods are up and running, you should be able to reach your Admin Node Manager, your API Gateway, the API Manager, and the Analytics UI, if enabled. To check these, get the ingresses and use them to find the URL for each of the interfaces:
 
     ```bash
     kubectl get ing -n mynamespace

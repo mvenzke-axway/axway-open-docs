@@ -91,7 +91,7 @@ For more details, see [Install and configure a metrics database](/docs/apim_inst
 
 ### Apache Cassandra
 
-API Gateway and API Manager support Apache Cassandra version 4.0.7 for internal data storage. For more details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install).
+API Gateway and API Manager support Apache Cassandra version 4.0.9 for internal data storage. For more details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install).
 
 ## Web browsers
 

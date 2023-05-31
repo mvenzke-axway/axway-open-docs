@@ -6,20 +6,19 @@
   "description": "Learn how to update from API Gateway One Version to the latest delivery."
 }
 
-After you **upgrade** your [API Gateway 7.5.x or 7.6.x](/docs/apim_installation/apigw_upgrade/upgrade_steps_extcass/) to [API Gateway One Version](https://community.axway.com/s/question/0D52X00008WUjgeSAD/introducing-one-version-for-api-management), follow the instructions on this page to **update** your API Gateway One Version to the latest delivery.
+After you **upgrade** your [API Gateway 7.5.x or 7.6.x](/docs/apim_installation/apigw_upgrade/upgrade_steps_extcass/) to [API Gateway One Version](https://community.axway.com/s/question/0D52X00008WUjgeSAD/introducing-one-version-for-api-management) (API Gateway 7.7), follow the instructions on this page to **update** your API Gateway One Version to the latest delivery.
 
 * The [sysupgrade](/docs/apim_installation/apigw_upgrade/upgrade_script/) script is not used when updating to API Gateway One Version.
 * If you have installed a licensed version of API Gateway One Version or API Manager One Version, you do not require a new license to install updates.
 
 ## Before you start
 
-You must perform the following procedures to update from API Gateway One Version:
-
-{{% alert title="Note" %}}All these steps are mandatory, and must be followed in this order.{{% /alert %}}
+All the following steps are mandatory, and you must perform them in the correct order to update your API Gateway to the latest update.
 
 1. [Back up customized files](#back-up-customized-files).
 2. [Install an API Gateway server update](#install-an-api-gateway-server-update).
 3. [Install a Policy Studio update](#install-a-policy-studio-update).
+    * You must fix any [broken references](/docs/apigtw_devops/team_dev_dependencies#show-broken-references) before updating Policy Studio. Broken references are not maintained, and will be removed on update.
 4. [Install a Configuration Studio update](#install-a-configuration-studio-update).
 5. [Install an API Gateway Analytics update](#install-an-api-gateway-analytics-update).
 
@@ -29,7 +28,7 @@ Before updating your product, ensure to back up any customized files from your `
 
 The following is a list of directories that might contain customized files:
 
-```
+```none
 webapps/apiportal/vordel/apiportal
 webapps/emc/vordel/manager/app
 webapps/emc
@@ -40,11 +39,11 @@ tools/filebeat-VERSION-PLATFORM
 conf
 ```
 
-When you are restoring the files, ensure that you merge any updated files instead of copying them back directly, to avoid any regex matching issues.
+When you are restoring the files, ensure that you merge any updated files instead of copying them back directly to avoid any regex matching issues.
 
 ## Install an API Gateway server update
 
-If you have installed an existing version of API Manager, installing the **API Gateway server** update automatically also installs the updates and fixes for API Manager.
+If you have installed an existing version of API Manager, installing the **API Gateway server** update automatically also installs the updates and fixes (Fixes are only applied if they have not previously been applied) for API Manager.
 
 You can easily install API Gateway server update by running the `update_apigw.sh` script. The script performs the following:
 
@@ -56,47 +55,47 @@ You can easily install API Gateway server update by running the `update_apigw.sh
 
 The script also performs all of the steps that were performed by a post installation script in earlier updates. This includes:
 
-* JRE cleanup
-* `system/lib/modules` cleanup
-* Third-party and Axway JAR cleanup
-* Apply `acl.json` fix
-* Apply passphrase obfuscation fix
+* JRE cleanup.
+* `system/lib/modules` cleanup.
+* Third-party and Axway JAR cleanup.
+* Apply `acl.json` fix.
+* Apply passphrase obfuscation fix.
 * Apply modifications to Node Manager entity store configuration.
 
-Fixes are only applied if they have not previously been applied.
+To see the `update_apigw.sh` script options, run the script with `--help`, for example:
+
+```bash
+./update_apigw.sh --help
+```
+
+To run the script without user interaction, specify `--mode unattended`.
+
+### Steps to install the API Gateway server update
 
 To install the update on your existing API Gateway 7.7 server installation, perform the following steps:
 
 1. Ensure that your existing API Gateway instance and Node Manager have been stopped.
-2. Remove any previous patches from your `INSTALL_DIR/apigateway/ext/lib` and `INSTALL_DIR/apigateway/META-INF` directories (or the `ext/lib` directory in an API Gateway instance). All patches have already been included in API Gateway One Version, so you do not need to copy patches from a previous version.
-3. If you have used `setcap` to grant API Gateway permission to use privileged ports (see, [Allow API Gateway to listen on privileged ports](#allow-api-gateway-to-listen-on-privileged-ports)), remove these permissions now because thy might prevent files from being overwritten.
+2. Remove any previous patches from your `INSTALL_DIR/apigateway/ext/lib` and `INSTALL_DIR/apigateway/META-INF` directories (or the `ext/lib` directory in an API Gateway instance).
+    * All patches have already been included in API Gateway One Version, so you do not need to copy patches from a previous version.
+3. If you have used `setcap` to grant API Gateway permission to use [privileged ports](#allow-api-gateway-to-listen-on-privileged-ports), you must remove these permissions now because they might prevent files from being overwritten:
 
-   ```
+   ```bash
    setcap -r INSTALL_DIR/apigateway/platform/bin/vshell
    ```
 
-4. Download and unpack the API Gateway 7.7 server update file into a new directory. For example:
+4. Download and unpack the API Gateway 7.7 server update file into a new directory, and not into the existing API Gateway installation directory. For example:
 
-   ```
+   ```bash
    mkdir 77update
    tar xzvf APIGateway_7.7.YYYYMMDD_Core_linux-x86-64_BNnn.tar.gz -C 77update
    ```
 
-   {{< alert title="Note" color="primary" >}}You must extract the file into a new directory, and not into the existing API Gateway installation directory.{{< /alert >}}
 5. Run the `update_apigw.sh` script from the directory into which you extracted the update file (for example, `77update`) and specify your API Gateway installation directory using the `--install_dir` option. For example:
 
-   ```
+   ```bash
    ./update_apigw.sh --install_dir /opt/Axway-7.7/
    ```
 6. Restart your Node Manager and API Gateway instances on the local machine.
-
-Run the `update_apigw.sh` script with the `--help` option to see the available options:
-
-```
-./update_apigw.sh --help
-```
-
-To run the script without user interaction, specify `--mode unattended` option.
 
 ### Change the trace level
 
@@ -108,7 +107,9 @@ The script takes a backup of your entire API Gateway installation directory and 
 
 ## Install a Policy Studio update
 
-You can run the `update_policy_studio.sh` script, which is available from API Gateway One Version Policy Studio update pack (for example, `APIGateway_7.7.YYYYMMDD_PolicyStudio_linux-x86-64_BNnn.tar.gz`) to update your existing Policy Studio installation.
+You can run the `update_policy_studio.sh` script, available from API Gateway One Version Policy Studio update pack (for example, `APIGateway_7.7.YYYYMMDD_PolicyStudio_linux-x86-64_BNnn.tar.gz`) to update your existing Policy Studio installation up to the [February 2023](/docs/apim_relnotes/20230228_apimgr_relnotes/) release.
+
+A full installation is required for the May 2023 release because of the the Eclipse RCP 4.9 base update. Forward updates from this version onwards will be supplied.
 
 Running this script performs the following:
 
@@ -120,7 +121,7 @@ Running this script performs the following:
 
 To install the Policy Studio update, download and unpack the API Gateway 7.7 Policy Studio update file into a new directory. For example:
 
-```
+```bash
 mkdir 77update
 tar -xzvf APIGateway_7.7.YYYYMMDD_PolicyStudio_linux-x86-64_BNnn.tar.gz -C 77update
 ```
@@ -130,7 +131,7 @@ tar -xzvf APIGateway_7.7.YYYYMMDD_PolicyStudio_linux-x86-64_BNnn.tar.gz -C 77upd
 
 Run the `update_policy_studio.sh` script from the directory into which you extracted the update file (for example, `77update`), and specify your API Gateway installation directory as an argument with the `--install_dir` flag:
 
-```
+```bash
 ./update_policy_studio.sh --install_dir $INSTALL_DIR
 ```
 
@@ -138,11 +139,11 @@ Run the `update_policy_studio.sh` script from the directory into which you extra
 
 For example:
 
-```
+```bash
 ./update_policy_studio.sh --install_dir /opt/Axway-7.7/
 ```
 
-If you had applied any modifications to the `policystudio.ini` file, you must reapply them after upgrade.
+{{< alert title="Note" color="primary" >}}If you had applied any modifications to the `policystudio.ini` file, you must reapply them after upgrade.{{< /alert >}}
 
 ### Install a Policy Studio update on Windows
 
@@ -156,7 +157,9 @@ update_policy_studio.bat --install_dir $INSTALL_DIR
 
 ## Install a Configuration Studio update
 
-You can run the `update_configuration_studio.sh` script, which is available from API Gateway One Version Configuration Studio update pack (for example, `APIGateway_7.7.YYYYMMDD_ConfigurationStudio_linux-x86-64_BNnn.tar.gz`), to update your existing Configuration Studio installation.
+You can run the `update_configuration_studio.sh` script, which is available from API Gateway One Version Configuration Studio update pack (for example, `APIGateway_7.7.YYYYMMDD_ConfigurationStudio_linux-x86-64_BNnn.tar.gz`), to update your existing Configuration Studio installation up to the [February 2023](/docs/apim_relnotes/20230228_apimgr_relnotes/) release.
+
+A full installation is required for the May 2023 release because of the Eclipse RCP 4.9 base update. Forward updates from this version onwards will be supplied.
 
 Running this script performs the following:
 
@@ -168,7 +171,7 @@ Running this script performs the following:
 
 To install the Configuration Studio update, download and unpack the API Gateway 7.7 Configuration Studio update file into a new directory. For example:
 
-```
+```bash
 mkdir 77update
 tar -xzvf APIGateway_7.7.YYYYMMDD_ConfigurationStudio_linux-x86-64_BNnn.tar.gz -C 77update
 ```
@@ -176,9 +179,9 @@ tar -xzvf APIGateway_7.7.YYYYMMDD_ConfigurationStudio_linux-x86-64_BNnn.tar.gz -
 * You must execute the update script using the same user who installed Configuration Studio.
 * You must extract the file into a new directory and not into the existing API Gateway installation directory.
 
-Run the `update_configuration_studio.sh` script from the directory into which you extracted the Update file (for example, `77update`), and specify your API Gateway installation directory as an argument with the *--install_dir* flag:
+Run the `update_configuration_studio.sh` script from the directory into which you extracted the Update file (for example, `77update`), and specify your API Gateway installation directory as an argument with the `--install_dir` flag:
 
-```
+```bash
 ./update_configuration_studio.sh --install_dir $INSTALL_DIR
 ```
 
@@ -186,11 +189,11 @@ Run the `update_configuration_studio.sh` script from the directory into which yo
 
 For example:
 
-```
+```bash
 ./update_configuration_studio.sh --install_dir /opt/Axway-7.7/
 ```
 
-If you had applied any modifications to the `configurationstudio.ini` file, you must reapply them after upgrade.
+{{< alert title="Note" color="primary" >}}If you had applied any modifications to the `configurationstudio.ini` file, you must reapply them after upgrade.{{< /alert >}}
 
 ### Install a Configuration Studio update on Windows
 
@@ -198,7 +201,7 @@ For installations running on Windows 7, you must manually unzip the Configuratio
 
 The `update_configuration_studio.bat` update script is available for Windows. It is located in the API Gateway 7.7 Configuration Studio update pack (`.zip`) for Windows.
 
-```
+```bash
 update_configuration_studio.bat --install_dir $INSTALL_DIR
 ```
 
@@ -209,57 +212,55 @@ To install the update on your existing API Gateway Analytics 7.7 installation, p
 1. Ensure that your existing API Gateway Analytics instance and Node Manager have been stopped.
 2. Remove old third-party libraries by deleting the following directories:
 
-   ```
+   ```bash
    INSTALL_DIR/analytics/system/lib/modules
    ```
 3. Remove old JRE versions by deleting the following directories:
 
-   ```
+   ```bash
    INSTALL_DIR/analytics/platform/jre
    ```
 4. Verify the owners of API Gateway binaries before extracting the update.
 
-   ```
+   ```bash
    ls -l INSTALL_DIR/analytics/posix/bin
    ```
 5. Using the same user who owns the API Gateway Analytics binaries, unzip and extract API Gateway 7.7 Analytics update over the `analytics` directory in your existing API Gateway 7.7 installation directory. For example:
 
-   ```
+   ```bash
    tar -xzvf APIGateway_7.7.YYYYMMDD_Analytics_linux-x86-64_BNnn.tar.gz -C /opt/Axway-7.7/analytics/
    ```
 6. Change to the `analytics` directory in your installation:
 
-   ```
+   ```bash
    cd $INSTALL_DIR/analytics
    ```
-7. Enable the `execute` flag for the post-installation script, if it's not enabled yet:
+7. Enable the `execute` flag for the post-installation script, if it is not enabled yet:
 
-   ```
+   ```bash
    chmod +x apigw_analytics_sp_post_install.sh
    ```
 8. Run the post-install script for API Gateway Analytics.
 
-   ```
+   ```bash
    apigw_analytics_sp_post_install.sh
    ```
 
 ## Allow API Gateway to listen on privileged ports
 
-If you are running API Gateway as a non-root user, you must perform the following steps to grant the required privileges to API Gateway processes to use privileged ports, ports below `1024`.
-
-These steps are not required if API Gateway only needs to use ports numbered `1024` and above.
+If you are running API Gateway as a non-root user, you must perform the following steps to grant the required privileges to API Gateway processes to use privileged ports, ports below `1024`. These steps are not required if API Gateway only needs to use ports numbered `1024` and above.
 
 After updating your installation, perform the following steps:
 
 1. Add the following line to the `INSTALL_DIR/system/conf/jvm.xml` file:
 
-   ```
+   ```none
    <VMArg name="-Djava.library.path=$VDISTDIR/$DISTRIBUTION/jre/lib/amd64/server:$VDISTDIR/$DISTRIBUTION/jre/lib/amd64:$VDISTDIR/$DISTRIBUTION/lib/engines:$VDISTDIR/ext/$DISTRIBUTION/lib:$VDISTDIR/ext/lib:$VDISTDIR/$DISTRIBUTION/jre/lib:$VDISTDIR/$DISTRIBUTION/jre/lib/server:system/lib:$VDISTDIR/$DISTRIBUTION/lib"/>
    ```
 
 2. Allow API Gateway to listen on privileged ports:
 
-   ```
+   ```bash
    setcap 'cap_net_bind_service=+ep cap_sys_rawio=+ep' INSTALL_DIR/platform/bin/vshell
    ```
 
@@ -273,7 +274,7 @@ Updating API Manager is now carried out during the application of the latest API
 
 ## Update cipher scheme
 
-The cipher scheme for all encrypted data in the system (such as Database/LDAP passwords, private keys, and so on) uses PBKDF2 (Password based key derivation function 2) with more secure parameters. This reduces vulnerability to brute force attacks. The cipher scheme is backwards compatible with previous versions of the cipher scheme, and it is able to decrypt data, which was encrypted in the old cipher scheme.
+The cipher scheme for all encrypted data in the system (such as Database/LDAP passwords, private keys, and so on) uses Password Based Key Derivation Function 2 (PBKDF2) with more secure parameters. This reduces vulnerability to brute force attacks. The cipher scheme is backwards compatible with previous versions of the cipher scheme, and it is able to decrypt data, which was encrypted in the old cipher scheme.
 
 The Entity store is re-encrypted with PBKDF2 as part of API Gateway update process, but the Key property store will not be re-encrypted.
 

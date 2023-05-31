@@ -391,7 +391,11 @@ These are some general recommendations:
 
 Content Security Policy ([CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)) sets a policy that instructs the browser to only fetch resources, such as scripts, images, or objects, from the specified locations. After CSP is configured, a compliant browser loads resources from locations listed in the policy. CSP reduces the ability of an attacker to inject malicious content and helps to protect a web page from attacks like Cross-Site Scripting (XSS), dynamic code execution, and clickjacking.
 
-CSP is enabled by default in API Portal. To change its configuration, in JAI, click **Extensions > Plugins > API Portal - System**. In the plugin settings you can edit, enable, or disable the policy. Because API Portal uses some inline scripts, you must use [nonces](https://content-security-policy.com/nonce/) to ensure that you are using API Portal securely. If you do not want to take advantage of the nonces you can remove them from the policy. Note that Joomla 4 introduces a built-in CSP functionality, which is disabled by default, and we recommended you to keep it disabled to avoid conflict with API Portal CSP functionality.
+Joomla native CSP is enabled by default in API Portal. To change its configuration, in JAI, click **System > Manage > Plugins > System - HTTP Headers** plugin. In the plugin settings you can edit, enable, or disable the policy.
+
+Because API Portal uses some inline scripts, you must use [nonces](https://content-security-policy.com/nonce/) to ensure that you are using API Portal securely. If you do not want to take advantage of the nonces you can remove them from the policy.
+
+{{< alert title="Note" color="" >}}If you are upgrading from API Portal versions prior to [May 2023](/docs/apim_relnotes/20230530_apip_relnotes/), you must manually migrate the settings from **API Portal - System** to **System - HTTP Headers**.{{< /alert >}}
 
 ## Define retention periods for personal data
 

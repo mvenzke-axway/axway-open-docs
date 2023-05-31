@@ -26,7 +26,7 @@ You must read the following items carefully before you perform any of the instru
 * The instructions and scripts are intended as a starting point and must be customized and automated as needed to match your backup polices and environment.
 * Because 100% of the data is stored on each node, you must run the backup procedure on a single node only, preferably on the seed node.
 * For safety reasons, the backup location should *not* be on the same disk as the Cassandra data directory, and it must have enough free space to contain the keyspace.
-* If using [Apache Cassandra 4.0.7](/docs/apim_installation/apigw_upgrade/upgrade_cassanda/upgrade_cassandra_v4/), you must upgrade your API Gateway to the [February 2023](/docs/apim_relnotes/20230228_apimgr_relnotes/) release, or later, before backing up the data. This is because the `apigw-backup-tool` has been upgraded to support Apache Cassandra 4.0.7 in this release.
+* If using [Apache Cassandra 4.0.9](/docs/apim_installation/apigw_upgrade/upgrade_cassanda/upgrade_cassandra_v4/), you must upgrade your API Gateway to the [February 2023](/docs/apim_relnotes/20230228_apimgr_relnotes/) release, or later, before backing up the data. This is because the `apigw-backup-tool` has been upgraded to support Apache Cassandra 4.0.9 in this release.
 
 ## Which data keyspaces to back up?
 
@@ -34,7 +34,7 @@ These procedures apply to data in API Management and KPS keyspaces only.
 
 You must first obtain a list of the keyspace names to back up. API Management keyspaces may have a custom name defined, but they are named in the format of `<UUID>_group_[n]` by default. For example:
 
-```
+```none
 x9fa003e2_d975_4a4a_a27e_280ab7fd8a5_group_2p_2
 ```
 
@@ -78,18 +78,20 @@ The following table describes the parameters in the `apigw-backup-tool.ini` file
 | cqlsh_ip                   | IP address used by the `cqlsh`                                          |
 | cqlsh_request_timeout      | CQL request timeout in seconds                                          |
 | cqlsh_ssl_enabled          | Set to `true` if the `cqlsh` utility is configured for SSL           |
-| cql_username               | Username used by the `cqlsh`                                           |
-| cql_password               | Password used by the `cqlsh`                                           |
-| nodetool_username          | Username used by the `nodetool`                                         |
-| nodetool_password          | Password used by the `nodetool`                                         |
+| cql_username               | Username used by the `cqlsh` (optional)                 |
+| cql_password               | Password used by the `cqlsh` (optional)                 |
+| nodetool_username          | Username used by the `nodetool` (optional)              |
+| nodetool_password          | Password used by the `nodetool` (optional)              |
 | nodetool_ssl_enabled       | Set to `true` if the `nodetool` utility is configured for SSL        |
 | backup_root_dir            | Path to the backup directory                                            |
 | printcmd                   | Set to `true` to see the commands ran by the tool during the process          |
 | debug                      | Set to `true` to see debug logs                                               |
 
+{{< alert title="Note" color="primary" >}}`cql_username`, `cql_password`, `nodetool_username`, and `nodetool_password` are optional parameters. If they are not provided in the `apigw-backup-tool.ini` file, then you will be prompted for them during command execution. {{< /alert >}}
+
 After the configuration is set and Cassandra is running, run the following command to validate the configuration:
 
-```
+```none
 apigw-backup-tool validateConfig
 ```
 
@@ -97,13 +99,13 @@ apigw-backup-tool validateConfig
 
 While Cassandra is running, run the following command to create a backup in the `backup_root_dir` folder:
 
-```
+```none
 apigw-backup-tool backup -k <keyspace name> -s <snapshot name>
 ```
 
 After the backup is complete, it can be found in the following structure:
 
-```
+```none
   <BACKUP_ROOT_DIR>
   ├── <BACKUP_SNAPSHOT_NAME>
   │ ├── <SNAPSHOT_NAME>
@@ -129,7 +131,7 @@ To restore a keyspace:
 1. Shut down all API Gateway instances and any other clients in the Cassandra cluster.
 2. Run the following command:
 
-    ```
+    ```none
     apigw-backup-tool restore -k <keyspace name> -s <snapshot name>
     ```
 
@@ -145,20 +147,20 @@ To back up and restore a 3-node cluster into a *new* 3-node cluster.
 1. To create the backup, copy the `apigw-backup-tool` folder to the seed node of both the old and the new cluster.
 2. Configure the `apigw-backup-tool` in both the old and the new clusters, then verify that the configuration is correct:
 
-    ```
+    ```none
     apigw-backup-tool validateConfig
     ```
 
 3. Run the backup script on the old cluster:
 
-    ```
+    ```none
     apigw-backup-tool backup -k <keyspace name> -s <snapshot name>
     ```
 
 4. Copy the backup folder to the new cluster. The backup must be copied to the `backup_root_dir` directory that is configured in new cluster.
 5. In the new cluster, run the restore script:
 
-    ```
+    ```none
     apigw-backup-tool restore -k <keyspace name> -s <snapshot name>
     ```
 
@@ -166,7 +168,7 @@ To back up and restore a 3-node cluster into a *new* 3-node cluster.
 
 To restore a backup of multiple nodes taken in the same cluster, ensure the backup is in `backup_root_dir`, and run the restore command.
 
-```
+```none
 apigw-backup-tool restore -k <keyspace name> -s <snapshot name>
 ```
 
@@ -184,7 +186,7 @@ You must back up the `CASSANDRA_HOME/conf` directory on all nodes.
 
 You must back up the API Gateway group configuration in the following directory:
 
-```
+```none
 API_GW_INSTALL_DIR/apigateway/groups/<group-name>/conf
 ```
 

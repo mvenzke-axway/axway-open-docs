@@ -55,7 +55,7 @@ option.
 Enter the object key for the object to be stored. Alternatively, you can enter a selector that is expanded at runtime.
 
 **Encryption key**:
-Click the browse button to select an encryption key for the object.
+Click the browse button to select a certificate from the trusted store for the object.
 
 **How to store**:
 Select how to store the object. You can choose from the following options:

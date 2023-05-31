@@ -89,7 +89,6 @@ The Mapping is presented as such:
 * `XkmsConfigGroup`
 * `RadiusClients`
 * `SunAccessManagerSettings`
-* `PassPortKeyStoreManager`
 * `TivoliActionGroupGroup`
 * `TivoliSettingsGroup`
 

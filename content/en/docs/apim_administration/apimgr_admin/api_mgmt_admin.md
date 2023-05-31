@@ -48,7 +48,7 @@ To create an application-specific quota, perform the following steps:
 
 ### Quota time windows
 
-When specifying time windows in quota rules, the quota opens when the API is called at the current second, minute, day, or week, depending on the time unit specified in the quota rule.
+When specifying time windows in quota rules, the quota opens when the API is called at the current second, minute, hour, day, or week, depending on the time unit specified in the quota rule.
 
 For example, you have defined a quota rule on API A and method B that throttles the message count to N messages per hour. Then assume API A and method B was invoked at 14:33 for the first time. The specified rule is activated at the time of the first API call, setting the time window to start at the hour (14:00:00.000). If you get another call at 14:35, the counter is incremented, and its value is validated against the limit (N). If you get another call at 17:33, the new time window start will start at the hour (17:00:00.000), and the counter is reset to 0 before reflecting the API call from 17:33.
 

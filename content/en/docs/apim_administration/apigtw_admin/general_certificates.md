@@ -110,6 +110,7 @@ The `keystoreadmin` script enables you to perform the following tasks:
 * List registered HSM providers
 * Create a certificate realm
 * List certificate realms
+* Delete a certificate realm
 
 For example, if a policy developer is using JMS, and wants to indicate that private keys exist on an HSM, they could indicate that the certificate is using the `JMS Keys` certificate realm. On each instance using the configuration, it is the responsibility of the administrator to create the `JMS Keys` certificate realm.
 
@@ -140,6 +141,10 @@ List configured certificate realms and associated keystores.
 `5` - `Create a Certificate Realm`
 
 Creates a keystore and assign it to a certificate realm.
+
+`6` - `Delete a Certificate Realm`
+
+Delete a certificate realm and its keystore.
 
 ### Register an external HSM provider
 

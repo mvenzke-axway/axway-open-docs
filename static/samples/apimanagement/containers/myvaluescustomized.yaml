@@ -2,6 +2,7 @@
 nameOverride: gateway
 global:
   domainName: example.com
+  domainId: prod
   defaultRegistry: docker.repository.axway.com/apigateway-docker-prod/7.7
   imagePullPolicy: Always
   imagePullSecrets:
@@ -49,6 +50,8 @@ anm:
   image:
     repository: "admin-nodemanager"
     tag: "7.7.0.20221130-3-BN0009-ubi7"
+    generalConditions:
+      accept: "yes"
   resources:
     limits:
       memory: "2048Mi"
@@ -75,7 +78,14 @@ anm:
       - hosts:
           - anm.myexample.com
   service:
-    port: 8091
+    type: ClusterIP
+    ports:
+      traffic:
+        port: 8090
+        protocol: TCP
+      ui:
+        port: 8091
+        protocol: TCP
   extraVolumeMounts:
     - name: events
       mountPath: /opt/Axway/apigateway/events
@@ -112,6 +122,8 @@ apimgr:
   image:
     repository: "gateway"
     tag: "7.7.0.20221130-3-BN0009-ubi7"
+    generalConditions:
+      accept: "yes"
   resources:
     limits:
       memory: "2Gi"
@@ -190,13 +202,13 @@ apimgr:
       value: "file"
     - name: EMT_DEPLOYMENT_ENABLED
       value: "false"
-    - name: ACCEPT_GENERAL_CONDITIONS
-      value: "yes"
 
 apitraffic:
   image:
     repository: "gateway"
     tag: "7.7.0.20221130-3-BN0009-ubi7"
+    generalConditions:
+      accept: "yes"
   resources:
     limits:
       memory: "2Gi"
@@ -278,9 +290,10 @@ apitraffic:
       value: "file"
     - name: EMT_DEPLOYMENT_ENABLED
       value: "false"
-    - name: ACCEPT_GENERAL_CONDITIONS
-      value: "yes"
 
 aga:
   enabled: false
+  image:
+    generalConditions:
+    accept: "yes"
 ```

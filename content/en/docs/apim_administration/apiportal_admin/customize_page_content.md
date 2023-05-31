@@ -249,6 +249,12 @@ User sessions that remain active for extended periods of time are exposed to att
 
 Since the session is destroyed after the specified period of time, the potential footprint of the session is eliminated, which helps to minimize attacks.
 
+## Use Legacy OAuth Configuration Fallback
+
+When this setting is enabled, API Portal creates a client credentials flow from the information stored under the implicit and authorization code flows, if there are no specific client credentials settings already configured.
+
+{{< alert title="Note" color="primary" >}} This is a use case for customers who have published APIs prior to API Portal [November 2021](/docs/apim_relnotes/20211130_apip_relnotes) update, and wish to maintain this API security feature, instead of unpublishing APIs and reconfiguring them to use the latest client credentials flow and republishing once again. This is not a recommended setting for new customers. {{< /alert >}}
+
 ## Chat support
 
 You can configure your API Portal to show an Intercom chat support. After you enable this module, by default, all users will be able to see the Chat, even users not logged to the portal.

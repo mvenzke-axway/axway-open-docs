@@ -72,9 +72,12 @@ To configure the node manager to render log data from Elasticsearch, follow thes
         ![Connect Elasticsearch tick CA](/Images/op_insights/op_insights_node_manager_connect_elasticsearch_ca.png)
 
 7. If running API Builder locally on ANM, open the `<apigateway-install-dir>/apigateway/conf/envSettings.props` file and add the `env.API_BUILDER_URL` environment variable to point towards the API Builder URL. For example, `env.API_BUILDER_URL=https://localhost:8443`.
-8. If you are using [multiple regions](/docs/operational_insights/additional_features/op_insights_multiple_apimanagers/#configure-different-topologies-and-domains), you must configure the appropriate region to restrict the data of node manager to the correct regional data, for example, `env.REGION=US`.
-9. Copy the new configuration from the Policy Studio project folder (path on Linux, `/home/<user>/apiprojects/<project-name>`) back to the ANM folder (`<install-dir>/apigateway/conf/fed`).
-10. Restart the Admin Node Manager.
+
+8. Add the `env.AAOI_RAISE_ELASTICSEARCH_UNAVAILABLE_ERROR` environment variable to the `<apigateway-install-dir>/apigateway/conf/envSettings.props` file to return an error message for API Gateway non-admin users when apibuilder4elastic is unavailable. For example, `env.AAOI_RAISE_ELASTICSEARCH_UNAVAILABLE_ERROR=true`. If the environment variable is false or not provided, the Elasticserach API policy retrieves the traffic from OpsDB as usual when apibuilder4elastic is down.
+
+9. If you are using [multiple regions](/docs/operational_insights/additional_features/op_insights_multiple_apimanagers/#configure-different-topologies-and-domains), you must configure the appropriate region to restrict the data of node manager to the correct regional data, for example, `env.REGION=US`.
+10. Copy the new configuration from the Policy Studio project folder (path on Linux, `/home/<user>/apiprojects/<project-name>`) back to the ANM folder (`<install-dir>/apigateway/conf/fed`).
+11. Restart the Admin Node Manager.
 
 {{< alert title="Note" color="primary" >}}An alternative to using the provided policy fragment, `nodemanager/policy-use-elasticsearch-api-7.7.0.xml`, is to [manually configure the Admin Node Manager Policy](/docs/operational_insights/additional_features/op_insights_configure_anm). {{< /alert >}}
 

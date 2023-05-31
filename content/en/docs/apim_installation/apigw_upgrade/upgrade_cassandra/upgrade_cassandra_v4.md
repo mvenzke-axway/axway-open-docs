@@ -1,16 +1,16 @@
 {
-"title": "Upgrade Apache Cassandra to 4.0.7",
-  "linkTitle": "Upgrade Apache Cassandra to 4.0.7",
+"title": "Upgrade Apache Cassandra to 4.0.9",
+  "linkTitle": "Upgrade Apache Cassandra to 4.0.9",
   "weight": 20,
   "date": "2019-10-07",
-  "description": "Upgrade your Cassandra environment from version 3.11.11 to version 4.0.7."
+  "description": "Upgrade your Cassandra environment from versions 3.11.11 or 4.0.7 to version 4.0.9."
 }
 
-You can only upgrade to Cassandra version `4.0.7` from version `3.11.11`. If your version is earlier than `3.11.11`, see [Upgrade Apache Cassandra to 3.11.11](/docs/apim_installation/apigw_upgrade/upgrade_cassanda/upgrade_cassandra_v3/).
+You can only upgrade to Cassandra version `4.0.9` from version `3.11.11` or version `4.0.7`. If your version is earlier than `3.11.11`, see [Upgrade Apache Cassandra to 3.11.11](/docs/apim_installation/apigw_upgrade/upgrade_cassandra/upgrade_cassandra_v3/).
 
 ## Before you start
 
-* You must upgrade your API Gateway to the [February 2023](/docs/apim_relnotes/20230228_apimgr_relnotes/index.html) release, or later, prior to upgrading your Cassandra environment to `4.0.7`.
+* You must upgrade your API Gateway to the [February 2023](/docs/apim_relnotes/20230228_apimgr_relnotes/index.html) release, or later, prior to upgrading your Cassandra environment to `4.0.9`.
 * When upgrading either a cluster on a single-datacenter or a multi-datacenter setup, you must avoid any schema changes until the entire cluster has been upgraded to the same version.
 * In multi-datacenter clusters:
 
@@ -18,19 +18,20 @@ You can only upgrade to Cassandra version `4.0.7` from version `3.11.11`. If you
     * Nodes in the cluster continue to operate at the earlier version until all nodes are upgraded.
 * It is recommended that you run `nodetool repair -pr` on each node in your existing Cassandra environment prior to the upgrade.
 * Running `nodetool repair` on a Cassandra node affects performance on a system running live traffic. We recommend that you perform the Cassandra upgrade in the evening or during a maintenance window when the load is minimal.
+* Windows support has been removed from Cassandra 4.0 release and onwards.
 
 ## Upgrade Cassandra in a multi-node single datacenter
 
 You must upgrade each node in your Cassandra cluster individually before moving to the next node in the cluster.
 
-### Download your Cassandra 4.0.7 installation
+### Download your Cassandra 4.0.9 installation
 
-* Download [Cassandra 4.0.7](https://archive.apache.org/dist/cassandra/4.0.7/).
-* Unzip the downloaded package, and copy the installation directory to the target Cassandra server node in an appropriate directory, for example, `/home/cassandra-407/`.
+* Download [Cassandra 4.0.9](https://archive.apache.org/dist/cassandra/4.0.9/).
+* Unzip the downloaded package, and copy the installation directory to the target Cassandra server node in an appropriate directory, for example, `/home/cassandra-409/`.
 
 ### Backup your old Cassandra data
 
-Perform the backup of your 3.11.11 data.
+Perform the backup of your existing Cassandra data.
 
 1. Use the `cqlsh` command to find your Cassandra keyspaces to back up.
 
@@ -68,7 +69,7 @@ Perform the backup of your 3.11.11 data.
 
 ### Update Cassandra configuration files
 
-Compare the configuration in `CASSANDRA_HOME/conf` of your current Cassandra installation to the default configuration of Cassandra 3.11.11, and apply any custom changes to the relevant configuration file in your new Cassandra installation.
+Compare the configuration, found at the `CASSANDRA_HOME/conf` directory of your current Cassandra installation, to the default configuration of the relevant Cassandra version (3.11.11 or 4.0.7), and apply any custom changes to the configuration file in your new Cassandra installation.
 
 Also, ensure that the `num_tokens` value in `conf/cassandra.yaml` in your new Cassandra installation matches the value set in your current Cassandra installation.
 
@@ -83,9 +84,9 @@ Copy the following files to the `CASSANDRA_HOME/conf/` folder in your new insta
 
 ### Enable legacy SSL storage port
 
-If you have Cassandra server encryption enabled, set `enable_legacy_ssl_storage_port` to `true` in `CASSANDRA_HOME/conf/cassandra.yaml` in your new installation to enable the legacy SSL storage port:
+If you are using Cassandra version `3.11.11` and you have server encryption enabled, set `enable_legacy_ssl_storage_port` to `true` in `CASSANDRA_HOME/conf/cassandra.yaml` in your new installation to enable the legacy SSL storage port:
 
-```
+```none
 enable_legacy_ssl_storage_port: true
 ```
 
@@ -109,9 +110,9 @@ To shutdown your old Cassandra installation, follow these steps:
 
 ### Copy data between Cassandra installations
 
-Copy the `CASSANDRA_HOME/data` directory from your old Cassandra installation to the corresponding directory in your new installation (for example, `/home/cassandra-407/cassandra/`).
+Copy the `CASSANDRA_HOME/data` directory from your old Cassandra installation to the corresponding directory in your new installation (for example, `/home/cassandra-409/cassandra/`).
 
-The Cassandra 4.0.7 `data` directory should then have the following subdirectories:
+The Cassandra 4.0.9 `data` directory should then have the following subdirectories:
 
 ```
 commitlog
@@ -119,12 +120,12 @@ data
 saved_caches
 ```
 
-### Start Cassandra 4.0.7
+### Start Cassandra 4.0.9
 
-Run the following command from the `bin` directory of the Cassandra 4.0.7 installation to start the Cassandra instance:
+Run the following command from the `bin` directory of the Cassandra 4.0.9 installation to start the Cassandra instance:
 
 ```
-$cd /home/cassandra-407/cassandra/bin
+$cd /home/cassandra-409/cassandra/bin
 $./cassandra
 ```
 
@@ -135,13 +136,13 @@ After you upgrade Cassandra in all nodes, you must repair and upgrade your table
 1. Repair tables on your new installation:
 
    ```
-   $cd /home/cassandra-407/cassandra/bin
+   $cd /home/cassandra-409/cassandra/bin
    $./nodetool repair -pr
    ```
-2. Rewrite SSTables that are not on the current version and upgrade them to the 4.0.7 version:
+2. Rewrite SSTables that are not on the current version and upgrade them to the 4.0.9 version:
 
    ```
-   $cd /home/cassandra-407/cassandra/bin
+   $cd /home/cassandra-409/cassandra/bin
    $./nodetool upgradesstables
    ```
 

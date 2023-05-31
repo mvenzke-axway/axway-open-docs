@@ -150,12 +150,13 @@ You can configure the followingon the **Advanced (SSL)** tab:
     * `FIPS:!SSLv3:!aNULL::`: Disables TLSv1.3 ciphers, only FIPS-compatible TLSv1.2 ciphers will be available.
     * `ECDHE-ECDSA-AES256-SHA384::TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_CCM_8_SHA256`: Enables specific TLSv1.2 cipher (`ECDHE-ECDSA-AES256-SHA384`) and two specific TLSv1.3 cipher suite (`TLS_CHACHA20_POLY1305_SHA256` and `TLS_AES_128_CCM_8_SHA256`.
 
-    The default cipher string of `FIPS:!SSLv3:!aNULL` performs the following:
+    The default cipher string of `FIPS:!SSLv3:!aNULL:!TLSv1:!kRSA` performs the following:
 
     * Enables FIPS-compatible cipher suites only.
     * Explicitly blocks cipher suites that require SSLv3 or lower.
-    * Forces the use of TLSv1.2 and TLSv1.3 protocols.
     * Forbids unauthenticated cipher suites.
+    * Forces the use of TLSv1.2 and TLSv1.3 protocols.
+    * Forbids cipher suites using RSA key exchange or authentication.
 
 For more information on the syntax of this setting, see the [OpenSSL documentation](https://www.openssl.org/docs/man3.0/man1/ciphers.html).
 

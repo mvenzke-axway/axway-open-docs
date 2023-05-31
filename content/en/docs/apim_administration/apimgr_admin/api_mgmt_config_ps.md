@@ -141,6 +141,9 @@ If you select **In external storage**, you must specify an external storage mech
 
 * **Automatic (adapt to KPS storage configuration)**: The data is stored externally as configured in the Key Property Store (KPS). This is the default option.
 * **Use database**: To store your data in a relational database, select this option, and specify the database connection that you want to use in **Environment Configuration** > **External Connections** > **Database Connections**.
+
+    For MySQL based connections, the JDBC drivers must be on version MySQL 5.7 because of an [issue with API Manager quotas integrated with MySQL 8 versions](/docs/apim_relnotes/20230530_apimgr_relnotes#api-manager-quota-functionality-does-not-work-with-mysql-8).
+
 * **Use Cassandra**: To store your data in an Apache Cassandra database, select this option.
 * **Cassandra consistency levels**: When **Use Cassandra** is selected, you can configure **Read** and **Write** consistency levels for the Cassandra database. These settings control how up-to-date and synchronized a row of data is on all of its replicas. For high availability, you must ensure that the Cassandra read and write consistency levels are both set to `QUORUM`.
 
