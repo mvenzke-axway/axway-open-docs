@@ -75,3 +75,13 @@ Problem
 
 Solution
 : You can use Apache Cassandra as a distributed data store. This involves using the KPS scripting API, which enables you to perform CRUD operations and interact directly with a KPS. For more information, see [API Gateway Key Property Store User](/docs/apim_policydev/apigw_kps/).
+
+## API Gateway Manager users cannot be added or changed
+
+Problem
+: When you try to add or edit users on API Gateway Manager, you find that all options are disabled.
+
+Solution
+: This is deliberately disabled because API Gateway Manager users are stored in the `adminUsers.json` file, and changes to that file do not persist when the container stops. As a consequence, there is no way to enable the ability to add or edit users within API Gateway Manager. Instead, you should store and manage these users externally by customizing an Admin Node Manager FED file to [integrate with LDAP](/docs/apim_administration/apigtw_admin/general_rbac_openldap) or [integrate with Active Directory](/docs/apim_administration/apigtw_admin/general_rbac_ad_ldap), then [creating an ANM image using existing fed and customized configuration](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/docker_script_anmimage/index.html).
+
+Alternatively, you can use the [container User Management](https://github.com/Axway-API-Management-Plus/emt-user-management) script to create a new `adminUsers.json` file with the desired users and include that custom file in your images.
