@@ -32,7 +32,8 @@ Show stack trace : Return the Java stack trace for the error to the client. This
 
 Show current message attributes : Return the message attributes present at the time the generic error was generated to the client. For example, for an incoming SOAP message, each message attribute forms the content of a `<fault:attribute>` element.
 
-{{< alert title="Caution" color="danger" >}}For security reasons, do not use **Show filter execution path**, **Show stack trace**, and **Show current message attributes** in a production environment.{{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+For security reasons, do not use **Show filter execution path**, **Show stack trace**, and **Show current message attributes** in a production environment.{{< /alert >}}
 
 Use Stylesheet : Select this option to transform the error message returned by the **Generic error** filter by applying an XSLT stylesheet. Click the browse button next to the **Stylesheet** field. Select an existing stylesheet from the list, or right-click the **Stylesheets** node to add a new stylesheet.
 
@@ -166,7 +167,8 @@ The following configuration options are available in the **JSON Error Contents**
 ]
 ```
 
-{{< alert title="Caution" color="danger" >}}For security reasons, **Show filter execution path**, **Show stack trace**, and **Show current message attributes** should not be used in a production environment.{{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+For security reasons, **Show filter execution path**, **Show stack trace**, and **Show current message attributes** should not be used in a production environment.{{< /alert >}}
 
 ### Create customized JSON error using the Generic Error filter
 

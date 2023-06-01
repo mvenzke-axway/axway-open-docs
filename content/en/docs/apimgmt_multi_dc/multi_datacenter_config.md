@@ -57,7 +57,7 @@ The following prerequisites apply to Cassandra in a multi-datacenter production 
 * Determine a naming convention for each datacenter and rack, for example:
     * `DC1`, `DC2`
     * `RACK1`, `RACK2`, `RACK3`
-    {{< alert title="Caution" color="danger" >}}The rack names must be exactly the same in each datacenter. Choose the names carefully because renaming a datacenter is not possible.{{< /alert >}}
+    {{< alert title="" color="danger">}}**Caution**</br>The rack names must be exactly the same in each datacenter. Choose the names carefully because renaming a datacenter is not possible.{{< /alert >}}
 * Determine the seed nodes. You must have at least two Cassandra seed nodes per datacenter.
 * Choose a unique name for the Cassandra cluster.
 * To avoid firewall issues, you must open the following ports to allow bi-directional communication among the nodes:
@@ -134,7 +134,8 @@ To enable client-to-node SSL traffic encryption, set the following properties:
 
 Configure the `cassandra/conf/cassandra-rackdc.properties` file with your chosen datacenter and rack names for each node, and set `prefer_local=true`.
 
-{{< alert title="Caution" color="danger" >}}The rack names must be exactly the same in each datacenter. You should choose the names carefully because renaming a datacenter is not possible.{{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+The rack names must be exactly the same in each datacenter. You should choose the names carefully because renaming a datacenter is not possible.{{< /alert >}}
 
 For example:
 

@@ -244,11 +244,13 @@ A *Static File Provider* can be used with an HTTP Interface to serve a static fi
 
 Developers can write their own Java servlets and deploy them under the API Gateway to serve HTTP traffic. Conversely, they can remove some of the default servlets from the out-of-the-box configuration (for example, to remove the ability to view logging remotely). This pairing down of unwanted functionality may be required to further lock down the machine on which the API Gateway is running.
 
-{{< alert title="Caution" color="danger" >}}Adding and removing Servlet Applications should be performed only by developers with very specific requirements and under strict guidance from Axway Support. These instructions simply outline how to configure the fields on the dialogs used to set up Servlet Applications. For more detailed instructions, contact Axway Support. {{< /alert >}}
-
 When editing Admin Node Manager or API Gateway Analytics configuration, there are some default Servlet Applications available under the **Management Services** group.
 
-{{< alert title="Caution" color="danger" >}}Deleting any default Servlet Applications may prevent the API Gateway from functioning correctly. You should only delete default Servlet Applications under strict supervision of Axway Support. {{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+
+* Adding and removing Servlet Applications should be performed only by developers with very specific requirements and under strict guidance from Axway Support. These instructions simply outline how to configure the fields on the dialogs used to set up Servlet Applications. For more detailed instructions, contact Axway Support.
+* Deleting any default Servlet Applications may prevent the API Gateway from functioning correctly. You should only delete default Servlet Applications under strict supervision of Axway Support.
+{{< /alert >}}
 
 ### Add a servlet application
 

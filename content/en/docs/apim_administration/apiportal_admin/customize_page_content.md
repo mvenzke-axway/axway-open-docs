@@ -202,7 +202,8 @@ When you install API Portal, a default privacy policy article is automatically c
 
 API Portal also creates a privacy policy system group and a privacy policy category to enable the privacy policy feature.
 
-{{< alert title="Caution" color="danger" >}}Do not edit or delete the default privacy policy article, group, or category. {{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+Do not edit or delete the default privacy policy article, group, or category. {{< /alert >}}
 
 ### Create a new privacy policy
 

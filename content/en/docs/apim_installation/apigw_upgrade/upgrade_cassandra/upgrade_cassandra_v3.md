@@ -200,7 +200,8 @@ Attention to the following:
 
 ## Upgrade multi-node multi-datacenter directly to 3.11.11
 
-{{< alert title="Caution" color="danger" >}}Upgrading multi-node environments directly to version 3.11.11 result in downtime of API Gateway and Cassandra.{{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+Upgrading multi-node environments directly to version 3.11.11 result in downtime of API Gateway and Cassandra.{{< /alert >}}
 
 To upgrade Apache Cassandra directly to version 3.11.11 in a multi-node or multi-datacenter environment, follow the same steps as section [Upgrade Cassandra in a multi-node single datacenter, Stage 2](#stage-2---upgrade-cassandra-2219-to-31111).
 

@@ -340,7 +340,8 @@ The Management Services group exposes a number of services that the Admin Node M
 * The **Management Services** policy container under **Policies**
 * The **Management Services** HTTP interfaces under **Environment Configuration > Listeners > Admin Node Manager**
 
-{{< alert title="Caution" color="danger" >}}Admin Node Manager may not function correctly if you change the HTTP interfaces, relative path, servlet applications, or static content provider exposed under the Management Services group. Because of this, the Management Services group should only be modified under strict supervision from Axway Support.{{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+Admin Node Manager may not function correctly if you change the HTTP interfaces, relative path, servlet applications, or static content provider exposed under the Management Services group. Because of this, the Management Services group should only be modified under strict supervision from Axway Support.{{< /alert >}}
 
 ### Management services group
 
@@ -373,7 +374,8 @@ By default, Admin Node Manager uses port `8090` as the default management servic
 
 You edit the Management Services group the Admin Node Manager uses to customize the HTTP security headers included in the API Gateway response on port `8090`. You can edit the Admin Node Manager configuration using either Policy Studio or Entity Explorer.
 
-{{< alert title="Caution" color="danger" >}}Management Services apply to the Admin Node Manager and API Gateway Analytics only. Any modifications must be done under strict advice and supervision from Axway Support.{{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+Management Services apply to the Admin Node Manager and API Gateway Analytics only. Any modifications must be done under strict advice and supervision from Axway Support.{{< /alert >}}
 
 #### Edit Admin Node Manager configuration in Policy Studio
 

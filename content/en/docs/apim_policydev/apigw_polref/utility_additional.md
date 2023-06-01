@@ -535,7 +535,8 @@ The **Management Services RBAC** filter can be used to perform the following tas
 * Return true if one of the roles has access to the management service currently being invoked, as defined in the `acl.json` file.
 * Otherwise, return false.
 
-{{< alert title="Caution" color="danger" >}}This filter is for management services use only. The **Management Services** HTTP services group should only be modified under strict supervision from Axway Support.{{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+This filter is for management services use only. The **Management Services** HTTP services group should only be modified under strict supervision from Axway Support.{{< /alert >}}
 
 Configure the following settings:
 

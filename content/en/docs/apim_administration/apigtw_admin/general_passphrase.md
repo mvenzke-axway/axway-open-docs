@@ -12,7 +12,8 @@ All sensitive information in the API Gateway configuration data is encrypted whe
 
 This section describes how to specify an encryption passphrase for a local Policy Studio project or when connecting to an API Gateway in Policy Studio, in an API Gateway configuration file, or when API Gateway is starting up. It also describes how to change the passphrase when it has been set initially.
 
-{{< alert title="Caution" color="danger" >}}It is crucial that you remember the passphrase when you change it. Failing to remember the passphrase results in the loss of encrypted data, and might prevent API Gateway from functioning correctly.{{< /alert >}}
+{{< alert title="" color="danger" >}}**Caution**</br>
+It is crucial that you remember the passphrase when you change it. Failing to remember the passphrase results in the loss of encrypted data, and might prevent API Gateway from functioning correctly.{{< /alert >}}
 
 ## Configure the project passphrase
 
@@ -115,7 +116,7 @@ Before you use this option, you must first have set a passphrase for the server 
     * `../system/conf/nodemanager.xml`
     * `../skel/service.xml`
 
-{{< alert title="Caution" color="danger" >}}
+{{< alert title="" color="danger" >}}**Caution**</br>
 
 * If the group passphrase is not correctly set in the `group.xml` file, the newly created API Gateway servers will fail to start.
 * If newly created API Gateway servers expect to use a script to provide the passphrase and the group passphrase cannot be correctly set in the `group.xml` file, then you must set the `pvalue` attribute to `"(prompt)"`, as described in [Prompt for the passphrase at server startup](/docs/apim_administration/apigtw_admin/general_passphrase#prompt-for-the-passphrase-at-server-startup). In this scenario, you must provide the correct passphrase for the group when new API Gateway servers are created. Failing to provide the correct passphrase causes the newly created API Gateway servers fail to start.

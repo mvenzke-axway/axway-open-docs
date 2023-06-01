@@ -115,7 +115,7 @@ If you selected to install an Apache Cassandra database, configure the following
 * **Installation Directory**
     Enter the directory in which to install the Cassandra server (for example, `/opt/db/cassandra`).
 
-    {{< alert title="Caution" color="danger" >}}Do not install Apache Cassandra in the same directory as the API Gateway components to avoid errors during the Cassandra upgrade.{{< /alert >}}
+    {{< alert title="" color="danger">}}**Caution**</br> Do not install Apache Cassandra in the same directory as the API Gateway components to avoid errors during the Cassandra upgrade.{{< /alert >}}
 
 * **JRE Location**
     Enter the directory of the Java Runtime Environment used by Cassandra. The default value is the location of the JRE provided by API Gateway (for example, `INSTALL_DIR/apigateway/Linux.x86_64/jre/bin`). If you have installed a separate JRE for Cassandra, enter its location instead.
@@ -128,7 +128,8 @@ It is important to secure your API Gateway system to protect it from internal an
 
 Select **Change the default user name and password** to set the user name and password for the administrator account, and enter a username and password. This option is selected by default to ensure that you set your own administrator user name and password. To use a default administrator user name and password, you must deselect this option. The default credentials are available from your Axway account manager.
 
-{{< alert title="Caution" color="danger" >}}Ensure that you remember these credentials or you will not be able to log in to Policy Studio or API Gateway Manager.
+{{< alert title="" color="danger">}}**Caution**</br>
+Ensure that you remember these credentials or you will not be able to log in to Policy Studio or API Gateway Manager.
 This is especially important when planning to install Policy Studio on Windows later because you do not have the option to set the credentials then.{{< /alert >}}
 
 Click **Next** to continue.
@@ -183,7 +184,8 @@ It is important to secure your API Manager system to protect it from internal an
 
 Select **Change the default user name and password** to set the user name and password for the API administrator account, and enter a user name and password. This option is selected by default to ensure that you set your own API administrator user name and password. To use a default API administrator user name and password, you must deselect this option. The default credentials are available from your Axway account manager.
 
-{{< alert title="Caution" color="danger" >}}Ensure that you remember these credentials or you will not be able to log in to API Manager.{{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+Ensure that you remember these credentials or you will not be able to log in to API Manager.{{< /alert >}}
 
 Click **Next** to continue.
 
@@ -193,7 +195,8 @@ It is important to secure your API Gateway Analytics system to protect it from i
 
 Select **Change the default user name and password** to set the user name and password for the administrator account, and enter a user name and password. This option is selected by default to ensure that you set your own administrator user name and password. To use a default administrator user name and password, you must deselect this option. The default credentials are available from your Axway account manager.
 
-{{< alert title="Caution" color="danger" >}}Ensure that you remember these credentials or you will not be able to log in to API Gateway Analytics.{{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+Ensure that you remember these credentials or you will not be able to log in to API Gateway Analytics.{{< /alert >}}
 
 Click **Next** to continue.
 

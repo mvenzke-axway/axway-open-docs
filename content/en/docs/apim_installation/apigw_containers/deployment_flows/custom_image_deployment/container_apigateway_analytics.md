@@ -12,7 +12,8 @@ The instructions on this page are optional, and only for users who wish to use A
 
 You can use the `build_aga_image.py` script to create an API Gateway Analytics Docker image. This script builds an API Gateway Analytics Docker image using an API Gateway 7.7 Linux installer and a Docker image based on a standard or custom CentOS7, or RHEL7 operating system image.
 
-{{< alert title="Caution" color="danger" >}}Docker automatically downloads the latest CentOS or RHEL7 image, which may potentially contain security vulnerabilities. Axway is not responsible for any third-party base OS images. You must ensure that all base OS images are up-to-date and apply any security patches if necessary.{{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+Docker automatically downloads the latest CentOS or RHEL7 image, which may potentially contain security vulnerabilities. Axway is not responsible for any third-party base OS images. You must ensure that all base OS images are up-to-date and apply any security patches if necessary.{{< /alert >}}
 
 ### API Gateway Analytics image script options
 

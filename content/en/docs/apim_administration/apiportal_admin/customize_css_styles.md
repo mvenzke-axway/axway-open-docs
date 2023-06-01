@@ -12,7 +12,7 @@ You can directly edit the files in `local/less/themes/<your copy of axway theme>
 
 There are several items you can change within your CSS, and the file you must edit depends on the element and the change in question. For some elements, you may need to edit more than one file for the changes to take effect.
 
-{{< alert title="Caution" color="danger">}}
+{{< alert title="" color="danger">}}**Caution**</br>
 It is strongly recommended that you make a copy of the theme you want to change before making any edits. For more details on copying a theme, see [Create a new theme](/docs/apim_administration/apiportal_admin/customize_getting_started#create-a-new-theme).
 {{< /alert >}}
 
@@ -29,7 +29,8 @@ When planning changes to CSS files, you can quickly check which file controls th
 
 ### Manually edit the Less files
 
-{{< alert title="Caution" color="danger">}}It is not recommended to manually edit the `less/themes/axway/variables-custom.less` file. This file contains the attribute values customized in the ThemeMagic editor. For more details, see [Customize with ThemeMagic](/docs/apim_administration/apiportal_admin/customize_getting_started#customize-with-thememagic).{{< /alert >}}
+{{< alert title="" color="danger" >}}**Caution**</br>
+It is not recommended to manually edit the `less/themes/axway/variables-custom.less` file. This file contains the attribute values customized in the ThemeMagic editor. For more details, see [Customize with ThemeMagic](/docs/apim_administration/apiportal_admin/customize_getting_started#customize-with-thememagic).{{< /alert >}}
 
 1. Log in to the Joomla! Admin Interface (JAI), and click **System > Site Templates**.
 2. Select **Purity III_Details and Files**.

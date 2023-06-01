@@ -11,7 +11,7 @@ This topic describes how to upgrade an API Portal Docker deployment. The upgrad
 
 Upgrade to API Portal 7.7 is supported from API Portal 7.6.2 only. To upgrade from earlier versions, you must first upgrade to 7.6.2.
 
-{{< alert title="Caution" color="danger" >}}
+{{< alert title="" color="danger">}}**Caution**</br>
 
 * Before you upgrade you must back up the API Portal container and the database container.
 * Do not modify the content of the following folders, as they will be overwritten during upgrade.

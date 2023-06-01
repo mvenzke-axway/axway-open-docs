@@ -244,7 +244,7 @@ The following example sets the `EMT_DEPLOYMENT_ENABLED` environment variable to 
 docker run -d -e EMT_DEPLOYMENT_ENABLED=true -e EMT_ANM_HOSTS=anm:8090 -e ACCEPT_GENERAL_CONDITIONS=yes -p 8080:8080 --network=api-gateway-domain api-gateway-my-group:1.0
 ```
 
-{{< alert title="Caution" color="danger" >}}
+{{< alert title="" color="danger">}}**Caution**</br>
 The `EMT_DEPLOYMENT_ENABLED` environment variable is provided as a convenience for development environments only:
 
 * Do not set `EMT_DEPLOYMENT_ENABLED=true` on production systems. In production environments, to deploy changes in API Gateway configuration, you must export a FED file from Policy Studio, rebuild the API Gateway Docker image, and restart the API Gateway Docker container.

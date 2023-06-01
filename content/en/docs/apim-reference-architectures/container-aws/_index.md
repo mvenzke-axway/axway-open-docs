@@ -493,7 +493,7 @@ API Gateway/Manager pod handles API calls. At the least, a traffic port (port 80
 
 The API Gateway/Manager container is the same as the API Manager UI container. The deployment parameters are the same. The only differences are in the Helm charts configuration: these are primarily the number of replicas and exposed ports.
 
-{{< alert title="Caution" color="danger" >}}
+{{< alert title="" color="danger" >}}**Caution**</br>
 During development of the policies and server settings, you must use `EMT_DEPLOYMENT_ENABLED` flag when a container is started. This flag enables direct deployment of the API Gateway configurations from Policy Studio. You will be able to develop and test your policies as with the classic deployment option. This option is recommended for running a small test environment using _only one_ API Gateway pod on a development machine.
 
 You must not use this flag in a production environment.

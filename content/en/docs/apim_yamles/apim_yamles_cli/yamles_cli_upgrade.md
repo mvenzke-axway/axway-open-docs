@@ -6,7 +6,7 @@
 "description": "Learn how to use the YAML configuration CLI to upgrade a YAML configuration."
 }
 
-{{< alert title="Caution" color="danger" >}}
+{{< alert title="" color="danger">}}**Caution**</br>
 If you are using YAML configurations made with a [technical preview release](/docs/apim_relnotes/20210330_apimgr_relnotes#yaml-configuration-store-technical-preview-capability), you must refer to the [Known limitations](/docs/apim_yamles/apim_yamles_references/yamles_known_limitations) section before using this command. {{< /alert >}}
 
 The `upgrade` option is the centralized entry point to upgrade any kind of YAML configuration. It enables you to upgrade YAML configurations or YAML configuration fragments to their latest version.

@@ -10,7 +10,8 @@ A Key Property Store (KPS) is a table of data referenced by policies running on 
 
 A KPS is typically used to store property values used in policies on a gateway. KPS data is injected into policies using selectors created in Policy Studio. Selectors are evaluated and expanded dynamically at runtime. For example, a KPS table contains authorization tokens for different users. A policy looks up the token for the current user, and inserts it into an HTTP request.
 
-{{< alert title="Caution" color="danger" >}}Do not edit the default KPS tables in Policy Studio unless under strict supervision from Axway Support. This includes the **API Server**, **OAuth**, or **API Portal** KPS tables available under **Environment Configuration > Key Property Stores**.{{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+Do not edit the default KPS tables in Policy Studio unless under strict supervision from Axway Support. This includes the **API Server**, **OAuth**, or **API Portal** KPS tables available under **Environment Configuration > Key Property Stores**.{{< /alert >}}
 
 For more details on Key Property Stores, see the [API Gateway Key Property Store User Guide](/docs/apim_policydev/apigw_kps/).
 

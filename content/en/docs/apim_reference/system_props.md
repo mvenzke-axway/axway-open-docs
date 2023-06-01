@@ -11,7 +11,7 @@ This page lists all of the Axway-defined Java system properties, per version, fr
 * The properties can be found in the `JVM.xml` file.
 * Note that because of fix ports, some properties might be duplicated among the three versions: 7.5.3, 7.6.2, and 7.7.
 
-{{< alert title="Caution" color="danger" >}}
+{{< alert title="" color="danger">}}**Caution**</br>
 Do not change the system `jvm.xml` file located at `/apigateway/system/conf`. This file is replaced during both updates and upgrades, so any changes made to it will be lost. The `jvm.xml` file defines *include* points that allow you to add custom configuration, which will not be lost when this file is replaced.
 {{< /alert >}}
 

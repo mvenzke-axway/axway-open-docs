@@ -6,7 +6,7 @@
     "description": "Perform a minimal downtime upgrade to API Gateway 7.7."
 }
 
-{{< alert title="Caution" color="danger" >}}
+{{< alert title="" color="danger">}}**Caution**</br>
 Zero downtime upgrade (ZDU) is not always achievable for systems with high complexity or restrictions. The following instructions are designed to help you upgrade to API Gateway 7.7 with as little downtime as possible.
 {{< /alert >}}
 
