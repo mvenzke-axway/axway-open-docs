@@ -16,9 +16,9 @@ To tolerate the loss of one Cassandra node and to ensure 100% data consistency, 
 * `Replication factor` setting set to `3` for the system_auth and API Management keyspaces, so each node holds 100% of the data.
     * Without this configuration, the user permissions are not replicated to other nodes. Therefore, they cannot be checked, and requests to them are rejected. In this scenario, if the node that stores the user permissions goes down, the client (API Manager) cannot login to other nodes, and the cluster becomes unavailable.
 * `QUORUM` read/write consistency to ensure that you are reading from a quorum of Cassandra nodes (two) every time.
-  {{% alert title="Caution" color="danger" %}}
+  {{< alert title="Caution" color="danger" >}}
   `Eventual` consistency is not supported in a production environment due to a risk of stale or missing data.
-  {{% /alert %}}
+  {{< /alert >}}
 
 If one Cassandra node fails or needs to be restarted, the cluster continues to operate with the remaining two nodes. This configuration applies to all supported use cases (for example, API Manager and API Gateway custom KPS, OAuth, and client registry data).
 
@@ -214,9 +214,9 @@ To update the Cassandra client configuration for API Manager, perform the follow
 
 8. Add the gateway 2 host machine to the domain using `managedomain`.
 9. Create the second gateway instance in the same group on the gateway 2 node.
-{{% alert title="Note" %}}
+{{< alert title="Note" color="primary" >}}
 Do not start this instance, and do not configure API Manager for this instance in Policy Studio.
-{{% /alert %}}
+{{< /alert >}}
 10. Before starting the second API Manager-enabled instance, ensure that each instance has unique ports in the `envSettings.props` file. For example:
     * Edit the `envSettings.props` file for the gateway instance in the following directory:
 

@@ -6,9 +6,9 @@
     "description": "Perform a minimal downtime upgrade to API Gateway 7.7."
 }
 
-{{% alert title="Caution" color="warning" %}}
+{{< alert title="Caution" color="danger" >}}
 Zero downtime upgrade (ZDU) is not always achievable for systems with high complexity or restrictions. The following instructions are designed to help you upgrade to API Gateway 7.7 with as little downtime as possible.
-{{% /alert %}}
+{{< /alert >}}
 
 The standard process to upgrade to API Gateway 7.7 involves a short period of downtime during the _apply_ phase. With most `.fed` files, this downtime should not be more than a few minutes. However, with bigger `.fed` files of large and complex configurations, the downtime can be longer.
 

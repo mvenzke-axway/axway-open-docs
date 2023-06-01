@@ -211,19 +211,19 @@ You can configure the following configuration options on the **Advanced** tab:
 * **Cache addresses for (ms)**: The period of time to cache addressing information after it has been received from the naming service (for example, DNS). The default value is 300000 milliseconds.
 * **SSL Session Cache Size**: Specifies the size of the SSL session cache for connections to the remote host. This controls the number of idle SSL sessions that can be kept in memory. Defaults to `32`. If there are more than 32 simultaneous SSL sessions, this does not prevent another SSL connection from being established, however no more SSL sessions are cached. A cache size of `0` means no cache, and no outbound SSL connections are cached.
 
-    {{< alert title="Tip" color="primary" >}}You can use this setting to improve performance as it caches the slowest part of establishing the SSL connection. A new connection does not need to go through full authentication if it finds its target in the cache.{{< /alert >}}
+    You can use this setting to improve performance as it caches the slowest part of establishing the SSL connection. A new connection does not need to go through full authentication if it finds its target in the cache.
 
     At `DEBUG` level or higher, the API Gateway outputs trace when an entry goes into the cache, for example:
 
-  ```
-  DEBUG 09:09:12:953 [0d50] cache SSL session 11AA3894 to support.acme.com:443
-  ```
+    ```
+    DEBUG 09:09:12:953 [0d50] cache SSL session 11AA3894 to support.acme.com:443
+    ```
 
     If the cache is full, the output is as follows:
 
-  ```
-  DEBUG 09:09:12:953 [0d50] enough cached SSL sessions 11AA3894 to support.acme.com:443 already
-  ```
+    ```
+    DEBUG 09:09:12:953 [0d50] enough cached SSL sessions 11AA3894 to support.acme.com:443 already
+    ```
 * **Output Encodings**: Click the **Browse** button to specify the HTTP content encodings that API Gateway can apply to outgoing messages. The available content encodings include `gzip` and `deflate`. By default, the content encodings configured the **Default Settings** are used. You can override this setting at the remote host and HTTP interface levels. For more details, see [Compressed content encoding](/docs/apim_policydev/apigw_gw_instances/common_compress_encoding/).
 * **Include correlation ID in headers**: Specifies whether to insert the correlation ID in outbound messages. This means that an `X-CorrelationID` header is added to the outbound message. This is a transaction ID that is attached to each message transaction that passes through API Gateway, and which is used for traffic monitoring in the API Gateway Manager web console. You can use the correlation ID to search for messages in the web console, and you can also access its value from a policy using the `id` message attribute. This setting is selected by default.
 

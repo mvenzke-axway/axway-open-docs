@@ -122,9 +122,9 @@ The following table lists the number of runtime components in this configuration
 |Bastion                                            |1|
 |Worker pipeline                                    |1|
 
-{{% alert title="Note" %}}
+{{< alert title="Note" color="primary" >}}
 These values are the minimum recommended starting point. Your actual values will depend on many factors, like the number of APIs, payload size, and so on.
-{{% /alert %}}
+{{< /alert >}}
 
 #### Network specification
 

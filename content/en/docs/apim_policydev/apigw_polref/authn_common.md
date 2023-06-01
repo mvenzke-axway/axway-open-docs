@@ -425,7 +425,7 @@ When the **HTML Form based Authentication**
 filter is configured, the API Gateway can authenticate the user details specified in the HTML form against a user profile stored in the API Gateway local repository, a database, or an LDAP directory. The **HTML Form based Authentication**
 filter also enables you to specify how HTTP sessions are managed (for example, session expiry, and applicable API Gateway domain or relative path).
 
-{{< alert title="Tip" color="primary" >}}For an alternative approach to HTTP session management, which also includes the ability to check or to end sessions, see [Create session](#create-session-filter). {{< /alert >}}
+For an alternative approach to HTTP session management, which also includes the ability to check or to end sessions, see [Create session](#create-session-filter).
 
 ### Configure general HTML form settings
 

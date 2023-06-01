@@ -483,7 +483,7 @@ To allow an unprivileged user to run the API Gateway on a Linux system, perform 
 
 When API Manager is installed, you must run the `update-apimanager` script after the API Gateway post-install script to ensure that all paths are up-to-date. For details, see [Run update-apimanager](/docs/apim_installation/apigw_upgrade/upgrade_steps_extcass#run-update-apimanager).
 
-{{< alert title="Caution" color="warning" >}}
+{{< alert title="Caution" color="danger" >}}
 Before executing the `update-apimanager` script:
 
 * Apply the update to all API Gateways.

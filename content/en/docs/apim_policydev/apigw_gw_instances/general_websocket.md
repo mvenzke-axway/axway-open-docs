@@ -68,7 +68,7 @@ The following figure shows the flow of messages between the client, API Gateway,
 
 This is the absolute time for the connection to be active. For example, if this value is set to 1 hour, then after 1 hour the connection is dropped by API Gateway even if the connection is still active (frames are being sent).
 
-{{< alert title="Tip" color="primary" >}}You can define an idle timeout for the connection as a part of the remote host configuration.{{< /alert >}}
+You can define an idle timeout for the connection as a part of the remote host configuration.
 
 #### Advanced settings
 

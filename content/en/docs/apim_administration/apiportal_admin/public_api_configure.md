@@ -43,7 +43,7 @@ For Public API mode access, create a separate organization and user in API Manag
 5. Disable password expiration. Go to **Settings > API Manager settings > General settings**, and disable **Enable password expiry.**
 6. Select the APIs to expose publicly. Go to **Frontend API**, select the APIs to expose (they must be in **Published** state), click **Managed selected > Grant access**, set **Grant API access** to **The following organizations**, and add and select your Public API mode organization.
 
-    {{< alert title="Tip" color="primary" >}}You can import two versions of a back-end API: one that contains only non-business critical information and is exposed in Public API mode, and a full version which is not exposed without a user login.{{< /alert >}}
+    You can import two versions of a back-end API: one that contains only non-business critical information and is exposed in Public API mode, and a full version which is not exposed without a user login.
 7. Select the applications to expose publicly. Go to **Clients > Applications**, ensure that the organization of the applications is set to your Public API mode organization and the application has access to the required APIs, then share the application with the Public API mode user you created. It is recommended to only provide rights to view the application.
 
 ## Encrypt the Public API mode user password

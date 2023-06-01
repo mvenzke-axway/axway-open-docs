@@ -28,9 +28,9 @@ See more [Run a Docker container using the image](/docs/apim_installation/apipor
 
 The upgrade preserves any API Portal customizations stored in volumes or database.
 
-{{% alert title="Note" %}}
+{{< alert title="Note" color="primary" >}}
 There is no support for downgrading an API Portal container deployment. Running an older API Portal container against a newer database schema will result in failure.
-{{% /alert %}}
+{{< /alert >}}
 
 ## Upgrade from versions before May 2022 to latest release
 
@@ -43,7 +43,7 @@ To upgrade from before May 2022 to API Portal latest release, follow these steps
 1. If your API Portal version is lower than [February 2022](/docs/apim_relnotes/20220228_apip_relnotes/), you must first upgrade to February 2022 as described in the [General upgrade](#general-upgrade) section.
 2. After you installation is updated to the February 2022 release, stop the February 2022 container and start a new container from the latest image with the old parameters.
 
-    {{% alert title="Note" %}}It is important that you use plain MySQL connection to ensure the `MYSQL_SSL_ON` environment variable is set to `0`, and `MYSQL_USER` and `MYSQL_PASSWORD` environment variables contain credentials for plain connection. For more information on how to create a plain MySQL account, see [Create a MySQL user account without TLS authentication](/docs/apim_installation/apiportal_install/install_software_configure_database/#configure-a-user-account-without-authentication).{{% /alert %}}
+    {{< alert title="Note" color="primary" >}}It is important that you use plain MySQL connection to ensure the `MYSQL_SSL_ON` environment variable is set to `0`, and `MYSQL_USER` and `MYSQL_PASSWORD` environment variables contain credentials for plain connection. For more information on how to create a plain MySQL account, see [Create a MySQL user account without TLS authentication](/docs/apim_installation/apiportal_install/install_software_configure_database/#configure-a-user-account-without-authentication).{{< /alert >}}
 
     ```shell
     docker container rm -f <feb22-container-name>

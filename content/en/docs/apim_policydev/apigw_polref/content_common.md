@@ -675,17 +675,11 @@ tab. You can select the schema from the WSDL for the current web service, and sp
 Select this option to dynamically use the appropriate SOAP operation schema from the current web service context. When this option is selected, this filter has an additional required message attribute named `webservice.context`, which must be provided. This enables you to share this filter to perform validation across multiple web services.
 
 **Select which XML Schema to validate message with**:
-Select this option to use schemas from the global cache. This is the default option. Click the browse button, and select a schema from the tree view. You can select multiple schemas under the **XML Schema Document Bundles**
-and the **WSDL Document Bundles**
-nodes. Click the check box next to the schema document to select the schema. You can also select a particular version of a schema by clicking the check box next to the version.
+Select this option to use schemas from the global cache. This is the default option. Click the browse button, and select a schema from the tree view. You can select multiple schemas under the **XML Schema Document Bundles** and the **WSDL Document Bundles** nodes. Click the check box next to the schema document to select the schema. You can also select a particular version of a schema by clicking the check box next to the version.
 
-To add a new schema, right-click the **XML Schema Document Bundles**
-> **User-defined Catalog** node, and select **Add Schema**. Alternatively, you can add schemas under the **Resources**
-node in the Policy Studio tree.
+To add a new schema, right-click the **XML Schema Document Bundles** > **User-defined Catalog** node, and select **Add Schema**. Alternatively, you can add schemas under the **Resources** node in the Policy Studio tree.
 
-{{< alert title="Tip" color="primary" >}}If you have a WSDL file that contains an XML schema, you can use this schema to validate messages by importing the WSDL file into the Web service repository. The **Import WSDL**
-wizard automatically adds any XML schemas contained in the WSDL to the global cache under the **Resources > WSDL Document Bundles**
-node.{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}If you have a WSDL file that contains an XML schema, you can use this schema to validate messages by importing the WSDL file into the Web service repository. The **Import WSDL** wizard automatically adds any XML schemas contained in the WSDL to the global cache under the **Resources > WSDL Document Bundles** node.{{< /alert >}}
 
 ### Select which part of the message to match
 

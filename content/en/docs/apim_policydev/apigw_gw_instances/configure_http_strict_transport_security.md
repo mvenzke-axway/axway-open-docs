@@ -37,11 +37,11 @@ The HSTS profile is not configured in SSL interfaces by default. To enable it, f
 
 After the changes have been deployed, all the responses from the interface will contain the `Strict-Transport-Security` header.
 
-{{% alert title="Note" %}}
+{{< alert title="Note" color="primary" >}}
 When you enable HSTS, it takes effect for the entire domain regardless of any other ports configured on the listeners. Any non-SSL ports that exist in the configuration (listeners) will no longer work from the browser after an HSTS-protected interface has been invoked from the browser.
 
 HSTS is made redundant when self-signed certificates are employed.
-{{% /alert %}}
+{{< /alert >}}
 
 By default, the following ports use self-signed certificates:
 

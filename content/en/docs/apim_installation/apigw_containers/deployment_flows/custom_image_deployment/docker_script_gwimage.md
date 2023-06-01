@@ -103,18 +103,22 @@ This example creates an API Gateway Docker image named `my-api-gateway` with a t
 
 This section shows how to create an API Gateway Docker image using an existing API Gateway deployment package (FED file) and customized configuration from an existing API Gateway installation.
 
-Ensure that your FED file contains the following:
+### Before you start
 
-* API Gateway version 7.7 configuration.
-* You can upgrade existing projects (from version 7.5.1 or later) using `projupgrade`, see [Upgrade an API Gateway project](/docs/apigtw_devops/deploy_package_tools#upgrade-an-api-gateway-project).
+* Ensure that your FED file contains API Gateway version 7.7 configuration.
+* Use only IP addresses that are accessible at runtime. For example, the FED file cannot contain IP addresses of container-based Admin Node Managers and API Gateways, as IP addresses are usually dynamically assigned in a Docker network.
+* You can upgrade existing projects (from version 7.5.1 or later) using `projupgrade`. For more information, see [Upgrade an API Gateway project](/docs/apigtw_devops/deploy_package_tools#upgrade-an-api-gateway-project).
 * You can also upgrade existing FED files using Policy Studio or `upgradeconfig`.
-* Only IP addresses that are accessible at runtime. For example, the FED file cannot contain IP addresses of container-based Admin Node Managers and API Gateways, as IP addresses are usually dynamically assigned in a Docker network.
 
-Use the `--merge-dir` option to add more files and folders to the `apigateway` directory inside the image:
+### Add files and folders to API Gateway directory
 
-* The merge directory must be called `apigateway` and must have the same directory structure as in an API Gateway installation.
-* For example, to add an optional custom `envSettings.props` file to your image, copy `envSettings.props` to a new directory named `/tmp/apigateway/groups/emt-group/emt-service/conf/`, and specify `/tmp/apigateway` to the `--merge-dir` option.
-* To add custom JAR files to your image, copy the JAR files to a new directory named `/tmp/apigateway/ext/lib/` and specify `/tmp/apigateway` to the `--merge-dir` option.
+You can use the `--merge-dir` option to add more files and folders to the `apigateway` directory inside the image.
+
+The merge directory must be called `apigateway`, and must have the same directory structure as in an API Gateway installation.
+
+For example, to add an optional custom `envSettings.props` file to your image, copy `envSettings.props` to a new directory named `/tmp/apigateway/groups/emt-group/emt-service/conf/`, and specify `/tmp/apigateway` to the `--merge-dir` option.
+
+To add custom JAR files to your image, copy the JAR files to a new directory named `/tmp/apigateway/ext/lib/` and specify `/tmp/apigateway` to the `--merge-dir` option.
 
 {{< alert title="Note" color="primary" >}} The `envSettings.props` file specifies settings such as the port the Admin Node Manager listens on (default of `8090`) and the session timeout for API Gateway Manager (default of 12 hours). This file must contain only IP addresses and host names that are accessible at runtime. It cannot contain IP addresses of container-based Admin Node Managers and API Gateways because these are usually dynamically assigned in a Docker network.{{< /alert >}}
 
@@ -224,23 +228,23 @@ The following image shows API Gateway container in topology view:
 
 You can persist API Gateway trace and event logs to a directory on your host machine. For example, run the following `docker run` command to start an API Gateway container from an image named `api-gateway-my-group:1.0` and mount volumes for trace and event logs:
 
-```
+```none
 docker run -it -v /tmp/events:/opt/Axway/apigateway/events -v /tmp/trace:/opt/Axway/apigateway/groups/emt-group/emt-service/trace -e EMT_ANM_HOSTS=anm:8090 -e ACCEPT_GENERAL_CONDITIONS=yes -p 8080:8080 --network=api-gateway-domain api-gateway-my-group:1.0
 ```
 
 This example starts the API Gateway container and writes the trace and log files to `/tmp/events` and `/tmp/trace` on your host machine. The trace and log files contain the container ID of the API Gateway container in the file names.
 
-{{< alert title="Note" color="primary" >}}To enable an Admin Node Manager (ANM) container to process the event logs from API Gateway containers, you must run the ANM container with the same volume mounted. For more information, see [Create a metrics-enabled ANM image](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/docker_script_anmimage#create-a-metrics-enabled-admin-node-manager-image) and [Start the Admin Node Manager Docker container](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/docker_script_anmimage#start-the-admin-node-manager-docker-container).{{< /alert >}}
+To enable an Admin Node Manager (ANM) container to process the event logs from API Gateway containers, you must run the ANM container with the same volume mounted. For more information, see [Create a metrics-enabled ANM image](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/docker_script_anmimage#create-a-metrics-enabled-admin-node-manager-image) and [Start the Admin Node Manager Docker container](/docs/apim_installation/apigw_containers/deployment_flows/custom_image_deployment/docker_script_anmimage#start-the-admin-node-manager-docker-container).
 
 ### Start a deployment-enabled API Gateway container in a development environment
 
 The following example sets the `EMT_DEPLOYMENT_ENABLED` environment variable to `true` to enable you to deploy configuration directly from Policy Studio to the running API Gateway container:
 
-```
+```none
 docker run -d -e EMT_DEPLOYMENT_ENABLED=true -e EMT_ANM_HOSTS=anm:8090 -e ACCEPT_GENERAL_CONDITIONS=yes -p 8080:8080 --network=api-gateway-domain api-gateway-my-group:1.0
 ```
 
-{{< alert title="Caution" color="warning" >}}
+{{< alert title="Caution" color="danger" >}}
 The `EMT_DEPLOYMENT_ENABLED` environment variable is provided as a convenience for development environments only:
 
 * Do not set `EMT_DEPLOYMENT_ENABLED=true` on production systems. In production environments, to deploy changes in API Gateway configuration, you must export a FED file from Policy Studio, rebuild the API Gateway Docker image, and restart the API Gateway Docker container.

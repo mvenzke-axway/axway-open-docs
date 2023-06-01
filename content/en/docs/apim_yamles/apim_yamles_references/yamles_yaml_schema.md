@@ -6,7 +6,7 @@
 "description": "List of all valid syntax and data structures for YAML configuration files." 
 }
 
-{{% alert title="Warning" color="warning" %}}YAML entity store files do not support YAML anchors.{{% /alert %}}
+{{< alert title="Note" color="primary" >}}YAML entity store files do not support YAML anchors.{{< /alert >}}
 
 ## Versioning
 

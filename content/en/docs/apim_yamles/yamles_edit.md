@@ -255,4 +255,4 @@ children:
 # some other stuff
 ```
 
-{{% alert title="Note" color="primary" %}}`refs: {}` is an empty list.{{% /alert %}}
+{{< alert title="Note" color="primary" >}}`refs: {}` is an empty list.{{< /alert >}}

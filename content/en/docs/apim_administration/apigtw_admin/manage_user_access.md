@@ -266,4 +266,4 @@ The following is a sample body, including all available configurations for updat
 }
 ```
 
-{{% alert title="Note" %}}Configuring a passphrase policy is currently not possible by way of API Manager UI.{{% /alert %}}
+{{< alert title="Note" color="primary" >}}Configuring a passphrase policy is currently not possible by way of API Manager UI.{{< /alert >}}

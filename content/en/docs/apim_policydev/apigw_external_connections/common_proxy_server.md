@@ -15,9 +15,7 @@ filters). When configured, the filter connects to the HTTP proxy server, which i
 
 ## Configuration
 
-To configure a proxy server under the **Environment Configuration** > **External Connections**
-tree node, right-click the **Proxy Servers**
-node, and select **Add a Proxy Server**. You can configure the following settings in the dialog:
+To configure a proxy server under the **Environment Configuration** > **External Connections** tree node, right-click the **Proxy Servers** node, and select **Add a Proxy Server**. You can configure the following settings in the dialog:
 
 | Proxy Server Setting | Description                                                                            |
 |----------------------|----------------------------------------------------------------------------------------|
@@ -28,5 +26,4 @@ node, and select **Add a Proxy Server**. You can configure the following setting
 | **Password**         | Optional password when connecting to the proxy server.                                 |
 | **Scheme**           | Specifies whether the proxy server uses the HTTP or HTTPS transport. Defaults to HTTP. |
 
-{{< alert title="Tip" color="primary" >}}These proxy server settings are different from the global proxy settings in the **Preferences**
-dialog in Policy Studio, which apply only when downloading WSDL, XSD, and XSLT files from Policy Studio. For more details, see [Proxy settings](/docs/apim_policydev/apigw_poldev/general_ps_settings#proxy-settings).{{< /alert >}}
+These proxy server settings are different from the global proxy settings in the **Preferences** dialog in Policy Studio, which apply only when downloading WSDL, XSD, and XSLT files from Policy Studio. For more details, see [Proxy settings](/docs/apim_policydev/apigw_poldev/general_ps_settings#proxy-settings).

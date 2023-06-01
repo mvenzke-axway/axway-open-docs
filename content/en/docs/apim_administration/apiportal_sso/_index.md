@@ -11,7 +11,7 @@ API Portal supports single sign-on (SSO). This enables users to use the same lo
 
 API Portal uses API Manager as the service provider in SSO, but they can be configured separately. This means that you can have SSO in just API Portal, in API Manager, or in both. API Portal SSO is controlled in the `service-provider-apiportal.xml` file, while API Manager SSO uses the `service-provider.xml`.
 
-{{< alert title="Caution" color="warning">}}
+{{< alert title="Caution" color="danger">}}
 SSO does not work when you have multiple API Managers configured with API Portal.
 {{< /alert>}}
 

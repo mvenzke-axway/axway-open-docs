@@ -191,7 +191,7 @@ The configuration is defined per data type (Summary, Details, Audit, and so on),
 | **Gateway-Monitoring** | System status information (CPU, HDD, etc.) from Event files            | 10GB / 30d     | 0d      | 50d     | 100d    |
 | **Domain-Audit**       | Domain Audit Information, as configured in Admin Node Manager           | 10GB / 30d     | 0d      | 300d    | 750d    |
 
-{{< alert title="Warning" color="warning" >}}Deleted data cannot be recovered.{{< /alert >}}
+{{< alert title="Caution" color="danger" >}}Deleted data cannot be recovered.{{< /alert >}}
 
 Before you configure how long the indexed data should be kept in Elasticsearch, ensure to read and understand the following information thoroughly, because once deleted, data cannot be recovered:
 

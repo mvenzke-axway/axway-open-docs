@@ -78,9 +78,9 @@ When **Enable SSL** is set, click to execute hostname verification between all J
 
 Policy Studio does not enable certificate creation with SANs, but you can create certificates using third-party services or tools for example, OpenSSL, then import and deploy them with Policy Studio. For details on importing certificates, see [Manage X.509 certificates and keys](/docs/apim_administration/apigtw_admin/general_certificates).
 
-{{% alert title="Caution" color="warning" %}}
+{{< alert title="Caution" color="danger" >}}
 Disabling hostname verification is a less secure option than using a certificate with SANs populated.
-{{% /alert %}}
+{{< /alert >}}
 
 ### Authentication settings
 

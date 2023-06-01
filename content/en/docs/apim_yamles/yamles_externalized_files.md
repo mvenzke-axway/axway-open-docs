@@ -6,7 +6,7 @@
 "description": "Learn how to work with externalized files within YAML configuration."
 }
 
-{{% alert title="Note" %}}This topic is not related to [Environmentalization](/docs/apim_yamles/yamles_environmentalization).{{% /alert %}}
+{{< alert title="Note" color="primary" >}}This topic is not related to [Environmentalization](/docs/apim_yamles/yamles_environmentalization).{{< /alert >}}
 
 Some entities have fields that contain the content of a file, for example, a script or a certificate. In the XML federated configuration, these files are embedded within the XML, which makes it hard to edit them. In a YAML configuration, the content of these files is stored in separate external files, which provides the following advantages:
 

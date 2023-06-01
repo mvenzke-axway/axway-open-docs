@@ -47,8 +47,9 @@ To automatically register an existing back-end REST API:
 2. Click **New API** and select one of the following:
 
    * **Import Swagger API**: Import an API in Swagger/OAS format.
-   * **Import WADL API**: Import an API in [Web Application Description Language](https://www.w3.org/Submission/2009/SUBM-wadl-20090831) (WADL) format. Note that API Manager only supports
-    the `http://wadl.dev.java.net/2009/02` XML namespace for WADL elements.
+   * **Import WADL API**: Import an API in [Web Application Description Language](https://www.w3.org/Submission/2009/SUBM-wadl-20090831) (WADL) format.
+
+       Note that API Manager only supports the `http://wadl.dev.java.net/2009/02` XML namespace for WADL elements.
 
 3. On the **Import API** dialog, complete the following:
 
@@ -66,14 +67,16 @@ You can click an API from the list to view its general details, methods, and sch
 
 {{< alert title="Note" color="primary" >}}Do not use spaces or the URL encoded `%20` in the base path URL.{{< /alert >}}
 
-{{< alert title="Note" color="primary" >}}SmartBear Swagger parser third-party libraries are used to import OAS definitions. Certificate checking is used in the parser when resolving remote references (import from URL), therefore the following flags may need to be added to `jvm.xml` file to resolve external references:
+### Import Swagger definitions
+
+SmartBear Swagger parser third-party libraries are used to import OAS definitions. Certificate checking is used in the parser when resolving remote references (import from URL), therefore the following flags may need to be added to `jvm.xml` file to resolve external references:
 
    ```
    <VMArg name="-Dio.swagger.parser.util.RemoteUrl.trustAll=true"/>
    <VMArg name="-Dio.swagger.v3.parser.util.RemoteUrl.trustAll=true"/>
    ```
 
-For more information, see [SSL Certificate error while trying to import swagger definition](https://community.smartbear.com/t5/ReadyAPI-Questions/SSL-Certificate-error-while-trying-to-import-swagger-definition/td-p/205283) and [Dealing with self-signed SSL certificates](https://github.com/swagger-api/swagger-parser#dealing-with-self-signed-ssl-certificates).{{< /alert >}}
+For more information, see [SSL Certificate error while trying to import swagger definition](https://community.smartbear.com/t5/ReadyAPI-Questions/SSL-Certificate-error-while-trying-to-import-swagger-definition/td-p/205283) and [Dealing with self-signed SSL certificates](https://github.com/swagger-api/swagger-parser#dealing-with-self-signed-ssl-certificates).
 
 ## Import an existing web service back-end API
 
@@ -99,7 +102,7 @@ API Manager does not support the following features:
 * Binding/operation selection: You cannot select specific bindings/operations for import. If this is required, you must use Policy Studio.
 * Cloning: You cannot clone an API registered from a web service.
 
-{{< alert title="Tip" color="primary" >}}When your web service schemas are loaded in API Manager, they are protected by your chosen front-end API security device. Your client testing tool may be able to reach the WSDL, but not the schema imports without the appropriate key/credentials.{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}When your web service schemas are loaded in API Manager, they are protected by your chosen front-end API security device. Your client testing tool might be able to reach the WSDL, but not the schema imports without the appropriate key and credentials.{{< /alert >}}
 
 For details on registering web services using Policy Studio, see [Register and secure web services](/docs/apim_policydev/apigw_web_services/).
 
@@ -171,7 +174,7 @@ To add a REST API method to a newly registered API, perform the following steps:
    * **NAME**: Enter a required name for the parameter (for example, `customer_name`).
    * **DESCRIPTION**: Enter an optional description for the parameter.
    * **TYPE**: Select the parameter type (for example, `query`, `path`, `form`, `body`, or `header`). Defaults to `query`.
-   {{% alert title="" %}}The [Swagger specification](https://swagger.io/docs/specification/2-0/describing-request-body/) only allows a method to have one `body` parameter.{{% /alert %}}
+       The [Swagger specification](https://swagger.io/docs/specification/2-0/describing-request-body/) only allows a method to have one `body` parameter.
    * **DATA TYPE**: Select the parameter data type (for example, `string`, `int`, `boolean`, and so on). Defaults to `string`.
    * **REQUIRED**: Select whether the parameter is required. Defaults to `No`.
    * **ALLOW MULTIPLE**: Select whether multiple parameters are allowed. Defaults to `No`.
@@ -185,16 +188,15 @@ To add a REST API method to a newly registered API, perform the following steps:
 
 ## Create the REST API data model
 
-For JSON-based REST APIs only, you can enter the JSON schema model for the API data on the **Models**
-tab. This tab is not displayed for web service APIs.
+For JSON-based REST APIs only, you can enter the JSON schema model for the API data on the **Models** tab. This tab is not displayed for web service APIs. This model is optional and describes the data that is passed to the API as the request payload or returned from the API as the response payload. The data model is then displayed for application developers in the **API Catalog**, in API Manager or in API Portal.
 
-This model is optional and describes the data that is passed to the API as the request payload or returned from the API as the response payload. The data model is then displayed for application developers in the **API Catalog**, in API Manager or in API Portal.
-
-{{< alert title="Tip" color="primary" >}}You can add/edit the data model for a manually created REST API, but this is read-only for an imported REST API. In this case, the data model is part of the imported definition, and cannot be changed. However, if you need to update the model (for example, to fix a bug in the schema), you can do so by cloning the API as described in the next section.{{< /alert >}}
+Alternatively, you can add or edit the data model for a manually created REST API, but this model is read-only for an imported REST API. In this case, the data model is part of the imported definition, and cannot be changed. However, if you need to update the model (for example, to fix a bug in the schema), you can do so by cloning the API as described in the next section.
 
 ## Manage back-end API lifecycle
 
-When you have registered the back-end API, you can select it from the list of registered APIs, click **Manage selected**, and choose one of the following options:
+The API Admin can configure all back-end APIs to be editable by default by using the **Allow users to modify Backend APIs** option in **API Manager settings**.
+
+After you have registered the back-end API, you can select it from the list of registered APIs, click **Manage selected**, and choose one of the following options:
 
 * **Delete**: Deletes the selected API(s) registered in the **API Registration** > **Backend API** view. You can delete APIs created as front-end APIs in the **Frontend API** view.
 * **Clone API**: Creates a copy of the selected REST API, which you can then edit as required. You cannot clone a back-end API imported from a WSDL-based web service.
@@ -203,8 +205,6 @@ When you have registered the back-end API, you can select it from the list of re
 * **Export API**: Exports a copy of the selected back-end API (in `.json` format). You can then import this into another API Manager environment as a back-end API.
 * **Download original API definition**: For APIs imported from Swagger or WADL definitions, downloads a copy of the original REST API definition.
 
-{{< alert title="Tip" color="primary" >}}The API Admin can configure all back-end APIs to be editable by default using the **Allow users to modify Backend APIs** option in **API Manager settings** {{< /alert >}}
-
 ## Next steps
 
-When you have registered a back-end REST API, the next step is to virtualize it as a publicly exposed front-end API. For more details, see [Virtualize REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_virtualize_web/).
+After you have registered a back-end REST API, the next step is to virtualize it as a publicly exposed front-end API. For more details, see [Virtualize REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_virtualize_web/).

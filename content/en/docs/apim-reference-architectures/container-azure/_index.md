@@ -130,9 +130,9 @@ An important factor for achieving your goals with the EMT deployment is to defin
 
 This chapter details the configuration for each component.
 
-{{% alert title="Note" %}}
+{{< alert title="Note" color="primary" >}}
 Axway publishes some development assets on GitHub, including [Cloud Automation](https://github.com/Axway/Cloud-Automation). You can also interact with the Community, including [Journey to the Cloud](https://community.axway.com/s/group/0F92X000000CtYISA0/journey-to-the-cloud).
-{{% /alert %}}
+{{< /alert >}}
 
 ### Diagram
 
@@ -144,9 +144,9 @@ The architecture is designed with High Availability (HA) in mind. An HA deployme
 
 ![Technical view](/Images/apim-reference-architectures/container-azure/image3.jpg)
 
-{{% alert title="Note" %}}
+{{< alert title="Note" color="primary" >}}
 For a standard architecture, you must replace Availability Zone by _availability set_ configuration to isolate VM resources from each other. Axway recommends setting three update domains and three fault domains. The bigger impact is on the Helm chart with affinity node configuration.
-{{% /alert %}}
+{{< /alert >}}
 
 #### Application view
 
@@ -174,9 +174,9 @@ The following table lists the number of runtime components in this configuration
 |Bastion                                            |1|
 |Worker pipeline                                    |1|
 
-{{% alert title="Note" %}}
+{{< alert title="Note" color="primary" >}}
 These values are the minimum recommended starting point. Your actual values will depend on many factors, like the number of APIs, payload size, and so on.
-{{% /alert %}}
+{{< /alert >}}
 
 #### Network specification
 
@@ -234,9 +234,9 @@ The diagram shows just one availability zone.
 | 10 11| Storage blob       | Firewalls and Virtual networks| Allow flow from the **AKS subnet**.|
 | 7 8 | Azure Container Registry| Firewalls and Virtual networks| Allow flow from **AKS Subnet** and **Bastion Subnet**. Also, add your **DevOps pipeline worker** for automatic containers creation. |
 
-{{% alert title="Note" color="" %}}
+{{< alert title="Note" color="primary" >}}
 Firewalls and Virtual networks capabilities for Azure Container Registry are in preview and a Premium SKU is required, although Axway recommend using a Standard plan.
-{{% /alert %}}
+{{< /alert >}}
 
 #### Azure Kubernetes Services (AKS) sizes
 
@@ -251,9 +251,9 @@ Although it is not possible to provide multiple subnets inside AKS, customers ca
 * `infrapool` for other auxiliary components like monitoring tools, backup, and other tools (maintenance). Axway recommends a Standard_D2_v3 but makes sure that it is enough to support
 additional tools.
 
-{{% alert title="Note" %}}
+{{< alert title="Note" color="primary" >}}
 Node pool names are important because they will be used to make affinity and anti-affinity configuration between both pods and nodes. They are defined in Helm chart value.
-{{% /alert %}}
+{{< /alert >}}
 
 |Description | Type |
 |---|---|
@@ -512,9 +512,9 @@ A specific DNS entry is required to route requests to a service inside a Kuberne
 
 DNS records must match the certificate and ingress host configuration. These records must target the external IP used for the Kubernetes entry point.
 
-{{% alert title="Note" color="" %}}
+{{< alert title="Note" color="primary" >}}
 It is not possible to use some rewrite-path like `https://FQDN/Components/` to access the web interface.
-{{% /alert %}}
+{{< /alert >}}
 
 It is necessary to configure the following annotations for ingress configuration:
 
@@ -625,8 +625,8 @@ Pod characteristics:
 
 This pod supports an API Manager web interface (port 8075).
 
-{{% alert title="Note" color="" %}}
-As of Axway [API Management v7.7](/docs/apim_relnotes/201904_release/apig_relnotes/), we recommend running only one API Manager UI pod. This pod is not used to process client requests, so using one pod is enough. It also simplifies architecture. {{% /alert %}}
+{{< alert title="Note" color="primary" >}}
+As of Axway [API Management v7.7](/docs/apim_relnotes/201904_release/apig_relnotes/), we recommend running only one API Manager UI pod. This pod is not used to process client requests, so using one pod is enough. It also simplifies architecture. {{< /alert >}}
 
 To build an API Manager container, you need to provide:
 
@@ -795,9 +795,9 @@ The following logs should be persisted:
 * Transaction event log - see [Transaction event log settings](/docs/apim_reference/log_global_settings#transaction-event-log-settings)
 * Open traffic event log - see [Open traffic event log settings](/docs/apim_reference/monitor_traffic_events_metrics#open-traffic-event-log-settings)
 
-{{% alert title="Note" %}}
+{{< alert title="Note" color="primary" >}}
 Fluentd is deployed on infrapool nodes in AKS to stream logs. Fluentd is deployed on each node using a Daemonset. Although Fluentd does not have an Azure blob connector, a plugin is available on [GitHub](https://github.com/Microsoft/fluent-plugin-azure-storage-append-blob). You can also [use Fluentd with Azure Log Analytics](https://github.com/yokawasa/fluent-plugin-azure-loganalytics).
-{{% /alert %}}
+{{< /alert >}}
 
 ### Monitoring
 

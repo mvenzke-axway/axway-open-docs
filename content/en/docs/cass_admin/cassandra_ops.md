@@ -13,9 +13,9 @@ Apache Cassandra has different ways to maintain data consistency across the clus
 
 For standard HA configurations, it is best to run repair once per week (during a quiet period) on each node in the cluster.
 
-{{% alert title="Caution" color="warning" %}}
+{{< alert title="Caution" color="danger" >}}
 The repair must only be executed on one node at a time. You must therefore adjust the repair schedule for each node in the cluster to avoid overlap.
-{{% /alert %}}
+{{< /alert >}}
 
 ### Schedule repair using crontab
 

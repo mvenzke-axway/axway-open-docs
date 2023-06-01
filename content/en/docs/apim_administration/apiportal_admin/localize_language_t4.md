@@ -36,7 +36,7 @@ After a new language is enabled and the content for that language is configured,
 2. Ensure that **Site** is selected at the top of the page.
 3. To set the installed language as the default language, click the star button in the row for that language.
 
-   {{< alert title="Tip" color="primary" >}}You can change the default language of JAI regardless your API Portal. Select **Administrator** on the **Languages: Installed** page and click the star button in the row for the required language. You can also select any of the installed languages when you log in to JAI.{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}You can change the default language of JAI regardless of your API Portal. Select **Administrator** on the **Languages: Installed** page and click the star button in the row for the required language. You can also select any of the installed languages when you log in to JAI.{{< /alert >}}
 
 ### Add a new translated UI string file
 

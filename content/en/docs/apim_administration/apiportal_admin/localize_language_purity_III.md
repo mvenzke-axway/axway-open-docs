@@ -22,7 +22,14 @@ User interface strings are stored in language-specific resource files. To add th
 3. After the installation is finished, click **System > Languages** in the **Manage** card and ensure that **Site** is selected at the top of the page.
 4. To set the installed language as the default language of your API Portal, click the star button in the row for that language.
 
-   {{< alert title="Tip" color="primary" >}}You can change the default language of JAI independent of your API Portal. Select **Administrator** on the **Languages: Installed** page and click the star button in the row for the required language. You can also select any of the installed languages when you log in to JAI.{{< /alert >}}
+#### Change the default language of JAI
+
+You can change the default language of JAI regardless of your API Portal:
+
+1. Select **Administrator** on the **Languages: Installed** page
+2. Click the star button in the row for the required language.
+
+You can also select any of the installed languages when you log in to JAI.
 
 ### Add API Portal UI strings to the installed language
 

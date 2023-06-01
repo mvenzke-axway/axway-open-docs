@@ -17,7 +17,7 @@ Joomla! provides a powerful level of access control and user groups management. 
 
 The mapping feature allows to give only view permission to a user group over the content produced by a component (for example, `com_content, com_menu, or com_apiportal`), and permissions for all user actions on the same components to another user group. In combination, API Portal user groups mapping and Joomla! give almost unlimited options for API Manager users to manage contents, menu items, and the look and feel of the API Portal.
 
-{{< alert title="Caution" color="warning" >}}The combined use of API Portal user groups mapping, the built-in Joomla! Access Control List (ACL), and the user groups feature require advanced knowledge and experience with Joomla!. Incorrect configuration may result in API Portal malfunctioning. {{< /alert >}}
+{{< alert title="Caution" color="danger" >}}The combined use of API Portal user groups mapping, the built-in Joomla! Access Control List (ACL), and the user groups feature require advanced knowledge and experience with Joomla!. Incorrect configuration may result in API Portal malfunctioning. {{< /alert >}}
 
 For more details about Joomla! ACL and User Group management, see [Joomla! official documentation](https://docs.joomla.org/Special:MyLanguage/J3.x:Access_Control_List_Tutorial).
 

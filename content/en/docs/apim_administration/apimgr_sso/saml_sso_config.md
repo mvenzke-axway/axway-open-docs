@@ -50,13 +50,9 @@ For example, `trustStore.jks`. This file is an optional truststore that contains
 
 ## Sample files
 
-You can use the sample files included in your API Gateway installation at:
+You can use the sample files included in your API Gateway installation at `INSTALL_DIR/apigateway/samples/sso`.
 
-```
-INSTALL_DIR/apigateway/samples/sso
-```
-
-{{< alert title="Tip" color="primary" >}}You must make a copy of the sample files to your API Gateway instance folder (for example, `INSTALL_DIR/apigateway/groups/group-2/instance-1/conf`) and edit them as appropriate.{{< /alert >}}
+Before you start, make a copy of the sample files to your API Gateway instance folder (for example, `INSTALL_DIR/apigateway/groups/group-2/instance-1/conf`) and edit them as appropriate.
 
 The following sample files are included:
 
@@ -125,7 +121,7 @@ Follow these steps to configure your API Manager SSO
 
 API Manager uses a certificate to sign SAML requests. The IdP requires the public key to verify the validity and provenance of the SAML requests from API Manager. To configure the IdP, you must import the public key to the IdP.
 
-In this step you will create a keystore, export the public key of the keystore you created, and import it to your IdP.
+In this example, you will create a keystore, export the public key of the keystore you created, and import it to your IdP.
 
 First, use the Java `keytool` utility to set up a keystore containing a key pair:
 
@@ -136,25 +132,25 @@ First, use the Java `keytool` utility to set up a keystore containing a key pair
     keytool -genkey -alias ssokey -keyalg RSA -keystore sso.jks -keysize 2048 -validity 365
     ```
 
-{{< alert title="Tip" color="primary" >}}The values `ssokey` and `sso.jks` are used in the sample files included in the API Gateway installation. You can use different values when generating the keystore, but you must update the sample files with the new values.{{< /alert >}}
+    The values `ssokey` and `sso.jks` are used in the sample files included in the API Gateway installation. You can use different values when generating the keystore, but you must update the sample files with the new values.
 
-Next, export the public key of the keystore you created. For example, use one of the following commands to export it using Java `keytool`.
+3. Export the public key of the keystore you created. For example, use one of the following commands to export it using Java `keytool`.
 
-This example exports it to `publickey.txt`:
+    The following example exports the key to `publickey.txt`:
 
-```
-keytool -list -rfc -keystore sso.jks -alias ssokey > publickey.txt
-```
+    ```
+    keytool -list -rfc -keystore sso.jks -alias ssokey > publickey.txt
+    ```
 
-This example exports it to `publickey.cer`:
+    The following example exports the key to `publickey.cer`:
 
-```
-keytool -export -keystore sso.jks -alias ssokey -file publickey.cer
-```
+    ```
+    keytool -export -keystore sso.jks -alias ssokey -file publickey.cer
+    ```
 
-Finally, import the public key to your IdP. Consult the documentation for your IdP for details.
+4. Finally, import the public key to your IdP. Consult the documentation for your IdP for details.
 
-{{< alert title="Tip" color="primary" >}} For more information on the `keytool` commands and options, see the [Java keytool documentation](http://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html).{{< /alert >}}
+For more information on the `keytool` commands and options, see the [Java keytool documentation](http://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html).
 
 ### Create the service-provider.xml file
 
@@ -276,7 +272,7 @@ To change the default domain name to a sample domain name such as `axway.int`:
    </ConfigurationFragment>
    ```
 
-{{< alert title="Note" color="primary" >}}Do not prefix the domain name with a period (for example, do not use the value `.axway.int`). {{< /alert >}}
+{{< alert title="Note" color="primary" >}}Do not prefix the domain name with a period (punctuation mark), for example, do not use the value `.axway.int`. {{< /alert >}}
 
 ### Configure the **orgs2Role** header using a policy (optional)
 
@@ -317,8 +313,8 @@ To configure a policy, perform the following steps in Policy Studio:
 
 Finally, you must restart the Node Manager and the API Gateway instance to enable the changes in `service-provider.xml` and `jvm.xml` files to be applied. After the restart, your users will be able to log in to API Manager using SSO.
 
-## Demo video on  how to configure single sign-on based on the Keycloak example
+## Video Configure single sign-on based on the Keycloak example
 
-Watch this video on Axway API Management YouTube channel to learn how to configure single sign-on based on the Keycloak example.
+Watch this demo video on Axway API Management YouTube channel to learn how to configure single sign-on based on the Keycloak example.
 
 {{< youtube OsN06SowUAg >}}

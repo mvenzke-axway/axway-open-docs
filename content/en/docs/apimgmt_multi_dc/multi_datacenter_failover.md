@@ -46,7 +46,7 @@ The following applies in this scenario:
     * API Gateway configuration
     * API Gateway KPS custom table structure
 
-{{< alert title="Caution" color="warning" >}}
+{{< alert title="Caution" color="danger" >}}
 There is a risk that end-users may need to re-initiate sessions using the following data types stored in Ehcache:
 
 * API Gateway OAuth token store

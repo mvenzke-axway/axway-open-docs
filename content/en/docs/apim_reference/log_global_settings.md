@@ -14,7 +14,7 @@ You can configure the API Gateway so that it logs information about all requests
 
 The API Gateway can also digitally sign the logging information it sends to the log files and the database. This means that the logging information can not be altered after it has been signed, thus enabling an irreversible audit trail to be created.
 
-{{< alert title="Caution" color="warning" >}}The transaction audit log includes the complete contents of HTTP requests, including HTTP headers, body, and attachments. This may include sensitive information. You must ensure that appropriate safeguards are in place to protect this information in the different audit log locations.{{< /alert >}}
+{{< alert title="Caution" color="danger" >}}The transaction audit log includes the complete contents of HTTP requests, including HTTP headers, body, and attachments. This may include sensitive information. You must ensure that appropriate safeguards are in place to protect this information in the different audit log locations.{{< /alert >}}
 
 ### Configure log output
 

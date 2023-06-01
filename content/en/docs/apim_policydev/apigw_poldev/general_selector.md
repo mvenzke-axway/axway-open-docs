@@ -159,7 +159,7 @@ This returns `true` if the HTTP response code lies between 200 and 299:
 ${http.response.status >= 200 && http.response.status <= 299}
 ```
 
-{{< alert title="Tip" color="primary" >}}You can use the **Trace** filter to determine the appropriate selector expressions to use for specific message attributes. When configured after another filter, the **Trace** filter outputs the available message attributes and their Java type (for example, `Map` or `List`). For details on `com.vordel` classes, see the [API Gateway Javadoc](https://support.axway.com/doc/4f0a52b8a1f1934372469892828b468a/index.html). For example, for the `OAuth2AccessToken` class, you can use selector expressions such as `${accesstoken.getAdditionalInformation()}`.{{< /alert >}}
+You can use the **Trace** filter to determine the appropriate selector expressions to use for specific message attributes. When configured after another filter, the **Trace** filter outputs the available message attributes and their Java type (for example, `Map` or `List`). For details on `com.vordel` classes, see the [API Gateway Javadoc](https://support.axway.com/doc/4f0a52b8a1f1934372469892828b468a/index.html). For example, for the `OAuth2AccessToken` class, you can use selector expressions such as `${accesstoken.getAdditionalInformation()}`.
 
 ## Extract message attributes
 

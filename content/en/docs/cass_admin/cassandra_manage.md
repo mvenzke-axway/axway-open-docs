@@ -8,9 +8,9 @@ description: >
 ---
 On Linux, when you select to install Cassandra using the API Gateway installer as part of a Standard or Complete setup, Cassandra starts automatically. To start or stop Cassandra manually or as a service, perform the steps described in this page.
 
-{{% alert title="Note" %}}
+{{< alert title="Note" color="primary" >}}
 Before you start Cassandra, you must follow the best practices in [Apache Cassandra Best Practices](/docs/cass_admin/cassandra_bestpractices/) to achieve a stable Cassandra environment, and to prevent data integrity and performance issues.
-{{% /alert %}}
+{{< /alert >}}
 
 ## Manage Apache Cassandra
 

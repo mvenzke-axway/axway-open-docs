@@ -306,11 +306,11 @@ customPropertiesConfig: {
 }
 ```
 
-The **API** tab for a front-end API in API Manager will now contain these new custom properties. For example:
+The **API** tab for a front-end API in API Manager now contains these new custom properties. For example:
 
 ![Configure custom properties for APIs](/Images/docbook/images/api_mgmt/api_mgmt_custom_props_api.png)
 
-{{< alert title="Tip" color="primary" >}}In all cases, after updating your `app.config` file, log in to API Manager, and press **Ctrl-F5** to refresh the API Manager screen.{{< /alert >}}
+In all cases, after updating your `app.config` file, log in to API Manager, and press **Ctrl-F5** to refresh the API Manager screen.
 
 #### Export and import of custom properties in API collections
 

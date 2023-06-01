@@ -72,14 +72,12 @@ Select this option to customize which components are installed. You can install 
 * [Install the QuickStart tutorial](/docs/apim_installation/apigtw_install/install_quickstart_tutorial)
 * [Install the Admin Node Manager](/docs/apim_installation/apigtw_install/install_node_manager)
 * [Install Policy Studio](/docs/apim_installation/apigtw_install/install_policy_studio)
-* Install API Tester
+* Install API Tester (This component is deprecated, and is only installed in a **Custom** setup.)
 * [Install Configuration Studio](/docs/apim_installation/apigtw_install/install_config_studio)
 * [Install API Manager](/docs/apim_installation/apigtw_install/install_api_mgmt)
 * [Install Discovery and Traceability agents](/docs/apim_installation/apigtw_install/install_agents)
 * [Install the Package and Deploy tools](/docs/apim_installation/apigtw_install/install_deploy_tools)
 * [Install API Gateway Analytics](/docs/apim_installation/apigtw_install/install_analytics)
-
-{{< alert title="Note" color="primary" >}}The API Tester component is deprecated, and is only installed in a **Custom** setup. {{< /alert >}}
 
 #### QuickStart tutorial
 
@@ -117,7 +115,7 @@ If you selected to install an Apache Cassandra database, configure the following
 * **Installation Directory**
     Enter the directory in which to install the Cassandra server (for example, `/opt/db/cassandra`).
 
-    {{< alert title="Caution" color="warning" >}}Do not install Apache Cassandra in the same directory as the API Gateway components to avoid errors during the Cassandra upgrade.{{< /alert >}}
+    {{< alert title="Caution" color="danger" >}}Do not install Apache Cassandra in the same directory as the API Gateway components to avoid errors during the Cassandra upgrade.{{< /alert >}}
 
 * **JRE Location**
     Enter the directory of the Java Runtime Environment used by Cassandra. The default value is the location of the JRE provided by API Gateway (for example, `INSTALL_DIR/apigateway/Linux.x86_64/jre/bin`). If you have installed a separate JRE for Cassandra, enter its location instead.
@@ -130,7 +128,7 @@ It is important to secure your API Gateway system to protect it from internal an
 
 Select **Change the default user name and password** to set the user name and password for the administrator account, and enter a username and password. This option is selected by default to ensure that you set your own administrator user name and password. To use a default administrator user name and password, you must deselect this option. The default credentials are available from your Axway account manager.
 
-{{< alert title="Caution" color="warning" >}}Ensure that you remember these credentials or you will not be able to log in to Policy Studio or API Gateway Manager.
+{{< alert title="Caution" color="danger" >}}Ensure that you remember these credentials or you will not be able to log in to Policy Studio or API Gateway Manager.
 This is especially important when planning to install Policy Studio on Windows later because you do not have the option to set the credentials then.{{< /alert >}}
 
 Click **Next** to continue.
@@ -163,31 +161,19 @@ Click **Next** to continue.
 
 ### Specify Discovery and Traceability agents configuration
 
-{{< alert title="Note" color="primary" >}}The values of the Discovery and Traceability agents configuration variables must match the values defined in Amplify Central. For more information, see [Agent Configuration](https://docs.axway.com/bundle/amplify-central/page/docs/connect_manage_environ/connect_api_manager/agent-variables/index.html).
-
-If you do not know the values, you can leave the settings blank and edit the relevant configuration file after the installation.
-{{< /alert >}}
-
 Configure the following settings:
 
-* **Discovery agent name**:
-    Enter the name of the Discovery agent.
-* **Traceability agent name**:
-    Enter the name of the Traceability agent.
-* **Amplify Central Organization ID**:
-    Enter the Organization ID from Amplify Central. You can find this value at **Platform > User > Organization**.
-* **Private key**:
-    Enter the private key associated with the service Account.
-* **Public key**:
-    Enter the public key associated with the service Account.
-* **Amplify Central URL**:
-    Enter the URL to the Amplify Central instance, which the agents are using.
-* **Service Account Client ID**:
-    Enter the client identifier associated to the service account created in Amplify Central. You can find this value at **Access > Service Accounts > Client ID**.
-* **Amplify Central Environment Name**:
-    Enter the name of the Amplify Central environment where the APIs will be hosted.
-* **Amplify Central Authentication URL**:
-    Enter the Amplify login URL.
+* **Discovery agent name**: Enter the name of the Discovery agent.
+* **Traceability agent name**: Enter the name of the Traceability agent.
+
+    The values of the **Discovery** and **Traceability** agents configuration variables must match the values defined in Amplify Central. For more information, see [Agent Configuration](https://docs.axway.com/bundle/amplify-central/page/docs/connect_manage_environ/connect_api_manager/agent-variables/index.html). If you do not know the values, you can leave the settings blank and edit the relevant configuration file after the installation.
+* **Amplify Central Organization ID**: Enter the Organization ID from Amplify Central. You can find this value at **Platform > User > Organization**.
+* **Private key**: Enter the private key associated with the service Account.
+* **Public key**: Enter the public key associated with the service Account.
+* **Amplify Central URL**: Enter the URL to the Amplify Central instance, which the agents are using.
+* **Service Account Client ID**: Enter the client identifier associated to the service account created in Amplify Central. You can find this value at **Access > Service Accounts > Client ID**.
+* **Amplify Central Environment Name**: Enter the name of the Amplify Central environment where the APIs will be hosted.
+* **Amplify Central Authentication URL**: Enter the Amplify login URL.
 
 Click **Next** to continue.
 
@@ -197,7 +183,7 @@ It is important to secure your API Manager system to protect it from internal an
 
 Select **Change the default user name and password** to set the user name and password for the API administrator account, and enter a user name and password. This option is selected by default to ensure that you set your own API administrator user name and password. To use a default API administrator user name and password, you must deselect this option. The default credentials are available from your Axway account manager.
 
-{{< alert title="Caution" color="warning" >}}Ensure that you remember these credentials or you will not be able to log in to API Manager.{{< /alert >}}
+{{< alert title="Caution" color="danger" >}}Ensure that you remember these credentials or you will not be able to log in to API Manager.{{< /alert >}}
 
 Click **Next** to continue.
 
@@ -207,7 +193,7 @@ It is important to secure your API Gateway Analytics system to protect it from i
 
 Select **Change the default user name and password** to set the user name and password for the administrator account, and enter a user name and password. This option is selected by default to ensure that you set your own administrator user name and password. To use a default administrator user name and password, you must deselect this option. The default credentials are available from your Axway account manager.
 
-{{< alert title="Caution" color="warning" >}}Ensure that you remember these credentials or you will not be able to log in to API Gateway Analytics.{{< /alert >}}
+{{< alert title="Caution" color="danger" >}}Ensure that you remember these credentials or you will not be able to log in to API Gateway Analytics.{{< /alert >}}
 
 Click **Next** to continue.
 

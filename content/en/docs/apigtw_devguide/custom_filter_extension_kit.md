@@ -6,7 +6,7 @@
 "description": "Write a custom filter using the API Gateway developer extension kit."
 }
 
-{{< alert title="Note" color="primary" >}}The following sections refer to `jabber` sample code that is no longer included in the code samples supplied with API Gateway. We recommend that you use this section only as a general guide for writing a custom filter using the extension kit. {{< /alert >}}
+{{< alert title="Note" color="primary" >}}This page refers to `jabber` sample code that is no longer included in the code samples supplied with API Gateway. We recommend that you use this section only as a general guide for writing a custom filter using the extension kit. {{< /alert >}}
 
 In this approach, you write your custom filter using the API Gateway developer extension kit. This section details how to write a custom message filter, called the **Jabber Filter** (API Gateway runtime component and Policy Studio configuration component). It also shows how to configure it as part of a policy in Policy Studio and then demonstrates how the filter sends an instant message to an account on Google Talk.
 
@@ -205,12 +205,9 @@ The `invoke` method is responsible for using the configuration data to perform t
 
 The `invoke` method can have the following possible results:
 
-**True**
-: If the filter processed the message successfully (for example, successful authentication, schema validation passed, and so on), the `invoke` method should return a true result, meaning that the next filter on the success path for the filter is invoked.
-**False**
-: If the filter processing fails (for example, the user was not authenticated, message failed integrity check, and so on), the `invoke` method should return false, meaning that the next filter on the failure path for the filter is invoked.
-**CircuitAbortException**
-: If for some reason the filter cannot process the message at all (for example, if it cannot connect to an Identity Management server to authenticate a user), it should throw a `CircuitAbortException`. If a `CircuitAbortException` is thrown in a policy, the designated fault processor (if any) is invoked instead of any successive filters on either the success or failure paths.
+* **True**: If the filter processed the message successfully (for example, successful authentication, schema validation passed, and so on), the `invoke` method should return a true result, meaning that the next filter on the success path for the filter is invoked.
+* **False**: If the filter processing fails (for example, the user was not authenticated, message failed integrity check, and so on), the `invoke` method should return false, meaning that the next filter on the failure path for the filter is invoked.
+* **CircuitAbortException**: If for some reason the filter cannot process the message at all (for example, if it cannot connect to an Identity Management server to authenticate a user), it should throw a `CircuitAbortException`. If a `CircuitAbortException` is thrown in a policy, the designated fault processor (if any) is invoked instead of any successive filters on either the success or failure paths.
 
 ## Create the declarative UI XML file
 
@@ -265,27 +262,23 @@ The following figure shows the Jabber filter dialog that this XML creates.
 
 The next step after defining the user interface is to write two GUI classes that enable the fields defined in the `JabberFilter` type definition to be configured. When the GUI classes and resources are built, the visual components can be used in Policy Studio to configure the filter and add it to a policy.
 
-The following table describes the GUI classes and resources for the `JabberFilter`:
+The following list describes the GUI classes and resources for the `JabberFilter`:
 
-`JabberFilterUI.java`
-: This class lists the pages that are involved in a filter configuration window. Each filter has at least two pages: the main configuration page, and a page where log messages related to the filter can be customized. This class is returned by the `getConfigPanelClass` method of the `JabberFilter` class.
+* `JabberFilterUI.java`: This class lists the pages that are involved in a filter configuration window. Each filter has at least two pages: the main configuration page, and a page where log messages related to the filter can be customized. This class is returned by the `getConfigPanelClass` method of the `JabberFilter` class.
 
-`JabberFilterPage.java`
-: This class loads the declarative XML file which defines the layout of the visual fields on the filter's main configuration window. For example, there are five fields on the configuration window for the **Jabber Filter** corresponding to the five fields defined in the entity type definition.
+    The `JabberFilterUI` class executes the following:
 
-`resources.properties`
-: This file contains all text displayed in the GUI configuration window (for example, dialog titles, field names, and error messages). This means that the text can be customized or internationalized easily without needing to change the code.
+    * Listing the configuration pages that make up the user interface for the filter
+    * Naming the category of filters to which this filter belongs
+    * Specifying the name of the images to use as the icons and images for this filter
 
-`jabber.gif`
-: This image file is the icon that identifies the filter in Policy Studio, and is displayed in the filter palette.
+* `JabberFilterPage.java`: This class loads the declarative XML file which defines the layout of the visual fields on the filter's main configuration window. For example, there are five fields on the configuration window for the **Jabber Filter** corresponding to the five fields defined in the entity type definition.
 
-The `JabberFilterUI` class, which is returned by the `getConfigPanelClass` method of the `JabberFilter` class, is responsible for the following:
+* `resources.properties`: This file contains all text displayed in the GUI configuration window (for example, dialog titles, field names, and error messages). This means that the text can be customized or internationalized easily without needing to change the code.
 
-* Listing the configuration pages that make up the user interface for the filter
-* Naming the category of filters to which this filter belongs
-* Specifying the name of the images to use as the icons and images for this filter
+* `jabber.gif`: This image file is the icon that identifies the filter in Policy Studio, and is displayed in the filter palette.
 
-### `JabberFilterUI` class
+### JabberFilterUI class
 
 The code for the `JabberFilterUI` class is as follows:
 
@@ -323,25 +316,21 @@ public class JabberFilterUI extends DefaultGUIFilter
 }
 ```
 
-The following table describes the important methods:
+The following list describes the important methods:
 
-`public Vector getPropertyPages()`
-: Initializes a Vector of the pages that make up the total configuration windows for this filter. Successive pages are accessible by clicking the **Next** button on the Policy Studio configuration window.  
+* `public Vector getPropertyPages()`: Initializes a Vector of the pages that make up the total configuration windows for this filter. Successive pages are accessible by clicking the **Next** button on the Policy Studio configuration window.  
 
-`public String[] getCategories()`
-: This method returns the names of the filter categories that this filter belongs to. The filter is displayed under these categories in the filter palette in Policy Studio. The **Jabber Filter** is added to the **XMPP Filters** category.
+* `public String[] getCategories()`: This method returns the names of the filter categories that this filter belongs to. The filter is displayed under these categories in the filter palette in Policy Studio. The **Jabber Filter** is added to the **XMPP Filters** category.
 
-`public Image getSmallImage()`
-: The default image for the filter, which is registered in the static block in the preceding code, can be overridden by returning a different image here.
+* `public Image getSmallImage()`: The default image for the filter, which is registered in the static block in the preceding code, can be overridden by returning a different image here.
 
-`public ImageDescriptor getSmallIcon()`
-: The default icon for the filter can be overridden by returning a different icon here.
+* `public ImageDescriptor getSmallIcon()`: The default icon for the filter can be overridden by returning a different icon here.
 
 A page only represents a single configuration window in Policy Studio. You can chain together several pages to form a series of configuration windows that together make up the overall configuration for a filter. By default, all filters consist of two pages: one for the filter configuration fields, and one for per-filter logging. However, more pages can be added if required. You can add additional pages to the configuration in the `getPropertyPages` method.
 
 If you look at the `getPropertyPages` method of the `JabberFilterUI` class, you can see that the `JabberFilterPage` class forms one of the configuration windows (or pages) for the `JabberFilter`. The `JabberFilterPage` class is responsible for loading the declarative UI XML file that defines the layout of all the input fields that make up the configuration window for the `JabberFilter`.
 
-### `JabberFilterPage` class
+### JabberFilterPage class
 
 The code for the `JabberFilterPage` class is as follows:
 
@@ -373,43 +362,39 @@ public class JabberFilterPage extends VordelPage
 }
 ```
 
-There are four important interface methods that must be implemented in this class:
+The following interface methods must be implemented in this class:
 
-`public JabberFilterPage()`
-: The constructor performs some basic initialization, such as setting a unique ID for the page, and setting the title and description for the page. The text representing the page title and description are kept in the `resources.properties` file so that they can be localized or customized easily.
+* `public JabberFilterPage()`: The constructor performs some basic initialization, such as setting a unique ID for the page, and setting the title and description for the page. The text representing the page title and description are kept in the `resources.properties` file so that they can be localized or customized easily.
 
-`public String getHelpID()`
-: This method is called by the Policy Studio help system. There is a **Help** button on every configuration page in Policy Studio. When you click this button, the help system is invoked. Every page has a help ID (for example, `jabber`\_`help`) associated with it, which is mapped to an HTML help page. This mapping is defined in the following file under the directory where you have installed Policy Studio:
+* `public boolean performFinish()`: This method gives you the chance to process the user-specified data before it is submitted to the entity store. For example, any validation on the data should be added to this method.
 
-```
-/plugins/com.vordel.rcp.policystudio.gateway.help_<version>/csh.xml
-```
+* `public void createControl(Composite parent)`: This method is responsible for loading the declarative UI XML file that creates the configuration pages. Localization keys from the `resources.properties` file are used to give labels for the input fields in the XML file.
 
-To define a mapping for the help page, follow these steps:
+* `public String getHelpID()`: This method is called by the Policy Studio help system. There is a **Help** button on every configuration page in Policy Studio. When you click this button, the help system is invoked. Every page has a help ID (for example, `jabber`\_`help`) associated with it, which is mapped to an HTML help page. This mapping is defined in the following file under the directory where you have installed Policy Studio:
 
-1. Open the `csh.xml` file.
-2. Add the following XML to the file:
-
-    ```xml
-    <context id="jabber_help">
-        <description>Jabber Filter</description>
-        <topic label="Jabber Filter" href="Content/PolicyDevTopics/jabber.htm"/>
-    </context>
+    ```
+    /plugins/com.vordel.rcp.policystudio.gateway.help_<version>/csh.xml
     ```
 
-3. Create a help file called `jabber.htm` to contain the help for the filter in HTML format. All URLs specified in the `csh.xml` file are relative from the `/plugins/com.vordel.rcp.policystudio.gateway.help_<version>` directory of your Policy Studio installation.
+    To define a mapping for the help page, follow these steps:
 
-`public boolean performFinish()`
-: This method gives you the chance to process the user-specified data before it is submitted to the entity store. For example, any validation on the data should be added to this method.
+    1. Open the `csh.xml` file.
+    2. Add the following XML to the file:
 
-`public void createControl(Composite parent)`  
-This method is responsible for loading the declarative UI XML file that creates the configuration pages. Localization keys from the `resources.properties` file are used to give labels for the input fields in the XML file.
+        ```xml
+        <context id="jabber_help">
+            <description>Jabber Filter</description>
+            <topic label="Jabber Filter" href="Content/PolicyDevTopics/jabber.htm"/>
+        </context>
+        ```
 
-### `resources.properties` file
+    3. Create a help file called `jabber.htm` to contain the help for the filter in HTML format. All URLs specified in the `csh.xml` file are relative from     the `/plugins/com.vordel.rcp.policystudio.gateway.help_<version>` directory of your Policy Studio installation.
+
+### resources.properties file
 
 Both the declarative UI XML file and the GUI classes use localized keys for all text that is displayed on the configuration window. This makes it easy to localize or customize all text displayed in Policy Studio. The localization keys and their corresponding strings are stored in the `resources.properties` file, which takes the following format:
 
-```
+```none
 #
 # Palette category for Jabber filters
 #
@@ -506,7 +491,7 @@ To register the type definition using Policy Studio, perform the following steps
 4. When you import the TypeSet, the workspace refreshes. The new filter is available in the filter list.
 5. To verify that the Jabber filter exists, select an existing policy in the Policy Studio tree, and you should see the **XMPP Filters** category in the palette, which contains the new custom **Jabber** filter.
 
-{{< alert title="Note" color="primary" >}}Another way to verify that your new filter has been installed is to use the ES Explorer. You can use the ES Explorer tool for browsing the entity types and entity instances that have been registered with the Entity Store. For more information, see [Use the ES Explorer](/docs/apigtw_devguide/entity_store#use-the-es-explorer).{{< /alert >}}.
+{{< alert title="Note" color="primary" >}}Another way to verify that your new filter has been installed is to use the ES Explorer. You can use the ES Explorer tool for browsing the entity types and entity instances that have been registered with the Entity Store. For more information, see [Use the ES Explorer](/docs/apigtw_devguide/entity_store#use-the-es-explorer).{{< /alert >}}
 
 ## Construct a policy
 
@@ -561,7 +546,7 @@ To test the configuration, follow these steps:
 3. In the **Url** field, enter to send the message to the relative path you configured above.
 4. Click **Run** to send the message to API Gateway.
 
-{{< alert title="Tip" color="primary" >}}Alternatively, you can test the policy by entering the URL into any web browser.{{< /alert >}}
+Alternatively, you can test the policy by entering the URL into any web browser.
 
 API Gateway echoes the message back to the client using the **Reflect Message** filter after an instant message has been sent to an account on Google Talk. The following is an example of an instant message that appears on an account on Google Talk. This indicates that the newly added filter has worked successfully.
 

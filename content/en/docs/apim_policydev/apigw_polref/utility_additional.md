@@ -260,7 +260,7 @@ Enter an appropriate name for the filter to display in a policy.
 **Policy Shortcut**:
 Select the policy that to reuse from the tree. You can search for a specific policy by entering its name in the text box, and the policy tree is filtered automatically. The policy in which this **Policy Shortcut** filter is configured calls the selected policy when it is executed.
 
-{{< alert title="Tip" color="primary" >}}Alternatively, to speed up policy shortcut configuration, you can drag a policy from the tree on the left of the Policy Studio and drop it on to the policy canvas on the right. This automatically configures a policy shortcut to the selected policy.{{< /alert >}}
+Alternatively, to speed up policy shortcut configuration, you can drag a policy from the tree on the left of the Policy Studio and drop it on to the policy canvas on the right. This automatically configures a policy shortcut to the selected policy.
 
 ## Set response status filter
 
@@ -535,7 +535,7 @@ The **Management Services RBAC** filter can be used to perform the following tas
 * Return true if one of the roles has access to the management service currently being invoked, as defined in the `acl.json` file.
 * Otherwise, return false.
 
-{{< alert title="Caution" color="warning" >}}This filter is for management services use only. The **Management Services** HTTP services group should only be modified under strict supervision from Axway Support.{{< /alert >}}
+{{< alert title="Caution" color="danger" >}}This filter is for management services use only. The **Management Services** HTTP services group should only be modified under strict supervision from Axway Support.{{< /alert >}}
 
 Configure the following settings:
 

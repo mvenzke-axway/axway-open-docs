@@ -15,7 +15,7 @@ This example assumes the following simple environment topology:
 
 ![Example environment topology](/Images/docbook/images/promotion/example_topology.png)
 
-## Edit configuration and deploy in development environment {#edit-configuration}
+## Edit configuration and deploy in development environment
 
 The policy developer in the development environment uses Policy Studio to create policies, users, certificates, listeners, and so on as required for the business solution they are developing. The policy developer will edit and deploy the configuration to the **Dev Payment API Group** repeatedly until they are finished with the configuration.
 
@@ -36,36 +36,55 @@ When the policy developer is developing policies in an iterative manner as descr
 
 ### Display environmentalized configuration
 
-You must first enable the display of configuration settings that are assigned for environmentalization in Policy Studio. Select **Window** > **Preferences** > **Environmentalization** in the main menu, and select **Allow environmentalization of fields**.
+You must first enable the display of configuration settings that are assigned for environmentalization in Policy Studio:
+
+1. Select **Window** > **Preferences** > **Environmentalization** in the main menu
+2. Select **Allow environmentalization of fields**.
 
 ### Environmentalize configuration settings
 
 For example, the developer chooses to environmentalize the following settings in the configuration:
 
-* **URL**, **User Name**, and **Password** fields in a **Default Database Connection**
-* **URL** field in a **Connect to URL** filter in a policy named **GetProducts**
-* **X.509 Certificate** field in an HTTPS interface named **OAuth 2.0 Interface**
-* **URL**, **User Name**, **Password**, and **Signing Key** fields in a **Sample Active Directory Connection**
+* **URL**, **User Name**, and **Password** fields in a **Default Database Connection**.
+* **URL** field in a **Connect to URL** filter in a policy named **GetProducts**.
+* **X.509 Certificate** field in an HTTPS interface named **OAuth 2.0 Interface**.
+* **URL**, **User Name**, **Password**, and **Signing Key** fields in a **Sample Active Directory Connection**.
 
-The policy developer edits the database connection, **Connect to URL** filter, HTTPS interface, and LDAP connection. You can click the **Environmentalize** icon (![Environmentalize icon](/Images/docbook/images/deploy/env_off.png), a globe icon on the right side of the fields) as shown in the following examples. Alternatively, press **Ctrl-E** to environmentalize a selected field.
+The policy developer edits the database connection, **Connect to URL** filter, HTTPS interface, and LDAP connection.
+
+You can click the **Environmentalize** icon (![Environmentalize icon](/Images/docbook/images/deploy/env_off.png), a globe icon on the right side of the fields) as shown in the following examples.
+
+Alternatively, press **Ctrl-E** to environmentalize a selected field.
 
 {{< alert title="Tip" color="primary" >}}You must select the field for focus before the **Environmentalize** icon (![Environmentalize](/Images/docbook/images/deploy/env_off.png)) is displayed.{{< /alert >}}
 
-For example, to environmentalize the database connection, select **Environment Configuration** > **External Connections** > **Database Connections** > **Default Database Connection** > **Edit**, and click **Environmentalize** next to the appropriate fields:
+For example, to environmentalize the database connection:
 
-![Example Database Connection](/Images/docbook/images/promotion/environmentalize_db.png)
+1. Select **Environment Configuration** > **External Connections** > **Database Connections** > **Default Database Connection** > **Edit**
+2. Click **Environmentalize** next to the appropriate fields:
 
-To environmentalize the **Connect to URL** filter, Select **Policies** > **QuickStart** > **Virtualized Services** > **REST** > **GetProducts** > **Connect to Heroes' REST Service**, and click **Environmentalize** next to the **URL** field:
+    ![Example Database Connection](/Images/docbook/images/promotion/environmentalize_db.png)
 
-![Example Connect to URL Filter](/Images/docbook/images/promotion/environmentalize_connect_url.png)
+To environmentalize the **Connect to URL** filter:
 
-To environmentalize the HTTPS interface, select **Environment Configuration** > **Listeners** > **API Gateway** > **OAuth 2.0 Services** > **Ports** > **OAuth 2.0 Interface**, and click **Environmentalize** next to the **X.509 Certificate** field:
+1. Select **Policies** > **QuickStart** > **Virtualized Services** > **REST** > **GetProducts** > **Connect to Heroes' REST Service**
+2. Click **Environmentalize** next to the **URL** field:
 
-![Example HTTPS Interface](/Images/docbook/images/promotion/environmentalize_https.png)
+    ![Example Connect to URL Filter](/Images/docbook/images/promotion/environmentalize_connect_url.png)
 
-To environmentalize the LDAP connection, select **External Connections** > **LDAP Connections** > **Sample Active Directory Connection** > **Edit**, and click **Environmentalize** next to the appropriate fields:
+To environmentalize the HTTPS interface:
 
-![Example Database Connection](/Images/docbook/images/promotion/environmentalize_ldap.png)
+1. Select **Environment Configuration** > **Listeners** > **API Gateway** > **OAuth 2.0 Services** > **Ports** > **OAuth 2.0 Interface**
+2. Click **Environmentalize** next to the **X.509 Certificate** field:
+
+    ![Example HTTPS Interface](/Images/docbook/images/promotion/environmentalize_https.png)
+
+To environmentalize the LDAP connection
+
+1. Select **External Connections** > **LDAP Connections** > **Sample Active Directory Connection** > **Edit**
+2. Click **Environmentalize** next to the appropriate fields:
+
+    ![Example Database Connection](/Images/docbook/images/promotion/environmentalize_ldap.png)
 
 When configuration settings have been environmentalized, the corresponding node in the Policy Studio tree is displayed with a globe icon and bold text.
 

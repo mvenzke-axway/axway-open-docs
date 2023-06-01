@@ -43,7 +43,7 @@ To perform an upgrade, you must always run the following `sysupgrade` commands i
 | 2    | `upgrade` | Validate data exported from the old installation, and upgrade it to version 7.7. You can keep your old installation running during this step, so you can fix any issues reported in the logs without service interruption. |
 | 3    | `apply`   | Create the new API Gateway processes on the local node, and import the upgraded data into the 7.7 installation.                                                                                                            |
 
-{{< alert title="Tip" color="primary" >}}You can also use the `status` command at any stage to see which commands have run, and which command will run next (see [Utility commands](#utility-commands)).{{< /alert >}}
+You can also use the `status` command at any stage to see which commands have run, and which command will run next (see [Utility commands](#utility-commands)).
 
 For more details on performing an upgrade, see [Upgrade from API Gateway 7.5.x or 7.6.x](/docs/apim_installation/apigw_upgrade/upgrade_steps_extcass/).
 

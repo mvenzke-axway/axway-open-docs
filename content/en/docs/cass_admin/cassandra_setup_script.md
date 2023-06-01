@@ -64,9 +64,9 @@ On a remote Cassandra node, you first must ensure that the `setup-cassandra` scr
 ./setup-cassandra.py <options>
 ```
 
-{{% alert title="Note" %}}
+{{< alert title="Note" color="primary" >}}
 The example commands in this topic assume that Cassandra is installed locally on an API Gateway node.
-{{% /alert %}}
+{{< /alert >}}
 
 ## Configure the seed node
 
@@ -159,9 +159,9 @@ According to the type of connection, you must save your files as follows:
 |node-to-node|`server.p12`|`server-ca.pem`|
 |client-to-node|`client.p12`|`client-ca.pem`|
 
-{{% alert title="Caution" color="warning" %}}
+{{< alert title="Caution" color="danger" >}}
 Anyone with a private key or certificate signed by `server-ca.pem` can connect to the cluster. You must limit the use of this CA to sign in the node certificates only. In particular, do not use the same CA to sign client-to-node certificates.
-{{% /alert %}}
+{{< /alert >}}
 
 #### Configure Cassandra nodes for traffic encryption
 

@@ -14,7 +14,7 @@ Alternatively, you can use one of these approaches:
 * Use a promotion policy that you have configured in Policy Studio to automate promotion between environments.
 * When APIs have been developed using Policy Studio, you can also promote them between environments using the API Gateway mechanism for promotion and deployment of standard API Gateway configuration.
 
-{{< alert title="Tip" color="primary" >}}Another alternative is to use the `apim-cli` tool to follow an APIs as code approach. Store your API definition (Swagger or WSDL) plus a meta data configuration file in your version control system, and a CI/CD pipeline replicates it into API Manager in the state you want. For details, go to [`apim-cli` tool on GitHub](https://github.com/Axway-API-Management-Plus/apim-cli).{{< /alert >}}
+Alternatively, you can use the `apim-cli` tool to follow an API-as-code approach. Store your API definition (Swagger or WSDL) plus a meta data configuration file in your version control system, and a CI/CD pipeline replicates it into API Manager in the state you want. For more information, see [`apim-cli` tool on GitHub](https://github.com/Axway-API-Management-Plus/apim-cli).
 
 ## Promote registered APIs with zero downtime using a script
 
@@ -32,7 +32,7 @@ When using the `apimanager-promote` script, the high-level steps are as follows:
 
 1. Export the APIs and applications that you wish to promote from API Manager (as a `.dat` file in JSON format). For example, select the front-end APIs that you wish to export, and click **Manage selected** > **Export API collection**.
 
-    Alternatively, you can export using the API Manager REST API. For more details, see [API Manager REST APIs](/docs/apim_reference/api_mgmt_rest_api/).
+    Alternatively, you can export using the API Manager REST API. For more information, see [API Manager REST APIs](/docs/apim_reference/api_mgmt_rest_api/).
 2. Create your `promotion.properties` file to specify how your APIs and applications are promoted. See [Generate your promotion.properties file](#generate-your-promotionproperties-file).
 3. Place your exported API and application files (`.dat`) and your generated `promotion.properties` file in the same directory.
 

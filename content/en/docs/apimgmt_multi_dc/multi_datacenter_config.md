@@ -43,7 +43,7 @@ The recommended configuration for each data type and its replication between dat
 
 Cassandra is required to store data for API Manager and to store custom KPS tables for API Gateway. For details on the recommended Cassandra architecture, see [Multi-datacenter deployment architecture](/docs/apimgmt_multi_dc#multi-datacenter-deployment-architecture).
 
-{{< alert title="Note" color="primary" >}}You must install and configure Cassandra on each node from each datacenter installing and configuring API Gateway and API Manager.{{< /alert >}}
+You must install and configure Cassandra on each node from each datacenter installing and configuring API Gateway and API Manager.
 
 ### Prerequisites
 
@@ -57,7 +57,7 @@ The following prerequisites apply to Cassandra in a multi-datacenter production 
 * Determine a naming convention for each datacenter and rack, for example:
     * `DC1`, `DC2`
     * `RACK1`, `RACK2`, `RACK3`
-    {{< alert title="Caution" color="warning" >}}The rack names must be exactly the same in each datacenter. You should choose the names carefully because renaming a datacenter is not possible.{{< /alert >}}
+    {{< alert title="Caution" color="danger" >}}The rack names must be exactly the same in each datacenter. Choose the names carefully because renaming a datacenter is not possible.{{< /alert >}}
 * Determine the seed nodes. You must have at least two Cassandra seed nodes per datacenter.
 * Choose a unique name for the Cassandra cluster.
 * To avoid firewall issues, you must open the following ports to allow bi-directional communication among the nodes:
@@ -76,6 +76,7 @@ Configure the following settings in `cassandra.yaml`:
 * `cluster_name`: Your chosen cluster name, common across both datacenters (for example, `cassandra-cluster1`)
 * `num_tokens`: `256`
 * `endpoint_snitch`: `GossipingPropertyFileSnitch`
+    * When this property is set, you must remove `cassandra-topology.properties` from `cassandra/conf/` to avoid conflict.
 * `-seeds`: Internal IP address for all seed nodes. Each datacenter should have its own seed node IP addresses first, followed by the other datacenters seed nodes. This is critical for replication.
     For example:
     * DC1 seed nodes: `192.168.10.1`, `192.168.10.2`
@@ -89,8 +90,6 @@ Configure the following settings in `cassandra.yaml`:
 * `start_native_transport`: `true`
 * `native_transport_port`: `9042`
 
-{{< alert title="Note" color="primary" >}}You must remove `cassandra-topology.properties` from `cassandra/conf/`. This is not needed when `GossipingPropertyFileSnitch` is set and could cause conflicts.{{< /alert >}}
-
 #### Configure authentication settings
 
 It is recommended to enable authentication. Set the following properties:
@@ -98,7 +97,7 @@ It is recommended to enable authentication. Set the following properties:
 * `authenticator`: `org.apache.cassandra.auth.PasswordAuthenticator`
 * `authorizer`: `org.apache.cassandra.auth.CassandraAuthorizer`
 
-{{< alert title="Note" color="primary" >}}When these properties are set, you must change the default Cassandra user.{{< /alert >}}
+After you enable these properties, you must change the default Cassandra user.
 
 #### Configure TLS/SSL traffic encryption
 
@@ -135,7 +134,7 @@ To enable client-to-node SSL traffic encryption, set the following properties:
 
 Configure the `cassandra/conf/cassandra-rackdc.properties` file with your chosen datacenter and rack names for each node, and set `prefer_local=true`.
 
-{{< alert title="Caution" color="warning" >}}The rack names must be exactly the same in each datacenter. You should choose the names carefully because renaming a datacenter is not possible.{{< /alert >}}
+{{< alert title="Caution" color="danger" >}}The rack names must be exactly the same in each datacenter. You should choose the names carefully because renaming a datacenter is not possible.{{< /alert >}}
 
 For example:
 
@@ -266,7 +265,7 @@ Perform the following steps:
 
 4. On each node, run `nodetool repair -pr`.
 
-    {{< alert title="Tip" color="primary" >}}In a production environment, you should schedule weekly node repairs as a best practice.{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}In a production environment, you should schedule weekly node repairs as a best practice.{{< /alert >}}
 
 ### Configure the remaining API Gateway nodes
 

@@ -79,9 +79,7 @@ response from the V2 Amazon web service.
 For example, to put the API key in the header of the request in a field named `AWSKeyId`, choose **Header**
 and enter `AWSKeyId`.
 
-{{< alert title="Tip" color="primary" >}}To change the configuration of an existing API key service provider, click the API key client credential node, and edit the settings on the **API Key Configuration**
-tab of the **API Key Credential Profile**
-window.{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}To change the configuration of an existing API key service provider, click the API key client credential node, and edit the settings on the **API Key Configuration** tab of the **API Key Credential Profile** window.{{< /alert >}}
 
 ## Configure HTTP basic/digest client credential profiles
 

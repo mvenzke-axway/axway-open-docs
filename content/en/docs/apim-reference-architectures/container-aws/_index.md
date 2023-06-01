@@ -376,7 +376,7 @@ A specific DNS entry is required to route requests to a service inside a Kuberne
 
 DNS records must match the certificate and ingress host configuration. These records must target the external IP used for the Kubernetes entry point.
 
-{{% alert title="Note" %}} It is not possible to use some rewrite path like `https://FQDN/Components/` to access the web interface {{% /alert %}}
+{{< alert title="Note" color="primary" >}} It is not possible to use some rewrite path like `https://FQDN/Components/` to access the web interface {{< /alert >}}
 
 It is necessary to configure the following annotations for ingress configuration:
 
@@ -450,8 +450,8 @@ Pod characteristics:
 
 This pod supports an API Manager web interface (port 8075).
 
-{{% alert title="Note" color="" %}}
-As of Axway [API Management v7.7](/docs/apim_relnotes/201904_release/apig_relnotes/), we recommend running only one API Manager UI pod. This pod is not used to process client requests, so using one pod is enough. It also simplifies architecture. {{% /alert %}}
+{{< alert title="Note" color="primary" >}}
+As of Axway [API Management v7.7](/docs/apim_relnotes/201904_release/apig_relnotes/), we recommend running only one API Manager UI pod. This pod is not used to process client requests, so using one pod is enough. It also simplifies architecture. {{< /alert >}}
 
 To build an API Manager container, you must provide:
 
@@ -493,13 +493,13 @@ API Gateway/Manager pod handles API calls. At the least, a traffic port (port 80
 
 The API Gateway/Manager container is the same as the API Manager UI container. The deployment parameters are the same. The only differences are in the Helm charts configuration: these are primarily the number of replicas and exposed ports.
 
-{{% alert title="Caution" color="warning" %}}
+{{< alert title="Caution" color="danger" >}}
 During development of the policies and server settings, you must use `EMT_DEPLOYMENT_ENABLED` flag when a container is started. This flag enables direct deployment of the API Gateway configurations from Policy Studio. You will be able to develop and test your policies as with the classic deployment option. This option is recommended for running a small test environment using _only one_ API Gateway pod on a development machine.
 
 You must not use this flag in a production environment.
 
 Any testing in an upper environment (Test, QA, and so on) must be done using a Docker image built for that environment.
-{{% /alert %}}
+{{< /alert >}}
 
 The Helm charts contain a precheck mechanism (`initContainers`) to check for required preconditions before this pod can be started. Those checked preconditions are:
 

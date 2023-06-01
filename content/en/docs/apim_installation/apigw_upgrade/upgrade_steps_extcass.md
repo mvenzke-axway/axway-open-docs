@@ -12,7 +12,7 @@ In an upgrade from API Gateway 7.5.1 and later versions:
 * Your existing Apache Cassandra deployment can remain in place for use with API Gateway 7.7. There is no need to install a new Apache Cassandra deployment.
 * No data changes are necessary in the Apache Cassandra database, which means it can remain running throughout the upgrade, serving any upgraded API Gateways when they come online.
 
-{{< alert title="Caution" color="warning" >}}
+{{< alert title="Caution" color="danger" >}}
 
 * During an upgrade, including zero downtime upgrade (ZDU), quotas are reset, meaning that your quotas might be too lenient for a period after the upgrade.
 * During a ZDU the old quota count and new quota count are in use at the same time.
@@ -177,7 +177,7 @@ When the installation is complete, perform the new installation checks detailed 
 
 ### Step 3 - Export the data from the old installation and upgrade it
 
-{{< alert title="Caution" color="warning" >}}Before running `export`, you must ensure that the old API Gateway processes are running, including all Admin Node Managers, Node Managers, and API Gateway instances. These processes must be running in the old installation to export the API Gateway configuration data.{{< /alert >}}
+{{< alert title="Caution" color="danger" >}}Before running `export`, you must ensure that the old API Gateway processes are running, including all Admin Node Managers, Node Managers, and API Gateway instances. These processes must be running in the old installation to export the API Gateway configuration data.{{< /alert >}}
 
 The following example shows how to run the `export` and `upgrade` commands:
 
@@ -193,7 +193,7 @@ You must resolve any errors before proceeding. You can rerun `export` and `upgra
 
 ### Step 4 - Apply the upgraded data to the new installation
 
-{{< alert title="Caution" color="warning" >}}Before running `apply`, you must stop the API Gateway processes in the old installation and ensure that Cassandra is already running. {{< /alert >}}
+{{< alert title="Caution" color="danger" >}}Before running `apply`, you must stop the API Gateway processes in the old installation and ensure that Cassandra is already running. {{< /alert >}}
 
 The following example shows how to run the `apply` command:
 

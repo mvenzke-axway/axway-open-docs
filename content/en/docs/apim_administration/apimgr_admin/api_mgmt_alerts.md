@@ -159,7 +159,7 @@ This topic describes the message attributes that are available to the configured
 
 The following tables outline the message properties that are generated for each alert. All message property values are in string format. Message properties are only available if a value exists for the entity field in question.
 
-{{< alert title="Tip" color="primary" >}}To discover available properties, you can include a [Trace filter](/docs/apim_policydev/apigw_polref/utility_common#trace-filter) in the triggered alert policy. This gives you a list of all attributes and their values.{{< /alert >}}
+{{< alert title="Tip" color="primary" >}}To discover available properties, you can include a [Trace filter](/docs/apim_policydev/apigw_polref/utility_common#trace-filter) in the triggered alert policy. This results in a list of all attributes and their values.{{< /alert >}}
 
 ### Application credential alert properties
 

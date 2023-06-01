@@ -12,7 +12,7 @@ All sensitive information in the API Gateway configuration data is encrypted whe
 
 This section describes how to specify an encryption passphrase for a local Policy Studio project or when connecting to an API Gateway in Policy Studio, in an API Gateway configuration file, or when API Gateway is starting up. It also describes how to change the passphrase when it has been set initially.
 
-{{< alert title="Caution" color="warning" >}}It is crucial that you remember the passphrase when you change it. Failure to remember the passphrase results in the loss of encrypted data, and may prevent the API Gateway from functioning correctly.{{< /alert >}}
+{{< alert title="Caution" color="danger" >}}It is crucial that you remember the passphrase when you change it. Failing to remember the passphrase results in the loss of encrypted data, and might prevent API Gateway from functioning correctly.{{< /alert >}}
 
 ## Configure the project passphrase
 
@@ -59,7 +59,7 @@ For API Gateway to read (decrypt) encrypted data from its configuration, it must
 
 ### Prompt for the passphrase at server startup
 
-{{< alert title="Note" color="primary" >}}To use this feature you must have set a passphrase for the server using `managedomain` as referenced above.{{< /alert >}}
+Before you use this option, you must first have set a passphrase for the server using `managedomain`, as referenced in section [Configure the Node Manager passphrase](#configure-the-node-manager-passphrase).
 
 If you do not need to start as a Linux daemon, you can configure the Node Manager or API Gateway to prompt the administrator for the passphrase on the command line when starting up. To do this, enter the `"(prompt)"` special value for the `pvalue` attribute as follows:
 
@@ -81,9 +81,7 @@ INSTALL_DIR/apigateway/groups/GROUP/conf/group.xml
 
 ### Provide the passphrase automatically at startup using a script
 
-{{< alert title="Note" color="primary" >}}To use this feature you must have set a passphrase for the server using `managedomain` as referenced above.{{< /alert >}}
-
-Alternatively, you can use a script to automatically provide the passphrase when the API Gateway server starts up. Perform the following steps:
+Before you use this option, you must first have set a passphrase for the server using `managedomain`, as referenced in section [Configure the Node Manager passphrase](#configure-the-node-manager-passphrase). Alternatively, you can use a script to automatically provide the passphrase when the API Gateway server starts up, for example following these steps:
 
 1. Open the following file in your API Gateway installation:
 
@@ -110,7 +108,6 @@ Alternatively, you can use a script to automatically provide the passphrase when
     #!/bin/sh
 
     echo "(prompt)"
-
     ```
     The script must be secured by the operating system file permissions so that it is only accessible by, and can only be invoked by, the API Gateway. The command should write the password to standard output.
 
@@ -118,9 +115,9 @@ Alternatively, you can use a script to automatically provide the passphrase when
     * `../system/conf/nodemanager.xml`
     * `../skel/service.xml`
 
-{{< alert title="Caution" color="warning" >}}
+{{< alert title="Caution" color="danger" >}}
 
-* If the group passphrase is not correctly set in the `group.xml` file, then newly created API Gateway servers will fail to start.
+* If the group passphrase is not correctly set in the `group.xml` file, the newly created API Gateway servers will fail to start.
 * If newly created API Gateway servers expect to use a script to provide the passphrase and the group passphrase cannot be correctly set in the `group.xml` file, then you must set the `pvalue` attribute to `"(prompt)"`, as described in [Prompt for the passphrase at server startup](/docs/apim_administration/apigtw_admin/general_passphrase#prompt-for-the-passphrase-at-server-startup). In this scenario, you must provide the correct passphrase for the group when new API Gateway servers are created. Failing to provide the correct passphrase causes the newly created API Gateway servers fail to start.
 {{< /alert >}}
 
