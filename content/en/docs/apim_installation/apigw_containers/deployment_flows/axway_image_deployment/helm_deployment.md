@@ -190,7 +190,7 @@ anm:
 
 ### Sample customized values file
 
-Click [myvaluescustomized.yaml](/samples/apimanagement/containers/myvaluescustomized.yaml) to download an example of a customized `myvalues.yaml` file, including an example of how to insert the contents of a valid license file.
+Click [myValuesCustomized.yaml](/samples/apimanagement/containers/myValuesCustomized.yaml) to download an example of a customized `myvalues.yaml` file, including an example of how to insert the contents of a valid license file.
 
 ### Install API Gateway using your customized YAML file
 
