@@ -66,9 +66,9 @@ When a project is loaded in Policy Studio, you call select **File** > **Export**
 * **Deployment package**:
     Saves the project as an XML `.fed` file or YAML `.tar.gz` file that contains all API Gateway configuration. This includes policies, listeners, external connections, users, certificates, and environment settings.
 * **Policy package**:
-    Saves the project as a `.pol` file that contains users, certificates, and environment settings.
+    Saves the project as a `.pol` file that contains policies, listeners, external connections, and environment settings. This contains just the fields environmentalized, and not their values.
 * **Environment package**:
-    Saves the project as a `.env` file that contains policies, listeners, external connections, and environment settings.
+    Saves the project as a `.env` file that contains users, certificates, and environment settings. This contains a list of environmentalized fields with environment-specific values.
 
 When you have saved a configuration package, you can use it to create a Policy Studio project in another environment.
 
