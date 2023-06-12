@@ -9,6 +9,10 @@ description: How to upgrade the helm deployment to use a later version of the ga
 
 The use of Helm charts and Docker images greatly improves and simplifies the API Gateway upgrade process. With each new release of the API Gateway, a new version of the Helm chart will also be released. This new version will have the latest images at the time of the release set as the default, along with any additional features or configuration that might have been added to the chart. If other images are released in between Helm chart releases, such as for patch or security fixes, it is up to the user to update their Helm configuration to pull these new images. The chart is not backward compatible, and you cannot use a new version of the chart and continue using older versions of the images.
 
+{{< alert title="Note" color="primary" >}}
+There is no support for downgrading an API Gateway container deployment. Running an older API Gateway container against a newer database schema will result in failure.
+{{< /alert >}}
+
 ### Prerequisites
 
 While the actual process of upgrade is straightforward, there are some prerequisite steps that you must perform to prepare for the upgrade.
