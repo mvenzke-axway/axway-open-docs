@@ -12,8 +12,6 @@ PROJECT_ROOT=$(cd ${SCRIPT_DIR}/..;pwd)
 FILES=(
     ".github/workflows/ciworkflow.yml"
     ".github/workflows/merge_to_develop.yml"
-    "layouts/partials/page-meta-links.html"
-    "static/admin/config.js"
     )
 
 if [[ -z "${NEW_BRANCH_NAME}" ]];then
