@@ -74,7 +74,7 @@ On each node in the cluster, you must configure the following properties in the 
 Configure the following settings in `cassandra.yaml`:
 
 * `cluster_name`: Your chosen cluster name, common across both datacenters (for example, `cassandra-cluster1`)
-* `num_tokens`: `256`
+* `num_tokens`: `16`
 * `endpoint_snitch`: `GossipingPropertyFileSnitch`
     * When this property is set, you must remove `cassandra-topology.properties` from `cassandra/conf/` to avoid conflict.
 * `-seeds`: Internal IP address for all seed nodes. Each datacenter should have its own seed node IP addresses first, followed by the other datacenters seed nodes. This is critical for replication.
