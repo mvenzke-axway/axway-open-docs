@@ -361,7 +361,7 @@ RewriteRule ^(.*)$ https://APIPORTAL_YOUR_DOMAIN/ [R=301,L]
 
 RewriteCond %{HTTP:X-Forwarded-Host} !^$
 RewriteCond %{HTTP:X-Forwarded-Host} !^([a-zA-Z0-9-_]{1,20}.){0,3}APIPORTAL_DOMAIN$
-RRewriteRule ^(.*)$ https://APIPORTAL_YOUR_DOMAIN/ [R=301,L]
+RewriteRule ^(.*)$ https://APIPORTAL_YOUR_DOMAIN/ [R=301,L]
 ```
 
 ## Protect the integrity of the logging system
