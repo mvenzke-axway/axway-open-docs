@@ -252,7 +252,7 @@ cd axway-elk-setup
 
 ## Use a secret for API Manager username and password
 
-The following example shows how you can create a secret that keeps the API Manager username and password and use it with API Builder. The same procedure applies for all confidential information. For more details, see the `values.yaml` file.
+The following example shows how to create a secret to store API Manager username and password, and use it with API Builder. The same procedure applies for all confidential information. For more information, see the `values.yaml` file.
 
 1. Create a secret:
 
@@ -260,7 +260,7 @@ The following example shows how you can create a secret that keeps the API Manag
     kubectl create secret generic api-builder-secrets --from-literal=API_MANAGER_PASSWORD=changeme --from-literal=API_MANAGER_USERNAME=apiadmin -n apim-elk
     ```
 
-2. Reference the secret. Update your `myvalues.yaml` to reference the created secret. Additionally, you must declare the default `ConfigMap` if you do not want to manage that `ConfigMap` yourself.
+2. Reference the secret. Update your `myvalues.yaml` to reference the newly created secret. Additionally, you must declare the default `ConfigMap` if you do not wish to manage the `ConfigMap` yourself.
 
    ```bash
     apibuilder4elastic:
@@ -283,3 +283,96 @@ The following example shows how you can create a secret that keeps the API Manag
    {{< alert title="Note" >}}Refer to `repository.axway.com` for the most recent version of the Helm chart. {{< /alert >}}
 
 As a result of this section, you have set up your `myvalues.yaml` Helm chart to run Operational Insights in a single instance in a production environment.
+
+## Manually create credential secrets
+
+Each component uses secrets to store credentials, such as username and password. When deployed, the chart takes the credentials entered in your `values.yaml` file, and generate a secret from that value.
+
+If you do not wish to store credentials in the `values` file, you can disable the secrets for that component, and create them manually. Then, when the Helm chart is deployed, the secrets will be picked up.
+
+The following are examples of how to disable the automatically generation of secrets, and manually create a secret for the different components.
+
+### Application Performance Monitoring server
+
+Disable the secrets in you `values` file:
+
+```bash
+ apm-server:
+   apmserverSecrets:
+     secrets:
+       enabled: false
+```
+
+Manually create a secret in APM server:
+
+```bash
+kubectl create secret generic axway-elk-apim4elastic-apmserver-secret --from-literal=APM_USERNAME=<username> --from-literal=APM_PASSWORD=<password> -n apim-elk
+```
+
+### Elasticsearch
+
+Disable the secrets in you `values` file:
+
+```bash
+ elasticsearch:
+   elasticsearchSecrets:
+     secrets:
+       enabled: false
+```
+
+Manually create a secret in Elasticsearch:
+
+```bash
+kubectl create secret generic axway-elk-apim4elastic-elasticsearch-secret --from-literal=ELASTIC_USERNAME=<username> --from-literal=ELASTIC_PASSWORD=<password> -n apim-elk
+```
+
+### Filebeat
+
+Disable the secrets in you `values` file:
+
+```bash
+ filebeat:
+   filebeatSecrets:
+     secrets:
+       enabled: false
+```
+
+Manually create a secret in Filebeat:
+
+```bash
+kubectl create secret generic axway-elk-apim4elastic-filebeat-secret --from-literal=BEATS_SYSTEM_USERNAME=<username> --from-literal=BEATS_SYSTEM_PASSWORD=<password> -n apim-elk
+```
+
+### Kibana
+
+Disable the secrets in you `values` file:
+
+```bash
+ kibana:
+   kibanaSecrets:
+     secrets:
+       enabled: false
+```
+
+Manually create a secret in Kibana:
+
+```bash
+kubectl create secret generic axway-elk-apim4elastic-kibana-secret --from-literal=KIBANA_SYSTEM_USERNAME=<username> --from-literal=KIBANA_SYSTEM_PASSWORD=<password> -n apim-elk
+```
+
+### Logstash
+
+Disable the secrets in you `values` file:
+
+```bash
+ logstash:
+   logstashSecrets:
+     secrets:
+       enabled: false
+```
+
+Manually create a secret in Logstash:
+
+```bash
+kubectl create secret generic axway-elk-apim4elastic-logstash-secret --from-literal=LOGSTASH_USERNAME=<username> --from-literal=LOGSTASH_PASSWORD=<password> --from-literal=xpack.monitoring.elasticsearch.username=<system_username> --from-literal=xpack.monitoring.elasticsearch.password=<system_password> -n apim-elk
+```
