@@ -269,12 +269,6 @@ After completing the installation and before starting the services:
    </ConfigurationFragment>
    ```
 
-### Service packs
-
-Service packs for API Gateway are available from [Axway Support](https://support.axway.com/). If any service packs are available for API Gateway 7.7, download and apply them when the installation completes.
-
-For more information on applying a service pack, see [Update API Gateway](/docs/apim_installation/apigtw_install/install_service_packs).
-
 ### Certificates
 
 API Gateway uses Secure Sockets Layer (SSL) for communications between all processes in a domain (for example, internal management traffic between the Admin Node Manager and API Gateway instances).
