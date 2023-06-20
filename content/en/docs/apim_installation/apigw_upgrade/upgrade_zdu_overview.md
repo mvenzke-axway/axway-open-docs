@@ -123,8 +123,6 @@ Additionally, follow these steps:
 
 3. Ensure that the RSA key is the first in the list of known hosts for each remote node.
 
-For more information on using OpenSSH, go to <https://www.openssh.com/>.
-
 ### Run the zdupgrade script
 
 This section describes how to install and run the `zdupgrade` script. It also describes the log files produced by the script.
