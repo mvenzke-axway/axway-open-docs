@@ -28,8 +28,6 @@ The following illustration shows the complete API lifecycle, which is passed thr
 
 The availability of large numbers of pure APIs in an API management platform does not necessarily make it a success. More important are valuable APIs, often called _value APIs_ (VAPI), which are based on a well considered API design and always have the consumption of the API and not the existing data structures in mind.
 
-To learn more about good API design, see [The Design of Web APIs](https://www.manning.com/books/the-design-of-web-apis).
-
 Value APIs usually start with an API-first approach and not with the implementation of an API. API-first means that the API interface, that is, the design of the API, is defined first, and this design is the starting point for further steps, such as mocking and then implementation of the API.
 
 For API design, Axway works with Stoplight, which offers a form-based API design editor for both OpenAPI 2.0 and 3.0. Stoplight also offers enterprise features for tracking and approving changes in larger teams.
