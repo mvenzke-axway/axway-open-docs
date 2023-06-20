@@ -104,7 +104,7 @@ You can configure API Gateway to send alert messages as emails.
 
 You can configure API Gateway to send alert messages to the Amazon Simple Notification Service (SNS).
 
-Amazon SNS is a managed push messaging service that you can used to send push notifications to mobile and smart devices connected to the Internet, as well as to other distributed services. For more details on Amazon SNS, go to <https://aws.amazon.com/sns/>.
+Amazon SNS is a managed push messaging service that you can used to send push notifications to mobile and smart devices connected to the Internet, as well as to other distributed services.
 
 1. In the **Alerts** node, click **Add > Amazon SNS**.
 2. Enter a name for this alert destination.
