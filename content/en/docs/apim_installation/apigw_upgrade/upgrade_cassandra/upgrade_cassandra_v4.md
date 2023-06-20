@@ -10,7 +10,7 @@ You can only upgrade to Cassandra version `4.0.9` from version `3.11.11` or vers
 
 ## Before you start
 
-* You must upgrade your API Gateway to the [February 2023](/docs/apim_relnotes/20230228_apimgr_relnotes/index.html) release, or later, prior to upgrading your Cassandra environment to `4.0.9`.
+* You must upgrade your API Gateway to the [February 2023](/docs/apim_relnotes/20230228_apimgr_relnotes) release, or later, prior to upgrading your Cassandra environment to `4.0.9`.
 * When upgrading either a cluster on a single-datacenter or a multi-datacenter setup, you must avoid any schema changes until the entire cluster has been upgraded to the same version.
 * In multi-datacenter clusters:
 
