@@ -110,7 +110,7 @@ This version of API Portal includes:
 
 The following are known issues for this update.
 
-### Two-factor authentication is not available with Joomla 4.2.0 in API Portal
+### Two-factor authentication is not available with Joomla 4.2.0
 
 Joomla 4.2.0 includes changes around two(multi)-factor authentications. However, this functionality is not yet available in API Portal. For more information, see [Joomla 4.2 release notes](https://www.joomla.org/announcements/release-news/5865-joomla-4-2-release.html).
 
