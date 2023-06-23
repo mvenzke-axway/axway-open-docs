@@ -116,6 +116,10 @@ apimgr:
         protocol: TCP
 ```
 
+### Apache XalanJ is reinstated
+
+Apache has released an updated version of XalanJ (version 2.7.3) to address CVE-2022-34169. This version is shipped with this current update of API Gateway, which allows you to use the `org.apache.xalan.xsltc.trax.TransformerFactoryImpl` property as the transformer factory in filters, scripts, and jvm.xml.
+
 ## Deprecated features
 
 No features have been deprecated in this update.
