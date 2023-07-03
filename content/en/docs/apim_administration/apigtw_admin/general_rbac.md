@@ -48,7 +48,7 @@ For full details on the default roles that have access to each Management Servic
 
 By default, all the user credentials are stored in a local admin user store in the following file:
 
-```
+```none
 INSTALL_DIR/conf/adminUsers.json
 ```
 
@@ -56,45 +56,51 @@ INSTALL_DIR/conf/adminUsers.json
 
 The following shows an example file:
 
-```
+```json
 {
-   "productVersion" :"7.7",
-   "version" :1,
-   "timestamp" :0,
-   "adminUsers" :[ {
-     "id" :"user-1",
-     "name" :"admin",
-     "roles" :[ "role-1", "role-6", "role-7" ]
-   } ],
-   "credentials" :{
-     "user-1" :"$AAGQAAAAAQAC$DxlhcXQ2FTZ3mjErhGDEEQ==$0/hQdegidtOyrX2QuUnmEWIzknx4bsf0iPr3HydpbyY="
-
-   },
-   "adminUserRoles" :[ {
-     "id" :"role-1",
-     "name" :"API Server Administrator"
-   }, {
-     "id" :"role-2",
-     "name" :"API Server Operator"
-   }, {
-
-     "id" :"role-5",
-     "name" :"Deployer"
-   }, {
-     "id" :"role-6",
-     "name" :"KPS Administrator"
-   }, {
-     "id" :"role-7",
-     "name" :"Policy Developer"
-   } ],
-   "uniqueIdCounters" :{
-     "Role" :8,
-     "User" :2
-   },
-   "adminUsersVersion" :{
-     "version" :1,
-     "timestamp" :0
-   }
+  "productVersion" : "7.7.0",
+  "version" : 1,
+  "timestamp" : 0,
+  "adminUsers" : [ {
+    "id" : "user-1",
+    "name" : "admin",
+    "roles" : [ "role-1", "role-6", "role-7" ]
+  } ],
+  "adminUserCredentials" : {
+    "user-1" : {
+      "passwordHistory" : [ "$AAGQAAAAAQAC$wPHYy4wgp2skDUseJNpk6w==$uXEp1HFt4tCBZi6pQ9LlMbG0btQfd8yhZ6w+QE3TwAo=" ],
+      "passwordTimestamp" : 1687865307860
+    }
+  },
+  "adminUserRoles" : [ {
+    "id" : "role-1",
+    "name" : "API Server Administrator",
+    "displayName" : "API Gateway Administrator"
+  }, {
+    "id" : "role-2",
+    "name" : "API Server Operator",
+    "displayName" : "API Gateway Operator"
+  }, {
+    "id" : "role-5",
+    "name" : "Deployer",
+    "displayName" : "Deployer"
+  }, {
+    "id" : "role-6",
+    "name" : "KPS Administrator",
+    "displayName" : "KPS Administrator"
+  }, {
+    "id" : "role-7",
+    "name" : "Policy Developer",
+    "displayName" : "Policy Developer"
+  } ],
+  "uniqueIdCounters" : {
+    "Role" : 8,
+    "User" : 2
+  },
+  "adminUsersVersion" : {
+    "version" : 1,
+    "timestamp" : 0
+  }
 }
 ```
 
@@ -104,22 +110,21 @@ The credentials from this file are used to authenticate and perform RBAC on all 
 
 Admin user passwords are in stored in the `adminUsers.json` file as a base64-encoded salted hash of the plaintext password. To authenticate a user password, the incoming password value is digested in the same way, and compared against the value in the file. If they match, the user is authenticated.
 
-The salt is a 16 byte value generated using the SHA1PRNG pseudo-random number generator algorithm. This algorithm is provided by the Java Cryptography Extension (JCE) and is PBKDF2 with
-HMAC SHA2. The algorithm repeats the digest of the password along with the salt for 102400 iterations. The salt is stored with the digest allowing for password verification in the following format:
+The salt is a 16 byte value generated using the SHA1PRNG pseudo-random number generator algorithm. This algorithm is provided by the Java Cryptography Extension (JCE) and is PBKDF2 with HMAC SHA2. The algorithm repeats the digest of the password along with the salt for 102400 iterations. The salt is stored with the digest allowing for password verification in the following format:
 
-```
+```none
 <version-value>$<salt-value>$<password-digest>
 ```
 
 For example:
 
-```
+```none
 AAGQAAAAAQAC$DxlhcXQ2FTZ3mjErhGDEEQ==$0/hQdegidtOyrX2QuUnmEWIzknx4bsf0iPr3HydpbyY=
 ```
 
 Because the salt is generated each time a password is stored, the same plaintext password will have a different salt and digest value. For example, the following stored passwords are all digests of the default password:
 
-```
+```none
 AAGQAAAAAQAC$qqlNVeQ6eAGnBDK0VcU1oQ==$uzK6wvSLjVTdO0/qP9I4d72P6yRG1XbI3KRQIPpZjwA=
 AAGQAAAAAQAC$mJbacNzCfoeJ1Ukixyj/xw==$hw7uwm5/D/7HIKKH4mUoM76xnYvqOSDfucKI0U9yndk=
 AAGQAAAAAQAC$a3EP3mKkWpJm4flYacTtnQ==$Czke56xcmk9xbjw+KZhi26jpPoXV7fgE0CWp4WBz9kg=
@@ -152,20 +157,20 @@ If a different user store is used (for example, an LDAP repository), the LDAP gr
 
 Each role entry in the `acl.json` file has the following format:
 
-```
+```json
 "role-name" :[ <list_of_permission_names>]
 ```
 
 The permissions consist of operations that are defined by HTTP methods and URIs:
 
-```
-“permission-name” : { <list_of_operation_names }
-“operation-name” : {
+```json
+"permission-name" : { <list_of_operation_names }
+"operation-name" : {
      "methods" :[ <list of HTTP Methods>],
      "paths" :[ <list of path-names>]
 }
 
-“path-name” : {
+"path-name" : {
      "path" :<URI>
 }
 ```
@@ -180,7 +185,7 @@ This file entry format is described as follows:
 
 The following example shows roles and permissions to URIs:
 
-```
+```json
 "paths" : {
       "root" :{ "path" :"/" },
       "emc pages" :{ "path" :"/emc/*" },
@@ -233,7 +238,7 @@ For more details on managing user roles, see [Manage Admin users](/docs/apim_adm
 
 ## Management service roles and permissions
 
-You can use the following  for reference purposes when making changes to the `acl.json` file. It defines each Management Service, and the default roles that have access to them. It also lists the permissions that must be listed in the `acl.json` file to have access to the Management Service.
+You can use the following for reference purposes when making changes to the `acl.json` file. It defines each Management Service, and the default roles that have access to them. It also lists the permissions that must be listed in the `acl.json` file to have access to the Management Service.
 
 **API Gateway Manager (`https://localhost:8090`)**:
 
