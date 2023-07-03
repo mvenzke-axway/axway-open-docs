@@ -28,7 +28,7 @@ You should add groups for the following default RBAC roles to give the LDAP user
 
 These RBAC roles are located in the `roles` section of the following file:
 
-```
+```none
 INSTALL_DIR\apigateway\conf\acl.json
 ```
 
@@ -74,7 +74,7 @@ To create an new LDAP Connection, perform the following steps:
 
 1. In Policy Studio, create a new project based on the Admin Node Manager configuration. For example:
 
-    ```
+    ```none
     INSTALL_DIR\apigateway\conf\fed
     ```
 
@@ -102,7 +102,7 @@ To create an new LDAP Repository, perform the following steps:
 
 An example value of the `authentication.subject.id` message attribute is as follows:
 
-```
+```none
 CN=admin, CN=Users,DC=kerberos3,DC=qa,DC=vordel,DC=comn
 ```
 
@@ -126,7 +126,7 @@ Perform the following steps:
 
 1. In Policy Studio, create a new project based on the Admin Node Manager configuration. For example:
 
-    ```
+    ```none
     INSTALL_DIR\apigateway\conf\fed
     ```
 
@@ -158,24 +158,25 @@ To test this policy configuration, perform the following steps:
 
 1. Update the `acl.json` file with the new LDAP group, for example:
 
-    ```
+    ```none
     "CN=APIGatewayAdministrator,CN=Users,DC=kerberos3,DC=qa,DC=vordel,DC=com" :[
-    "emc", "mgmt", "mgmt_modify", "dashboard", "dashboard_modify", "deploy" "config",
-    "monitoring", "events", "traffic_monitor", "settings", settings_modify", "logs" ]
+       "emc", "mgmt", "mgmt_modify", "dashboard", "dashboard_modify", "deploy" "config",
+       "monitoring", "events", "traffic_monitor", "settings", settings_modify", "logs" ]
     ```
 
 2. Update the `adminUsers.json` file with the new role, for example:
 
-    ```
+    ```none
     {
-    "name" :"CN=APIGatewayAdministrator,CN=Users,DC=kerberos3,DC=qa,DC=vordel,
-        DC=com","id" :"role-8"
+    "id" :"role-8",
+    "name" :"CN=APIGatewayAdministrator,CN=Users,DC=kerberos3,DC=qa,DC=vordel, DC=com",
+    "displayName" : "API Gateway Administrator"
     }
     ```
 
 3. And increase the number of roles, for example:
 
-    ```
+    ```none
     "uniqueIdCounters" :{"Role" :9,"User" :2},
     ```
 
@@ -213,14 +214,14 @@ If the authentication and RBAC filters pass, you can now use this policy to prot
 
 You can add an LDAP user with limited access to management services. For example, assume there is already a user named `Fred` defined in Active Directory. `Fred` has the following DName:
 
-```
+```none
 CN=Fred,CN=Users,DC=kerberos3,DC=qa,DC=vordel,DC=com
 ```
 
 `Fred` belongs to an existing LDAP group called `TraceAnalyzers`. He can also belong to other LDAP groups that have no meaning for RBAC in the API Gateway. The `TraceAnalyzers`
 LDAP group has the following DName:
 
-```
+```none
 CN=TraceAnalyzers,CN=Users,DC=kerberos3,DC=qa,DC=vordel,DC=com
 ```
 
@@ -232,23 +233,24 @@ You must perform the following steps to allow `Fred` to view the trace files:
 
 1. Add the following entry in the `roles` section in the `acl.json` file:
 
-    ```
+    ```none
     "CN=TraceAnalyzers,CN=Users,DC=kerberos3,DC=qa,DC=vordel,DC=com" :
     [ "emc", "mgmt", "logs" ]
     ```
 
 2. Update the `adminUsers.json` file with the new role as follows:
 
-    ```
+    ```none
     {
-    "name" :"CN=TraceAnalyzers,CN=Users,DC=kerberos3,DC=qa,DC=vordel,
-        DC=com","id" :"role-8"
-    }]
+    "id" :"role-8",
+    "name" :"CN=TraceAnalyzers,CN=Users,DC=kerberos3,DC=qa,DC=vordel,DC=com",
+    "displayName" : "API Gateway Administrator"
+    }
     ```
 
     And increase the number of roles, for example:
 
-    ```
+    ```none
     "uniqueIdCounters" : {
     "Role" :9,
     "User" :2
@@ -258,7 +260,7 @@ You must perform the following steps to allow `Fred` to view the trace files:
 3. Restart the Admin Node Manager so that the `acl.json` and `adminUsers.json` file updates are picked up.
 4. Enter the following URL in your browser:
 
-    ```
+    ```none
     http://localhost:8090/
     ```
 
