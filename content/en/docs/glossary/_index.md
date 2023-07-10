@@ -1,6 +1,7 @@
 {
 "title": "Glossary",
 "linkTitle": "Glossary",
+"draft": "true",
 "weight":"99",
 "date": "2019-11-07",
 "hide_readingtime": "true",
