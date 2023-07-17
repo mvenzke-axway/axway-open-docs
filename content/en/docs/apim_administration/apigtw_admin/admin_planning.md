@@ -59,7 +59,7 @@ You should adhere to the following guidelines when analyzing message traffic:
 * Use the [Embedded Analytics](https://docs.axway.com/bundle/EmbeddedAnalyticsAPIM_allOS_en_HTML5/) web dashboards to analyze API, infrastructure, and client application health and API usage.
 * Take traffic distribution into account when calculating performance requirements.
 * Take message size distribution into account when running performance tests.
-* If traffic bursts cause problems for service producers, consider using the API Gateway to smooth the traffic (for example, using the **Throttling** filter).
+* If traffic bursts cause problems for service producers, consider using the API Gateway to smooth the traffic (for example, using the [Throttling](/docs/apim_policydev/apigw_polref/content_max_messages/) filter).
 
 ## Load balancing and scalability
 
@@ -87,14 +87,15 @@ Axway recommends the following guidelines for load balancing:
 
 Secure Socket Layer (SSL) connections can be terminated at the load balancer or API Gateway level. These options are described as follows:
 
-* **SSL connection terminated at load balancer**:
-    * The SSL certificate and associated private key are deployed on the load balancer, and not on the gateway. The subject name in the SSL certificate is the fully qualified  domain name (FQDN) of the server (for example, `axway.com`).
-    * The traffic between the load balancer can be in the clear or over a new SSL connection. The disadvantage of a new SSL connection is that it puts additional processing load on  the load balancer (SSL termination and SSL establishment).
-    * If mutual (two-way) SSL is used, the load balancer can insert the client certificate into the HTTP header. For example, the F5 load balancer can insert the entire client  certificate in `.pem` format as a multi-line HTTP header named `XClient-Cert` into the incoming HTTP request. It sends this header to theAPI Gateway, which uses it for  validation and authentication.
+### SSL connection terminated at load balancer
 
-* **Load balancer configured for SSL pass-through, all traffic passed to API Gateway**:
+* The SSL certificate and associated private key are deployed on the load balancer, and not on the gateway. The subject name in the SSL certificate is the fully qualified domain name (FQDN) of the server (for example, `axway.com`).
+* The traffic between the load balancer can be in the clear or over a new SSL connection. The disadvantage of a new SSL connection is that it puts additional processing load on the load balancer (SSL termination and SSL establishment).
+* If mutual (two-way) SSL is used, the load balancer can insert the client certificate into the HTTP header. For example, the F5 load balancer can insert the entire client certificate in `.pem` format as a multi-line HTTP header named `XClient-Cert` into the incoming HTTP request. It sends this header to theAPI Gateway, which uses it for  validation and authentication.
 
-    With SSL pass-through, the traffic is encrypted so the load balancer cannot make any layer seven decisions (for example, if HTTP 500 is returned by the gateway, route to the HA gateway) To avoid this problem, you can configure the gateway so that it closes external ports on defined error conditions. In this way, the load balancer is alerted to switch to the HA gateway.
+### Load balancer configured for SSL pass-through, all traffic passed to API Gateway
+
+With SSL pass-through, the traffic is encrypted so the load balancer cannot make any layer seven decisions (for example, if HTTP 500 is returned by the gateway, route to the HA gateway) To avoid this problem, you can configure the gateway so that it closes external ports on defined error conditions. In this way, the load balancer is alerted to switch to the HA gateway.
 
 ## High Availability and failover
 
@@ -229,3 +230,5 @@ The development process for the example system should be as follows:
     * 12 backup and disaster recovery licenses
     * 2 staging licenses
     * 1 engineering license
+
+For more information, see the API Management [Capacity Planning](https://docs.axway.com/bundle/apim-capacity-planning-guide/page/api_management_capacity_planning_guide.html) guide (You must be logged to the Axway [Documentation portal](https://docs.axway.com/) to see this document).
