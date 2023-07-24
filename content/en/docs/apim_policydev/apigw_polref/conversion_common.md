@@ -8,9 +8,7 @@
 
 ## JSON to XML conversion filter
 
-You can use the **JSON to XML** filter to convert a JavaScript Object Notation (JSON) document to an XML document.
-
-For details on the mapping conventions used, go to <https://github.com/beckchr/staxon/wiki/Mapping-Convention>.
+You can use the **JSON to XML** filter to convert a JavaScript Object Notation (JSON) document to an XML document. For details on the mapping conventions used by this filter, see the [Mapping Convention](https://github.com/beckchr/staxon/wiki/Mapping-Convention) GitHub project.
 
 To configure the **JSON to XML** filter, specify the following fields:
 
@@ -204,10 +202,9 @@ To configure the **Add HTTP Header** filter, complete the following fields:
 ${message_attribute}
 ```
 
-**Override existing header**: Select this setting to override the existing header value. This setting is selected by default.
+**Override existing header**: Select this setting to replace the existing value of the header with the value specified in the filter. This setting is selected by default. When this setting is deselected, the filter creates a new header entry alongside any existing entries. If there were existing entries with the same name, multiple copies of the header are outputted.
 
-{{< alert title="Note" color="primary" >}}When overriding an existing header, the header can be an HTTP body-related header or a general HTTP header. To override an HTTP body-related header (for example, `Content-Type`), you must select the **Override existing header**
-and **Add header to body** settings.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Headers can be of two types: HTTP body-related or general HTTP. To override an HTTP body-related header, you must select both the **Override existing header** and **Add header to body** settings.{{< /alert >}}
 
 **Base64 Encode**: Select this setting to Base64 encode the HTTP header value. For example, you should use this if the header value is an X.509 certificate.
 
@@ -250,6 +247,17 @@ MyHeader: FOO
     </soap:Body>
 </soap:Envelope>
 ```
+
+### Headers which do not work with the Add HTTP Header filter
+
+Some headers cannot, or should not be modified using the **Add HTTP Header** filter. In particular, the `Strict-Transport-Security` (HSTS) and `Content-Length` headers will fail with an error if you try to set them. Other headers might have their values overwritten, or otherwise result in undesirable behavior. The follow headers should not be modified with the **Add HTTP Header** filter:
+
+* The `Accept-Encoding` and `Content-Encoding` headers are set according to the [compressed content encoding](/docs/apim_policydev/apigw_gw_instances/common_compress_encoding) settings and must be configured there.
+* The `Content-Length` header must be sent by [configuring remote host settings](/docs/apim_policydev/apigw_gw_instances/general_remote_hosts) for the endpoint that requires them.
+* The `Content-Type` header is tied to the message body, and might need to re-parse the body if the type is changed. It is safer to use the [Set Message filter](/docs/apim_policydev/apigw_polref/conversion_common) with the desired body and the new `Content-Type` header value.
+* The `Server` header is controlled by the [Server Brand setting in General Settings](docs/apim_reference/general_settings). It should be left as the default, blank value, to avoid sending a `Server` header. The value of the **Server Brand** setting also shows in part of the `Via` header, if configured.
+* The `Strict-Transport-Security` headers for HSTS must be configured as documented in [Configure HTTP Strict Transport Security](/docs/apim_policydev/apigw_gw_instances/configure_http_strict_transport_security).
+* The `Via` header is required to be sent and will have its value overwritten after your entire policy executes. Refer to Axway community, [KB-178805](https://support.axway.com/kb/178805/language/en) article, for details on how to avoid exposing internal hostnames in the `Via` header.
 
 ## Remove HTTP header filter
 
