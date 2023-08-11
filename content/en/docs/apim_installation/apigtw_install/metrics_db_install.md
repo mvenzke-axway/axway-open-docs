@@ -36,9 +36,13 @@ You do not need to install API Gateway Analytics to view monitoring data in API 
 
 You must add the JDBC driver files for your chosen third-party database to your API Gateway and Policy Studio installations as appropriate.
 
-If you are using MariaDB, you must use the MariaDB JDBC driver (MariaDB Connector/J 2.7.2) with the MariaDB database connection URL, for example, `jdbc:mariadb://DB_HOST:3306/reports`.
+If you are using MariaDB, you must use the MariaDB JDBC driver (MariaDB Connector/J 2.7.2) with the MariaDB database connection URL, for example:
 
-If you are using MySQL 8, only the later 5.1.x series of JDBC drivers (from 5.1.47 upwards) will work. If you wish to use a later MySQL JDBC driver version, for example, 8.x, then the MySQL Driver class name in the JDBC Drivers section of the entity store must be updated from `org.gjt.mm.mysql.Driver` to `com.mysql.cj.jdbc.Driver`.
+```
+jdbc:mariadb://DB_HOST:3306/reports
+```
+
+If you are using MySQL 8, only the later 5.1.x series of JDBC drivers (from 5.1.47 upwards) will work. If you wish to use a later MySQL JDBC driver version (for example, 8.x), the MySQL Driver class name in the **System Components > JDBC Drivers > MySQL > driverClass** setting in the entity store must be updated from `org.gjt.mm.mysql.Driver` to `com.mysql.cj.jdbc.Driver`, using the `esexplorer` tool. You can obtain a copy of the entity store either by copying it from the server, or by taking a `.fed` file and unzipping it. For more information on how to use the `esexplorer` tool, see [ES Explorer](/docs/apigtw_devguide/entity_store/index.html#use-the-es-explorer).
 
 ### Add JDBC drivers to API Gateway
 
