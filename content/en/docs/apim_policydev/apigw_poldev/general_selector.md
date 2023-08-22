@@ -33,7 +33,7 @@ Values stored in a KPS table, for example:
 ${kps.CustomerProfiles[JoeBloggs].age}
 ```
 
-{{< alert title="Note" color="primary" >}}Do not use hyphens (`-`) in selector expressions. Hyphens are not supported by the Java-based selector syntax. You can use underscores (`_`) instead. {{< /alert >}}
+{{< alert title="Note" color="primary" >}}Do not use hyphens (`-`) in attribute names because hyphens are treated as minus signs by the Java Unified Expression Language (JUEL), so names containing hyphens will be interpreted as two values being subtracted from each other. You can use underscore (`_`) instead. {{< /alert >}}
 
 ### Access selector fields
 
@@ -91,6 +91,8 @@ The following message attribute selector returns the HTTP `User-Agent` header:
 
 ```
 ${http.headers["User-Agent"]}
+
+Note that the expression `${http.headers.User-Agent}` does not work because the hyphen is treated as a minus sign. It tries to subtract the value of `http.headers.User` from the value of `Agent` instead of returning the `User-Agent` header.
 ```
 
 For example, this might expand to the following value:

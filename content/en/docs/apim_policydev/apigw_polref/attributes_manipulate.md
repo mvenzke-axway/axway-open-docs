@@ -17,25 +17,64 @@ Configure the following fields:
 
 **Name**: Enter an appropriate name for this filter to display in a policy.
 
-**Filter will pass if**: Select **all** or **one** of the specified conditions to apply. Defaults to **all**. Click the **Add** button at the bottom right to specify a rule condition. In the **Attribute filter rule** dialog, perform the following steps:
+**Filter will pass if**: Select **all** or **one** of the specified conditions to apply. Defaults to **all**. Click the **Add** button at the bottom right to specify a rule condition.
+
+In the **Attribute filter rule** dialog, perform the following steps:
 
 1. Enter a message attribute selector in the **Value from** text box on the left (for example, `${http.request.verb}` or `${my.customer.attribute}`).
 2. Select one of the following rule conditions from the list:
 
-   * `contains`
-   * `doesn't contain`
-   * `doesn't match regular expression`
-   * `ends with`
-   * `is`
-   * `is not`
-   * `matches regular expression`
-   * `starts with`
+   * contains
+   * doesn't contain (negated rule condition)
+   * doesn't match regular expression (negated rule condition)
+   * ends with
+   * is
+   * is not (negated rule condition)
+   * matches regular expression
+   * starts with
 3. Enter a value to compare with in the text box on the right (for example, `POST`). Alternatively, you can enter a selector that is expanded at runtime (for example, `${http.request.uri}`).
 4. Click **OK**.
 
-**Evaluate to true**: When checked, the negated rule conditions (`doesn't contain`, `doesn't match regular expression` and `is not`) evaluate to `true` if either the message attribute selector resolves to `null` or the value to compare resolves to `null` for selector values. Negated rule conditions evaluate to `false` by default.
+**Evaluate to true for negated match types on null values**: When checked, the negated rule conditions evaluate to `true` if either the message attribute selector resolves to `null` or the value to compare resolves to `null` for selector values.
 
-Finally, to edit or delete an existing rule condition, select it in the table and click the appropriate button.
+Enabling this setting means that expressions like `A IS_NOT null` evaluate to `true`.
+
+{{< alert title="Note" color="primary" >}} Negated rule conditions evaluate to `false` by default for backward compatibility. This implies that expressions like `A IS_NOT null` evaluate to `false`, which might be confusing for policies not designed with this older behavior in mind.
+{{< /alert  >}}
+
+### Tables of comparisons for the **Evaluate to true** option
+
+The following tables illustrate the behavior of the filter with and without the **Evaluate to true** option enabled for every match type:
+
+Comparisons when the **Evaluate to true** option is enabled:
+
+| Attribute A | MatchType        | Attribute B | Result |
+|-------------|------------------|-------------|--------|
+| A           | DOES_NOT_CONTAIN | null        | True   |
+| A           | IS_NOT           | null        | True   |
+| A           | DOES_NOT_MATCH   | null        | True   |
+| null        | DOES_NOT_CONTAIN | B           | True   |
+| null        | IS_NOT           | B           | True   |
+| null        | DOES_NOT_MATCH   | B           | True   |
+| null        | DOES_NOT_CONTAIN | null        | False  |
+| null        | IS_NOT           | null        | False  |
+| null        | DOES_NOT_MATCH   | null        | False  |
+
+Comparisons when the **Evaluate to true** option is disabled:
+
+| Attribute A | MatchType        | Attribute B | Result |
+|-------------|------------------|-------------|--------|
+| A           | DOES_NOT_CONTAIN | null        | False  |
+| A           | IS_NOT           | null        | False  |
+| A           | DOES_NOT_MATCH   | null        | False  |
+| null        | DOES_NOT_CONTAIN | B           | False  |
+| null        | IS_NOT           | B           | False  |
+| null        | DOES_NOT_MATCH   | B           | False  |
+| null        | DOES_NOT_CONTAIN | null        | False  |
+| null        | IS_NOT           | null        | False  |
+| null        | DOES_NOT_MATCH   | null        | False  |
+
+To edit or delete an existing rule condition, select it in the table and click the appropriate button (**Edit** or **Delete**).
 
 ## Extract REST request attributes filter
 

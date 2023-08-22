@@ -629,18 +629,25 @@ dialog, perform the following steps:
    or `mail`).
 2. Select one of the following rule conditions from the list:
 
-   * `contains`
-   * `doesn't contain`
-   * `doesn't match regular expression`
-   * `ends with`
-   * `is`
-   * `is not`
-   * `matches regular expression`
-   * `starts with`
+   * contains
+   * doesn't contain (negated rule condition)
+   * doesn't match regular expression (negated rule condition)
+   * ends with
+   * is
+   * is not (negated rule condition)
+   * matches regular expression
+   * starts with
 3. Enter a value to compare with in the text box on the right (for example, `POST`). Alternatively, you can enter a selector that is expanded at runtime (for example, `${http.request.uri}`).
 4. Click **OK**.
 
-**Evaluate to true**: When checked the negated rule conditions (`doesn't contain`, `doesn't match regular expression` and `is not`) evaluate to `true` if either the LDAP attribute value is `null` or the value to compare resolves to `null` for selector values. Negated rule conditions evaluate to `false` by default.
+**Evaluate to true for negated match types on null values**: When checked, the negated rule conditions evaluate to `true` if either the message attribute selector resolves to `null` or the value to compare resolves to `null` for selector values.
+
+Enabling this setting means that expressions like `A IS_NOT null` evaluate to `true`.
+
+{{< alert title="Note" color="primary" >}} Negated rule conditions evaluate to `false` by default for backward compatibility. This implies that expressions like `A IS_NOT null` evaluate to `false`, which might be confusing for policies not designed with this older behavior in mind.
+{{< /alert  >}}
+
+For more information, see [Tables of comparisons for the Evaluate to true option](/docs/apim_policydev/apigw_polref/attributes_manipulate#tables-of-comparisons-for-the-evaluate-to-true-option) illustrating the behavior of the filter with and without the **Evaluate to true** option enabled for every match type.
 
 The following figure shows some example search settings and attribute validation rules:
 

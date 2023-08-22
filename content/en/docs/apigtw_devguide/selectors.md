@@ -6,30 +6,32 @@
   "description": "Use complex selector expressions to access configuration values dynamically at runtime."
 }
 
-You can access configuration values dynamically at runtime using *selectors*. A selector is a special syntax that enables API Gateway configuration settings to be evaluated and expanded at runtime, based on metadata values (for example, from message attributes, a Key Property Store (KPS), or environment variables).
+A *selector* is an expression using Java Unified Expression Language (JUEL) syntax that enables API Gateway configuration settings to be evaluated and expanded at runtime, based on metadata values (for example, message attributes, Key Property Store (KPS), or environment variables).
 
-For example, when a HTTP request is received, it is converted into a set of message attributes. Each message attribute represents a specific characteristic of the HTTP request, such as the HTTP headers, HTTP body, and so on.
+For example, when a HTTP request is received, it is converted into a set of message attributes on the message whiteboard. Each message attribute represents a specific characteristic of the HTTP request, such as the HTTP headers, HTTP body, and so on.
 
 ## Example selector expressions
 
-For an explanation of selector syntax and some examples of selector expressions, see [Select configuration values at runtime](/docs/apim_policydev/apigw_poldev/general_selector/). The following lists some more complex examples.
+For more information on selector syntax and some examples of selector expressions, see [Select configuration values at runtime](/docs/apim_policydev/apigw_poldev/general_selector/).
+
+The following sections describe some more complex examples of selectors.
 
 ### KPS with multiple read keys
 
 ```
 ${kps.matrix.row.column}
-${kps.matrix[“row”][“column”]}
+${kps.matrix["row"]["column"]}
 ```
 
-For a KPS with multiple read keys, the values for each key are provided in order. The result of the expression is also indexable:
+For a KPS with multiple read keys, the values for each key are provided in ascending order. The result of the expression is also indexable:
 
 ```
 set property test = ${kps.matrix.row}
 ```
 
-`${test[“column”]}` looks up the KPS for `[row/column]`.
+`${test["column"]}` looks up the KPS for `[row/column]`.
 
-### Parameter from content body
+### Parameter from FormURLEncodedBody formatted content body
 
 ```
 ${content.body.getParameters().get("grant_type")}
@@ -37,19 +39,19 @@ ${content.body.getParameters().get("grant_type")}
 
 Gets the HTTP form post field called `grant_type`.
 
-### Parameter from JSON content body
+### Parameter from JSON formatted content body
 
 ```
-${content.body.getJSON().findValue('access_token').textValue()}  
+${content.body.getJSON().findValue('access_token').textValue()}
 ```
 
-If a body is of type `application/json` then it is automatically treated as a `com.vordel.mime.JSONBody`. A `JSONBody` object returns an `com.fasterxml.jackson.databind.JsonNode` object via a `getJSON()` call.
+If a body is of type `application/json`, then it is automatically treated as a `com.vordel.mime.JSONBody`. A `JSONBody` object returns an `com.fasterxml.jackson.databind.JsonNode` object by way of a `getJSON()` call.
 
-For more information, see the [Javadoc for JsonNode class](http://static.javadoc.io/com.fasterxml.jackson.core/jackson-databind/2.9.8/index.html?com/fasterxml/jackson/databind/JsonNode.html).
+For more information, see the [Javadoc for JsonNode class](http://static.javadoc.io/com.fasterxml.jackson.core/jackson-databind/2.9.8/index.html?com/fasterxml/jackson/databind/JsonNode.html), and the [Javadoc for API Gateway classes](https://support.axway.com/doc/4f0a52b8a1f1934372469892828b468a/index.html) documentation.
 
 For example, if the body contains the following JSON content:
 
-```
+```json
 {
   "access_token":"2YotnFZFEj",
   "token_type":"example",
@@ -57,7 +59,31 @@ For example, if the body contains the following JSON content:
 }
 ```
 
-this selector results in the value `2YotnFZFEj`.
+This selector results in the value `2YotnFZFEj`.
+
+### Test if an attribute is empty
+
+```
+${empty my.attribute}
+```
+
+This evaluates to `true` if my.attribute is `null`, or an empty string and is false otherwise.
+
+### Ternary operator
+
+```
+${empty my.attribute ? "DEFAULT VALUE" : my.attribute}
+```
+
+The ternary operator takes the following form:
+
+```
+expression ? value_if_true : value_if_false
+``````
+
+This evaluates to the first value when the expression is true, and the second value when the expression is false.
+
+The example in this section shows how to create an expression that evaluates to a default value when no value is supplied for `my.attribute` and which otherwise leaves the value unchanged. Note that the evaluation of this selector does not change the value stored in the attribute.  Use this type of selector expression as the value for the **Set Attribute** filter if you wish to overwrite the information stored in the attribute.
 
 ### Convert JSON content body to string
 
@@ -73,7 +99,7 @@ If a body is of type `com.vordel.mime.JSONBody`, this selector converts the JSON
 ${environment.VINSTDIR}
 ```
 
-Accesses the environment variable `VINSTDIR`.
+Accesses the environment variable `VINSTDIR`, which will resolve to the home directory of the current instance, e.g. `/opt/Axway/apigateawy/groups/group-2/instance-1/`.
 
 ### HTTP path
 
@@ -83,10 +109,10 @@ ${http.path[2]}
 
 If you have the filter **Extract REST Request Attributes** in your policy, this filter adds the incoming URI to the message whiteboard as a String array, so that you can index into the path. If the incoming path is `/thisisa/test`, using this type of selector results in the following attributes on the whiteboard:
 
-  ```
-  ${http.path[1]} = thisisa
-  ${http.path[2]} = test
-  ```
+```
+${http.path[1]} = thisisa
+${http.path[2]} = test
+```
 
 ### Database query results
 
@@ -107,8 +133,8 @@ The following table shows some example selectors when the option **Place query r
 
 You can also use standard Java function calls on the attributes. For example:
 
-* `${user.size()}` – Number of properties (number of rows) retrieved from the database
-* `${user[0].NAME.equals(“John”)}` – Returns true if the `NAME` attribute (value of column `NAME` in first row) is `“John”`
+* `${user.size()}`: Number of properties (number of rows) retrieved from the database
+* `${user[0].NAME.equals("John")}`: Returns true if the `NAME` attribute (value of column `NAME` in first row) is `"John"`
 
 For more information, see the `java.util.ArrayList` and `java.lang.String` class interfaces.
 
@@ -125,8 +151,8 @@ The following table shows some example selectors when the option **Place query r
 
 You can also use standard Java function calls on the attributes. For example:
 
-* `${user.NAME.size()}` – Number of `NAME` attributes (number of rows with column `NAME`) retrieved from the database
-* `${user.NAME[0].equals(“John”)}` – Returns true if the first `NAME` attribute (value of column `NAME` in first row) is `“John”`
+* `${user.NAME.size()}`: Number of `NAME` attributes (number of rows with column `NAME`) retrieved from the database.
+* `${user.NAME[0].equals("John")}`: Returns true if the first `NAME` attribute (value of column `NAME` in first row) is `"John"`.
 
 For more information, see the `java.util.ArrayList` and `java.lang.String` class interfaces.
 
@@ -147,10 +173,10 @@ The following table shows some example selectors:
 
 You can also use standard Java function calls on the attributes. For example:
 
-* `${user.size()}` – Number of search results returned by the LDAP directory server
-* `${user[0].memberOf.size()}` – Number of `memberOf` attribute values returned in the search result
-* `${user[0].memberOf.contains(“CN=Operator,OU=Sales”)}` – Returns true if one of the returned `memberOf` attributes is `“CN=Operators,OU=Sales”`
-* `${user[0].memberOf[0].equals(“CN=Operator,OU=Sales”)}` – Returns true if the first `memberOf` attribute is `“CN=Operators,OU=Sales”`
+* `${user.size()}`: Number of search results returned by the LDAP directory server.
+* `${user[0].memberOf.size()}`: Number of `memberOf` attribute values returned in the search result.
+* `${user[0].memberOf.contains("CN=Operator,OU=Sales")}`: Returns true if one of the returned `memberOf` attributes is `"CN=Operators,OU=Sales"`.
+* `${user[0].memberOf[0].equals("CN=Operator,OU=Sales")}`: Returns true if the first `memberOf` attribute is `"CN=Operators,OU=Sales"`.
 
 For more information, see `java.util.ArrayList` and `java.lang.String` class interfaces.
 
