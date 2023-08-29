@@ -20,11 +20,11 @@ You must also have a persistent storage with access mode of `RWO` and `RWX`, and
 
 Before running the `helm install` command of the Axway Helm chart, you must deploy a Cassandra cluster.
 
-Deploying a Cassandra cluster in containers is only recommended for development environments. In a production environment, you must configure Cassandra for high availability (HA) as detailed in [Configure a Cassandra HA cluster](/docs/cass_admin/cassandra_config/).
+Deploying a Cassandra cluster in containers is supported. However, in a production environment, you must configure Cassandra for high availability (HA) as detailed in [Configure a Cassandra HA cluster](/docs/cass_admin/cassandra_config/).
 
 ### Deploy Cassandra in a development environment
 
-In a development environment, Cassandra can be run in containers, and the cluster can be easily deployed using a public Helm chart. Follow this section to deploy Cassandra in a development environment.
+In a development environment, a Cassandra cluster can be easily deployed using a public Helm chart. Follow this section to deploy Cassandra in a development environment.
 
 1. In OpenShift, create a new project for the cassandra deployment:
 
@@ -263,7 +263,9 @@ Components can be configured to mount custom configurations, which can then be m
 
 #### The structure of configuration directories
 
-`apigateway` and `analytics` configuration files must be in the same directory structure which mirrors the `/opt/Axway/apigateway` or `/opt/Axway/analytics` installation directories. For example:
+The `apigateway` and `analytics` configuration files must be in the same directory structure which mirrors the `/opt/Axway/apigateway` or `/opt/Axway/analytics` installation directories.
+
+The following is an example of the layout of files under the `/merge` directory on a volume mounted to the API Manager pod. Note that the API Manager and API Traffic pods must have the same files.
 
 ```bash
 apigateway
@@ -277,24 +279,32 @@ apigateway
 │           └── conf
 │               ├── envSettings.props
 │               └── jvm.xml
-└── system
-    └── conf
-        └── log4j2.yaml
+├── system
+│   ├── conf
+│   │   ├── log4j2.yaml
+└── ext
+    └── lib
+        └── mysql-connector-java-8.0.25.jar
 ```
 
-Configuration files can be copied to the persistent volumes using tools, such as `kubectl` and `scp`. For example:
+The following is an example for the Admin Node Manager pod.
 
 ```bash
-# Copying a FED file to the API Manager component
-kubectl cp apimgr.fed <apimgr pod id>:/merge/fed
-
-# Copying an apigateway configuration directory to the API Manager component
-kubectl cp apigateway <apimgr pod id>:/merge/
+apigateway
+│
+└── ext
+│   ├── lib
+│   │   ├── mysql-connector-java.xml
+└── conf
+    └── adminUsers.json
 ```
 
-After the external configuration has been successfully copied to the relevant persistent volume, the deployment can be reloaded in order for the new configuration to be adopted to the relevant component. For example:
+The following is an example for the Analytics pod.
 
 ```bash
-# Reload the API Manager deployment
-kubectl rollout restart deployment apigw-gateway-apimgr -n <namespace>
+analytics
+│
+└── ext
+    └── lib
+        └── mysql-connector-java-8.0.25.jar
 ```

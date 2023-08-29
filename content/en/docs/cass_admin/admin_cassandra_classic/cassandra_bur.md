@@ -86,6 +86,7 @@ The following table describes the parameters in the `apigw-backup-tool.ini` file
 | backup_root_dir            | Path to the backup directory                                            |
 | printcmd                   | Set to `true` to see the commands ran by the tool during the process          |
 | debug                      | Set to `true` to see debug logs                                               |
+| retry_index_count          | Set the number of attempts to restore a index                                 |
 
 {{< alert title="Note" color="primary" >}}`cql_username`, `cql_password`, `nodetool_username`, and `nodetool_password` are optional parameters. If they are not provided in the `apigw-backup-tool.ini` file, then you will be prompted for them during command execution. {{< /alert >}}
 

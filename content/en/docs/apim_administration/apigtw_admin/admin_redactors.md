@@ -367,6 +367,23 @@ This results in the following configuration model:
 
 ### JSON redactor configuration
 
+You can specify the following property in the `JSONRedactor` tag:
+
+| Name          | Type   | Default value | Description                                           |
+| ------------- | ------ | ------------- | ----------------------------------------------------- |
+| maxBufferSize | number | 32768         | Maximum memory size (in bytes) used by JSON redaction.|
+
+For example:
+
+```xml
+<JSONRedactor maxBufferSize="32768">
+   <RedactMime mimeType="application/json"/>
+   ...
+</JSONRedactor>
+```
+
+If an error occurs during the redaction process, including `maxBufferSize` reached, the JSON redactor redacts the rest of the JSON data being processed to avoid writing sensitive data to the logs.
+
 The following shows an example from `redaction.xml`:
 
 ```xml

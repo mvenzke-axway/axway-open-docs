@@ -18,6 +18,12 @@ Integration with Elasticsearch allows you to achieve the same caching capabiliti
 * Connecting Elasticsearch to a single node in API Portal is enough.
 * You must have `cron` and `crontab` installed, and a `crond` service running in your API Portal server. (You can usually get `cron` by default with RHEL and CentOS Linux.) This is not required for API Portal in a Docker container.
 
+## Limitations
+
+If you have multiple API Portal and API Manager combinations, where each combination is operating with different sets of data, it is not recommended to connect these different API Portals to the same Elasticsearch server because the last API Portal to write to Elasticsearch might overwrite previous updates from other API Portals connected to the same Elasticsearch.
+
+In this scenario, it is safer to connect each API Portal to a separate Elasticsearch instance to maintain data integrity.
+
 ## Elasticsearch security practices
 
 When setting up your Elasticsearch server, observe the following recommendations:

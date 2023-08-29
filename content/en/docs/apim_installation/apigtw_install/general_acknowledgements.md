@@ -20,7 +20,7 @@ This product includes software licensed under [Apache license, version 2.0](http
 This product includes software developed by the [OpenSSL Project](https://www.openssl.org/) for use in the OpenSSL Toolkit.
 
 **Eric Young**:
-This product includes cryptographic software written by Eric Young (eay@cryptsoft.com).
+This product includes cryptographic software written by Eric Young (<eay@cryptsoft.com>).
 
 **James Cooper**:
 This product includes software developed by James Cooper.

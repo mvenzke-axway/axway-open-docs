@@ -26,9 +26,9 @@ The monitoring feature of API Portal, which enables your API consumers to monit
 
 ## Run a Docker container using the image
 
-To get the ready-made Docker image, login to [Axway Repository](https://repository.axway.com/catalog?products=a1Ew000000N241BEAR&artifactType=DockerImage) and click the desired file. Then, follow these steps to install the image:
+To find the ready-made Docker images, login to [Axway Repository](https://repository.axway.com/catalog?artifactType=DockerImage&products=a1Ew000000N241BEAR) and click the version of the image you wish to use. Then, follow these steps to run API Portal in a Docker container:
 
-1. Download a Docker image:
+1. Pull the Docker image:
 
     * Using Docker native client commands.
 
@@ -39,7 +39,7 @@ To get the ready-made Docker image, login to [Axway Repository](https://reposito
       docker pull docker.repository.axway.com/apiportal-docker-prod/7.7/apiportal:7.7.20220830-BN903
       ```
 
-    * Using Axway CLI, Execute the following commands to authenticate and download Docker:
+    * Using Axway CLI, execute the following commands to authenticate and pull Docker:
 
       This option requires the [Axway CLI](https://docs.axway.com/bundle/axwaycli-open-docs/page/docs/index.html) and [Axway Repository CLI extension](https://docs.axway.com/bundle/axwaycli-open-docs/page/docs/extensions/axway_repository_cli/index.html) installed to be able to manage Docker images, Helm charts, and files stored in the Axway Central Repository.
 
@@ -272,11 +272,18 @@ API_WHITELIST_CONFIGURED=0
 API_WHITELIST=
 
 #####
-# For reference see "Secure API Portal"
-# page in API Portal docs
-#####
 SESSION_HIJACK_PREVENTION_CONFIGURED=0
 SESSION_HIJACK_PREVENTION_ENABLED=1
+
+#####
+# Elasticsearch scheduling settings
+#####
+# Enable Elasticsearch scheduler process
+# in the container. Valid values: 0 or 1
+ES_TASK_SCHEDULER_ENABLED=1
+# Mark container unhealthy when scheduler
+# is not functioning. Valid values: 0 or 1
+ES_TASK_SCHEDULER_HEALTHCHECKED=0
 
 #####
 # JAI admin management.
@@ -442,7 +449,106 @@ docker container run \
 
 As API Portal container runs as a non-root user. You must ensure that mounted directories are readable and writable by user with id `1048`. This user is not required to exist in the host machine.
 
-## RHEL API Portal software installation versus API Portal running in a docker container
+## Configure external Elasticsearch indexation scheduler
 
-* [Elasticsearch scheduling](/docs/apim_installation/apiportal_install/install_software_elastic#configure-a-schedule-to-push-data-to-elasticsearch) - API Portal software installation accepts non-standard cron expression syntax if the expression is supported by the cron version installed on the server, whereas in the Docker image only standard syntax is supported. For example, values like `@daily` or `@reboot` are not allowed.
-* [Public API Mode](/docs/apim_administration/apiportal_admin/public_api_configure) - In API Portal software installations, an encryption key directory must be generated with `apiportal_encryption.sh` script or with an option in API Portal installer to enable the Public API Mode feature, whereas the Docker image include pre-generated encryption directory. For more information, see [Create data volumes to persist data](#create-data-volumes-to-persist-data) section.
+You can configure Elasticsearch indexation in API Portal container from JAI or using external tools. For external indexation you can use the `/usr/local/bin/apifeed.sh` script in the API Portal container. This script expects an entity type as the first argument (`apis` or `applications`). External indexation can be achieved with different tools (cron, cloud providers schedulers, or custom scripts).
+
+The following sections are examples of how to configure external indexation.
+
+### Configure external scheduling with crontab
+
+This section describes how to schedule indexation using a crontab file.
+
+1. Run API Portal container with disabled Elasticsearch indexation scheduling:
+
+    ```sh
+    docker container run --name apiportal \
+      -e ES_TASK_SCHEDULER_ENABLED=0 \
+      <more-options>
+    ```
+2. [Connect API Portal with Elasticsearch](/docs/apim_installation/apiportal_install/install_software_elastic/index.html#connect-api-portal-with-elasticsearch).
+3. Open the crontab file in edit mode:
+
+    ```sh
+    crontab -e
+    ```
+4. Configure the schedules in your file:
+
+   ```sh
+   # Run APIs indexation once a minute
+   */1 * * * * docker container exec -i tmp-apiportal apifeed.sh apis
+   # Run Applications indexation each 2 minutes
+   */2 * * * * docker container exec -i tmp-apiportal apifeed.sh applications
+   ```
+
+### Configure external scheduling with Ofelia
+
+The [Ofelia](https://hub.docker.com/r/mcuadros/ofelia) job is a cron replacement for docker environments.
+
+This section describes how to schedule indexation using an Ofelia docker container.
+
+1. Run API Portal container with disabled Elasticsearch indexation scheduling:
+
+    ```sh
+    docker container run --name apiportal \
+      -e ES_TASK_SCHEDULER_ENABLED=0 \
+      <more-options>
+    ```
+2. [Connect API Portal with Elasticsearch](/docs/apim_installation/apiportal_install/install_software_elastic/index.html#connect-api-portal-with-elasticsearch).
+3. Run an external scheduler container for APIs and applications:
+
+    * Example with a configuration file:
+
+        ```ini
+        ; ofelia.conf file example
+    
+        ; Run APIs indexation once a minute
+        [job-exec "apis"]
+        container = apiportal
+        user = axman
+        schedule = 0 */1 * * * *
+        command = apifeed.sh apis
+    
+        ; Run Applications indexation each 2 minutes
+        [job-exec "applications"]
+        container = apiportal
+        user = axman
+        schedule = 0 */2 * * * *
+        command = apifeed.sh applications
+        ```
+
+        The `user` field in the configuration file must be set to `axman`, the internal API Portal container user.
+
+        ```sh
+        # Run ofelia scheduler container
+        docker container run \
+          -d --name scheduler \
+          -v /var/run/docker.sock:/var/run/docker.sock:ro \
+          -v "<path-to-ofelia.conf-file>:/etc/ofelia.conf" \
+          mcuadros/ofelia:latest daemon
+        ```
+
+    * Example with Docker _labels_:
+
+        ```sh
+        docker container run \
+          -d --name scheduler \
+          -v /var/run/docker.sock:/var/run/docker.sock:ro \
+          --label ofelia.job-exec.apis-schedule.container="apiportal" \
+          --label ofelia.job-exec.apis-schedule.user="axman" \
+          --label ofelia.job-exec.apis-schedule.schedule="0 */1 * * * *" \
+          --label ofelia.job-exec.apis-schedule.command="apifeed.sh apis" \
+          --label ofelia.job-exec.applications-schedule.container="apiportal" \
+          --label ofelia.job-exec.applications-schedule.user="axman" \
+          --label ofelia.job-exec.applications-schedule.schedule="0 */2 * * * *" \
+          --label ofelia.job-exec.applications-schedule.command="apifeed.sh applications" \
+          mcuadros/ofelia:latest daemon --docker
+        ```
+
+See [Ofelia job scheduler](https://github.com/mcuadros/ofelia#configuration) documentation for more configuration examples.
+
+## API Portal installation versus running in containers
+
+In API Portal software installations, an encryption key directory must be generated with `apiportal_encryption.sh` script or with an option in API Portal installer to enable the [Public API Mode](/docs/apim_administration/apiportal_admin/public_api_configure) feature, whereas the Docker image includes pre-generated encryption directory.
+
+For more information, see [Create data volumes to persist data](#create-data-volumes-to-persist-data) section.

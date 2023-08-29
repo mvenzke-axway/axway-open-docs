@@ -74,13 +74,17 @@ When client applications are authorized to access OAuth-protected APIs, they are
 
 The **Clients** > **OAuth Authorizations** tab enables you to manage the stored OAuth authorizations made by protected resource owners.
 
-The following details are displayed:
+{{< alert title="Note" color="primary" >}}You can enter an Owner and select an application to filter authorizations. The OAuth authorization search only works on the exact matching of owner and application.{{< /alert >}}
 
-* **SUBJECT**: The name of the OAuth resource owner (for example, **sample_user**).
+The following details are displayed in the authorization result list:
+
+* **ORGANIZATION**: The name of the organization that owns the application.
+* **OWNER**: The name of the OAuth resource owner (for example, **sample_user**).
+* **APPLICATION**: The name of the application.
 * **SCOPES**: The OAuth scopes used to managed access to the protected resource (for example, **resource.Write**, **openid**).
 * **CREATED**: When the authorization was first made.
 
-To revoke a stored authorization, and block further requests from the client application, select the resource owner name under **SUBJECT**, and click **Remove**.
+To revoke a stored authorization and block further requests from the client application, select the authorization you wish to revoke, click **Manage selected**, then click **Revoke access**.
 
 ## Manage organizations
 

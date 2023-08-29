@@ -179,29 +179,6 @@ apimgr:
       # SIGNATURE: b8bc011ec122bc8c314460cffb2eefc987bc0431f0a9b400574432dbda4ee5f4
       # SIGNATURE: e2ba8b1fb2ce138b3176ebc015b2bb2172bd059ff646d59309e10d93af372174
       # SIGNATURE: 0af7fee3a95535d8ff5f26481499a0add7a481d0a1c44c0075282ea18b33b479
-  extraEnvVars:
-    - name: EMT_HEALTHCHECK_PORT
-      value: "8065"
-    - name: EMT_HEALTHCHECK_PATH
-      value: /healthcheck
-    - name: GW_DIR
-      value: /opt/Axway/apigateway
-    - name: GW_TRACE_DIR
-      value: /opt/Axway/apigateway/groups/topologylinks/emt-group-emt-service/trace
-    - name: EMT_TOPOLOGY_TTL
-      value: "10"
-    - name: EMT_HEAP_SIZE_MB
-      value: "1512"
-    - name: EMT_TRACE_LEVEL
-      value: INFO
-    - name: APIGW_LOG_TRACE_TO_FILE
-      value: "true"
-    - name: APIGW_LOG_TRACE_JSON_TO_STDOUT
-      value: "true"
-    - name: APIGW_LOG_OPENTRAFFIC_OUTPUT
-      value: "file"
-    - name: EMT_DEPLOYMENT_ENABLED
-      value: "false"
 
 apitraffic:
   image:
@@ -221,6 +198,21 @@ apitraffic:
   oauth:
     route:
       enabled: false
+    port: 8089
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      hosts:
+        - host: oauth.myexample.com
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - oauth.myexample.com
   route:
     enabled: false
   ingress:
@@ -267,33 +259,99 @@ apitraffic:
       # SIGNATURE: b8bc011ec122bc8c314460cffb2eefc987bc0431f0a9b400574432dbda4ee5f4
       # SIGNATURE: e2ba8b1fb2ce138b3176ebc015b2bb2172bd059ff646d59309e10d93af372174
       # SIGNATURE: 0af7fee3a95535d8ff5f26481499a0add7a481d0a1c44c0075282ea18b33b479
-  extraEnvVars:
-    - name: EMT_HEALTHCHECK_PORT
-      value: "8065"
-    - name: EMT_HEALTHCHECK_PATH
-      value: /healthcheck
-    - name: GW_DIR
-      value: /opt/Axway/apigateway
-    - name: GW_TRACE_DIR
-      value: /opt/Axway/apigateway/groups/topologylinks/emt-group-emt-service/trace
-    - name: EMT_TOPOLOGY_TTL
-      value: "10"
-    - name: EMT_HEAP_SIZE_MB
-      value: "1512"
-    - name: EMT_TRACE_LEVEL
-      value: INFO
-    - name: APIGW_LOG_TRACE_TO_FILE
-      value: "true"
-    - name: APIGW_LOG_TRACE_JSON_TO_STDOUT
-      value: "true"
-    - name: APIGW_LOG_OPENTRAFFIC_OUTPUT
-      value: "file"
-    - name: EMT_DEPLOYMENT_ENABLED
-      value: "false"
 
 aga:
   enabled: false
   image:
     generalConditions:
     accept: "yes"
+
+apiportal:
+  enabled: true
+  image:
+    registry: apiportal-docker-snapshot.artifactory-ptx.ecd.axway.int
+    repository: apiportal
+    tag: "7.7.20230228-BN1067"
+  route:
+    enabled: false
+  ingress:
+    enabled: true
+    className: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: 100m
+      nginx.ingress.kubernetes.io/proxy-connect-timeout: "300"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+    hosts:
+      - host: apiportal.myexample.com
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls:
+      - hosts:
+          - apiportal.myexample.com
+  mysql:
+    enabled: true
+    databaseName: "portal"
+    username: "root"
+    password: "password"
+  resources:
+    limits:
+      memory: "2048Mi"
+      cpu: "1000m"
+    requests:
+      memory: "1Gi"
+      cpu: "250m"
+  storage:
+    volumes:
+    - enabled: true
+      name: "enckey"
+      usedBy:
+        - portal
+      capacity: 3Mi
+      accessModes:
+        - ReadWriteMany
+      mountPath: "/opt/axway/apiportal/enckey"
+    - enabled: true
+      name: "images"
+      usedBy:
+        - portal
+      capacity: 3Mi
+      accessModes:
+        - ReadWriteMany
+      mountPath: "/opt/axway/apiportal/htdoc/images"
+    - enabled: true
+      name: "language"
+      usedBy:
+        - portal
+      capacity: 3Mi
+      accessModes:
+        - ReadWriteMany
+      mountPath: "/opt/axway/apiportal/htdoc/language"
+    - enabled: true
+      name: "templates"
+      usedBy:
+        - portal
+      capacity: 3Mi
+      accessModes:
+        - ReadWriteMany
+      mountPath: "/opt/axway/apiportal/htdoc/templates"
+    - enabled: true
+      name: "admlanguage"
+      usedBy:
+        - portal
+      capacity: 3Mi
+      accessModes:
+        - ReadWriteMany
+      mountPath: "/opt/axway/apiportal/htdoc/administrator/admlanguage"
+    - enabled: true
+      name: "certs"
+      usedBy:
+        - portal
+      capacity: 3Mi
+      accessModes:
+        - ReadWriteMany
+      mountPath: "/opt/axway/apiportal/htdoc/administrator/components/com_apiportal/assets/cert"
 ```

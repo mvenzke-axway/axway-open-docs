@@ -271,7 +271,7 @@ Refer to our helm chart documentation, [Deploy API Gateway using Helm](/docs/api
 
 It is recommended to host Cassandra outside of openshift, in its own VM cluster. Minimum three nodes are required: one node in each availability zone. For more information, see [Administer Apache Cassandra](/docs/cass_admin/).
 
-The current support Cassandra version is 4.0.9.
+The current supported Cassandra version is 4.0.10.
 
 Communication and access to the database must be protected:
 
