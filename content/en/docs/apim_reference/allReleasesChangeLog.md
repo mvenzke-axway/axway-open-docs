@@ -12,8 +12,24 @@ You can find the release notes for all service packs on [Axway Support](https://
 
 ## Version 7.7 2023
 
-|Update |New features and enhancements        |Important Changes    |Deprecated/Removed/EOS  |
+|Update |New features and enhancements        |Important Changes    |EOS notices/Removed features  |
 |---    |---                                  |---                  |---                     |
+|[API Gateway and Manager 7.7.20230830](/docs/apim_relnotes/20230830_apimgr_relnotes/)|Cassandra in containers - K8ssandra |Java version update to v11 | Support for customer created images for container deployment  |
+|    |Extra initContainers support |API Client Cache changes |IBM DB2 version 10.5 as a database  |
+|    |- |API Catalog property was removed |CA Siteminder filters  |
+|    |- |Non-blocking API property is updated |Oracle Access Manager filters  |
+|    |- |New field in OAS3 definitions for API Manager REST APIs |RSA Cleartrust (RSA Access Manager)   |
+|    |- |CORS Origin header matching as URL |Support for MySQL 5.7 as a relational database to store metrics data  |
+|    |- |Generic error filter SOAP fault response changes |-  |
+|    |- |Incomplete Web Services cannot process SOAP requests |-  |
+|    |- |Support for Cassandra 4.0.10  |-  |
+|    |- |API Manager OAuth authorizations screen changes  |-  |
+|    |- |Metrics database TopologyID change  |-  |
+|    |- |Helm chart values file changes  |-  |
+|**Update**       |**New features and enhancements**        | **Important Changes**   |**EOS notices/Removed features**  |
+|[API Portal 7.7.202305830](/docs/apim_relnotes/20230830_apip_relnotes/)|-  |Manual migration of Elasticsearch indexation schedules|- |
+|    |- |API Details page and JAI settings changes |-  |
+|**Update**       |**New features and enhancements**        | **Important Changes**   |**Deprecated/Removed/EOS**  |
 |[API Gateway and Manager 7.7.20230530](/docs/apim_relnotes/20230530_apimgr_relnotes/)|Policy Studio RCP Upgrade |Policy Studio upgrade   |Sun Access Manager has been retired   |
 |    |Set password history length |API Gateway Analytics PDF reports |Axway PassPort  |
 |    |Temporary passwords and user activation email link expiry |Operating system information removed from the config API |-  |
