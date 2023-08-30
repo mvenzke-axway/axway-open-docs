@@ -55,7 +55,7 @@ Java 11 has deprecated and removed several APIs that were present in Java 8. You
 * `javax.xml.bind` package: This package has been removed. If your code relies on JAXB for XML binding, you need to migrate to alternative libraries, such as `jakarta.xml.bind`.
 * `java.security` APIs: Certain cryptographic algorithms and security protocols might be deprecated or removed. You must ensure that your security configurations are up to date because older certificates, for example, might no longer be compatible with the default `java.security` settings.
 * `OpenJSSE`: OpenJSSE is not required in Java 11 and is no longer shipped with API Gateway. If customizations have direct dependencies on OpenJSSE, they must be updated.
-* Function changes: Some functions might have subtle changes to their output, and this is not always covered by documentation. When tracking erroneous behavior, you must check all function outputs. For example, the `InetAddress.getLocalHost().getHostName()` function no longer returns the fully qualified domain name (FQDN) and the method `getCanonicalHostName()`.
+* Function changes: Some functions might have subtle changes to their output, and this is not always covered by documentation. When tracking erroneous behavior, you must check all function outputs. For example, the `InetAddress.getLocalHost().getHostName()` function no longer returns the fully qualified domain name (FQDN), neither the method `getCanonicalHostName()`.
 
 #### 2. APIs and third-party libraries
 
