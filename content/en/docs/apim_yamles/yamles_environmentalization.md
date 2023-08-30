@@ -200,7 +200,7 @@ If none of the above conditions are true, an error is raised in the logs when AP
 * `values.yaml` files.
 * YAML Entity files (not recommended).
 
-You can encode a string value in base64 using ```{{base64 "changeme"}}```. This is very useful for development or local environment, when your YAML configuration does not required to be encrypted. This does not work when your YAML configuration is encrypted, as recommended for production environments.
+You can encode a string value in base64 using `{{base64 "changeme"}}`. This is very useful for development or local environments, when your YAML configuration is not required to be encrypted. This does not work when your YAML configuration is encrypted, which is recommended for production environments.
 
 The `placeholder` is replaced by an encrypted value in case a non-empty passphrase is set.
 
@@ -281,7 +281,7 @@ This section presents environmentalization options for you to use in your `value
 
 ### Syntax
 
-Because the `{` character is interpreted, the first character of a value must always be quoted. Files are parsed and they might be written again (in case the entity store is modified, for example, change of passphrase), so it is recommended to use single quotation.
+Because the `{` character is interpreted, the first character of a value must always be quoted. Files are parsed and they might be written again (in case the entity store is modified, for example, due to change of passphrase), so it is recommended to use single quotation.
 
 ```yaml
 ---
