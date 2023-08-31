@@ -58,13 +58,13 @@ The following diagram shows a simplified API management architecture:
 
 ## API registration and lifecycle management
 
-API management focuses on registering existing REST APIs, and managing their consumption by customers and partners to support their business objectives. REST APIs are registered using the API Manager web console. REST APIs are managed directly by API Manager using authentication, authorization, and quota policies defined in the client registry. API administrators can use API Manager to manage API consumption, and API consumers can consume the virtualized APIs using API Manager, or using a customized self-service API Portal.
+API management focuses on registering existing REST APIs, and managing their consumption by customers and partners to support their business objectives. REST APIs are registered using the API Manager web console, and they are managed directly by API Manager using authentication, authorization, and quota policies defined in the client registry. API administrators can use API Manager to manage API consumption, and API consumers can consume the virtualized APIs using API Manager, or using a customized self-service API Portal.
 
 API Manager enables you to register APIs and manage their lifecycle from registration through publishing and retirement. Delegated API registration enables different teams of API owners to register and test their own APIs in isolation prior to publishing to other organizations in the API Catalog.
 
-API management is performed by an *API owner* (a technical business or IT operational role). Registration of REST APIs in API Manager, and application of policies to those APIs, is a configuration task rather than a development task. It can be performed on a running API Gateway in a production environment. This approach enables you to manage and promote APIs more dynamically, more rapidly, and with less overhead than typical IT projects.
+API management is performed by an *API owner* (a technical business or IT operational role). Registration of REST APIs in API Manager and application of policies to those APIs, is a configuration task rather than a development task. It can be performed on a running API Gateway in a production environment. This approach enables you to manage and promote APIs more dynamically, more rapidly, and with less overhead than typical IT projects.
 
-API Manager provides a web-based interface that enables API owners to register existing back-end REST APIs, apply standard policies, and virtualize them on API Gateway as public front-end APIs. The APIs are immediately available for management in API Manager, and for consumption in API Manager, or in a self-service API Portal.
+API Manager provides a web-based interface that enables API owners to register existing back-end REST APIs, apply standard policies, and virtualize them on API Gateway as public front-end APIs. The APIs are immediately available for management in API Manager, and for consumption in API Manager or in a self-service API Portal.
 
 ### API lifecycle states
 
@@ -76,7 +76,7 @@ Unpublished APIs are displayed in the API Catalog view to users in the same orga
 
 All APIs (published and unpublished) are displayed in the API Catalog for the API administrator.
 
-**2. Published** - When an API is ready to be consumed by other organizations, it is published in the API Catalog by the API owner. The API administrator must then approve the API as the final step to publish to other organizations in the API Catalog. When the API is published, the API administrator can authorize other organizations to access the API. This displays the API in API Manager and API Portal to API consumers who are members of the authorized organization.
+**2. Published** - When an API is ready to be consumed by other organizations, it is published in the API Catalog by the API owner. The API administrator must then approve the API as the final step to publish to other organizations in the API Catalog. After the API is published, the API administrator can authorize other organizations to access the API. Once authorized, the API is displayed in API Manager and API Portal to API consumers who are members of the organization.
 
 When an API is published, only the API administrator can make changes. The published API can only be deprecated or unpublished, and cannot be deleted. Unpublishing an API stops client applications in other organizations using the API. A published API cannot be edited, and must first be unpublished. However, the API administrator can edit the API documentation of a published API. This allows changes in the API documentation without impacting the API availability.
 
@@ -89,6 +89,8 @@ If the API administrator chooses to flag the API with a retirement date, they ca
 When today's date is selected, the API is retired immediately. An API is retired when it is unpublished in the API Catalog, and thus will no longer be available to client applications in other organizations. The retirement date of an API is displayed to API consumers in the API Catalog.
 
 When a future date is selected, the API will enter a deprecated state until the retirement date is reached. When the retirement date is reached, the API is retired.
+
+{{< alert title="Note" color="primary" >}}The API lifecycle can also be delegated to the Organization Administrator by enabling the self-service API publishing option. For more information, see [Self-service API publishing](/docs/api_mgmt_overview/key_concepts/api_mgmt_orgs_roles/index.html#self-service-api-publishing).{{< /alert >}}
 
 ## High level tasks in API Manager
 
@@ -117,4 +119,4 @@ API consumers can self-register in API Manager or API Portal. They browse and c
 
 For example, API consumers might be internal developers or external business partners. They can log into API Manager or API Portal, and browse APIs and their associated documentation for consumption. They can then develop and test client applications that use these APIs. In this way, API Manager builds a community around the APIs, enabling organizations and consumers to register themselves, and to create and manage their own applications.
 
-For more details, see [Consume APIs](/docs/apim_administration/apimgr_admin/api_mgmt_consume/).
+For more information, see [Consume APIs](/docs/apim_administration/apimgr_admin/api_mgmt_consume/).

@@ -1,9 +1,9 @@
 {
-    "title": "API management workflows",
-    "linkTitle": "Workflows",
-    "weight": "10",
-    "date": "2019-04-15",
-    "description": "Understand the concepts and workflows in API management."
+"title": "API management workflows",
+"linkTitle": "Workflows",
+"weight": "10",
+"date": "2019-04-15",
+"description": "Understand the concepts and workflows in API management."
 }
 
 ## API consumer user registration workflow
@@ -22,14 +22,14 @@ Case 3: No automatic approval, no delegated user management
 Case 4: No automatic approval, delegated user management
 : Same behavior as case 3, except that the email notification is sent to the contact email address for the organization, and the API administrator or organization administrator approves or rejects the registration.
 
-The following table shows the difference between case 3 and 4 when the appropriate settings are selected in API Manager:
+The following table shows the difference between cases 3 and 4 when the appropriate settings are selected in API Manager:
 
 | Auto-approve user registration | Delegate user management | API Portal | Output |
 |--------------------------------|--------------------------|------------|--------|
 | Disabled                       | Disabled                 | Enabled    | Email sent to API admin email address for approval by API admin, and directed to API Manager. |
 | Disabled                       | Enabled                  | Enabled    | Email sent to the organization email address for approval by the API admin or organization admin, and directed to API Portal. If API Portal is disabled, the admin is directed to API Manager in all cases. |
 
-For more details, see [API Manager settings](/docs/apim_reference/api_mgmt_config_web#api-manager-settings).
+For more information, see [API Manager settings](/docs/apim_reference/api_mgmt_config_web#api-manager-settings).
 
 ### Application creation workflow
 
@@ -47,7 +47,7 @@ Case 3: No automatic approval, no delegated application management
 Case 4: No automatic approval, delegated application management
 : Same behavior as case 3, except that the API administrator or organization administrator approves or rejects the registration.
 
-The following table shows the difference between case 3 and 4 when the appropriate settings are selected in API Manager:
+The following table shows the difference between cases 3 and 4 when the appropriate settings are selected in API Manager:
 
 | Auto-approve applications | Delegate application management | API Portal | Output |
 |---------------------------|---------------------------------|------------|--------|
@@ -72,4 +72,4 @@ Case 3: User wants new API access to an existing application, no automatic appro
 Case 4: User wants new API Access to an existing application, no automatic approval, delegated application management
 : Same behavior as case 3, except that the API administrator or organization administrator approves or rejects the API access request.
 
-{{< alert title="Note" color="primary" >}}When an organization administrator adds a new front-end API, the API enters the `pending` queue, and the API administrator receives an email to approve or reject publishing the API.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}When an Organization Administrator adds a new front-end API, the API enters the `pending` queue, and the API administrator receives an email to approve or reject publishing the API. Approval for publishing can also be delegated to the Organization Administrator by enabling the self-service API publishing option. For more information, see [Self-service API publishing](/docs/api_mgmt_overview/key_concepts/api_mgmt_orgs_roles/index.html#self-service-api-publishing).{{< /alert >}}
