@@ -20,7 +20,7 @@ You must also have a persistent storage with access mode of `RWO` and `RWX`, and
 
 Before running the `helm install` command of the Axway Helm chart, you must deploy a Cassandra cluster.
 
-Deploying a Cassandra cluster in containers is supported. However, in a production environment, you must configure Cassandra for high availability (HA) as detailed in [Configure a Cassandra HA cluster](/docs/cass_admin/cassandra_config/).
+Deploying a Cassandra cluster in containers is supported. However, in a production environment, you must configure Cassandra for high availability (HA) as detailed in [Configure a Cassandra HA cluster](/docs/cass_admin/admin_cassandra_classic/cassandra_config/).
 
 ### Deploy Cassandra in a development environment
 
