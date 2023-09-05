@@ -74,7 +74,7 @@ You must map a Service Principal Name (SPN) to the user account you created (`ga
 2. Enter the following `ktpass` command:
 
     ```
-    ktpass -princ HTTP/<host>@<Kerberos realm> -mapuser <user> -pass password -out <user>.keytab -crypto rc4-hmac-nt -kvno 0
+    ktpass -princ HTTP/<host>@<Kerberos realm> -mapuser <user> -pass password -out <user>.keytab -crypto AES256-SHA1 -kvno 0
     ```
 
     The SPN is of the format `HTTP/<host>@<Kerberos realm>`, where `<host>` is the name of the host running the Kerberos service, `gateway.axway.com` in this case:

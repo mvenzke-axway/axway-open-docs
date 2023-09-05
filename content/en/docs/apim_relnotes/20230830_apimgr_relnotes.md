@@ -77,7 +77,16 @@ If you have customizations in the jvm.xml file, or other configuration files, it
 
 #### 6. Kerberos
 
-Kerberos has been temporarily disabled in this API Gateway update because of an underlying incompatibility in some of the third-party libraries that the gateway depends on for Kerberos functionality. This will be addressed and Kerberos re-enabled in a future update.
+The use of weaker cryptography algorithms has been restricted in Kerberos in this release. If your Kerberos infrastructure requires the use of RC4-HMAC or any of the DES family of algorithms, then you must set the `allow_weak_crypto` property to `true` in the `[libdefaults]` section in **Server Settings > Security > Kerberos > krb5.conf**.
+
+Example:
+
+```none
+[libdefaults]
+allow_weak_crypto = true
+default_tkt_enctypes=rc4-hmac
+default_tgs_enctypes=rc4-hmac
+```
 
 #### 7. Java Keystore (JKS) format
 
@@ -136,13 +145,13 @@ If the optional `[path][?query][#fragment]` parts are present in the received `O
 
 If a `null Origin` header value is needed, then a `null` value can be configured in the **Origins** table of the CORS profile.
 
-For more information, see [Configure Cross-Origin resource sharing](/docs/apim_policydev/apigw_gw_instances/general_cors/index.html).
+For more information, see [Configure Cross-Origin resource sharing](/docs/apim_policydev/apigw_gw_instances/general_cors/).
 
 ### Generic error filter SOAP fault response changes
 
 As of this release, the **Generic Error** filter correctly generates the corresponding SOAP 1.2 fault response using the default stylesheet when there is no content body on the message whiteboard. The existing response code on the message whiteboard is preserved, otherwise the response code configured in the filter is set on the message whiteboard.
 
-For more information, see [Fault and error handling filters, Generic error filter](/docs/apim_policydev/apigw_polref/fault_filters/index.html#generic-error-filter).
+For more information, see [Fault and error handling filters, Generic error filter](/docs/apim_policydev/apigw_polref/fault_filters#generic-error-filter).
 
 ### Incomplete Web Services cannot process SOAP requests
 
@@ -154,7 +163,7 @@ The circuits that required to maintain the **Failure Path** execution flow where
 
 The **Web Service** filters with incomplete configuration are now reported in the API Gateway trace during deployment or startup, and such filters will not handle the corresponding SOAP requests until the reported errors are addressed. At the same time, the correctly configured **Web Service** filters will work as expected.
 
-For more information, see [Monitoring and logging filters, Set service context filter](/docs/apim_policydev/apigw_polref/monitoring_logging/index.html#set-service-context-filter), [Web service filters, Set web service context filter](/docs/apim_policydev/apigw_polref/web_services/index.html#set-web-service-context-filter) and [Fault and error handling filters](/docs/apim_policydev/apigw_polref/fault_filters/index.html).
+For more information, see [Monitoring and logging filters, Set service context filter](/docs/apim_policydev/apigw_polref/monitoring_logging#set-service-context-filter), [Web service filters, Set web service context filter](/docs/apim_policydev/apigw_polref/web_services#set-web-service-context-filter) and [Fault and error handling filters](/docs/apim_policydev/apigw_polref/fault_filters/).
 
 <!-- RDAPI-9999 -->
 

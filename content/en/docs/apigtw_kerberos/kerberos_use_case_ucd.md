@@ -57,13 +57,13 @@ This section describes how to configure a Kerberos service principal for API Gat
 6. Map a Service Principal Name (SPN) to the user account. The Kerberos client uses the SPN to uniquely identify a service. To map the SPN, open a command prompt on the Windows Domain Controller, and enter the following command:
 
     ```
-    ktpass -princ HTTP/<host>@<Kerberos realm> -mapuser <user> -pass password -out <user>.keytab -crypto rc4-hmac-nt -kvno 0
+    ktpass -princ HTTP/<host>@<Kerberos realm> -mapuser <user> -pass password -out <user>.keytab -crypto AES256-SHA1 -kvno 0
     ```
 
     The SPN is of the format `HTTP/<host>@<Kerberos realm>`, where `<host>` is the name of the host running the Kerberos service, `IntermediaryGateway` in this case:
 
     ```
-    ktpass -princ HTTP/IntermediaryGateway.axway.com@AXWAY.COM -mapuser IntermediaryGateway -pass Axway123 -out IntermediaryGateway.keytab -crypto rc4-hmac-nt -kvno 0
+    ktpass -princ HTTP/IntermediaryGateway.axway.com@AXWAY.COM -mapuser IntermediaryGateway -pass Axway123 -out IntermediaryGateway.keytab -crypto AES256-SHA1 -kvno 0
     ```
 
     Replace the example Kerberos realm name with your own realm name. Note that the realm name is uppercase.
