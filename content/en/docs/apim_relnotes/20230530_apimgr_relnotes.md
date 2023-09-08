@@ -221,6 +221,7 @@ This version of API Gateway and API Manager includes:
 |RDAPI-29770|01472247|**Issue**: Documentation displayed an outdated default cipher string. **Resolution**: Documentation displays the current default cipher string that is shown in Policy Studio.|
 |RDAPI-29807|01416403|**Issue**: API Gateway Visual Mapper filter XML transformations fail occasionally due to thread interference. **Resolution**: The thread interference in the API Gateway Visual Mapper filter is fixed and XML transformations no longer fail due to thread interference.|
 |RDAPI-29817|01469980|**Issue**: Quotas API - validation of time period changed. **Resolution**: Quotas API documentation updated to reflect period second value. Period value can be one of second, minute, hour, day or week.|
+|RDAPI-30232|01491975|**Issue**: API Manager returns an error message when the user tries to import an OpenAPI specification with a colon as a separator between two path parameters, and the import fails. **Resolution**: The swagger parser is updated and it is now possible to import an OpenAPI specification with a colon as a separator between two path parameters.|
 
 ## Known issues
 
