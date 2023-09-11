@@ -120,7 +120,7 @@ If you selected to install an Apache Cassandra database, configure the following
 * **JRE Location**
     Enter the directory of the Java Runtime Environment used by Cassandra. The default value is the location of the JRE provided by API Gateway (for example, `INSTALL_DIR/apigateway/Linux.x86_64/jre/bin`). If you have installed a separate JRE for Cassandra, enter its location instead.
 
-    For details of the Cassandra JRE requirements and recommendations, see [Cassandra prerequisites](/docs/apim_installation/apigtw_install/cassandra_install#cassandra-prerequisites).
+    For details of the Cassandra JRE requirements and recommendations, see [Cassandra prerequisites](/docs/apim_installation/apigtw_install/install_cassandra#cassandra-prerequisites).
 
 ### Set the administrator credentials for the Admin Node Manager
 

@@ -16,7 +16,7 @@ You can also start and stop API Gateway instances using API Gateway Manager. For
 
 Before you can start API Gateway, you must first create a new domain that includes an API Gateway instance. If you installed the QuickStart tutorial, a sample API Gateway domain is automatically configured in your installation. Otherwise, you must create a new domain. For more details, see [Configure an API Gateway domain](/docs/apim_administration/apigtw_admin/makegateway).
 
-If you are using Apache Cassandra, before starting API Gateway, you must first ensure that Cassandra is running. For details on installing and running Cassandra, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
+If you are using Apache Cassandra, before starting API Gateway, you must first ensure that Cassandra is running. For details on installing and running Cassandra, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/install_cassandra/).
 
 ### Set passphrases
 
@@ -306,4 +306,4 @@ This example assumes that backups are collected on regular basis from the master
 
 For details on how to back up and restore an Admin Node Manager for signing SSL certificates in an API Gateway domain, see [Configure Admin Node Manager high availability](/docs/apim_administration/apigtw_admin/admin_node_mngr).
 
-For details on how to back and restore internal data stored in Apache Cassandra (for example, API Gateway KPS data or API Manager data), see [Apache Cassandra backup and restore](/docs/cass_admin/cassandra_bur/).
+For details on how to back and restore internal data stored in Apache Cassandra (for example, API Gateway KPS data or API Manager data), see [Apache Cassandra backup and restore](/docs/cass_admin/admin_cassandra_classic/cassandra_bur/).

@@ -124,7 +124,7 @@ If you are using any external data stores, such as Apache Cassandra for API Mana
 ### Start Apache Cassandra
 
 Deploying a Cassandra container is only recommended for development environments. In a production environment, you must configure Cassandra for high availability (HA) as detailed in
-[Configure a Cassandra HA cluster](/docs/cass_admin/cassandra_config/).
+[Configure a Cassandra HA cluster](/docs/cass_admin/admin_cassandra_classic/cassandra_config/).
 
 For details on starting Apache Cassandra in a Docker container, see [Docker](https://hub.docker.com/_/cassandra) documentation.
 

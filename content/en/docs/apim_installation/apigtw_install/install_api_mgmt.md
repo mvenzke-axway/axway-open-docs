@@ -26,7 +26,7 @@ In an API Gateway domain environment with multiple machine nodes, API Manager mu
 
 ### Apache Cassandra
 
-The Apache Cassandra database is required to store API Manager data. You can install Cassandra separately before installing API Manager, or when installing API Manager. For more details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install).
+The Apache Cassandra database is required to store API Manager data. You can install Cassandra separately before installing API Manager, or when installing API Manager. For more details, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/install_cassandra).
 
 ## Install API Manager
 

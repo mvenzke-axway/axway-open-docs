@@ -18,7 +18,7 @@ The Cassandra settings in Policy Studio enable you to configure settings for the
 
 To configure Cassandra settings, select the **Server Settings > Cassandra** node in the Policy Studio tree. To apply updates to these settings, click **Apply changes** at the bottom right of each page.
 
-For more details on installing and configuring an Apache Cassandra database cluster, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
+For more details on installing and configuring an Apache Cassandra database cluster, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/install_cassandra/).
 
 ## Cassandra Keyspace settings
 

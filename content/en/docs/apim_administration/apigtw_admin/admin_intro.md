@@ -109,7 +109,7 @@ The gateway interoperates with a range of commonly used databases for a wide var
 * Microsoft SQL Server
 * MariaDB
 
-API Gateway also supports Apache Cassandra for internal data storage. For details on supported database versions, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
+API Gateway also supports Apache Cassandra for internal data storage. For details on supported database versions, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/install_cassandra/).
 
 ### Anti-virus
 

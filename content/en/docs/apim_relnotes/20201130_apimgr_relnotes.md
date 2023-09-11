@@ -18,7 +18,7 @@ The following new features and enhancements are available in this update.
 
 ### Run a script to back up and restore Cassandra
 
-An automated script to back up and restore Cassandra clusters is now included in API Gateway. For more information, see [Apache Cassandra backup and restore](/docs/cass_admin/cassandra_bur).
+An automated script to back up and restore Cassandra clusters is now included in API Gateway. For more information, see [Apache Cassandra backup and restore](/docs/cass_admin/admin_cassandra_classic/cassandra_bur).
 
 ### Enhanced support for OAS3 parameters
 

@@ -94,7 +94,7 @@ It is important, especially when upgrading from an earlier version, to be aware 
 
 ### Apache Cassandra security advisory
 
-The version of the `libthrift` library within Cassandra database is vulnerable to *Improper Access Control*. To mitigate this, we recommend you to upgrade the `libthrift` library to version `0.9.3-1` in your [Apache Cassandra installation](/docs/apim_installation/apigtw_install/cassandra_install/).
+The version of the `libthrift` library within Cassandra database is vulnerable to *Improper Access Control*. To mitigate this, we recommend you to upgrade the `libthrift` library to version `0.9.3-1` in your [Apache Cassandra installation](/docs/apim_installation/apigtw_install/install_cassandra/).
 
 ### Changes in JWT filters
 

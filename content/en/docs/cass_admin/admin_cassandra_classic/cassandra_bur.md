@@ -124,7 +124,7 @@ Use your company's archive method to archive the `BACKUP_SNAPSHOT_NAME` direct
 If you are restoring the keyspace in a *new* Cassandra cluster, you must ensure the following before you start this task:
 
 * The backup snapshot must only contain data from the tables and columns in the keyspace schema.
-* The Cassandra cluster must be created in [a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).
+* The Cassandra cluster must be created in [a highly available Cassandra cluster](/docs/cass_admin/admin_cassandra_classic/cassandra_config/).
 * All API Gateway groups must have their schema created in the new cluster, and the replication factor must be the same as the cluster size (normally, `3`).
 
 To restore a keyspace:

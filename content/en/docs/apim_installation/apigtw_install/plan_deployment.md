@@ -33,7 +33,7 @@ For resilient API Gateway and API Manager HA configuration, a minimum of at lea
 ### Apache Cassandra HA
 
 In addition, the Apache Cassandra database is required to store data for the API Manager component. You can also use Cassandra to store data for API Gateway components such as the Key Property Store, OAuth, and API keys. For Cassandra HA configuration, a minimum of three Cassandra nodes is required. For more details, see
-[Configure a Cassandra HA cluster](/docs/cass_admin/cassandra_config/).
+[Configure a Cassandra HA cluster](/docs/cass_admin/admin_cassandra_classic/cassandra_config/).
 
 ### Multiple datacenters
 

@@ -49,7 +49,7 @@ Run full repair at 1 a.m. every Monday:
 0 1 * * 1 PATH_TO_CASSANDRA/bin/nodetool CONNECTION_SECURITY_PARAMS repair -pr --full > PATH_TO_CASSANDRA/logs/last_repair.log 2>&1
 ```
 
-See also [Clean up Cassandra repair history](/docs/cass_admin/cassandra_bestpractices#span-id-clean-span-clean-up-cassandra-repair-history).
+See also [Clean up Cassandra repair history](/docs/cass_admin/admin_cassandra_classic/cassandra_bestpractices#span-id-clean-span-clean-up-cassandra-repair-history).
 
 ## Replace dead nodes
 
@@ -60,7 +60,7 @@ If a node is down for more than 10 days, it should be replaced. For details on r
 There is no need to reinstall Cassandra from scratch. Instead, you can move the Cassandra data files and restore the `cassandra.yaml` configuration file if necessary (if you updated Cassandra
 configuration). Perform the following steps:
 
-1. Stop Cassandra. For details, see [Manage Apache Cassandra](/docs/cass_admin/cassandra_manage/).
+1. Stop Cassandra. For details, see [Manage Apache Cassandra](/docs/cass_admin/admin_cassandra_classic/cassandra_manage/).
 2. Move `CASSANDRA_HOME/data` to `CASSANDRA_HOME/data/OLD-DATA-DATE`.
 3. Restore `cassandra.yaml` in `CASSANDRA_HOME/conf` if necessary.
 

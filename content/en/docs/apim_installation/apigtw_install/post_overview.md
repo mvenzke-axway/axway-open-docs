@@ -125,11 +125,11 @@ INSTALL_DIR/analytics/posix/samples/etc/init.d/
 
 ### Apache Cassandra
 
-For details on running Apache Cassandra as a service, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install).
+For details on running Apache Cassandra as a service, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/install_cassandra).
 
 ## Set up clustering
 
 To set up API Gateway for high availability, you need to configure an external Apache Cassandra database for clustering. For more information, see the following topics:
 
-* [Configure a Cassandra HA cluster](/docs/cass_admin/cassandra_config/)
+* [Configure a Cassandra HA cluster](/docs/cass_admin/admin_cassandra_classic/cassandra_config/)
 * [Configure API Management in multiple datacenters](/docs/apimgmt_multi_dc/)

@@ -36,7 +36,7 @@ API Gateway supports the following in a production environment:
 
 {{< alert title="Note" >}}The prerequisites are a minimum configuration. For environments built on AWS, s3.large instances might not be enough depending on the volume of data in production. In this case, an upgrade to a m4.xlarge instance can be better to meet the high demand in a production environment.{{< /alert >}}
 
-For API Gateway requirements, see [API Gateway Prerequisites](/docs/apim_installation/apigtw_install/system_requirements), and for requirements for high availability, see [Configure a Cassandra HA cluster](/docs/cass_admin/cassandra_config/).
+For API Gateway requirements, see [API Gateway Prerequisites](/docs/apim_installation/apigtw_install/system_requirements), and for requirements for high availability, see [Configure a Cassandra HA cluster](/docs/cass_admin/admin_cassandra_classic/cassandra_config/).
 
 ### JRE requirements and recommendations
 

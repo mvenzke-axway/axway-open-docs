@@ -52,7 +52,7 @@ Perform the backup of your existing Cassandra data.
    system_traces                                  |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '2'}
    ```
 2. Copy the `apigw-backup-tool` folder, located at `install_dir/apigateway/tools/`, to your Cassandra node.
-3. Update the `/conf/apigw-backup-tool.ini` file to configure your backup. For more information, see [Apache Cassandra backup and restore](/docs/cass_admin/cassandra_bur#update-your-configuration-file).
+3. Update the `/conf/apigw-backup-tool.ini` file to configure your backup. For more information, see [Apache Cassandra backup and restore](/docs/cass_admin/admin_cassandra_classic/cassandra_bur#update-your-configuration-file).
 4. After the configuration is set and Cassandra is running, validate the configuration:
 
    ```
@@ -157,4 +157,4 @@ Attention to the following:
 
 ## Troubleshooting
 
-For more information on problems you might encounter when running Cassandra with API Gateway, see [Cassandra troubleshooting](/docs/cass_admin/cassandra_troubleshooting).
+For more information on problems you might encounter when running Cassandra with API Gateway, see [Cassandra troubleshooting](/docs/cass_admin/admin_cassandra_classic/cassandra_troubleshooting).

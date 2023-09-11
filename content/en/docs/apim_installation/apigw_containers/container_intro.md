@@ -58,7 +58,7 @@ A cluster manager manages the topology, and adds or removes nodes as the load on
 ### Apache Cassandra
 
 If the deployment includes API Manager, then Apache Cassandra is configured for high availability (HA) to store API Manager data and Key Property Store (KPS) tables. For more details, see
-[Configure a Cassandra HA cluster](/docs/cass_admin/cassandra_config/).
+[Configure a Cassandra HA cluster](/docs/cass_admin/admin_cassandra_classic/cassandra_config/).
 
 ### Discovery and Traceability agents
 

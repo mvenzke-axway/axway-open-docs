@@ -27,7 +27,7 @@ The following general guidelines apply to configuring a Cassandra HA cluster:
 
 * Decide on the number of Cassandra nodes, and install and configure the Cassandra database on each node.
 * Decide on the number of gateway nodes, and install and configure them (local or remote to Cassandra).
-    * It is recommended that you configure a Cassandra HA cluster with three Cassandra nodes, and at least two API Gateway instances (local or remote). For details, see [Cassandra deployment architectures](/docs/cass_admin/cassandra_architecture/).
+    * It is recommended that you configure a Cassandra HA cluster with three Cassandra nodes, and at least two API Gateway instances (local or remote). For details, see [Cassandra deployment architectures](/docs/cass_admin/admin_cassandra_classic/cassandra_architecture/).
 * Create a HA API Gateway environment.
 * Configure the Cassandra client settings in Policy Studio for the API Gateway group.
 

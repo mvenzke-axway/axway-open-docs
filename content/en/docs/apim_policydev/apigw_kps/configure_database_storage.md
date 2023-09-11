@@ -293,7 +293,7 @@ Apache Cassandra provides a highly available (HA) data storage option for KPS. A
 
 {{< alert title="Note" color="primary" >}}Custom KPS data defined in Policy Studio supports Cassandra, database, and file data stores. However, API Manager KPS tables (Client Registry and API Catalog) support Cassandra only. Database and file data stores are not supported for API Manager. Three-node Cassandra HA with full consistency is required for API Manager.{{< /alert >}}
 
-For details on installing and configuring Apache Cassandra HA for API Gateway and API Manager, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).
+For details on installing and configuring Apache Cassandra HA for API Gateway and API Manager, see [Configure a highly available Cassandra cluster](/docs/cass_admin/admin_cassandra_classic/cassandra_config/).
 
 ## Configure file-based KPS storage
 

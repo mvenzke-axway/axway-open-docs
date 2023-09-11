@@ -341,7 +341,7 @@ In addition to the source code, the following also must be maintained:
 * Yaml or fed configuration, as well all other modified configuration files, such as jvm.xml, envSettings.props, and so on.
 * Deployment artifacts in the form of a Docker image, if you are building and maintaining you own images.
 * RDBMS backup: use the appropriate backup procedure for the selected RDBMS. Axway recommends selecting geo-redundant backup storage where possible.
-* Cassandra: follow recommendations in [Cassandra backup and restore](/docs/cass_admin/cassandra_bur/). A daily backup is good practice, however you might decide to backup more or less often depending on what data you store (KPS, API Manager, OAuth) and how much data you can afford to lose in case of disaster.
+* Cassandra: follow recommendations in [Cassandra backup and restore](/docs/cass_admin/admin_cassandra_classic/cassandra_bur/). A daily backup is good practice, however you might decide to backup more or less often depending on what data you store (KPS, API Manager, OAuth) and how much data you can afford to lose in case of disaster.
 * Log, trace, event files: as mentioned, it is recommended to use a logging tool to move these logs to a service where they can be persisted.
 
 ## Disaster recovery

@@ -86,7 +86,7 @@ Cassandra is a key-value store. Cassandra has a non-restrictive Apache 2.0 licen
 
 ### What versions of Cassandra are supported by API Gateway?
 
-For details on supported Cassandra versions, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
+For details on supported Cassandra versions, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/install_cassandra/).
 
 ### What does all host polls marked down mean?
 

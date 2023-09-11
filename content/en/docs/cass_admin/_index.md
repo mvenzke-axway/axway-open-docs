@@ -12,7 +12,7 @@ Apache Cassandra is a highly scalable distributed NO-SQL database that provides 
 
 Cassandra is required to store data for API Manager, and you can optionally use it to store data for API Gateway components, such as the Key Property Store (KPS), OAuth, and API keys.
 
-For details on how to install the Cassandra database, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
+For details on how to install the Cassandra database, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/install_cassandra/).
 
 For details on how to administer a Cassandra cluster, see the following sections:
 

@@ -59,9 +59,9 @@ To configure Cassandra in standalone mode, perform the following steps:
 The next steps depend on your installation setup type:
 
 * In a Standard or Complete setup that includes the QuickStart tutorial, the default configuration attempts to connect to Cassandra running on `localhost`.
-* In a Custom setup without the QuickStart tutorial, you must configure the connection in Policy Studio. For more details, see [Connect to API Gateway for the first time](/docs/cass_admin/cassandra_manage#connect-to-api-gateway-for-the-first-time).
+* In a Custom setup without the QuickStart tutorial, you must configure the connection in Policy Studio. For more details, see [Connect to API Gateway for the first time](/docs/cass_admin/admin_cassandra_classic/cassandra_manage#connect-to-api-gateway-for-the-first-time).
 
-To use Cassandra with API Manager, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/). This is configured by default when API Manager is installed along with the QuickStart tutorial.
+To use Cassandra with API Manager, see [Configure a highly available Cassandra cluster](/docs/cass_admin/admin_cassandra_classic/cassandra_config/). This is configured by default when API Manager is installed along with the QuickStart tutorial.
 
 To use Cassandra with OAuth, see [Configure OAuth](/docs/apim_policydev/apigw_oauth/).
 
@@ -88,9 +88,9 @@ The following diagram shows local Cassandra HA mode:
 In remote Cassandra HA, Cassandra runs on a different host from API Gateway. The main differences when installing and configuring remote Cassandra are:
 
 * You must provision separate host machines for Cassandra and API Gateway. However, the data can be stored outside the DMZ, and there might be improved performance.
-* You might need to open ports in the firewall to connect to Cassandra outside the DMZ. For more details, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).
+* You might need to open ports in the firewall to connect to Cassandra outside the DMZ. For more details, see [Configure a highly available Cassandra cluster](/docs/cass_admin/admin_cassandra_classic/cassandra_config/).
 * You do not have to use the Cassandra component supplied by the API Gateway installer.
-* You can configure the remote node using the `setup-cassandra` script supplied by the API Gateway installation. For more details, see [Configure Cassandra clusters with the setup-cassandra script](/docs/cass_admin/cassandra_setup_script/). Alternatively, you can perform all necessary Cassandra configuration changes manually.
+* You can configure the remote node using the `setup-cassandra` script supplied by the API Gateway installation. For more details, see [Configure Cassandra clusters with the setup-cassandra script](/docs/cass_admin/admin_cassandra_classic/cassandra_setup_script/). Alternatively, you can perform all necessary Cassandra configuration changes manually.
 * You must update the API Gateway Cassandra client settings in Policy Studio to connect to the remote Cassandra host nodes.
 
 The following diagram shows remote Cassandra HA mode:
@@ -133,4 +133,4 @@ To avoid Cassandra and API Gateway taking up the same system resources, you must
 
 You can have any number of gateway instances (all running either locally or remote to Cassandra). However, you must have at least two gateway instances for HA. This also applies to API Manager.
 
-For more details on Cassandra HA configuration, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).
+For more details on Cassandra HA configuration, see [Configure a highly available Cassandra cluster](/docs/cass_admin/admin_cassandra_classic/cassandra_config/).

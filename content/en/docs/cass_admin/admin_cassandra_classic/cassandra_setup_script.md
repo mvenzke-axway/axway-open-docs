@@ -7,7 +7,7 @@ description: |
   Configure a Cassandra cluster with the setup-cassandra script.
 ---
 
-The `setup-cassandra` script provided by API Gateway enables you to configure a multi-node Cassandra HA cluster automatically. You can use this script when Cassandra is installed locally along with API Gateway, or installed remotely on a different node. For details on supported Cassandra deployment architectures and HA production environments, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).
+The `setup-cassandra` script provided by API Gateway enables you to configure a multi-node Cassandra HA cluster automatically. You can use this script when Cassandra is installed locally along with API Gateway, or installed remotely on a different node. For details on supported Cassandra deployment architectures and HA production environments, see [Configure a highly available Cassandra cluster](/docs/cass_admin/admin_cassandra_classic/cassandra_config/).
 
 API Gateway provides the `setup-cassandra` script to help configure a Cassandra cluster by updating your Cassandra configuration files and providing instructions to finalize the configuration. This script also creates an automatic backup of the original `cassandra.yaml` file in the following format:
 
@@ -29,7 +29,7 @@ For more details, see [Secure Cassandra HA configuration](#secure-cassandra-ha-c
 
 ### Remote Cassandra HA nodes
 
-`setup-cassandra` is available by default when Cassandra is installed locally on the same node as API Gateway. You can also configure remote Cassandra nodes to use the `setup-cassandra` script supplied by the API Gateway installation. Alternatively, you can perform all necessary Cassandra configuration changes manually. For details, see [Configure a highly available Cassandra cluster](/docs/cass_admin/cassandra_config/).
+`setup-cassandra` is available by default when Cassandra is installed locally on the same node as API Gateway. You can also configure remote Cassandra nodes to use the `setup-cassandra` script supplied by the API Gateway installation. Alternatively, you can perform all necessary Cassandra configuration changes manually. For details, see [Configure a highly available Cassandra cluster](/docs/cass_admin/admin_cassandra_classic/cassandra_config/).
 
 To configure a remote Cassandra node to use the `setup-cassandra` script, perform the following steps:
 

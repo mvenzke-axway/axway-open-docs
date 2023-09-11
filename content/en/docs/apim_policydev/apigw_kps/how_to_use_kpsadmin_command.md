@@ -65,7 +65,7 @@ The `kpsadmin` table operations are as follows:
 ### KPS table administration operations
 
 {{< alert title="" color="danger">}}**Caution**</br>
-Avoid using `kpsadmin` to backup and restore data for internal API Manager tables or tables with high volumes of data. Internal API Manager tables store Cassandra specific properties, such as time-to-live or counter data, which will not be backed up. Additionally, tables with high volumes of data may cause performance degradation during a `kpsadmin` backup or restore. Instead, please use the [Apache Cassandra backup and restore process](/docs/cass_admin/cassandra_bur/){{< /alert >}}
+Avoid using `kpsadmin` to backup and restore data for internal API Manager tables or tables with high volumes of data. Internal API Manager tables store Cassandra specific properties, such as time-to-live or counter data, which will not be backed up. Additionally, tables with high volumes of data may cause performance degradation during a `kpsadmin` backup or restore. Instead, please use the [Apache Cassandra backup and restore process](/docs/cass_admin/admin_cassandra_classic/cassandra_bur/){{< /alert >}}
 
 The `kpsadmin` operations for table administration are as follows:
 
@@ -225,7 +225,7 @@ This section shows some example `kpsadmin` operations in scriptable command mode
 #### Back up and restore
 
 {{< alert title="" color="danger">}}**Caution**</br>
-For internal API Manager tables or tables with high volumes of data, using `kpsadmin` to backup and restore data should be avoided. Internal API Manager tables store Cassandra specific properties, such as time-to-live or counter data, which will not be backed up. Additionally, tables with high volumes of data may cause performance degradation during a `kpsadmin` backup or restore. Instead, please use the [Apache Cassandra backup and restore process](/docs/cass_admin/cassandra_bur/){{< /alert >}}
+For internal API Manager tables or tables with high volumes of data, using `kpsadmin` to backup and restore data should be avoided. Internal API Manager tables store Cassandra specific properties, such as time-to-live or counter data, which will not be backed up. Additionally, tables with high volumes of data may cause performance degradation during a `kpsadmin` backup or restore. Instead, please use the [Apache Cassandra backup and restore process](/docs/cass_admin/admin_cassandra_classic/cassandra_bur/){{< /alert >}}
 
 To back up and restore an API Gateway group from a development environment to a staging environment, perform the following steps:
 

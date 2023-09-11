@@ -120,7 +120,7 @@ If your gateway system uses any of these features, you must configure an externa
 
 All nodes in a Cassandra cluster must run on the same operating system.
 
-For more details on installing and configuring an external Cassandra database for HA, see the [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/cassandra_install/).
+For more details on installing and configuring an external Cassandra database for HA, see the [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/install_cassandra/).
 
 ## Embedded Apache ActiveMQ
 

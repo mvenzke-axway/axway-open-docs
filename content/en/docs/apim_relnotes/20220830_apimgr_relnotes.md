@@ -110,7 +110,7 @@ For more information, see [Define a restrictive Content Security Policy](/docs/a
 
 ### New Cassandra user script
 
-A new script has been added to help in creating new users in Cassandra. It is located at `apigateway/samples/cassandrauser/scripts/createuser.sh`. For more information, see [Create a new Cassandra database user](/docs/cass_admin/cassandra_config#create-a-new-cassandra-database-user).
+A new script has been added to help in creating new users in Cassandra. It is located at `apigateway/samples/cassandrauser/scripts/createuser.sh`. For more information, see [Create a new Cassandra database user](/docs/cass_admin/admin_cassandra_classic/cassandra_config#create-a-new-cassandra-database-user).
 
 ### Disable connection cache for LDAP authentication using Auth Repository
 
