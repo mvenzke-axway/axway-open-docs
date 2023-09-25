@@ -299,12 +299,6 @@ In Policy Studio YAML projects, when updating the scripting engine in the script
 
 Related issue: RDAPI-29887
 
-### API Analytics PDF reports do not display chart contents
-
-In API Analytics, the PDF reports no longer correctly display the contents of the charts. This issue has arisen because of a security upgrade of the `Highcharts.js` charting library. We are working on the fix of this functionality, to be released in a future update of API Gateway.
-
-Related Issue: RDAPI-27301
-
 ### Scripting filter whiteboard attributes not preloaded for Jython scripts
 
 The Scripting filter now uses a Jython 2.7 scripting environment (previously, Jython 2.5) to execute Jython scripts. As a result of this version change, the whiteboard attributes, such as `http.request.uri` and `http.request.verb`, are no longer preloaded for use by Jython scripts. However, you can run a Jython script to load these attributes before they are accessed as follows:
