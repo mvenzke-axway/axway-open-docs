@@ -10,8 +10,6 @@
 
 Your installation of API Gateway includes code samples to demonstrate some of the tasks discussed in this guide, such as adding a custom filter or adding a message listener to API Gateway. The code samples are available in the `INSTALL_DIR/apigateway/samples/developer_guide` directory.
 
-Alternatively, the associated code samples are available from [Axway Support](https://support.axway.com/) as a zip file.
-
 This section describes how to install the code samples.
 
 ### Prerequisites
@@ -21,22 +19,9 @@ Before you install the code samples:
 * You must install the API Gateway core server and Policy Studio, as the samples require certain classes that ship with these components to be on the CLASSPATH.
 * To write custom message filters for API Gateway, you must install the samples on the same machine as API Gateway.
 
-### Unzip the downloaded zip file
-
-If you downloaded the samples from [Axway Support](https://support.axway.com/) as a zip file, the zip file contains the following directory structure:
-
-```
-developer-guide-7.7/samples/developer_guide
-```
-
-Use your preferred zip utility to unzip the file to a suitable location.
-
 ### Location of code samples
 
-The location `DEVELOPER_SAMPLES` is used throughout this guide to refer to the location of the code samples:
-
-* If you have installed API Gateway, `DEVELOPER_SAMPLES` refers to the `INSTALL_DIR/apigateway/samples/developer_guide` directory.
-* If you have installed the code samples from a zip file, `DEVELOPER_SAMPLES` refers to the location where you installed the samples (for example, the `/home/samples/developer-guide-7.7/samples/developer_guide` directory).
+The location `DEVELOPER_SAMPLES` is used throughout this guide to refer to the location of the code samples, for example the `INSTALL_DIR/apigateway/samples/developer_guide` directory.
 
 ## Build the code samples
 
