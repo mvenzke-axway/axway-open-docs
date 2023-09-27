@@ -7,7 +7,7 @@
 }
 ## Internet connection
 
-Installing API Portal dependencies requires an Internet connection. Offline installation is not currently supported.
+An internet connection is required for both installing API Portal on a server and for accessing API Portal as an end user. Offline mode is not supported.
 
 ## Hardware requirements
 
