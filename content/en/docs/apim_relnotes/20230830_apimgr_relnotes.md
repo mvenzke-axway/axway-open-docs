@@ -48,7 +48,13 @@ Java has been upgraded from version 8 to version 11. The specific version is `Az
 
 The Java upgrade will allow the development of new features, improvements, and enhancements in future releases, but it also introduces a few changes that might impact your existing application and customizations. Therefore, we recommend you to review the following sections to ensure a smooth transition to the new Java version.
 
-#### 1. Deprecated and removed APIs
+#### 1. Cassandra version 3 incompatibility
+
+Versions of Cassandra prior to version 4 (including Cassandra 2.2.12 and 3.11.11) are not compatible with Java 11.
+
+To resolve this issue, you must either [upgrade Cassandra to version 4](/docs/apim_installation/apigw_upgrade/upgrade_cassandra/) or supply your own JRE to run Cassandra (Note that Cassandra 3.11.11 is compatible with Java 8).
+
+#### 2. Deprecated and removed APIs
 
 Java 11 has deprecated and removed several APIs that were present in Java 8. You must review your custom Java code, JS scripts, and Groovy scripts to identify and update any references to these deprecated or removed APIs. The most common impacted areas include:
 
@@ -57,25 +63,25 @@ Java 11 has deprecated and removed several APIs that were present in Java 8. You
 * `OpenJSSE`: OpenJSSE is not required in Java 11 and is no longer shipped with API Gateway. If customizations have direct dependencies on OpenJSSE, they must be updated.
 * Function changes: Some functions might have subtle changes to their output, and this is not always covered by documentation. When tracking erroneous behavior, you must check all function outputs. For example, the `InetAddress.getLocalHost().getHostName()` function no longer returns the fully qualified domain name (FQDN), neither the method `getCanonicalHostName()`.
 
-#### 2. APIs and third-party libraries
+#### 3. APIs and third-party libraries
 
 Check your application for dependencies on third-party libraries, for example, libraries added to `ext/lib` to support scripts or customization. Ensure that you are using versions compatible with Java 11 as some libraries might require updates to work properly with the new Java version.
 
-#### 3. Testing and quality assurance
+#### 4. Testing and quality assurance
 
 Thoroughly test your application after the upgrade to ensure that all functionalities are working as expected. Pay special attention to areas that interact with custom code, scripts, or third-party libraries.
 
-#### 4. Compatibility testing
+#### 5. Compatibility testing
 
 If your application integrates with other systems or services, ensure that these integrations remain compatible with Java 11. Check for potential issues related to communication protocols, data formats, and security mechanisms.
 
-#### 5. Backward compatibility
+#### 6. Backward compatibility
 
 While we have tried to cover all possible scenarios to minimize disruptions, certain customizations might require adjustments to be fully compatible with Java 11. Be prepared to invest time in adapting your API Gateway installation to ensure long-term stability.
 
 If you have customizations in the jvm.xml file, or other configuration files, it is recommended that these files are backed up and the customizations are re-applied manually, post upgrade to the newly added configuration files and tested for compatibility.
 
-#### 6. Kerberos
+#### 7. Kerberos
 
 The use of weaker cryptography algorithms has been restricted in Kerberos in this release. If your Kerberos infrastructure requires the use of RC4-HMAC or any of the DES family of algorithms, then you must set the `allow_weak_crypto` property to `true` in the `[libdefaults]` section in **Server Settings > Security > Kerberos > krb5.conf**.
 
@@ -88,11 +94,11 @@ default_tkt_enctypes=rc4-hmac
 default_tgs_enctypes=rc4-hmac
 ```
 
-#### 7. Java Keystore (JKS) format
+#### 8. Java Keystore (JKS) format
 
 In Java 11, the default format for Java keystores (JKS) is `PKCS#12`. The older JKS format is still supported for reading but newly created keystores will be `PKCS#12`, unless explicitly stated to be otherwise. This can have an impact when sharing JKS files with other services, for example, when configuring an SSO IdP.
 
-#### 8. Apache Commons Email
+#### 9. Apache Commons Email
 
 To support email functionality, we have forked the Apache Commons Email project to migrate from using `javax.mail` to using `jakarta.mail`, and from `javax.activation` to `jakarta.activation`. This is a temporary measure for this API Gateway update.
 
