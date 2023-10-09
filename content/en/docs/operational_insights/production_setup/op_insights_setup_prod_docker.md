@@ -54,7 +54,7 @@ Follow these steps to setup Elasticsearch in a multi-node environment by creatin
     {{< alert title="Note" >}}You can skip this step if you have already initialized your Elasticsearch cluster. This is done in the [Setup Elasticsearch](/docs/operational_insights/basic_setup/#setup-elasticsearch) section of the basic setup for Docker Compose. {{< /alert >}}
 
     ```bash
-    docker compose --env-file .env -f elasticsearch/docker compose.es01.yml -f elasticsearch/docker compose.es01init.yml up -d
+    docker compose --env-file .env -f elasticsearch/docker-compose.es01.yml -f elasticsearch/docker-compose.es01init.yml up -d
     ```
 
      This node automatically becomes the master node.
@@ -63,7 +63,7 @@ Follow these steps to setup Elasticsearch in a multi-node environment by creatin
 
     ```bash
     # To add for instance a third node, `ELASTICSEARCH_HOSTS` must contain three nodes
-    docker compose --env-file .env -f elasticsearch/docker compose.es03.yml up -d
+    docker compose --env-file .env -f elasticsearch/docker-compose.es03.yml up -d
     ```
 
     Verify the new node was successfully added to the cluster and shards are assigned to it via Kibana.
