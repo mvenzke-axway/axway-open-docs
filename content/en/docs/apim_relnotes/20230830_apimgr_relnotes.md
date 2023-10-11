@@ -208,6 +208,7 @@ As part of this update, the following features have notice for removal:
 * Support for Oracle Access Manager filters will end in August 2024.
 * Support for RSA Cleartrust (RSA Access Manager) will end in August 2024.
 * Support for customer created images for container deployment, by way of EMT scripts, will end in August 2024 (use of Axway created images only will be supported).
+* Support for Client Application Registry (CAR) will end in February 2024. The API Gateway can still act as an OAuth server without CAR, but API Manager will be required when CAR-only mode is no longer available.
 
 ## Removed features
 

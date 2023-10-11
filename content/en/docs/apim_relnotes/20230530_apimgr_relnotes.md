@@ -122,9 +122,15 @@ Apache has released an updated version of XalanJ (version 2.7.3) to address CVE-
 
 ## Deprecated features
 
-No features have been deprecated in this update.
+<!--  No features have been deprecated in this update. -->
 
-<!-- As part of our software development life cycle, we constantly review our API Management offering. As part of this update, please see notice of deprecation of the following capabilities. -->
+As part of our software development life cycle, we constantly review our API Management offering. As part of this update, please see notice of deprecation of the following capabilities.
+
+### Client Application Registry
+
+This is notice that we will remove support for use of the Client Application Registry (CAR) from February 2024.
+
+The API Gateway can still act as an OAuth server without CAR, but API Manager will be required when CAR-only mode is no longer available.
 
 ## End of support notices
 
