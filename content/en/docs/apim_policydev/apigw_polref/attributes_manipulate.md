@@ -30,7 +30,7 @@ In the **Attribute filter rule** dialog, perform the following steps:
    * ends with
    * is
    * is not (negated rule condition)
-   * matches regular expression
+   * matches regular expression (Works the same as the `java.lang.String.matches()` method and, therefore, requires the regex to match the entire string. A regex that matches only part of the string will evaluate to `false`)
    * starts with
 3. Enter a value to compare with in the text box on the right (for example, `POST`). Alternatively, you can enter a selector that is expanded at runtime (for example, `${http.request.uri}`).
 4. Click **OK**.
