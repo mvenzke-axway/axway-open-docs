@@ -8,9 +8,9 @@
 Perform the following steps after installation to ensure that your API Portal environment is secure from internal and external threats:
 
 1. Apply the latest service pack (SP) available for this version, as it might contain important security updates. For details, see [Update API Portal](/docs/apim_installation/apiportal_install/install_service_pack/).
-2. Search [Axway Support](https://support.axway.com/) for any KB articles relating to this version, as these might contain valuable security recommendations.
+2. Search [Axway Support](https://support.axway.com/) portal for any KB articles relating to API Portal latest version, as these might contain valuable security recommendations.
 3. Change the default Joomla! administrator credentials for logging in to the Joomla! Administrator Interface (JAI) (`https://<API Portal host>/administrator`). Use a different user name and a strong password.
-4. Complete all of the procedures detailed in the following sections.
+4. Complete all of the procedures detailed on this page.
 
 ## Configure the SSL certificate
 
@@ -20,21 +20,21 @@ To enable SSL on API Portal, you must configure Apache to use the correct certi
 2. Change `SSLCertificateFile` and `SSLCertificateKeyFile` to point to your CA certificate and key files.
 3. Restart Apache.
 
-For more details on API Portal certificate management, see the [API Management Security Guide](https://docs.axway.com/bundle/apim-security-guide/page/api_management_7_7_security_guide.html).
+For more details on API Portal certificate management, see the [API Management Security Guide](https://docs.axway.com/bundle/apim-security-guide/page/api_management_security_guide.html).
 
 ## Disable TLS 1.0 and TLS 1.1 on Apache
 
-On an API Portal software installation, the Apache web server has TLS versions 1.0 and 1.1 enabled in addition to the TSL 1.2 that API Portal uses. Because TLS 1.0 and 1.1 have security vulnerabilities, it is recommended to disable them.
+The Apache web server has TLS versions 1.0 and 1.1 enabled by default on API Portal software installation, in addition to the TSL 1.2 that API Portal uses. Because TLS 1.0 and 1.1 have security vulnerabilities, it is recommended to disable them.
 
-1. To check which TLS versions are enabled, scan your API Portal port. By default, API Portal uses port `443` for secure connections:
+1. Scan your API Portal port to check which TLS versions are enabled. By default, API Portal uses port `443` for secure connections:
 
-   ```
+   ```none
    sslscan <API Portal IP address>:<your https port>
    ```
-2. To disable TLS 1.0. and 1.1, open the following file: `/etc/httpd/conf.d/apiportal.conf`
+2. To disable TLS 1.0. and 1.1, open the `/etc/httpd/conf.d/apiportal.conf` file.
 3. Add the following SSL protocol definition for the secure connection:
 
-   ```
+   ```none
    <VirtualHost *:443>
       SSLEngine on
       SSLCertificateFile "/etc/httpd/conf/server.crt"
@@ -54,7 +54,7 @@ To counter a session fixation vulnerability in Joomla!, it is recommended that y
 1. Open the `/etc/httpd/conf.d/security.conf` file.
 2. Add an access restriction directive for the `/administrator` location. Specify the internal IP address range that is allowed to access JAI. For example:
 
-   ```
+   ```none
    ServerTokens ProductOnly
    ServerSignature Off
        <Location /administrator>
@@ -65,7 +65,7 @@ To counter a session fixation vulnerability in Joomla!, it is recommended that y
    ```
 3. To restart the web server configuration, enter the following:
 
-   ```
+   ```none
    # /etc/init.d/apache2 reload
    ```
 
@@ -75,13 +75,13 @@ If you did not choose to encrypt your database password during the installation 
 
 To encrypt your database password, run:
 
-```
+```none
 # sh apiportal_db_pass_encryption.sh
 ```
 
 You will be prompted to enter a passphrase and your database password.
 
-The script uses the passphrase to encrypt and decrypt the database password on each connection request. The database password is stored encrypted in the `<API_Portal_install_path>/configuration.php` file. Only the password is decrypted on each connection request, not the whole payload, so no significant performance impact is expected.
+The script uses the passphrase to encrypt and decrypt the database password on each connection request. The database password is stored encrypted in the `<API_Portal_install_path>/configuration.php` file. The password alone is decrypted on each connection request, not the whole payload, so no significant performance impact is expected.
 
 Note that if you encrypt your database password, you cannot use the [database secure connection](/docs/apim_installation/apiportal_install/install_software_configure_database#configure-the-database-server-for-secure-connection) option.
 
@@ -96,7 +96,7 @@ To update an encrypted password:
 1. Change the database password in your database server.
 2. Run the `apiportal_db_pass_encryption.sh` script and provide the new database password to use.
 
-### Update an encrypted password to plaintext password
+### Change an encrypted password to plaintext password
 
 To update an encrypted password to plaintext password:
 
@@ -116,40 +116,42 @@ To protect API Portal and Joomla! from brute force attacks, you can limit the nu
 3. Enter a value for the number of failed login attempts before a ReCaptcha is displayed.
 4. Enter a value for the number of failed login attempts before the user account is locked.
 5. Enter a value, in seconds, for how long the user account is locked.
-6. Click **Yes** to enable locking by IP address. When this setting is enabled login attempts are blocked from the same IP address for the lock time specified even if correct user credentials are entered.
+6. Click **Yes** to enable locking by IP address. (Login attempts are blocked from the same IP address for the lock time specified even if the correct user credentials are entered).
 7. Click **Save**.
 
-You can enable **user account** locking and **IP address** locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts, `UserA` will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, `UserB`) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
+You can enable **user account** locking and **IP address** locking independently or in combination. For example, if you enable user account locking and IP address locking for 5 minutes after 2 failed login attempts **UserA** will be locked for 5 minutes after entering 2 incorrect passwords, and any other user (for example, **UserB**) will also be unable to log in for 5 minutes from the same IP address, even if they provide correct user credentials.
 
 ## Add trusted OAuth hosts
 
-To restrict API Portal users from accessing unauthorized OAuth endpoints, you can enter a list of permitted OAuth hosts in the OAuth whitelist:
+To restrict API Portal users from accessing unauthorized OAuth endpoints, you must create a list of permitted OAuth hosts in the OAuth whitelist:
 
-1. In the JAI, click **Components > API Portal > Whitelisting**.
-2. In the **OAuth Whitelist** field, enter the host names or IP addresses of the trusted OAuth hosts (separated by new lines). Do not enter API Manager hosts as these are added to the whitelist automatically.
+1. In JAI, click **Components > API Portal > Whitelisting**.
+2. In the **OAuth Whitelist** field, enter the host names or IP addresses of the trusted OAuth hosts separated by new lines (Do not enter API Manager hosts as these are added to the whitelist automatically).
 3. Click **Save**.
 
-If you do not add your trusted OAuth hosts to this field, all requests to those hosts will be rejected by API Portal.
+{{< alert title="Note" color="primary" >}}If you do not add your trusted OAuth hosts to this list, all requests to those hosts will be rejected by API Portal.{{< /alert >}}
 
 ## Add trusted API hosts
 
-If you have APIs that are virtualized and published on a host other than an API Manager host, you can enter a list of permitted API hosts in the API whitelist:
+If you have APIs that are virtualized and published on a host other than an API Manager host, you must create a list of permitted API hosts in the API whitelist:
 
 1. In the JAI, click **Components > API Portal > Whitelisting**.
 2. In the **API Whitelist** field, enter the host names or IP addresses of the trusted API hosts (separated by new lines). Do not enter API Manager hosts as these are added to the whitelist automatically.
 3. Click **Save**.
 
-If you do not add your trusted API hosts to this field, all requests to those hosts will be rejected by API Portal.
+{{< alert title="Note" color="primary" >}}If you do not add your trusted API hosts to this list, all requests to those hosts will be rejected by API Portal.{{< /alert >}}
 
 ## Configure Apache
 
-### Update apiportal.conf
+Perform the following configuration in Apache to secure your API Portal installation.
 
-Add security headers to the `apiportal.conf` file (located in `/etc/httpd/conf.d/`).
+### Update apiportal.conf file
 
-In the virtual host directive add the following:
+Add security headers to the `/etc/httpd/conf.d/apiportal.conf` file.
 
-```
+In the virtual host directive, add the following:
+
+```none
 Header edit Set-Cookie "(?i)^((?:(?!;\s?HttpOnly).)+)$" "$1; HttpOnly"
 Header edit Set-Cookie "(?i)^((?:(?!;\s?Secure).)+)$" "$1; Secure"
 Header unset X-Frame-Options
@@ -160,23 +162,19 @@ Header set X-Content-Type-Options nosniff
 Header set Referrer-Policy "same-origin"
 ```
 
-{{< alert title="Note" color="" >}}`SameSite` attribute is not compatible with SSO.
+The `SameSite` attribute is not compatible with SSO. If you are not using SSO, we recommend you to add `SameSite` to the host directive so that the cookies are sent only in First-Party (API Portal) context, and not along with requests initiated by Third-Party websites. For example:
 
-If you are not using SSO, we recommend you to add `SameSite` to the host directive so that the cookies are sent only in First-Party (API Portal) context, and not along with requests initiated by Third-Party websites.
-
-```
+```none
 `Header edit Set-Cookie "(?i)^((?:(?!;\s?SameSite=Strict).)+)$" "$1; SameSite=Strict"`
 ```
 
-{{< /alert >}}
-
 You should only use the HSTS header if you have configured SSL.
 
-### Update security.conf
+### Update security.conf file
 
-Ensure that the `security.conf` file (located at `/etc/httpd/conf.d/`) exists and that it contains the following directives:
+Ensure that the `/etc/httpd/conf.d/security.conf` file exists, and that it contains the following directives:
 
-```
+```none
 ServerTokens ProductOnly
 ServerSignature Off
 HostnameLookups Off
@@ -186,7 +184,7 @@ UseCanonicalName Off
 
 ### Set ServerName to proper FQDN
 
-To protect your web server from a vulnerability giving remote attackers the ability to attain your internal IP address or internal network name, set `ServerName` to a proper FQDN.
+To protect your web server from giving remote attackers the ability to attain your internal IP address or internal network name, set `ServerName` to a proper FQDN.
 
 ### Restart Apache
 
@@ -196,7 +194,7 @@ Restart Apache after modifying the `apiportal.conf` and `security.conf` files.
 
 Find the location of your `php.ini` file. For example, run the command:
 
-```
+```none
 php -i | grep php.ini
 ```
 
@@ -204,7 +202,7 @@ In the resulting list of files, the `php.ini` listed as the `Loaded Configuratio
 
 Update the file with the following options:
 
-```
+```none
 - expose_php = 0
 - display_errors = Off
 - disable_functions = "passthru,shell_exec,system"
@@ -219,9 +217,9 @@ You should only set `session.cookie_secure` to `On` if you have configured SSL.
 
 The `open_basedir` option must be added after the installation is finished. Set `open_basedir` to a list of directories (use `:` to separate directories):
 
-* API Portal root directory
-* Value of `upload_tmp_dir` or `/tmp` if it is empty
-* New location of log files if you changed them according to [Change the location of API Portal log files](/docs/apim_administration/apiportal_admin/apip_logging#change-the-location-of-apiportal-log-files)
+* API Portal root directory.
+* Value of `upload_tmp_dir` or `/tmp` if it is empty.
+* New location of log files if you changed them according to [Change the location of API Portal log files](/docs/apim_administration/apiportal_admin/apip_logging#change-the-location-of-apiportal-log-files).
 
 After updating `php.ini`, restart Apache.
 
@@ -229,24 +227,24 @@ After updating `php.ini`, restart Apache.
 
 MySQL comes with a hardening script to check database server security and remove some default settings. To run the script:
 
-```
+```none
 mysql_secure_installation
 ```
 
 If you do not need to access your database from another machine, bind the MySQL service on localhost only (of the host from which you are going to access it). For example, edit the configuration file `my.cnf` and set:
 
-```
+```none
 bind-address = 127.0.0.1
 ```
 
-API Portal users should only have access to the databases that they need to run.
+API Portal users should have access restricted to the databases that they need to run.
 
 ## Configure Joomla! Administrator Interface (JAI)
 
 1. Log in to JAI.
 2. Select **System > Global Configuration**.
 3. Click the **Site** tab.
-4. In **Cookie Settings** enter your API Portal domain name (for example, `myapiportal.com`) for **Cookie Domain** and enter `/` for **Cookie Path**.
+4. In **Cookie Settings**, enter your API Portal domain name (for example, `myapiportal.com`) for **Cookie Domain** and enter `/` for **Cookie Path**.
 5. In **Metadata Settings** set **Show Joomla Version** to `No`.
 6. Click the **System** tab and in **Debug Settings** set **Debug System** to `No`.
 7. Click the **Server** tab and in **Server Settings** set **Error Reporting** to `None` and **Force HTTPS** to `Entire site` (if you have configured SSL).
@@ -314,7 +312,7 @@ The Content-Type header specifies what media type is being sent with the request
 
 Add the configuration in your `.htaccess` file, virtual host file, or global web server configuration. The following code snippet gives an example for a server processing only `application/json` and `application/x-www-form-urlencoded` data.
 
-```
+```none
 # Check if the Content-Type header is missing or empty
 RewriteCond %{HTTP:Content-Type} ^$
 # AND the method type is POST, PUT or PATCH
@@ -329,17 +327,17 @@ RewriteCond %{HTTP:Content-Type} !^(application/json|application/x-www-form-urle
 RewriteRule ^ - [R=415,L]
 ```
 
-## Allow requests from only used HTTP methods
+## Allow requests from used HTTP methods only
 
 It is best practice to reject requests from HTTP methods that are not being used with the response `405 Method Not Allowed`. For example, allowing requests from the `TRACE` method might result in Cross-Site Tracing (XST) attacks. Similarly, allowing requests from `PUT` and `DELETE` methods might expose vulnerabilities to the file system.
 
-`OPTIONS` method reports which HTTP methods are allowed on the web server, it is mainly used for debugging purposes. If you do not plan to run a diagnostic or debug the server, consider disabling this method.
+The `OPTIONS` method reports which HTTP methods are allowed on the web server, it is mainly used for debugging purposes. If you do not plan to run a diagnostic or debug the server, consider disabling this method.
 
-`GET` and `POST` requests are mandatory for API Portal. You must also allow requests from the HTTP methods your listed APIs support, so users can send requests to them from the Try It page.
+The `GET` and `POST` requests are mandatory for API Portal. You must also allow requests from the HTTP methods your listed APIs support, so users can send requests to them from the Try It page.
 
 Add this configuration in your `.htaccess` or virtual host file. The following example allows only `GET`, `POST`, and `PUT` methods:
 
-```
+```none
 # Disable OPTIONS method
 RewriteCond %{REQUEST_METHOD} ^OPTIONS
 RewriteRule .* - [F]
@@ -355,7 +353,7 @@ AllowMethods GET POST PUT
 
 To prevent host header attacks, we recommend to whitelist `Host` and `X-Forwarded-Host` headers. When the values of the headers do not match the whitelist, the request is redirected to API Portal homepage. To whitelist headers, add the following configuration to your `.htaccess` or virtual host file. (Replace the placeholder URL with your domain):
 
-```
+```none
 RewriteCond %{HTTP_HOST} !^([a-zA-Z0-9-_]{1,20}.){0,3}APIPORTAL_DOMAIN$
 RewriteRule ^(.*)$ https://APIPORTAL_YOUR_DOMAIN/ [R=301,L]
 
@@ -409,7 +407,30 @@ You must include your Data Protection Officer (DPO) or Legal department to defin
 
 When the retention periods expire you must ensure that all of the data which is no longer needed is deleted. This may require automatic identification of the latest activities and a data deletion functionality or manual work.
 
+## Restrict access to static files
+
+API Portal is shipped with static files (files with static content). Some of these files might provide a hint to a hacker on what type of server configuration you are using. To prevent this, you can restrict direct HTTP access to static files by adding the `RewriteRule` directive to your `.htaccess` or host configuration file.
+
+The following example shows how to restrict access to both the `templates/system/incompatible.html` and `templates/system/build_incomplete.html` files at once:
+
+```none
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule   ^templates/system/(incompatible|build_incomplete).html$ - [R=404,L]
+</IfModule>
+```
+
+Alternatively, you can use one `RewriteRule` instruction per file:
+
+```none
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule   ^templates/system/incompatible.html$ - [R=404,L]
+    RewriteRule   ^templates/system/build_incomplete.html$ - [R=404,L]
+</IfModule>
+```
+
 ## Where to go next
 
-* For more information on the security features of API Management products and best practices for strengthening their security, see the [API Management Security Guide](https://docs.axway.com/bundle/apim-security-guide/page/api_management_7_7_security_guide.html).
+* For more information on the security features of API Management products and best practices for strengthening their security, see the [API Management Security Guide](https://docs.axway.com/bundle/apim-security-guide/page/api_management_security_guide.html).
 * For privacy and personal data security recommendations, see [Manage privacy and personal data](/docs/apim_administration/apiportal_admin/manage_privacy_personal_data).
