@@ -265,7 +265,7 @@ DNS records must match the certificate and host configuration. For more informat
 
 ### API Management implementation details
 
-Refer to our helm chart documentation, [Deploy API Gateway using Helm](/docs/apim_howto_guides/container_helm_deployment/), for details on deploying API Manager in containers.
+Refer to our helm chart documentation, [Deploy API Gateway using Helm](/docs/apim_installation/apigw_containers/deployment_flows/axway_image_deployment/helm_deployment/), for details on deploying API Manager in containers.
 
 ### Cassandra considerations
 
