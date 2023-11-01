@@ -3,14 +3,16 @@
 "linkTitle": "Container reference architecture on AWS",
 "weight": 30,
 "date": "2019-12-20",
-"description": "Learn how to deploy and maintain Amplify API Management using EMT mode on Amazon AWS."
+"description": "Learn how to deploy and maintain Amplify API Management API Gateway in containers on Amazon AWS."
 }
 
-## Summary
+Amplify API Management  (APIM) is a leading API management solution, which supports [container-based deployment](/docs/apim_installation/apigw_containers/container_intro/). The purpose of this document is to share the Axway reference architecture for the container-based deployment of an API management solution on Kubernetes. It will address many architectural, development, and operational aspects of the proposed architecture.
 
-This document provides a reference architecture guide for deploying Amplify API Management (APIM) using Externally Managed Topology ([EMT mode](/docs/apim_installation/apigw_containers/container_getstarted/)). Deploying APIM using Docker containers orchestrated by Kubernetes brings tremendous benefits in installing, developing and operating an API management solution.
+Deploying APIM using Docker containers orchestrated by Kubernetes brings tremendous benefits in installing, developing, and operating an API management solution.
 
-This document describes all major areas in deploying and maintaining Axway APIM EMT on Amazon AWS cloud, including:
+Since the technology choices, Docker and Kubernetes, are portable across on-premises environments and many cloud providers, most of the information in this guide should apply to those environments, but we have included specific recommendations for AWS as one of the most common deployment targets.
+
+This document describes all major areas in deploying and maintaining an Amazon AWS cloud environment, including:
 
 * Physical and deployment architectures
 * Explanation and consideration for selecting underlying infrastructure components
@@ -19,23 +21,19 @@ This document describes all major areas in deploying and maintaining Axway APIM 
 * Backup and recovery, including disaster recovery
 * Constraints and roadmap
 
-## Overview
+## Target audience
 
-Amplify API Management is a leading API management solution on the market. It supports container-based deployment under an option called Externally Managed Topology (EMT). The purpose of this document is to share Axway reference architecture for the container-based deployment of an API management solution on Kubernetes. It will address many architectural, development and operational aspects of the proposed architecture.
-
-Since the technology choices, Docker and Kubernetes, are portable across on-premises environments and many cloud providers, most of the information in this guide should apply to those  environments. But we include specific recommendations for AWS as one of the most common deployment targets.
-
-The target audience for the document is architects, developers, and operations personnel. To get the most value from this document, a reader should have a good knowledge of Docker,  Kubernetes, and API management.
+The target audience for the document is architects, developers, and operations personnel. To get the most value from this document, a reader should have a good knowledge of Docker, Kubernetes, and API management.
 
 ## General architecture
 
-This chapter is focused on general architecture in support of an API management deployment on a dedicated Kubernetes cluster. The chapter discusses architectural principles, as well as  required and optional components. There are many ways to deploy software on a Kubernetes cluster, but this document shares Axway's experience acquired from deploying Amplify API Management in an actual production environment. Most of the implementation details will be outlined in the following chapters.
+This section describes the general architecture in support of an API management deployment on a dedicated Kubernetes cluster, architectural principles, and the required and optional components. There are many ways to deploy software on a Kubernetes cluster, but this document shares Axway's experience acquired from deploying Amplify API Management in an actual production environment. Most of the implementation details will be outlined in the following chapters.
 
-Make sure the constraints listed in the chapters are respected in case of deployment on an existing Kubernetes cluster.
+Ensure the constraints listed here are respected in case of deployment on an existing Kubernetes cluster.
 
 ### Principles
 
-The name of the new deployment option _EMT_ gives a good clue that with this option, many operational aspects of the architecture are externalized to an orchestration component. Existing users of Amplify API Management should be aware that with EMT deployment, the role of Admin Node Manager becomes more of a monitoring tool, and Node Manager is completely removed from the EMT architecture.
+When deploying in containers, there are some differences in how Amplify API Management is operated and configured, with many aspects handed over to the orchestration platform, in this case, AWS. Existing users of Amplify API Management should be aware that in container deployments, the role of the Admin Node Manager (ANM) becomes more of a monitoring tool, and the Node Manager is completely removed from the container architecture.
 
 Official testing is taking place in Kubernetes as the orchestration component. However, the Docker images are agnostic, so they can be deployed in other orchestration platforms, like Swarm. Kubernetes manages many important aspects of runtime, security, and operations:
 
@@ -48,7 +46,7 @@ In generic terms, reference architecture can be built by stacking four layers of
 
 ![Reference architecture layers](/Images/apim-reference-architectures/container-aws/image1.png)
 
-Notice that the packaging of API Management for deployment has changed in the EMT mode. Customers need to build a new Docker image for any new `FED` or `POL` file that they want to deploy. For more information, see [Deploy API Gateway in containers](/docs/apim_installation/apigw_containers/).
+Notice that the packaging of API Management for deployment has changed in the container mode. Customers need to build a new Docker image for any new `FED` or `POL` file that they want to deploy. For more information, see [Deploy API Gateway in containers](/docs/apim_installation/apigw_containers/).
 
 We recommend creating a DevOps pipeline that can be triggered anytime a new configuration is ready for deployment.
 
@@ -125,7 +123,7 @@ The API Manager component can send alerts and messages. By default, the solution
 
 ### Performance goals
 
-An important factor for achieving your goals with the EMT deployment is to define a set of performance goals. These will be unique for a specific set of APIs, deployment platform, and clients' expectations. Later in the document, we show an example of the performance metrics that have been achieved in testing a reference architecture by the Axway Managed Cloud team.
+An important factor for achieving your goals with a deployment in containers is to define a set of performance goals. These will be unique for a specific set of APIs, deployment platform, and clients' expectations. Later in the document, we show an example of the performance metrics that have been achieved in testing a reference architecture by the Axway Managed Cloud team.
 
 ## Implementation details
 
@@ -421,7 +419,7 @@ Admin Node Manager provides the API Gateway Manager web interface with monitorin
 To build an ANM container, you must provide:
 
 * HTTPS certificate. This certificate will be used inside the cluster, so it's possible to use a self-signed certificate. However, we recommend reviewing the usage of self-signed certs with your security team.
-* A license file with the EMT mode. Notice it is not required to start Admin Node Manager, but may be required for optional features such as FIPS mode.
+* A license file with the container mode. Notice it is not required to start Admin Node Manager, but may be required for optional features such as FIPS mode.
 * JDBC library for the selected RDBMS.
 * RDBMS connection parameters.
 
@@ -456,7 +454,7 @@ As of Axway [API Management v7.7](/docs/apim_relnotes/201904_release/apig_relnot
 To build an API Manager container, you must provide:
 
 * HTTPS certificate. This certificate will be used inside the cluster. It's possible to use a self-signed certificate. However, we recommend reviewing the usage of self-signed certs with your security team.
-* A license file with the EMT mode set.
+* A license file with the container mode set.
 * A group name. It's mandatory because Admin Node Manager needs it to manage gateway.
 * JDBC library for the selected RDBMS.
 * A FED file with server settings and policies. It is also possible to use policy and environment package files. So, you can have one common policy package and several environment packages: one for each deployment environment.
@@ -766,7 +764,7 @@ It is essential for the smooth operation of an API management solution to perfor
 
 * Policies and server configuration - there are a couple of ways to maintain your deployment artifacts. You can maintain an API Gateway configuration as a Policy Studio folder in a source code management system (SCM). GitHub and GitLab are two popular choices. As an alternative, you can version control `FED` or `POL`/`ENV` files.
 
-In addition to the source code, you need to maintain deployment artifacts in the form of a Docker image, since this is what you deploy in the EMT mode. Thus, a Docker registry is required.
+In addition to the source code, you need to maintain deployment artifacts in the form of a Docker image, since this is what you deploy in the container mode. Thus, a Docker registry is required.
 
 * RDBMS backup - use the appropriate backup procedure for the selected RDBMS.
 * Cassandra - follow recommendations in [Cassandra backup and restore](/docs/cass_admin/admin_cassandra_classic/cassandra_bur/). You will need to decide how frequently you should back up Cassandra. This decision will be impacted by what data you store in Cassandra. Is it only API Manager data? Or does it include OAuth tokens and custom KPS? The main discussion point is to decide how much data you could potentially lose without seriously affecting your business. A daily backup may be a good starting point. There are a couple of good blogs on backing up and restoring Cassandra:
@@ -784,7 +782,7 @@ For a disaster recovery procedure, you should have access to cloud resources in 
 
 As of Amplify API Management v7.7, there are some differences or constraints compared to the classic mode deployment:
 
-* API Portal and Embedded Analytics are not yet supported in the EMT mode.
+* API Portal and Embedded Analytics are not yet supported in container mode.
 * Distributed Ehcache is not supported. However, you can use Apache Cassandra as a distributed data store where CRUD operations are supported to directly interact with KPS, using scripts.
 * Running with Embedded ActiveMQ configured in an instance is not advised. The recommendation is to use an external JMS provider.
 
@@ -793,7 +791,7 @@ The current version does not support all the configurations that currently exist
 * Broader support of current APIM configurations.
 * Running API Portal in a Docker container.
 * Native support of Embedded Analytics.
-* Advancements in the current EMT mode.
+* Advancements in the current container mode.
 * Mutable policy configuration - that enables a policy to be modified without the need to bake in a new Docker image.
 * Reference architecture document for other cloud providers.
 

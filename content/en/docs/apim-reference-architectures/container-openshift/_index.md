@@ -3,12 +3,16 @@ title: Amplify API Management container reference architecture on Openshift
 linkTitle: Container reference architecture on Openshift
 weight: 30
 date: 2022-12-15
-description: Learn how to deploy and maintain Amplify API Management using EMT mode on Openshift
+description: Learn how to deploy and maintain Amplify API Management using API Gateway in containers on Openshift
 ---
 
-## Summary
+Amplify API Management (APIM) is a leading API management solution, which supports [container-based deployment](/docs/apim_installation/apigw_containers/container_intro/). The purpose of this document is to share Axway reference architecture for the container-based deployment of an API management solution on Openshift. It will address architectural, development, and operational aspects of the proposed architecture.
 
-This document provides a reference architecture guide for deploying an Openshift environment capable of running Amplify API Management (APIM) using Externally Managed Topology ([EMT mode](/docs/apim_installation/apigw_containers/container_getstarted/)). Deploying APIM using Docker containers orchestrated by Openshift brings tremendous benefits in installing, developing, operating and monitoring an API management solution.
+Deploying APIM using Docker containers orchestrated by Openshift brings tremendous benefits in installing, developing, operating and monitoring an API management solution.
+
+OpenShift is a cloud development Platform as a Service (PaaS) hosted by Red Hat. It is an open source cloud-based user-friendly platform used to create, test, and run applications, and finally deploy them on cloud. Using Openshift, customers have the advantage of creating a secured and scalable cluster, on a wide variety of cloud providers or their own infrastructure, and be provided with the tools to easily maintain and monitor the environment.
+
+The technology choices, Docker and Openshift, are portable. This means that most of the information in this guide should apply across an on-premise environment and many cloud providers' Openshift solutions.
 
 This document provides recommendations on deploying and maintaining an Openshift environment, including:
 
@@ -19,25 +23,19 @@ This document provides recommendations on deploying and maintaining an Openshift
 * Back up and recovery, including disaster recovery.
 * Constraints and roadmap.
 
-## Overview
-
-Amplify API Management is a leading API management solution on the market. It supports container-based deployment under an option called Externally Managed Topology (EMT). The purpose of this document is to share Axway reference architecture for the container-based deployment of an API management solution on Openshift. It will address architectural, development, and operational aspects of the proposed architecture.
-
-OpenShift is a cloud development Platform as a Service (PaaS) hosted by Red Hat. It is an open source cloud-based user-friendly platform used to create, test, and run applications, and finally deploy them on cloud. Using Openshift, customers have the advantage of creating a secured and scalable cluster, on a wide variety of cloud providers or their own infrastructure, and be provided with the tools to easily maintain and monitor the environment.
-
-The technology choices, Docker and Openshift, are portable. This means that most of the information in this guide should apply across an on-premise environment and many cloud providers' Openshift solutions.
+## Target audience
 
 The target audience for this document is architects, developers, and operations personnel. To get the most value from this document, a reader should have a good knowledge of Docker, Openshift, and API management.
 
 ## General architecture
 
-This chapter is focused on general architecture in support of an API management deployment on a dedicated Openshift cluster. The chapter discusses architectural principles, as well as required and optional components. There are many ways to deploy software on an Openshift cluster, but this document shares Axway's experience acquired from deploying Amplify API Management on Openshift Container Platform.
+This section describes the architecture in support of an API management deployment on a dedicated Openshift cluster, architectural principles, and the required and optional components. There are many ways to deploy software on an Openshift cluster, but this document shares Axway's experience acquired from deploying Amplify API Management on Openshift Container Platform.
 
-Make sure the constraints listed in the chapters are respected in the case of deployment on an existing Openshift cluster.
+Ensure the constraints listed here are respected in the case of deployment on an existing Openshift cluster.
 
 ### Principles
 
-When deploying in containers, there are some differences in how Amplify API Management is operated and configured, with many aspects handed over to the orchestration platform, in this case, Openshift. Existing users of Amplify API Management must be aware that with EMT deployment, the role of Admin Node Manager (ANM) becomes more of a monitoring tool and Node Manager is completely removed from the EMT architecture.
+When deploying in containers, there are some differences in how Amplify API Management is operated and configured, with many aspects handed over to the orchestration platform, in this case, Openshift. Existing users of Amplify API Management must be aware that in container deployments, the role of the Admin Node Manager (ANM) becomes more of a monitoring tool, and the Node Manager is completely removed from the container architecture.
 
 Openshift manages many important aspects of runtime, security, monitoring, and operations, for example:
 
@@ -352,7 +350,7 @@ Disaster recovery configuration is defined by your needs and acceptable downtime
 
 As of Amplify API Management v7.7, there are some differences or constraints compared to the classic mode deployment:
 
-* Embedded Analytics is not supported in EMT mode. They should be deployed outside of a Openshift cluster.
+* Embedded Analytics is not supported in container mode. They should be deployed outside of a Openshift cluster.
 * Distributed Ehcache is not supported. However, you can use Apache Cassandra as a distributed data store where CRUD operations are supported to directly interact with KPS, using scripts.
 * Running with Embedded ActiveMQ configured in an instance is not advised. The recommendation is to use a JMS provider deployed outside of the API Management cluster.
 
@@ -360,7 +358,7 @@ API Management v7.7 does not support all the configurations that currently exist
 
 * Broader support of current APIM configurations.
 * Native support of Embedded Analytics.
-* Advancements in the current EMT mode.
+* Advancements in the current container mode.
 
 For more information, see [roadmaps](https://community.axway.com/s/product-roadmaps) on Axway Community Portal.
 
