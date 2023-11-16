@@ -6,7 +6,7 @@ date: 2023-01-23
 description: Install API Gateway using Axway's public Helm chart and public images.
 ---
 
-From API Gateway [November 2022](/docs/apim_relnotes/20221130_apimgr_relnotes/) update onwards, Axway public images and a public Helm chart are available from [Axway repository](https://repository.axway.com/). This allows you to deploy the Admin Node Manager, API Gateway, API Manager, and if required, Axway Analytics, using Helm.
+Axway public images and a public Helm chart are available from [Axway repository](https://repository.axway.com/). This allows you to deploy the Admin Node Manager, API Gateway, API Manager, and if required, Axway Analytics, using Helm.
 
 ## Prerequisites
 
