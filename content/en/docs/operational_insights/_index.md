@@ -8,7 +8,7 @@ hide_readingtime: true
 description: Configure API Gateway with Elasticsearch to manage your metrics database and use the Operational Insights component to observe millions of requests across different API Gateway instances.
 ---
 
-Operational Insights is one of the components of Amplify Analytics, which also includes [Business Insights](https://docs.axway.com/bundle/amplify-central/page/docs/get_actionable_insights/business_insights/index.html) and [Consumer Insights](https://docs.axway.com/bundle/amplify-central/page/docs/get_actionable_insights/consumer_insights/index.html). It helps you to leverage information about your APIs usage to not only manage your technology infrastructure and operations better, but also to generate additional insights for your businesses.
+Amplify Analytics Operational Insights (AAOI) is one of the components of Amplify Analytics, which also includes [Business Insights](https://docs.axway.com/bundle/amplify-central/page/docs/get_actionable_insights/business_insights/index.html) and [Consumer Insights](https://docs.axway.com/bundle/amplify-central/page/docs/get_actionable_insights/consumer_insights/index.html). It helps you to leverage information about your APIs usage to not only manage your technology infrastructure and operations better, but also to generate additional insights for your businesses.
 
 This component works in combination with the analytics stack, Elasticsearch, Logstash, and Kibana (ELK), and allows you to observe millions of requests across different API Gateway instances over a long time frame. It allows you to use Elasticsearch as the data source for the Traffic Monitor, a built-in of API Gateway, allowing for increased scalability and performance.
 

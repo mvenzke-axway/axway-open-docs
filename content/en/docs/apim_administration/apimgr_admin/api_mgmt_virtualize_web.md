@@ -1,20 +1,19 @@
 {
-"title": "Virtualize REST APIs in API Manager",
-  "linkTitle": "Virtualize REST APIs",
+"title": "Virtualize APIs in API Manager",
+  "linkTitle": "Virtualize APIs",
   "weight": "60",
   "date": "2019-09-17",
   "description": "Virtualize a registered back-end API as a publicly exposed front-end API."
 }
-When you have registered a back-end REST API, you can then virtualize it as a publicly exposed front-end API. The **API Catalog**
-stores information about the REST APIs that have been virtualized as front-end APIs. Virtualized REST APIs published in the **API Catalog** can be made available in API Manager for consumption by API consumers, and for administration by API administrators.
+When you have registered a back-end API, you can then virtualize it as a publicly exposed front-end API. The **API Catalog** stores information about the APIs that have been virtualized as front-end APIs. Virtualized APIs published in the **API Catalog** can be made available in API Manager for consumption by API consumers, and for administration by API administrators.
 
 {{< alert title="Note" color="primary" >}}
-You must first register a back-end REST API before you can virtualize a front-end REST API. For more details, see [Register REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_register_web/).
+You must first register a back-end API before you can virtualize a front-end API. For more details, see [Register APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_register_web/).
 {{< /alert >}}
 
-## Virtualized REST API security
+## Secure a virtualized API
 
-When you virtualize a REST API, you can configure it with security devices, which provide prebuilt authentication and authorization mechanisms for the REST API. The following security devices are supported:
+When you virtualize an API, you can configure it with security devices, which provide prebuilt authentication and authorization mechanisms for the API. The following security devices are supported:
 
 * [API Key](#api-key)
 * [AWS Signing: Authorization Header](#aws-signing-authorization-header)
@@ -26,13 +25,13 @@ When you virtualize a REST API, you can configure it with security devices, whic
 * [Pass Through](#pass-through)
 * [Two-way SSL](#two-way-ssl)
 
-This enables you to control the authentication and authorization mechanisms that are supported for the API. For example, an API with higher security requirements can be more restrictive in the authentication mechanism that it supports. You can also configure custom profiles to suit your requirements. You can also configure virtualized REST APIs and API methods with custom policies if required (for example, for request, routing, and response processing).
+This enables you to control the authentication and authorization mechanisms that are supported for the API. For example, an API with higher security requirements can be more restrictive in the authentication mechanism that it supports. You can also configure custom profiles to suit your requirements. You can also configure virtualized APIs and API methods with custom policies if required (for example, for request, routing, and response processing).
 
-## Virtualize a REST API as a front-end API
+## Virtualize an API as a front-end API
 
-When you have first registered a back-end REST API in API Manager, you can then virtualize it as a publicly exposed front-end API. To virtualize a back-end REST API as a front-end API, perform the following steps:
+When you have first registered a back-end API in API Manager, you can then virtualize it as a publicly exposed front-end API. To virtualize a back-end API as a front-end API, perform the following steps:
 
-1. Click the **API Registration > Frontend API** view in API Manager.
+1. Click the **API > Frontend API** view in API Manager.
 2. Click **New API > New API from backend API**.
 3. Select an existing back-end API in the dialog (for example, **Petstore**), and click **Create**. This displays the following page:
 
@@ -70,7 +69,7 @@ The recommendation is to use OpenAPI, which has the ability to specify multiple 
 
 ## Import a previously exported API
 
-Alternatively, you can virtualize an existing API by importing a previously exported front-end API (for example, from another API Manager environment). For details on how to export APIs, see [Manage the front-end REST API lifecycle.](#manage-front-end-rest-api-lifecycle)
+Alternatively, you can virtualize an existing API by importing a previously exported front-end API (for example, from another API Manager environment). For details on how to export APIs, see [Manage the front-end API lifecycle](#manage-the-front-end-api-lifecycle).
 
 To import a previously exported API, perform the following steps:
 
@@ -88,7 +87,7 @@ To import a previously exported API, perform the following steps:
 
 ## Configure inbound request settings
 
-When you have virtualized a REST API to create a front-end API, you can edit and configure the inbound request settings between the client and the API Gateway (for example, for customized authentication, authorization, or monitoring). To configure inbound settings, perform the following steps in API Manager:
+When you have virtualized a API to create a front-end API, you can edit and configure the inbound request settings between the client and the API Gateway (for example, for customized authentication, authorization, or monitoring). To configure inbound settings, perform the following steps in API Manager:
 
 1. Select the **Inbound** tab.
 2. You can edit the **Resource path** for the API in the text box on the right. Defaults to `/api`.
@@ -299,20 +298,20 @@ Configure the following settings:
 
 ### Advanced inbound settings
 
-**Monitor API usage**: Select whether to enable monitoring metrics for the REST API in the **Monitoring > API Usage** view.
+**Monitor API usage**: Select whether to enable monitoring metrics for the API in the **Monitoring > API Usage** view.
 
-**Query String Pass Through**: Select whether to enable this setting for the REST API. When enabled, query parameters are sent unmodified to the back-end service. This is a per API implementation of the global system property [`api.manager.querystring.passthrough`](/docs/apim_reference/system_props#753).
+**Query String Pass Through**: Select whether to enable this setting for the API. When enabled, query parameters are sent unmodified to the back-end service. This is a per API implementation of the global system property [`api.manager.querystring.passthrough`](/docs/apim_reference/system_props#753).
 
 **Enable CORS from all domains**: Select whether to enable Cross Origin Resource Sharing (CORS) from all domains. When enabled, this means that requests to this API are allowed from all domains (which corresponds to a CORS setting of `*`). To add more advanced CORS configuration (for example, allowed or exposed headers), disable this setting, and add a specific CORS profile for this API. For more details, see [Configure CORS profiles](#configure-cors-profiles).
 
-**PER-METHOD OVERRIDE**: You can click to override the REST API level settings for specified REST API methods. Click the add button, select an API method from the list, and override the following settings as required:
+**PER-METHOD OVERRIDE**: You can click to override the API level settings for specified API methods. Click the add button, select an API method from the list, and override the following settings as required:
 
 * **INBOUND SECURITY PROFILE**: Select a preconfigured security profile for the API method. For more details, see [Configure security profiles](#configure-security-profiles).
 * **CORS PROFILE**: Select a preconfigured CORS profile for the API method.
 
 ## Configure outbound request settings
 
-When you have virtualized a back-end REST API to create a front-end API, you can edit and configure the outbound request settings between the API Gateway and the back-end API. For example, this enables you to customize authentication, and request or response processing. The following page shows configuring an API key authentication profile:
+When you have virtualized a back-end API to create a front-end API, you can edit and configure the outbound request settings between the API Gateway and the back-end API. For example, this enables you to customize authentication, and request or response processing. The following page shows configuring an API key authentication profile:
 
 ![Front-end API outbound settings in the web console](/Images/docbook/images/api_mgmt/api_mgmt_frontend_api_outbound.png)
 
@@ -412,7 +411,7 @@ If fault handler policies have been enabled and configured, you can select a fau
 
 #### PER-METHOD OVERRIDE
 
-You can click to override the REST API level settings for specified REST API methods. Click the add button, select an API method from the list, and override the following settings as required:
+You can click to override the API level settings for specified API methods. Click the add button, select an API method from the list, and override the following settings as required:
 
 **REQUEST POLICY**: Select an optional request processing policy for the API method.
 
@@ -519,19 +518,19 @@ You can use the **Trusted Certificates** tab to add X.509 certificates, which ca
 2. If you selected a **URL** certificate source, enter your **User name** and **Password** if required.
 3. Click **Import**.
 
-## Manage front-end REST API lifecycle
+## Manage the front-end API lifecycle
 
-When you have registered the back-end REST API, you can select it in the list of registered APIs, click **Manage selected**, and chose one of the following options:
+When you have registered the back-end API, you can select it in the list of registered APIs, click **Manage selected**, and chose one of the following options:
 
-* **Delete**: Deletes the selected REST API(s) from the **API Registration > Frontend API**
-    view. You can delete APIs registered as back-end REST APIs in the **Backend API** view.
-* **Publish**: Publishes the selected REST API to be consumed by API consumers. You can edit the **API Name**, and enter an optional **Virtual host** name. When published, the API can be assigned to any organization or application. The API is locked, and no further edits are allowed.
-* **Unpublish**: Unpublishes the selected REST API. When unpublished, the API is only available to the API administrator and to API owners in their organization, and not to other organizations. The API can be edited, published, or deleted.
+* **Delete**: Deletes the selected API(s) from the **API Registration > Frontend API**
+    view. You can delete APIs registered as back-end APIs in the **Backend API** view.
+* **Publish**: Publishes the selected API to be consumed by API consumers. You can edit the **API Name**, and enter an optional **Virtual host** name. When published, the API can be assigned to any organization or application. The API is locked, and no further edits are allowed.
+* **Unpublish**: Unpublishes the selected API. When unpublished, the API is only available to the API administrator and to API owners in their organization, and not to other organizations. The API can be edited, published, or deleted.
 * **Deprecate**: Select whether to **Retire API at specific date**, and enter a **Retirement date**. When selected, the published API is displayed with a date when it will be retired (unpublished) from the API Catalog, and is no longer available to client applications. When deprecated, the API is still published and clients can continue to discover and use the API. Only a published API can be deprecated and unpublished.
-* **Undeprecate**: Undeprecates the selected deprecated REST API.
+* **Undeprecate**: Undeprecates the selected deprecated API.
 * **Upgrade access to newer API**: Upgrades all organizations and applications that had access to the original API to a more recent version of the API (if one exists). You can also deprecate and retire the original API as options.
 * **Grant Access**: Grants organizations access to the selected APIs. You can select whether to **Grant API access to** all organizations, specific organizations, or organizations with access to specific APIs. For more information see [Manage API access](#manage-api-access).
-* **Export API collection**: Exports a copy of the selected front-end REST APIs to your chosen directory. The APIs are exported in JSON format in a `.dat` file, which combines the front-end API, back-end API, security profiles, and so on. You must specify the following in the dialog:
+* **Export API collection**: Exports a copy of the selected front-end APIs to your chosen directory. The APIs are exported in JSON format in a `.dat` file, which combines the front-end API, back-end API, security profiles, and so on. You must specify the following in the dialog:
 
     * **Export file name**: Specify a file name to export (defaults to `api-export.dat`)
     * **Password**: Add a mandatory password for encryption

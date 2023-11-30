@@ -1,14 +1,14 @@
 {
-    "title": "Example: Configure OAuth (External) security for a front-end API",
+    "title": "Example: Configure OAuth security for a front-end API",
     "linkTitle": "Example: Secure a front-end API with OAuth",
     "weight": "61",
     "date": "2020-07-10",
-    "description": "This example shows how to configure API Gateway and API Manager to secure a front-end API using an OAuth (External) security device."
+    "description": "This example shows how to configure API Gateway and API Manager to secure a front-end API using an OAuth (external) security device."
 }
 
 In this example, the OAuth server returns a JWT bearer, and API Gateway analyzes this JWT to grant or refuse access to the resource.
 
-Here is a sample payload from the JWT returned by the OAuth server:
+The following is a sample payload from the JWT returned by the OAuth server:
 
 ```json
 {
@@ -29,7 +29,7 @@ Here is a sample payload from the JWT returned by the OAuth server:
 }
 ```
 
-API Manager needs the following information:
+API Manager expects the following information:
 
 * `oauth.token.client_id` which is the `azp` parameter
 * `oauth.token.scopes` which are in the `scope` parameter

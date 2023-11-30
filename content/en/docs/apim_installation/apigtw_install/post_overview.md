@@ -117,10 +117,10 @@ For more details on `managedomain`, see [managedomain command reference](/docs/a
 
 ### API Gateway Analytics
 
-You can also run the API Gateway Analytics server as a service by creating a script. A sample script and *ReadMe* is provided in the following directory:
+You can also run the API Gateway Analytics server as a service by creating a `systemd` service unit file and a startup script. A sample script and a ReadMe file are provided in the following directory:
 
 ```
-INSTALL_DIR/analytics/posix/samples/etc/init.d/
+INSTALL_DIR/analytics/posix/samples/etc/systemd/system/
 ```
 
 ### Apache Cassandra

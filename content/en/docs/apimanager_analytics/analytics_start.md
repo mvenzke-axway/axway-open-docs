@@ -22,10 +22,10 @@ To launch API Gateway Analytics, perform the following steps:
 
 ### Start API Gateway Analytics as a service
 
-You can also run the API Gateway Analytics server as a service by creating a script. A sample script and *ReadMe* is provided in the following directory:
+You can also run the API Gateway Analytics server as a service by creating a `systemd` service unit file and a startup script. A sample script and a ReadMe file are provided in the following directory:
 
 ```
-INSTALL_DIR/analytics/posix/samples/etc/init.d/
+INSTALL_DIR/analytics/posix/samples/etc/systemd/system/
 ```
 
 {{< alert title="Note" color="primary" >}}If you change to another metrics database that has a different set of remote hosts or clients configured, you must restart both API Gateway and API Gateway Analytics.{{< /alert >}}

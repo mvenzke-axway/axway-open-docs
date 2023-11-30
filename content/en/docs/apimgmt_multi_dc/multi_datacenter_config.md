@@ -49,7 +49,7 @@ You must install and configure Cassandra on each node from each datacenter insta
 
 The following prerequisites apply to Cassandra in a multi-datacenter production environment:
 
-* Ensure that Cassandra version 4.0.10 is [installed](/docs/apim_installation/apigtw_install/install_cassandra/).
+* Ensure that Cassandra version 4.0.11 is [installed](/docs/apim_installation/apigtw_install/install_cassandra/).
 * You must have at least three Cassandra nodes per datacenter. Cassandra must be installed on each node in the cluster, but it should not be started until the Cassandra cluster is fully configured. For more information, see [Install an Apache Cassandra database](/docs/apim_installation/apigtw_install/install_cassandra/).
 * Configure `JAVA_HOME` to a JRE 1.8 installation.
 * Each Cassandra node must have Python 2.7.x installed.

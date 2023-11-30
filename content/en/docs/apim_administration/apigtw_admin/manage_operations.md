@@ -256,28 +256,31 @@ This simple example shows how to create a disaster recovery site from a backup o
 To back up the production environment, perform the following steps.
 
 1. Browse to the directory where the API Gateway is installed (for example, `/opt/apigateway`).
-2. Tar or zip the following:
+2. Package the following directories together (in a tar or zip file):
     * `apigateway/groups`
     * `apigateway/conf`
     * `apigateway/system/conf/nodemanager.xml`
     * `apigateway/ext`
 
-If you want the API Gateway and Node Manager to start up automatically on the new host, you should also include `/etc/init.d/vshell-*`.
+If you wish the API Gateway and Node Manager to start up automatically on the new host, you must also include the `/etc/systemd/system/vshell-*` service files and `/usr/local/bin/vshell-*` scripts to your package. These includes separate `systemd` service unit files and startup scripts files for the Node Manager and API Gateway instances if a `systemd` service was created using `managedomain` during initial setup.
 
-This includes separate startup scripts files for the Node Manager and API Gateway instances if an `init.d` script was created using `managedomain` during initial setup.
+Alternatively, you can create these service files and scripts at any time using `managedomain`, and choosing the following options:
 
-You can create these at any time using `managedomain`, and choosing option `2`, Edit a host, for a Node Manager, or option `10`, Add script or service for an existing local API Gateway. For more details, see [Managedomain command reference](/docs/apim_reference/managedomain_ref/).
+* `2` (Edit a host), for a Node Manager.
+* `10` (Add a Linux service), for an existing local API Gateway.
 
-For example, the following command creates a `.tar` file running from the root directory:
+For more information, see [Managedomain command reference](/docs/apim_reference/managedomain_ref/).
+
+For example, the following command creates a `tar` file running from the root directory:
 
 ```
 tar -cvf apigateway_backup.tar /opt/apigateway/conf /opt/apigateway/groups /opt/apigateway/system/conf/nodemanager.xml
 ```
 
-The following example creates a `.tar` file containing the startup scripts running from the root directory:
+The following example creates a `tar` file containing the startup scripts running from the root directory:
 
 ```
-tar -cvf startup_scripts.tar /etc/init.d/vshell-*
+tar -cvf startup_scripts.tar /etc/systemd/system/vshell-* /usr/local/bin/vshell-*
 ```
 
 #### Copy to the disaster recovery site
@@ -285,7 +288,7 @@ tar -cvf startup_scripts.tar /etc/init.d/vshell-*
 To replicate to the disaster recovery site:
 
 1. Ensure that the files are tarred before copying because this preserves the permissions and ownership of the files.
-2. Copy the created `.tar` files from the primary production machine to the cold standby machine.
+2. Copy the created `tar` files from the primary production machine to the cold standby machine.
 3. Extract the files so that they are extracted in the same directories, overwriting existing files if necessary. The following example extracts the files from the root directory:
 
     ```

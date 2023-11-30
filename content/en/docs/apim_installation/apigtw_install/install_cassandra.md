@@ -19,7 +19,7 @@ This section describes the requirements, recommendations, and procedures to inst
 
 ### Supported Cassandra versions
 
-API Gateway supports Cassandra versions 3.11.11 and 4.0.10. The recommended version is 4.0.10. For more details, see [Apache Cassandra](http://cassandra.apache.org/) documentation.
+API Gateway supports Cassandra versions 3.11.11 and 4.0.11. The recommended version is 4.0.11. For more details, see [Apache Cassandra](http://cassandra.apache.org/) documentation.
 
 * For details on upgrading your Cassandra version, see [Upgrade Apache Cassandra](/docs/apim_installation/apigw_upgrade/upgrade_cassandra/).
 * For details on upgrading your API Gateway version, see [API Gateway Upgrade Guide](/docs/apim_installation/apigw_upgrade/).
@@ -31,7 +31,7 @@ API Gateway supports the following in a production environment:
 * **Operating systems**:
     * All supported Linux platforms
 * **Cassandra**:
-    * Cassandra version 4.0.10
+    * Cassandra version 4.0.11
     * 64-bit OpenJDK JRE or Oracle JRE version 8
 
 {{< alert title="Note" >}}The prerequisites are a minimum configuration. For environments built on AWS, s3.large instances might not be enough depending on the volume of data in production. In this case, an upgrade to a m4.xlarge instance can be better to meet the high demand in a production environment.{{< /alert >}}
@@ -46,7 +46,7 @@ The default API Gateway installation includes a 64-bit OpenJDK JRE (`apigateway/
 
 Cassandra is designed to run on commodity distributed drives, and therefore it is strongly recommended not to use a storage area network (SAN) for Cassandra deployments.
 
-For more information on Cassandra hardware recommendations, see [Hardware choices](https://cassandra.apache.org/doc/3.11/cassandra/operating/hardware.html).
+For more information on Cassandra hardware recommendations, see [Hardware choices](https://cassandra.apache.org/doc/4.0.11/cassandra/operating/hardware.html).
 
 ### AWS general recommendations
 
@@ -70,7 +70,7 @@ For environments built on Amazon Web Services nodes, observe the following check
 
 ### Install Cassandra in GUI mode
 
-{{< alert title="Note" color="primary" >}}Apache Cassandra 4.0.10 is installed by default in an API Gateway standard or complete setup.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}Apache Cassandra 4.0.11 is installed by default in an API Gateway standard or complete setup.{{< /alert >}}
 
 In GUI mode, to install Cassandra only, use the steps described in [API Gateway Installation](/docs/apim_installation/apigtw_install/installation) with the following selections:
 

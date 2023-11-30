@@ -194,7 +194,7 @@ To test this policy configuration, perform the following steps:
 5. Enter a relative path (for example, `/test`).
 6. Set the **Path Specify Policy** to the **Protect Management Interfaces (LDAP)** policy, and click **OK**.
 7. Close the connection to the Admin Node Manager file and reboot the Admin Node Manager so it loads the updated configuration.
-8. Use API Tester to call `http://localhost:8888/test`.
+8. Test your new policy by calling `http://localhost:8888/test`.
 9. Enter the HTTP Basic credentials (for example, username `admin` and password `Axway123`). If authentication is passed, the Admin Node Manager should return an HTTP 404 code (not found).
 
 ## Use the OpenLDAP policy to protect management services

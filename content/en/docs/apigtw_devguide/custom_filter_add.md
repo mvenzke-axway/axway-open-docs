@@ -35,7 +35,7 @@ Follow these guidelines:
     We recommend that you select `JavaScript` in the **Language** field of the **Scripting Language** filter, and ensure that the JavaScript syntax in the script conforms with Nashorn engine syntax. For more information about migrating from Rhino to Nashorn, see the [Rhino Migration Guide](https://wiki.openjdk.java.net/display/Nashorn/Rhino+Migration+Guide).
 
 4. Configure API Gateway to invoke the policy.
-5. Test the policy using API Tester.
+5. Test your new policy to ensure it is working as expected.
 
 ## Use JavaScript for custom requirements
 
@@ -48,7 +48,7 @@ Follow these guidelines:
     We recommend that you select `JavaScript` in the **Language** field of the **Scripting Language** filter, and ensure that the JavaScript syntax in the script conforms with Nashorn engine syntax. For more information about migrating from Rhino to Nashorn, see the [Rhino Migration Guide](https://wiki.openjdk.java.net/display/Nashorn/Rhino+Migration+Guide).
 
 2. Configure API Gateway to invoke the policy.
-3. Test the policy using API Tester.
+3. Test your new policy to ensure it is working as expected.
 
 ## Invoke the policy
 
@@ -62,14 +62,3 @@ To configure the API Gateway to invoke the new policy for a Java Code, follow th
 
     Replace `/invokejava` with `/invokescript`, and  **InvokeJava** policy with **InvokeScript** policy if using with JavaScript.
 4. To deploy the new configuration to API Gateway, click the **Deploy** button on the toolbar or press **F6** and follow the instructions.
-
-## Test the policy
-
-To test the configuration, follow these steps:
-
-1. Start API Tester.
-2. Click the arrow next to the Play icon and select **Request Settings**.
-3. In the **Url** field, enter `http://localhost:8080/invokejava` to send the message to the relative path you configured above.
-4. Click **Run** to send the message to API Gateway.
-
-Alternatively, you can test the policy by entering the URL `http://localhost:8080/invokejava` into any web browser.

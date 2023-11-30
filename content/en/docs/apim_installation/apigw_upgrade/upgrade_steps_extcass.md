@@ -36,7 +36,9 @@ The upgrade of a single-node environment, in general, involves performing the fo
 
 This section provides a checklist of the tasks that you must perform on your old API Gateway installation, and on your new API Gateway 7.7 installation, before you upgrade.
 
-{{< alert title="Note" color="primary" >}}API Gateway 7.7 supports Apache Cassandra version 2.2.12. If you are upgrading from API Gateway 7.5.x (which supported Apache Cassandra 2.2.5 and 2.2.8) it is recommended that you upgrade Apache Cassandra to version 2.2.12 _before_ you upgrade to API Gateway 7.7. For more information on upgrading Apache Cassandra, see [Upgrade Apache Cassandra](/docs/apim_installation/apigw_upgrade/upgrade_cassandra/).{{< /alert >}}
+### Supported Cassandra versions
+
+API Gateway supports Cassandra versions 3.11.11 and 4.0.11. For more information on upgrading Apache Cassandra, see [Upgrade Apache Cassandra](/docs/apim_installation/apigw_upgrade/upgrade_cassandra/).
 
 ### Checklist for the old API Gateway installation
 
@@ -141,7 +143,7 @@ For example, if your new installation is at `/opt/Axway/7.7`, copy the JDBC driv
 
 This enables the `sysupgrade apply` step to upgrade the databases.
 
-## Upgrade steps - Single-node upgrade example
+## Upgrade steps for single-node installation
 
 This section provides an example of a single-node domain upgrade from API Gateway version 7.5.1 to API Gateway 7.7.
 
@@ -155,9 +157,9 @@ The sample topology is as follows:
 
 ![Single-node topology](/Images/UpgradeGuide/APIgw_single_node_upgrade_topology.png)
 
-### Before you upgrade - Check the old installation
+### Before you upgrade check the old single-node installation
 
-Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [Checklist for the old API Gateway installation](#checklist-for-the-old-api-gateway-installation).
+Perform the checks on your old API Gateway installation, as detailed in [Checklist for the old API Gateway installation](#checklist-for-the-old-api-gateway-installation).
 
 ### Step 1 - Install API Gateway 7.7
 
@@ -177,8 +179,10 @@ When the installation is complete, perform the new installation checks detailed 
 
 ### Step 3 - Export the data from the old installation and upgrade it
 
-{{< alert title="" color="danger">}}**Caution**</br>
-Before running `export`, you must ensure that the old API Gateway processes are running, including all Admin Node Managers, Node Managers, and API Gateway instances. These processes must be running in the old installation to export the API Gateway configuration data.{{< /alert >}}
+Before performing this step note the following:
+
+* Before running `export`, you must ensure that the old API Gateway processes are running, including all Admin Node Managers, Node Managers, and API Gateway instances. These processes must be running in the old installation to export the API Gateway configuration data.
+* Identify and remove duplicated rows in your exported file before upgrading from 7.5.x.
 
 The following example shows how to run the `export` and `upgrade` commands:
 
@@ -220,11 +224,11 @@ To verify that the upgrade has been successful:
 
 To make use of a more secure cipher scheme, you must re-encrypt your KPS data using the `kpsadmin` command. For more information see, [Update cipher scheme](/docs/apim_installation/apigw_upgrade/upgrade_steps_oneversion#update-cipher-scheme).
 
-## Upgrade steps - Multi-node upgrade example
+## Upgrade steps for multi-node installation
 
 This topic provides an example of a multi-node domain upgrade from API Gateway version 7.5.x or 7.6.x (in this case, 7.5.1) to API Gateway 7.7.
 
-{{< alert title="Tip" color="primary" >}}You can use the steps in this example as a guide when upgrading a multi-node domain from API Gateway 7.5.x or 7.6.x to 7.7. However, you must remember to modify the steps appropriately for your version and topology.{{< /alert >}}
+{{< alert title="Note" color="primary" >}}You can use the steps in this example as a guide when upgrading a multi-node domain from API Gateway 7.5.x or 7.6.x to 7.7. However, you must remember to modify the steps appropriately for your version and topology.{{< /alert >}}
 
 The following diagram shows an example flow for a multi-node upgrade.
 
@@ -260,7 +264,9 @@ The sample topology uses an Apache Cassandra database cluster for high availabil
 * `Cassandra2` running on NodeB.
 * `Cassandra3` running on NodeC.
 
-## Overview of upgrade steps on a multi-node environment
+### Before you upgrade check the old multi-node installation
+
+Perform the checks on your old API Gateway installation, as detailed in [Before you upgrade](#before-you-upgrade).
 
 {{< alert title="Note" color="primary" >}}Read through this documentation in its entirety before beginning the upgrade process to anticipate each of the steps involved.{{< /alert >}}  
 
@@ -272,10 +278,6 @@ The upgrade of a multi-node-node environment, in general, involves performing th
 4. [Apply the upgraded data to the new installation on the first Admin Node Manager](#step-4---apply-the-upgraded-data-to-the-new-installation-on-the-first-admin-node-manager).
 5. [Apply the upgraded data to the new installation on the other nodes](#step-5---apply-the-upgraded-data-to-the-new-installation-on-the-other-nodes).
 6. [Verify the multi-node upgrade](#step-6---verify-the-multi-node-upgrade).
-
-### Check the old installation on each node before you upgrade
-
-Perform the checks on your old API Gateway 7.5.1 installation, as detailed in [Before you upgrade](#before-you-upgrade).
 
 ### Step 1 - Install API Gateway 7.7 on each node
 
@@ -297,13 +299,10 @@ When the installation is complete, perform the new installation checks detailed 
 
 ### Step 3 - Export the data from the old installation and upgrade it on each node
 
-Run the `export` and `upgrade` commands on each node (NodeA, NodeB, and NodeC). You can run and rerun these commands on NodeA, NodeB, and NodeC in any node order.
+Run the `export` and `upgrade` commands on each node (NodeA, NodeB, and NodeC) in any node order.
 
-{{< alert title="Note" color="primary" >}}The sample topology has one Admin Node Manager (running on NodeA) and two Node Managers (running on NodeB and NodeC). You must specify the Admin Node Manager for the `export` command using the `--anm_host` option, and this Admin Node Manager must also be the first node you upgrade.
-
-The value of `--anm_host` must be an exact match of the host name in the topology (in this example, `--anm_host NodeA`) and you must specify the same name for `--anm_host` option on the other nodes (`--anm_host NodeA` in NodeB and NodeC).
-
-In a topology with multiple Admin Node Managers, we recommend that you specify the first Admin Node Manager (see [Which is the first Admin Node Manager?](/docs/apim_installation/apigw_upgrade/upgrade_faq#which-is-the-first-admin-node-manager)).{{< /alert >}}
+{{< alert title="" color="danger">}}**Caution**</br>
+Identify and remove duplicated rows in your exported file before upgrading from 7.5.x. {{< /alert >}}
 
 All processes must be running on all nodes in the old installation to export the API Gateway configuration data. Therefore, ensure that the Admin Node Manager (NodeA), Node Managers (NodeB and NodC), and API Gateway instances (NodeA, NodeB and NodC) are running.
 
@@ -314,6 +313,14 @@ cd /opt/Axway-7.7/apigateway/upgrade/bin
 ./sysupgrade export --old_install_dir /opt/Axway-7.5.1/apigateway/ --anm_host NodeA
 ./sysupgrade upgrade --cass_host NodeA
 ```
+
+### About the sample topology nodes
+
+The sample topology has one Admin Node Manager (running on NodeA) and two Node Managers (running on NodeB and NodeC). You must specify the Admin Node Manager for the `export` command using the `--anm_host` option, and this Admin Node Manager must also be the first node you upgrade.
+
+The value of `--anm_host` must be an exact match of the host name in the topology (in this example, `--anm_host NodeA`) and you must specify the same name for `--anm_host` option on the other nodes (`--anm_host NodeA` in NodeB and NodeC).
+
+In a topology with multiple Admin Node Managers, we recommend that you specify the first Admin Node Manager (see [Which is the first Admin Node Manager?](/docs/apim_installation/apigw_upgrade/upgrade_faq#which-is-the-first-admin-node-manager)).
 
 The sample topology uses Apache Cassandra to store API Manager data, so you must add the host name or IP address of the new external Cassandra database cluster to the `upgrade` command. If you are not using Apache Cassandra, run the `upgrade` command with the `--no_cassandra` option.
 
@@ -400,6 +407,8 @@ Complete the following steps after running `sysupgrade apply`:
 4. Save the changes to the files and restart the machine. When the machine restarts the new services are started.
 
 Alternatively, your Linux administrator can remove the old services using the preferred Linux utility and delete the old `init.d` service files, and you can use `managedomain` to recreate the services after running `sysupgrade`.
+
+Note that when you run `managedomain` to recreate the services, two new files are created per process - a startup script in `/usr/local/bin` and a `systemd` service unit file in `/etc/systemd/system` for controlling the product as a `systemd` service as opposed to a `SysVinit` service.
 
 ### Migrate the QuickStart tutorial
 

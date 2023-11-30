@@ -315,7 +315,7 @@ The following example shows the settings required to add a car node to the store
 
 ![Add a JSON node](/Images/docbook/images/json/add_json_node.png)
 
-The following example shows the corresponding request and response message in Axway API Tester:
+The following example shows the corresponding request and response message:
 
 ![Add JSON node request and response](/Images/docbook/images/json/add_json_node_sb.png)
 

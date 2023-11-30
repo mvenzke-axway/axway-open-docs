@@ -21,7 +21,7 @@ Alternatively, you can use the `apim-cli` tool to follow an API-as-code approach
 The `apimanager-promote` script enables you to:
 
 * Promote APIs and client applications registered in API Manager to another environment with zero downtime. For example, this ensures that you will not lose service due to any APIs that are unpublished.
-* Perform automatic bulk import of APIs and applications previously exported using the API Manager REST API or web console.
+* Perform automatic bulk import of APIs and applications previously exported using the API Manager API or web console.
 * Ensure that pre-configured credentials continue to work between environments.
 * Export a subset of APIs and applications and re-import with customized settings in a properties file.
 * Handle updates of any conflicting APIs, applications, or application credentials without causing downtime for any published APIs.
@@ -32,7 +32,7 @@ When using the `apimanager-promote` script, the high-level steps are as follows:
 
 1. Export the APIs and applications that you wish to promote from API Manager (as a `.dat` file in JSON format). For example, select the front-end APIs that you wish to export, and click **Manage selected** > **Export API collection**.
 
-    Alternatively, you can export using the API Manager REST API. For more information, see [API Manager REST APIs](/docs/apim_reference/api_mgmt_rest_api/).
+    Alternatively, you can export using the API Manager API. For more information, see [API Manager REST APIs](/docs/apim_reference/api_mgmt_rest_api/).
 2. Create your `promotion.properties` file to specify how your APIs and applications are promoted. See [Generate your promotion.properties file](#generate-your-promotionproperties-file).
 3. Place your exported API and application files (`.dat`) and your generated `promotion.properties` file in the same directory.
 

@@ -7,10 +7,10 @@
 }
 
 {{< alert title="Note" color="primary" >}}
-Before you can register APIs in API Manager, you must first enable an organization for API registration and development. The API Manager welcome screen prompts you to automatically create an `API Development` organization, which is enabled for API development by default. For more details, see [Register REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_register_web/).
+Before you can register APIs in API Manager, you must first enable an organization for API registration and development. The API Manager welcome screen prompts you to automatically create an `API Development` organization, which is enabled for API development by default. For more details, see [Register APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_register_web/).
 {{< /alert >}}
 
-## Register a back-end REST API in API Manager
+## Register a back-end API in API Manager
 
 To register a back-end API in API Manager, perform the following steps:
 
@@ -20,14 +20,15 @@ To register a back-end API in API Manager, perform the following steps:
     * **Import Swagger API**: Import a REST API in JSON or YAML format.
     * **Import WADL API**: Import a REST API in WADL format.
     * **Import WSDL API**: Import a web service in WSDL format.
+    * **Import GraphQL API**: Import an API in GraphQL format.
 3. Specify the API details (for example, location, name, and organization), and click **Import**.
 4. When the API is imported, click **OK**.
 
-For more details, see [Register REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_register_web/).
+For more details, see [Register APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_register_web/).
 
-Alternatively, if you do not have a Swagger or WADL file to import for an existing API, see [Manually register a new back-end REST API](/docs/apim_administration/apimgr_admin/api_mgmt_register_web#manually-register-a-new-back-end-rest-api).
+Alternatively, if you do not have a Swagger or WADL file to import for an existing API, see [Manually register a new back-end API](/docs/apim_administration/apimgr_admin/api_mgmt_register_web#manually-register-a-new-back-end-api).
 
-## Virtualize a front-end REST API in API Manager
+## Virtualize a front-end API in API Manager
 
 To virtualize a front-end API in API Manager, perform the following steps:
 
@@ -43,6 +44,6 @@ To virtualize a front-end API in API Manager, perform the following steps:
 6. If the back-end API is accessed using HTTPS, click the **Trusted Certificates** tab, and click the plus icon on the left. In the dialog, you can specify the URL to valid back-end content, and authentication parameters (if required). For example, you can use the URL for the Swagger or WADL file that you already used to import the back-end API.
 7. When finished, click **Save**.
 
-For more details, see [Virtualize REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_virtualize_web/). The following example shows an existing Swagger-based back-end API virtualized as a front-end API:
+For more details, see [Virtualize APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_virtualize_web/). The following example shows an existing Swagger-based back-end API virtualized as a front-end API:
 
 ![Virtualized API details in the web console](/Images/docbook/images/api_mgmt/api_mgmt_frontend_api_edit.png)

@@ -20,6 +20,7 @@ Most of the OAuth 2.0 server policy filters in the API Gateway generate message 
 ### `accesstoken` methods
 
 The following methods are available to call on the `accesstoken` message attribute:
+{{< alert title="Note" color="primary" >}}The value of the refresh token when accessed via the `accesstoken` is a digest of the original refresh token.{{< /alert >}}
 
 ```
 ${accesstoken.getValue()}

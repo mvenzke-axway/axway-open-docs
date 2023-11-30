@@ -3,20 +3,16 @@
   "linkTitle": "Consume APIs",
   "weight": "80",
   "date": "2019-09-17",
-  "description": "Consume APIs and manage client applications."
+  "description": "Visualize and try-out APIs from the API Catalog, and manage client applications."
 }
 
 ## Consume APIs
 
-API consumers can consume the managed APIs exposed by the API Gateway.
-
-### Browse and retrieve APIs
-
-You can use the **API Catalog** view to browse and retrieve APIs in API Manager.
+You can visualize and try-out your APIs from the **API Catalog** view in API Manager.
 
 ### Retrieve APIs using tags
 
-When tags have been added in API Manager by the API administrator, you can use them to browse and retrieve APIs.
+When tags have been added to the APIs, you can use them to browse and retrieve APIs.
 
 You can click the **Tags** button in the API Manager toolbar to select tags to filter, or you can filter tags manually by entering the `tag:` prefix followed by the tag value in the filter box (for example, `tag:Swagger`). You can also filter multiple tags by entering a comma-separated list without any spaces between values (for example, `tag:REST,R+D`).
 
@@ -51,7 +47,7 @@ When applications have been created, you can click an application name in the **
 
 The following settings are available on the **Authentication** tab:
 
-* **API Keys**: Click **New API Key** to create an API key for the application. API keys are enabled by default. Click **Show Secret** to obtain the associated secret key. You can also specify **JavaScript Origins** to allow the application to run on specific protocols or domains (for example, `https://my_test_url.example.com`) for Cross Origins Resource Sharing (CORS). You can enter one domain per line or `*` to allow all domains. For more details, see [Virtualize REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_virtualize_web/).
+* **API Keys**: Click **New API Key** to create an API key for the application. API keys are enabled by default. Click **Show Secret** to obtain the associated secret key. You can also specify **JavaScript Origins** to allow the application to run on specific protocols or domains (for example, `https://my_test_url.example.com`) for Cross Origins Resource Sharing (CORS). You can enter one domain per line or `*` to allow all domains. For more details, see [Virtualize APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_virtualize_web/).
 * **OAuth Credentials**: Click **New client ID** to create a client ID for the application, and enter the following settings in the dialog:
     * **Application Type**: Applications set to **Confidential** must always send the generated secret along with their `OAuth-Authorization` request. Applications set to **Public** may ommit the secret, when not using the `client_credentials` grant type. Defaults to **Confidential**.
     * **Redirect URLs**: You can enter optional redirect URLs for the application (one URL per line). The application can then redirect users only to the specified URLs, which helps prevent attacks.

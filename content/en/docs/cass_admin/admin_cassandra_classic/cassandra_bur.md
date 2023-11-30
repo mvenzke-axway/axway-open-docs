@@ -26,7 +26,7 @@ You must read the following items carefully before you perform any of the instru
 * The instructions and scripts are intended as a starting point and must be customized and automated as needed to match your backup polices and environment.
 * Because 100% of the data is stored on each node, you must run the backup procedure on a single node only, preferably on the seed node.
 * For safety reasons, the backup location should *not* be on the same disk as the Cassandra data directory, and it must have enough free space to contain the keyspace.
-* If using [Apache Cassandra 4.0.9](/docs/apim_installation/apigw_upgrade/upgrade_cassanda/upgrade_cassandra_v4/), you must upgrade your API Gateway to the [February 2023](/docs/apim_relnotes/20230228_apimgr_relnotes/) release, or later, before backing up the data. This is because the `apigw-backup-tool` has been upgraded to support Apache Cassandra 4.0.9 in this release.
+* If using [Apache Cassandra 4.0.11](/docs/apim_installation/apigw_upgrade/upgrade_cassanda/upgrade_cassandra_v4/), you must upgrade your API Gateway to the [February 2023](/docs/apim_relnotes/20230228_apimgr_relnotes/) release, or later, before backing up the data. This is because the `apigw-backup-tool` has been upgraded to support Apache Cassandra 4.0.11 in this release.
 
 ## Which data keyspaces to back up?
 

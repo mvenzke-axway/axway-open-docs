@@ -27,7 +27,7 @@ Architects and policy developers should adhere to the following guidelines when 
     * Only trusted clients should be allowed send messages into the network.
     * An evidential audit trail should be kept.
 * Think about what you already have in your architecture that could help to achieve these aims. Examples include LDAP directories, databases that already have replication strategies in place, and network monitoring tools.
-* Create a policy to match these requirements and test its performance. Axway provides an integrated performance testing tool (API Tester) to help you with this process.
+* Create a policy to match these requirements and test its performance.
 * Use the API Gateway Manager, API Gateway Analytics, Embedded Analytics, or third-party monitoring consoles to help identify what the bottlenecks are in your system. If part of the solution is slowing the overall system, try to find alternatives to meet your requirements.
 * Test the performance capability of the back-end services.
 

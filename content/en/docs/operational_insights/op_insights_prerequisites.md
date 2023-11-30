@@ -13,7 +13,7 @@ You have two options to deploy Operational Insights:
 * On a container orchestration platform, such as Kubernetes or OpenShift cluster, by using the provided Helm charts.
 * On servers or virtual machines (VMs) with Docker installed, by using Docker Compose.
 
-This page covers the prerequisites for both options
+This page covers the prerequisites for both options.
 
 ## General prerequisites
 
@@ -25,21 +25,15 @@ Operational Insights is based on the [Elastic Stack](https://www.elastic.co/elas
 
 It is also possible to use existing components, such as an Elasticsearch cluster or a Kibana instance, to avail of the flexibility of using, for instance, an Elasticsearch service at AWS or Azure, or use Filebeat manually installed on the API Gateway machines.
 
-{{< alert title="Note" >}}
-Operational Insights has been tested against Elasticsearch 7.17.3 helm charts and Elasticsearch 7.17.7 images.
-{{< /alert >}}
-
 ### API Gateway and API Manager
 
-Operational Insights is designed to work with classic and Externally Managed Topology (EMT) API Management deployment models. Because it is mainly based on events given in the [Open Traffic Event Log](/docs/apim_reference/monitor_traffic_events_metrics/#open-traffic-event-log-settings), you must ensure that this setting is enabled.
-
-This component works only with API Management 7.7 [January 2020](/docs/apim_relnotes/) onwards. Because of `Dateformat` changes in the open traffic format, older versions of API Gateway will display errors in the Logstash processing.
+Operational Insights is designed to work with classic and container API Management deployment models, and it is mainly based on events given in the [Open Traffic Event Log](/docs/apim_reference/monitor_traffic_events_metrics/#open-traffic-event-log-settings), therefore, you must ensure that this setting is enabled.
 
 ### Configure traffic payload
 
 The payload part of an API request is not written directly to the open traffic event log and therefore, it is not stored in Elasticsearch by default.
 
-The following is an example of what a payload look like:
+The following is an example of what a payload looks like:
 
 ```bash
 HTTP/1.1 200 OK
@@ -103,8 +97,7 @@ The following are the requirements specific to deploy Operational Insights on Do
 * [Ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) already installed.
 
 {{< alert title="Note" >}}
-To access sample files referred throughout this documentation for user customizations, follow the [docker compose](/docs/operational_insights/op_insights_basic_setup/#download-and-extract-the-release-package) section to download the release package.
-{{< /alert >}}
+To access sample files referred throughout this section for user customizations, follow the instructions on the [Docker Compose](/docs/operational_insights/op_insights_basic_setup/#basic-setup-with-docker-compose) section to download the release package. {{< /alert >}}
 
 ### Kubernetes and OpenShift knowledge
 

@@ -78,7 +78,7 @@ Enter the `Content-Type` of the unencrypted message data. Defaults to `applicati
 ## PGP encrypt and sign filter
 
 You can use the **PGP Encrypt and Sign**
-filter to generate a Pretty Good Privacy (PGP)-encrypted message. This filter enables you to configure the PGP public key used when encrypting the message body (the `content.body` attribute). You can also configure advanced options such as whether the message outputs ASCII armor, or whether it uses a symmetrically encrypted integrity protected data packet to protect against modification attacks.
+filter to generate a Pretty Good Privacy (PGP)-encrypted message. This filter enables you to configure the PGP public key used when encrypting the message body (the `content.body` attribute). You can also configure advanced options such as whether the message outputs ASCII armor, or whether it uses a symmetrically encrypted data packet to protect against modification attacks.
 
 **PGP Encrypt and Sign** filter does not encrypt any files attached to your message.
 
@@ -173,9 +173,6 @@ tab:
 
 **ASCII Armor Output**:
 Select whether to output the binary message data as ASCII Armor. ASCII Armor is a special text format used by PGP to convert binary data into printable ASCII text. ASCII Armored data is especially suitable for use in email messages, and is also known as Radix-64 encoding. This option is selected by default.
-
-**Symmetric Encrypted Integrity Protected Data Packet**:
-Select whether the message uses a Symmetrically Encrypted Integrity Protected Data packet. This is a variant of the Symmetrically Encrypted Data packet, and is used detect modifications to the encrypted data. This option is selected by default.
 
 **Symmetric Key Algorithm**:
 Select a symmetric-key algorithm to use to encrypt the data. The default is `CAST5`.

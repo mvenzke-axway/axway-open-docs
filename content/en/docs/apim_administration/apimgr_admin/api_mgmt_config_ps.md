@@ -161,7 +161,7 @@ To configure your custom inbound security policies, click **Add**, and select th
 
 {{< alert title="Note" color="primary" >}}Inbound security policies must set the `authentication.subject.id` message attribute to match the client ID set in the external credentials of the application, and return true for successful authentication.{{< /alert >}}
 
-For details on applying inbound security policies to front-end APIs, see [Virtualize REST APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_virtualize_web/).
+For details on applying inbound security policies to front-end APIs, see [Virtualize APIs in API Manager](/docs/apim_administration/apimgr_admin/api_mgmt_virtualize_web/).
 
 ### Global Request Policies
 

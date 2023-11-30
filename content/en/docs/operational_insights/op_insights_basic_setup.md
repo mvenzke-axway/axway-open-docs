@@ -7,7 +7,7 @@ date: 2022-07-20
 description: Configure a basic setup for Operational Insights to test Elasticsearch in a single instance.
 ---
 
-This section explains the individual components and how they can be deployed and work together. This is a fully functional configuration to get you started as quickly as possible, and which allows you to try out Operational Insights to gain experience and be prepared for the deployment in your production environment.
+This section explains the individual components of Amplify Analytics Operational Insights (AAOI) and how they can be deployed and work together. This is a fully functional configuration to get you started as quickly as possible, and which allows you to try out AAOI to gain experience and be prepared for the deployment in your production environment.
 
 {{< alert title="Note">}}This configuration is recommended for development environments.{{< /alert >}}
 
@@ -15,11 +15,11 @@ After completing the basic setup you will have a single node Elasticsearch insta
 
 At this point, API Gateway Manager is not yet configured, therefore this single instance receives data from 1-to-many API Gateways via Filebeat, Logstash, and API Builder, and is accessible via the Traffic Monitor.
 
-This basic setup uses minimal parameters to run and test Operational Insights on a machine with at least 16 GB of RAM, including the API Management Platform. Therefore, this setup does not suit a production environment without further configuration.
+This basic setup uses minimal parameters to run and test AAOI on a machine with at least 16 GB of RAM, including the API Management Platform. Therefore, this setup does not suit a production environment without further configuration.
 
 For a production environment, check the parameters mentioned in the `env-sample` file provided and set them if necessary.
 
-You can deploy Operational Insights using Docker Compose or Helm charts. The following sections cover the common setup for both Helm and Docker Compose options.
+You can deploy AAOI using Docker Compose or Helm charts. The following sections cover the common setup for both Helm and Docker Compose options.
 
 ## Architecture example
 
@@ -83,7 +83,7 @@ To configure the node manager to render log data from Elasticsearch, follow thes
 
 ### Configure Admin Node Manager per region
 
-If you use Operational Insights with multiple regions and different domains, all events and documents are stored in one single Elasticsearch. Therefore, you also need to tell the Admin Node Manager (ANM) in each region, which data (indices) to use. If you fail to do that, the ANM will show the entire traffic from all regions, which might not be desired.
+If you use AAOI with multiple regions and different domains, all events and documents are stored in one single Elasticsearch. Therefore, you also need to tell the Admin Node Manager (ANM) in each region, which data (indices) to use. If you fail to do that, the ANM will show the entire traffic from all regions, which might not be desired.
 
 To indicate to the node manager which data to use, store the appropriate region, which is also specified in the Filebeats for the API gateways, in the `conf/envSettings.props` file and restart the node manager. For example:
 
@@ -97,7 +97,7 @@ By doing this, ANM will only select data from these regional indexes. To learn m
 
 In larger companies, hundreds of API service providers use API Manager to register their own services and APIs. While the service providers require access to the Traffic Monitor to monitor their own APIs independently, during registration, the corresponding APIs are assigned to API Manager organizations, which logically split them up. However, the standard traffic monitor does not restrict the view for a user based on the organization of an API.
 
-Operational Insights solves this problem by storing the API transactions in Elasticsearch with the appropriate organization. The API organization is used when reading the traffic data from Elasticsearch, based on the following table.
+AAOI solves this problem by storing the API transactions in Elasticsearch with the appropriate organization. The API organization is used when reading the traffic data from Elasticsearch, based on the following table.
 
 | API Gateway Manager | API Manager | Restriction                       | Comment     |
 |---------------------|-------------|-----------------------------------|-------------|
@@ -120,19 +120,20 @@ To set up Operational Insights with Helm, see [setup Operational insights in you
 
 The following sections cover the configuration specific to using Docker Compose.
 
-1. Pull down the latest APIBuilder4Elastic image from [repository.axway.com](https://repository.axway.com/catalog?artifactType=DockerImage&products=a1Ew000000N2419EAB).
-2. Download the corresponding `.tar.gz` configuration files from the Axway repository.
-3. Configure the image to be used in your configuration files by changing the `image` parameter inside of the `docker-compose.yaml`.
+1. Pull down the latest APIBuilder4Elastic image from the [Axway repository](https://repository.axway.com/catalog?artifactType=DockerImage&q=apibuilder4elastic).
+2. Download the corresponding `.tgz` configuration files from the [Axway repository](https://repository.axway.com/catalog?q=AAOI&artifactType=Package).
+3. Extract the `.tgz` file and change directory into the top level directory `apim4elastic`.
+4. Configure the image to be used in your configuration files by changing the `image` parameter inside of the `docker-compose.yaml`.
 
-To simplify updates, it is recommended to create a symlink folder and rename the provided `env-sample` file to `.env` in each machine as follows:
+To simplify updates, it is recommended to create a symlink folder and rename the provided `env-sample` file to `.env` in each machine as in the following example:
 
 ```bash
-ln -s axway-apim-elk-v1.0.0 axway-apim-elk
-cd axway-apim-elk-v1.0.0
+ln -s axway-apim-elk-v5.3.0 apim4elastic
+cd axway-apim-elk-v5.3.0
 cp env-sample .env
 ```
 
-You should store your `.env` file as a central configuration file in a version management system.
+We recommend that you store your `.env` file as a central configuration file in a version management system.
 
 ### Custom certificates
 
@@ -149,7 +150,7 @@ KIBANA_KEY=config/certificates/kibana.key
 KIBANA_CRT=config/certificates/kibana.crt
 ```
 
-{{< alert title="Note">}}The `quickgen_certs_and_keys.sh` script is meant for a quick setup and development environments only, and is not fit for A production environment.{{< /alert >}}
+{{< alert title="Note">}}The `quickgen_certs_and_keys.sh` script is meant for a quick setup and development environments only, and is not fit for a production environment.{{< /alert >}}
 
 ### Setup Elasticsearch
 
@@ -251,7 +252,7 @@ docker-compose up -d
 Check that the docker containers for Logstash, API Builder, and Memached are running.
 
 ```bash
-[ec2-user@ip-172-31-61-59 axway-apim-elk-v1.0.0]$ docker ps
+[ec2-user@ip-172-31-61-59 axway-apim-elk-v5.3.0]$ docker ps
 ```
 
 Result:

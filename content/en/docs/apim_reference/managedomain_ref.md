@@ -258,9 +258,9 @@ Option `9`: `Delete a tag from API Gateway`
 
 Delete a name-value tag from the API Gateway. The tag will no longer be displayed in the API Gateway Manager **Dashboard**.
 
-Option `10`: `Add or remove a Linux service for existing local API Gateway`
+Option `10`: `Add a Linux service for existing local API Gateway`
 
-Must be run by a user with permission to create a service on the host operating system (`root` on Linux). When run, adds an `init.d` script.
+Must be run by a user with permission to create a service on the host operating system (`root` on Linux). When run, adds a `systemd` service unit file and a startup script.
 
 ### Group management
 

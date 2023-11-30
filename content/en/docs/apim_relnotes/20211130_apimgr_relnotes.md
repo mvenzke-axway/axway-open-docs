@@ -67,6 +67,14 @@ The following items are end of support:
 
 This is a reminder that in February 2022 we will remove support for the installation and update of [Developer tools](/docs/apim_installation/apigtw_install/install_dev_tools/) on Windows 8.1.
 
+### CentOS Linux 8
+
+Effective 31 December 2021, Axway will discontinue support of CentOS Linux 8 for all the Axway products currently supporting this OS version.
+
+For more information, see "CentOS Linux 8 End of Support Announcement" in the [Axway Support](https://support.axway.com/en/documents/document-details/id/1458731) site.
+
+*This section was updated to add information about CentOS Linux 8.*
+
 ## Removed features
 
 <!-- To stay current and align our offerings with customer demand and best practices, Axway might discontinue support for some capabilities. As part of this update, the following features have been removed: -->

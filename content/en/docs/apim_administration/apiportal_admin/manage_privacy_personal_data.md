@@ -49,7 +49,7 @@ The users of API Portal can request their data export or removal.
 
 To use the data request feature, you must to set up a SMTP server. To configure the SMTP server settings, in JAI, click **System > Global Configuration > Server > Mail Settings**.
 
-The data request feature is enabled by default. To disable it, in JAI, click **Menus > Main menu > Data Request** and set **Status** to **Unpublished**.
+The data request feature is enabled by default. To disable it, in JAI, click **Menus > User menu > Data Request** and set **Status** to **Unpublished**.
 
 The dashboard of privacy requests is located in the Joomla Privacy Component **Users > Privacy**. It provides a summary of the information requests for the website and a status of recommended actions that you can take. The request count module on the left is a summary of the information requests on a website. The health check module shows whether there are any recommended actions to take. For example, it will show you whether there are any urgent requests (which are older then configurable amount of time under the **Options** button) or the mail sending is disabled.
 

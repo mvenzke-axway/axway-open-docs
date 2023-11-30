@@ -1,16 +1,16 @@
 {
-"title": "Upgrade Apache Cassandra to 4.0.10",
-  "linkTitle": "Upgrade Apache Cassandra to 4.0.10",
+"title": "Upgrade Apache Cassandra to 4.0.11",
+  "linkTitle": "Upgrade Apache Cassandra to 4.0.11",
   "weight": 20,
   "date": "2019-10-07",
-  "description": "Upgrade your Cassandra environment from versions 3.11.11, 4.0.7, or 4.0.9 to version 4.0.10."
+  "description": "Upgrade your Cassandra environment from versions 3.11.11, 4.0.x to version 4.0.11."
 }
 
-You can only upgrade to Cassandra version `4.0.10` from version `3.11.11`, or any `4.0.x` version. If your version is earlier than `3.11.11`, see [Upgrade Apache Cassandra to 3.11.11](/docs/apim_installation/apigw_upgrade/upgrade_cassandra/upgrade_cassandra_v3/).
+You can only upgrade to Cassandra version `4.0.11` from version `3.11.11`, or any `4.0.x` version. If your version is earlier than `3.11.11`, see [Upgrade Apache Cassandra to 3.11.11](/docs/apim_installation/apigw_upgrade/upgrade_cassandra/upgrade_cassandra_v3/).
 
 ## Before you start
 
-* You must upgrade your API Gateway to the [February 2023](/docs/apim_relnotes/20230228_apimgr_relnotes) release, or later, prior to upgrading your Cassandra environment to `4.0.10`.
+* You must upgrade your API Gateway to the [February 2023](/docs/apim_relnotes/20230228_apimgr_relnotes) release, or later, prior to upgrading your Cassandra environment to `4.0.11`.
 * When upgrading either a cluster on a single-datacenter or a multi-datacenter setup, you must avoid any schema changes until the entire cluster has been upgraded to the same version.
 * In multi-datacenter clusters:
 
@@ -24,10 +24,10 @@ You can only upgrade to Cassandra version `4.0.10` from version `3.11.11`, or an
 
 You must upgrade each node in your Cassandra cluster individually before moving to the next node in the cluster.
 
-### Download your Cassandra 4.0.10 installation
+### Download your Cassandra 4.0.11 installation
 
-* Download [Cassandra 4.0.10](https://archive.apache.org/dist/cassandra/4.0.10/).
-* Unzip the downloaded package, and copy the installation directory to the target Cassandra server node in an appropriate directory, for example, `/home/cassandra-410/`.
+* Download [Cassandra 4.0.11](https://archive.apache.org/dist/cassandra/4.0.11/).
+* Unzip the downloaded package, and copy the installation directory to the target Cassandra server node in an appropriate directory, for example, `/home/cassandra-4011/`.
 
 ### Backup your old Cassandra data
 
@@ -69,7 +69,7 @@ Perform the backup of your existing Cassandra data.
 
 ### Update Cassandra configuration files
 
-Compare the configuration, found at the `CASSANDRA_HOME/conf` directory of your current Cassandra installation, to the default configuration of the relevant Cassandra version (3.11.11, 4.0.7, or 4.0.9), and apply any custom changes to the configuration file in your new Cassandra installation.
+Compare the configuration, found at the `CASSANDRA_HOME/conf` directory of your current Cassandra installation, to the default configuration of the relevant Cassandra version (3.11.11, 4.0.x), and apply any custom changes to the configuration file in your new Cassandra installation.
 
 Also, ensure that the `num_tokens` value in `conf/cassandra.yaml` in your new Cassandra installation matches the value set in your current Cassandra installation.
 
@@ -110,9 +110,9 @@ To shutdown your old Cassandra installation, follow these steps:
 
 ### Copy data between Cassandra installations
 
-Copy the `CASSANDRA_HOME/data` directory from your old Cassandra installation to the corresponding directory in your new installation (for example, `/home/cassandra-410/cassandra/`).
+Copy the `CASSANDRA_HOME/data` directory from your old Cassandra installation to the corresponding directory in your new installation (for example, `/home/cassandra-4011/cassandra/`).
 
-The Cassandra 4.0.10 `data` directory should then have the following subdirectories:
+The Cassandra 4.0.11 `data` directory should then have the following subdirectories:
 
 ```
 commitlog
@@ -120,12 +120,12 @@ data
 saved_caches
 ```
 
-### Start Cassandra 4.0.10
+### Start Cassandra 4.0.11
 
-Run the following command from the `bin` directory of the Cassandra 4.0.10 installation to start the Cassandra instance:
+Run the following command from the `bin` directory of the Cassandra 4.0.11 installation to start the Cassandra instance:
 
 ```
-$cd /home/cassandra-410/cassandra/bin
+$cd /home/cassandra-4011/cassandra/bin
 $./cassandra
 ```
 
@@ -136,13 +136,13 @@ After you upgrade Cassandra in all nodes, you must repair and upgrade your table
 1. Repair tables on your new installation:
 
    ```
-   $cd /home/cassandra-410/cassandra/bin
+   $cd /home/cassandra-4011/cassandra/bin
    $./nodetool repair -pr
    ```
-2. Rewrite SSTables that are not on the current version and upgrade them to the 4.0.10 version:
+2. Rewrite SSTables that are not on the current version and upgrade them to the 4.0.11 version:
 
    ```
-   $cd /home/cassandra-410/cassandra/bin
+   $cd /home/cassandra-4011/cassandra/bin
    $./nodetool upgradesstables
    ```
 

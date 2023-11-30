@@ -41,7 +41,7 @@ The following example retrieves three different data items from the JSON message
 
 ![Retrieve Attribute with JSON Path Expression](/Images/docbook/images/json/json_path_add_attribute.png)
 
-When the extracted attributes are added to the `content.body` message attribute, the following example shows the corresponding request and response message in Axway API Tester:
+After the extracted attributes are added to the `content.body` message attribute, the following example shows the corresponding request and response message:
 
 ![Retrieved Attribute](/Images/docbook/images/json/json_path_add_attribute_sb.png)
 
@@ -51,7 +51,7 @@ The following example retrieves all the authors from the JSON message and stores
 
 ![Retrieve Attribute List using JSON Path Expression](/Images/docbook/images/json/json_path_add_attribute_list.png)
 
-The following example shows the corresponding request and response in Axway API Tester:
+The following example shows the corresponding request and response:
 
 ![Retrieved Attribute List](/Images/docbook/images/json/json_path_add_attribute_list_sb.png)
 

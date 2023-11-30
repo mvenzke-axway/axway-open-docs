@@ -15,32 +15,26 @@ The API Gateway image used by the API Manager and API Traffic pods is built with
 
 Fed files or YAML files can be copied to the persistent volumes using tools, such as `kubectl` and `scp`.
 
-Configuration changes to the API Gateway image must be applied to both the API Manager deployment and the API Traffic deployment.
+Configuration changes to the API Gateway image must be applied to both the API Manager deployment and the API Traffic deployment, but, because API Manager and API Traffic pods share the same persistent volume claim, you only need to copy the configuration file to one of these directories.
 
 * If using a fed file, it must be copied to the `/merge` directory and have the name `fed`.
 * If using a YAML `tar.gz` file, it must be copied to the `/merge` directory and have the name `yaml`.
 
 The following procedure is an example of how to update the fed file of the API Manager and API Traffic pods.
 
-1. Copy the fed file to the API Manager pod:
+1. Copy the fed file, for example, to the API Manager pod:
 
     ```bash
     kubectl cp apimgr.fed <apimgr pod id>:/merge/fed
     ```
 
-2. Copy the same fed file to any of the API Traffic pods
-
-   ```bash
-   kubectl cp apimgr.fed <apitraffic pod id>:/merge/fed
-   ```
-
-3. Reload the API Manager deployment
+2. Reload the API Manager deployment
 
     ```bash
     kubectl rollout restart deployment apigw-gateway-apimgr -n <namespace>
     ```
 
-4. Reload the API Traffic deployment
+3. Reload the API Traffic deployment
 
    ```bash
    kubectl rollout restart deployment apigw-gateway-apitraffic -n <namespace>

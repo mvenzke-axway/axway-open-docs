@@ -8,12 +8,12 @@ description: Configure a production setup using Helm charts to run Operational I
 
 This section covers the configuration specific for deploying Axway API Management for the Elastic solution on a Kubernetes or OpenShift cluster using Helm. The provided Helm chart is extremely flexible and configurable. You can decide which components to deploy, use your own labels, annotations, secrets, and volumes to customize the deployment to your needs.
 
-{{< alert title="Note" >}}
+{{< alert title="Note" color="primary">}}
 To access sample files referred throughout this section for user customizations, follow the instructions on the [Docker Compose](/docs/operational_insights/op_insights_basic_setup/#basic-setup-with-docker-compose) section to download the release package. {{< /alert >}}
 
 ## Before you start
 
-* Ensure that you have all [prerequisites](/docs/operational_insights/op_insights_prerequisites/) in place.
+Ensure that you have all [prerequisites](/docs/operational_insights/op_insights_prerequisites/) in place.
 
 ## Create your configuration file
 
@@ -41,13 +41,15 @@ kibana:
   enabled: true
 ```
 
-{{< alert title="Note" >}}The `image` parameter specified in your `myvalues.yaml` file must be configured to point to a specific docker release available from `repository.axway.com`. {{< /alert >}}
+{{< alert title="Note" color="primary">}}The `image` parameter specified in your `myvalues.yaml` file must be configured to point to a specific Docker release available from the [Axway repository](repository.axway.com). {{< /alert >}}
 
 ## Define Elasticsearch persistent volumes
 
-Elasticsearch requires persistent volumes to function correctly. This can be configured through your own `myvalues.yaml` but will be dependent on the environment and platform you are deploying. You can use the [storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/) provided by the platform or create your own.
+Elasticsearch requires persistent volumes to function correctly. This can be configured by way of your own `myvalues.yaml`, but it will be dependent on the environment and platform you are deploying on.
 
-After a storage class is available, you must define it in the appropriate section of your `myvalues.ymal`. For example,
+You can use the [storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/) provided by your chosen platform, or create your own, to deploy the volumes.
+
+After a storage class is available, you must define it in the appropriate section of your `myvalues.ymal`. For example:
 
 ```bash
 elasticsearch:
@@ -60,15 +62,35 @@ elasticsearch:
     storageClassName: example-nfs-share
 ```
 
-## Install the Helm chart
+## Download the Helm chart
 
-After your Elasticsearch volumes are created and your `myvalues.yaml` file is configured, you can start the installation as follows. The Helm release name, `axway-elk`, is mandatory. For more information, see [FAQ - Why is the Helm release name axway-elk](/docs/operational_insights/op_insights_faq/#why-is-the-helm-release-name-axway-elk).
+Download the Helm package from the [Axway repository](repository.axway.com), and extract its contents as follows:
 
 ```bash
-helm install -n apim-elk -f myvalues.yaml axway-elk <repository.axway.com>
+tar -xvzf APIGateway_AAOI_HelmPackage_<chart-version>_Utility_linux-x86-64_<build-number>.tgz
+cd apim4elastic
 ```
 
-{{< alert title="Note" >}}Refer to `repository.axway.com` for the most recent version of the Helm chart and the corresponding configuration files. {{< /alert >}}
+You can also refer to the [Axway repository](repository.axway.com) for the most recent version of the Helm chart and the corresponding configuration files.
+
+## Deploy the ELK Helm chart
+
+After your Elasticsearch volumes are created and your `myvalues.yaml` file is configured, you can start the installation of the chart.
+
+The Helm release name, `axway-elk`, is mandatory. For more information, see [FAQ - Why is the Helm release name axway-elk](/docs/operational_insights/op_insights_faq/#why-is-the-helm-release-name-axway-elk).
+
+The following instructions to install an ELK Helm chart are applicable to the AAOI charts versions `5.1.0` to `5.6.0` inclusive. These charts use version `7` of the ELK images and charts.
+
+Note the following about the chart versions:
+
+* For instructions on installing AAOI charts higher than version `5.6.0`, see [Install ELK version 8](#install-elk-version-8).
+* Downgrading to version `5.6.0` after moving to version `5.7.0`, or higher, is not possible because of the backward incompatibility between the v7 and v8 of the ELK Helm charts.
+
+Run the following to install the ELK Helm chart:
+
+```bash
+helm install -n apim-elk -f myvalues.yaml axway-elk .
+```
 
 To check the status of the deployment, pods, services, and son on, run the following commands:
 
@@ -277,10 +299,9 @@ The following example shows how to create a secret to store API Manager username
 3. Install or upgrade APIM4Elastic:
 
     ```bash
-    helm upgrade -n apim-elk -f myvalues.yaml axway-elk <repository.axway.com>
+    cd apim4elastic
+    helm upgrade -n apim-elk -f myvalues.yaml axway-elk .
     ```
-
-   {{< alert title="Note" >}}Refer to `repository.axway.com` for the most recent version of the Helm chart. {{< /alert >}}
 
 As a result of this section, you have set up your `myvalues.yaml` Helm chart to run Operational Insights in a single instance in a production environment.
 
@@ -360,6 +381,8 @@ Manually create a secret in Kibana:
 kubectl create secret generic axway-elk-apim4elastic-kibana-secret --from-literal=KIBANA_SYSTEM_USERNAME=<username> --from-literal=KIBANA_SYSTEM_PASSWORD=<password> -n apim-elk
 ```
 
+Note that in version 8 of the ELK Helm charts the credentials `elastic` and `password` are generated in the credentials secret as part of the deployment.
+
 ### Logstash
 
 Disable the secrets in you `values` file:
@@ -375,4 +398,107 @@ Manually create a secret in Logstash:
 
 ```bash
 kubectl create secret generic axway-elk-apim4elastic-logstash-secret --from-literal=LOGSTASH_USERNAME=<username> --from-literal=LOGSTASH_PASSWORD=<password> --from-literal=xpack.monitoring.elasticsearch.username=<system_username> --from-literal=xpack.monitoring.elasticsearch.password=<system_password> -n apim-elk
+```
+
+## Install ELK version 8
+
+With the release of the AAOI charts version `5.7.0`, the version of the ELK images and charts installed has been upgraded to version `8`. As a result, there are some differences in the method of deployment of the AAOI chart, particularly on the Helm `install` command. Most of the other instructions on this guide, for installing and configuring version `5.6.0`, and lower, of the AAOI charts are also relevant for version `5.7.0`.
+
+The main change with ELK `v8` is that Kibana cannot be installed at the same time as Elasticsearch, so it must be disabled for the initial Helm `install` run.
+
+For more information on the ELK Helm charts version `8.5.1`, see the [Elastic Helm charts](https://github.com/elastic/helm-charts) documentation.
+
+### Install AAOI using version 5.7.0
+
+Follow this section to install AAOI using Helm charts version `5.7.0`.
+
+1. Download the release package `v5.7.0`. For more information, see [Docker Compose](/docs/operational_insights/op_insights_basic_setup/#basic-setup-with-docker-compose).
+2. Create your values file as described in section [Create your configuration file](#create-your-configuration-file).
+3. Install the Helm chart with kibana disabled.
+4. Wait while Elasticsearch, Logstash, and Filebeat start up and stabilize.
+5. When Elasticsearch has been successfully installed, run the upgrade command to install the Helm chart with kibana enabled.
+6. Wait while kibana stabilizes. (This might take from 5 to 10 minutes).
+7. kibana now has credentials for logging in to the UI, so you can extract the password from the credentials secret.
+8. The Kibana username is always `elastic`. The password can be set in the `values` file, or else will be randomly generated.
+
+The follow is an example of running the steps of this section.
+
+```bash
+cd apim4elastic
+helm upgrade --install axway-elk -f myvalues.yaml . --set values.kibana.enabled=false
+kubectl get pods
+```
+
+Wait approximately 5 minutes for the components to start up and stabilize, then continue:
+
+```bash
+curl -kv https://elasticsearchhost:92000 #change to the relevant name of elasticsearch host
+helm upgrade --install axway-elk -f myvalues.yaml . --set values.kibana.enabled=true
+```
+
+Extract the password with the following instructions, but wait approximately 10 minutes before attempting to log on to the Kibana dashboard:
+
+```bash
+PASSWORD=$(kubectl get secret axway-elk-apim4elastic-elasticsearch-credentials -o=jsonpath='{.data.password}' | base64 --decode)
+echo $PASSWORD
+#
+```
+
+### Upgrade AAOI to version 5.7.0
+
+When you upgrade the AAOI charts to version `5.7.0`, the upgrade automatically migrates the data in your Elasticsearch database to the new installation.
+
+The steps to upgrade are identical to those for installing a new version, however, there is no need to uninstall the previous version of the charts.
+
+The instructions to upgrade the ELK Helm chart to version `8` are very similar to a clean install. See the following command example:
+
+```bash
+cd apim4elastic
+helm upgrade --install axway-elk -f myvalues.yaml . --set values.kibana.enabled=false
+kubectl get pods
+```
+
+Wait approximately 15 minutes, or until both Elasticsearch pods have been upgraded, to using the version 8 image:
+
+```bash
+curl -kv https://elasticsearchhost:9200 #change to relevant name of elasticsearch host
+helm upgrade --install axway-elk -f myvalues.yaml . --set values.kibana.enabled=true
+```
+
+Wait approximately 10 minutes before attempting to log on to the kibana dashboard.
+
+Note the following about the previous code example:
+
+* You need to wait longer after running the first Helm upgrade command before moving on.
+* The Kibana interface now has a username and password.
+* As this is an upgrade, it might take longer for the data to show on the Kibana dashboard.
+
+#### Troubleshooting migration
+
+The Elastic Helm charts version `8.5.1` do not allow Kibana to be installed at the same time as Elasticsearch.
+
+If you get issues when uninstalling or upgrading the helm chart, you might have to clean up resources, upgrade with kibana disabled, and then upgrade with kibana enabled.
+
+Sometimes, a few resources have to be cleaned up if Kibana was installed at the wrong time, and failed. The following are examples of cleanup operations:
+
+```bash
+kubectl delete rolebindings.rbac.authorization.k8s.io pre-install-axway-elk-apim4elastic-kibana
+kubectl delete roles.rbac.authorization.k8s.io pre-install-axway-elk-apim4elastic-kibana
+kubectl delete cm axway-elk-apim4elastic-kibana-helm-scripts
+kubectl delete sa pre-install-axway-elk-apim4elastic-kibana
+kubectl delete secret axway-elk-apim4elastic-kibana-es-token
+kubectl delete roles.rbac.authorization.k8s.io post-delete-axway-elk-apim4elastic-kibana
+kubectl delete job axway-elk
+```
+
+Sometimes, a pre-install job might have to be cleaned up. Run the following command to perform the clean up:
+
+```bash
+kubectl delete job pre-install-axway-elk-apim4elastic-kibana
+```
+
+Sometimes, a post-install job might have to be cleaned up. Run the following command to perform the clean up:
+
+```bash
+kubectl delete job post-install-axway-elk-apim4elastic-kibana
 ```

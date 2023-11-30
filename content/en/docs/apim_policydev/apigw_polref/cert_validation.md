@@ -336,20 +336,20 @@ message attribute to be set by a preceding filter.{{< /alert >}}
 
 ### Example static CRL-based validation policy
 
-Typically, a **Find Certificate** filter is first used to find the certificate, which is stored in a `certificate` message attribute. You can then use a **Copy / Modify Attributes** filter to copy the `certificate` attribute to the `certificates` attribute by selecting its **Create list attribute** setting.
+Typically, a **Find Certificate** filter is first used to find the certificate, which is stored in a `certificate` message attribute.
 
 The following example policy shows the filters used:
 
 ![Static CRL Policy](/Images/docbook/images/certs/static_crl_policy.gif)
+
+You can then use a **Copy / Modify Attributes** filter to copy the `certificate` attribute to the `certificates` attribute by selecting its **Create list attribute** setting.
 
 The following example shows the settings used in the **Copy / Modify Attributes** filter:
 
 ![Copy / Modify Attributes Filter](/Images/docbook/images/certs/copy_modfiy_attributes_filter.gif)
 
 {{< alert title="Note" color="primary" >}}
-Typically, a CA publishes a new CRL, containing the most up-to-date list of revoked certificates at regular intervals. However, the **CRL (Static)**
-filter does not automatically update the CRL when it is loaded from a local file. If you need to automatically retrieve updated CRLs from a particular URL, you should use the **CRL (Dynamic)**
-filter instead. For more details, see [Dynamic CRL certificate validation](#dynamic-crl-certificate-validation-filter).
+Typically, a CA publishes a new CRL containing the most up-to-date list of revoked certificates at regular intervals. However, the **CRL (Static)** filter does not automatically update the CRL when it is loaded from a local file. If you need to automatically retrieve updated CRLs from a particular URL, you should use the **CRL (Dynamic)** filter instead. For more details, see [Dynamic CRL certificate validation](#dynamic-crl-certificate-validation-filter).
 {{< /alert >}}
 
 ### Configure static CRL validation

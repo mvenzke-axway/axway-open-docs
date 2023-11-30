@@ -146,7 +146,7 @@ Enter a new host name [LinuxMint01]:
 Enter a new Node Manager name [Node Manager on LinuxMint01]:
 Enter a new Node Manager port [8090]:
 There is only one Node Manager in this domain so it must remain as an Admin Node Manager
-Do you want to create an init.d script for this Node Manager [n]:
+Do you want to create a systemd service for this Node Manager ? [n]:
 Do you want to reset the passphrase for the Node Manager on this host ? [n]:
 Do you wish to edit metrics configuration (y or n) ? [n]: y
 Do you wish to enable metrics (y or n) ? [y]: y
