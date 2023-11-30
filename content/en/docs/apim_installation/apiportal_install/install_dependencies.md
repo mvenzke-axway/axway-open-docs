@@ -91,14 +91,14 @@ Follow these steps to install PHP:
 
    ```bash
    # for CentOS 7 / RHEL 7
-   sudo yum-config-manager --enable remi-php80
+   sudo yum-config-manager --enable remi-php81
    sudo yum install php php-cli php-common php-gd php-json php-intl php-mbstring php-mysqlnd php-pdo php-xml php-pecl-zip
    ```
 
    ```bash
    # for RHEL 8
    sudo dnf module reset php
-   sudo dnf module install php:remi-8.0
+   sudo dnf module install php:remi-8.1
    sudo dnf install php php-cli php-common php-gd php-json php-intl php-mbstring php-mysqli php-openssl php-pdo php-xml php-zip
    ```
 2. Verify that PHP was installed. If the command fails, restart the bash session:

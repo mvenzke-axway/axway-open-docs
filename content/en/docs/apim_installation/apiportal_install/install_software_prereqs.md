@@ -37,7 +37,7 @@ You must have one of the following databases installed:
 
 ### PHP
 
-API Portal requires PHP 7.3 through 8.0. We strongly recommend you to use only [officially supported PHP versions](https://www.php.net/supported-versions.php).
+API Portal requires PHP 7.3 through 8.1. We strongly recommend you to use only [officially supported PHP versions](https://www.php.net/supported-versions.php).
 
 In addition, you must have the following PHP packages installed:
 
