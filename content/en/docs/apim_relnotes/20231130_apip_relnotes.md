@@ -1,7 +1,7 @@
 ---
 title: API Portal 7.7 November 2023 Release Notes
 linkTitle: API Portal November 2023
-draft: true
+draft: false
 weight: 95
 date: 2023-09-11
 description: null
@@ -11,6 +11,10 @@ API Portal updates are cumulative, comprising new features and changes delivered
 This update contains security fixes, and it addresses a number of customer defects.
 
 The two-factor authentication functionality, which was unavailable since the August 22 update, has been re-introduced by way of the addition of multi-factor authentication using the Joomla 4.2 multi-factor authentication module.
+
+Also, the feature used for testing API methods is now replaced with the new Swagger UI React, which provides more stability.
+
+A partial support for GraphQL APIs is included. This type of API is now listed in the API catalog page alongside all the other types of APIs.
 
 ## Installation
 
@@ -29,27 +33,37 @@ API Portal is available as a software installation or a virtualized deployment i
 This update has the following limitations:
 
 * API Portal 7.7.20231130 is compatible with API Gateway and API Manager 7.7.20231130 only.
-* To update to API Portal August 2023 (which is based on Joomla 4) from versions older than February 2022, we recommend you to upgrade to API Portal February 2022 first, then follow the [Upgrade API Portal May 2022 or latest](/docs/apim_installation/apiportal_install/upgrade_automatic/#upgrade-to-api-portal-may-2022-or-latest-releases) section.
-* Direct update to API Portal August 2023 can be done only from API Portal May 2022 and later by following the [Upgrade from the Joomla! Administrator Interface](/docs/apim_installation/apiportal_install/upgrade_automatic/#upgrade-from-the-joomla-administrator-interface) section.
+* To update to API Portal November 2023 (which is based on Joomla 4) from versions older than February 2022, we recommend you to upgrade to API Portal February 2022 first, then follow the [Upgrade API Portal May 2022 or latest](/docs/apim_installation/apiportal_install/upgrade_automatic/#upgrade-to-api-portal-may-2022-or-latest-releases) section.
+* Direct update to API Portal November 2023 can be done only from API Portal May 2022 and later by following the [Upgrade from the Joomla! Administrator Interface](/docs/apim_installation/apiportal_install/upgrade_automatic/#upgrade-from-the-joomla-administrator-interface) section.
 * This update is not available as a virtual appliance or as a managed service on Axway Cloud.
 
 ## New features and enhancements
 
 The following new features and enhancements are available in this update.
 
-placeholder
+### Multi-factor authentication
 
-<!--  No new features are deployed with this update. -->
+The two-factor authentication functionality, which was unavailable since the August 22 update, has been re-introduced using the Joomla native Multi-factor Authentication - Verification Code plugin.
+
+For more information, see [Enable two-factor authentication](/docs/apim_installation/apiportal_install/secure_harden_portal/#enable-two-factor-authentication).
 
 ## Important changes
 
 It is important, especially when upgrading from an earlier version, to be aware of the following changes in the behavior or operation of the product in this update.
 
-### placeholder
+### API Catalog Swagger UI upgrade
 
-placeholder
+The built-in test capability in API Catalog, used for testing APIs, is now upgraded and provides more stability and support. It is based on React v.18 and it provides significantly improved security and performance.
 
-<!-- IAP-6088 -->
+For more information, see [Key capabilities in API Portal](/docs/apim_administration/apiportal_admin/apip_overview/).
+
+### Support for PHP 8.1 added in classic mode
+
+The users of API Portal classic mode (excludes container installations) are now able to use the product with PHP 8.1.
+
+### Refresh of cached Redis data is needed
+
+The login page template contains some in-template JS code (part of the code changes the password field `type` attribute). The script tag that contains the code has `nonce` attribute and its value is generated for each page request. After the page is cached by redis its contents become constant for all subsequent requests along with nonce value. The fix of that issue requires redis cache refresh to take effect .
 
 ## End of support notices
 
@@ -74,21 +88,36 @@ This version of API Portal includes:
 ### Fixed security vulnerabilities
 
 | Internal ID  | Case ID | CVE Identifier | Description                                                                                                                                                                                        |
-placeholder
+|--------------|---------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| IAP-6086    |     01470639    |              | **Issue**:   API Portal exposes templates for direct web access. **Resolution**: Documentation updated. |
+| IAP-6429    |    01521479     |      CVE-2023-44487          | **Issue**: API Portal image contains vulnerable version of nghttp2 library. **Resolution**: This library has been upgraded and API Portal is no longer vulnerable.            |
+| IAP-6297    |    01502825     |      CVE-2023-35945          | **Issue**: Multiple security vulnarabilities found in API Portal Docker Image. **Resolution**: All reported CVEs are resolved in the August and November 23 releases.            |
+| IAP-6420    |   01517803     |      CVE-2023-4863          | **Issue**: API Portal prebuilt image contains CVE-2023-4863 and CVE-2023-41064 vulnerabilities. **Resolution**: Packages have been upgraded and API Portal is no longer vulnerable.            |
 
 ### Other fixed issues
 
-placeholder
+| Internal ID | Case ID | Description                  |
+|-------------|---------|----------------------------------|
+| IAP-4679    | 01295149, 01296641        | **Issue**: Documentation of setting return URI while configuring OAuth is misleading. **Resolution**: Documentation for OAuth configuration is fixed.                              |
+| IAP-5606    |         | **Issue**: API Portal ships with database-related errors on JAI Dashboard. **Resolution**: There are no such errors when installing and upgrading API Portal.                                                                                               |
+| IAP-6274    |     01469035    | **Issue**: There is no option to configure the default items per page when Elastic Search is enabled, and by default, the search functionality is limited to the five results displayed by default per page. **Resolution**: An option for configuring the default items to be displayed per page has been added to the Joomla Admin Interface.                                              |
+| IAP-6285    |     01495733    | **Issue**:  API Portal Try-it page fails to load `chosen` library. **Resolution**: References to absent chosen library are removed.                                                                                               |
 
 ## Known issues
 
 The following are known issues for this update.
 
-### API Portal pages cannot be displayed after upgrade
+### Possible performance impact on Application view page
 
-After upgrade to PHP 8.0, for API Portal versions February 2022 (7.7.20220228) to November 2022 (7.7.20221130) only, an error is shown. Follow [KB Article #182479](https://support.axway.com/en/articles/article-details/id/182479/do/search) to learn how to upgrade to PHP 8.0.
+In order to retrieve quota information on the [Applications view](/docs/apim_administration/apiportal_admin/customize_page_content/#customize-application-settings) page, API Portal needs to do some additional calls. This could lead to poor performance for customers with large numbers of APIs and not using Elastic search.
 
-Related Issue: IAP-5715
+<!-- Related Issue: IAP-? -->
+
+### Missing Method Examples section on Try-it page
+
+With the implementation of the new Swagger React UI, in the **Method** tab, the **Method Example** section is missing for this release. The missing section will be re-introduced in the upcoming release.
+
+<!-- Related Issue: IAP-? -->
 
 ### Edit profile menu item cannot be edited
 
@@ -102,8 +131,6 @@ When API Portal is configured to work with multiple API Managers and the *primar
 
 Related Issue: IAP-5869
 
-<!-- known issues below were preexistent to May 23 release -->
-
 ### Data Request feature is not available for SSO users without email
 
 [Data Request](/docs/apim_administration/apiportal_admin/manage_privacy_personal_data#manage-data-requests) feature is not able to send request for SSO users without email only for New UI page builder design T4 and Page Builder.
@@ -111,21 +138,6 @@ Related Issue: IAP-5869
 The functionality is available, but the emails are automatically detected from Joomla login details, while for SSO users registered without emails this information is not available and the request generation is not able to proceed. For users upgrading from versions earlier than November 22 and still using T3 and Purity III, the stylization for API Portal Data Request functionality works as before.
 
 Related Issue: IAP-5649
-
-### Two-factor authentication is not available with Joomla 4.2.x in API Portal
-
-Joomla 4.2.0 includes changes around two(multi)-factor authentications. However, this functionality is not yet available in API Portal. For more information, see [Joomla 4.2 release notes](https://www.joomla.org/announcements/release-news/5865-joomla-4-2-release.html).
-
-Related issue: IAP-5504
-
-### Custom properties permissions per role are not respected in some scenarios
-
-Custom properties permissions per role will not be respected for the organization in the following scenarios:
-
-* Permissions will not be respected for the organization the API is assigned to because respecting them will cause significant performance impact on the Try-it page. The custom properties permissions will follow the role of the user's primary organization.
-* On creating an application, the App has no organization yet, so the custom properties permissions cannot be respected per role of the organization. They will follow the permissions for the role of the primary organization of the user.
-
-Related issue: IAP-4474
 
 ## Documentation
 
