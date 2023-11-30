@@ -93,7 +93,6 @@ The following are the requirements specific to deploy Operational Insights on Do
 * Kubernetes >= `1.19` (At least three dedicated worker nodes for three Elasticsearch instances).
 * Helm >= `3.3.0`.
 * `kubectl` installed and configured.
-* OpenShift (not yet tested).
 * [Ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) already installed.
 
 {{< alert title="Note" >}}
