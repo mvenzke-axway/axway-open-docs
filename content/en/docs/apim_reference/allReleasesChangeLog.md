@@ -14,6 +14,16 @@ You can find the release notes for all service packs on [Axway Support](https://
 
 |Update |New features and enhancements        |Important Changes    |EOS notices/Removed features  |
 |---    |---                                  |---                  |---                     |
+|[API Gateway and Manager 7.7.20231130](/docs/apim_relnotes/20231130_apimgr_relnotes/)|Support for GraphQL APIs |AAOI version compatibility  | Various (Check the release notes of the product.)   |
+| |AAOI Helm charts v5.7.0 are now available | Enum validation update | -   |
+| |- | PGP Integrity Checks |  -  |
+| |- | API Key Headers in responses | -   |
+| |- | OAuth Client State Cache settings | -   |
+|**Update**       |**New features and enhancements**        | **Important Changes**   |**EOS notices/Removed features**  |
+|[API Portal 7.7.20231130](/docs/apim_relnotes/20230830_apip_relnotes/)|Multi-factor authentication  |API Catalog Swagger UI upgrade|- |
+| |- | Support for PHP 8.1 added in classic mode |  -  |
+| |- | Refresh of cached Redis data is needed |  -  |
+|**Update**       |**New features and enhancements**        | **Important Changes**   |**EOS notices/Removed features**  |
 |[API Gateway and Manager 7.7.20230830](/docs/apim_relnotes/20230830_apimgr_relnotes/)|Cassandra in containers - K8ssandra |Java version update to v11 | Support for customer created images for container deployment  |
 |    |Extra initContainers support |API Client Cache changes |IBM DB2 version 10.5 as a database  |
 |    |- |API Catalog property was removed |CA Siteminder filters  |
@@ -27,7 +37,7 @@ You can find the release notes for all service packs on [Axway Support](https://
 |    |- |Metrics database TopologyID change  |-  |
 |    |- |Helm chart values file changes  |-  |
 |**Update**       |**New features and enhancements**        | **Important Changes**   |**EOS notices/Removed features**  |
-|[API Portal 7.7.202305830](/docs/apim_relnotes/20230830_apip_relnotes/)|-  |Manual migration of Elasticsearch indexation schedules|- |
+|[API Portal 7.7.20230830](/docs/apim_relnotes/20230830_apip_relnotes/)|-  |Manual migration of Elasticsearch indexation schedules|- |
 |    |- |API Details page and JAI settings changes |-  |
 |**Update**       |**New features and enhancements**        | **Important Changes**   |**Deprecated/Removed/EOS**  |
 |[API Gateway and Manager 7.7.20230530](/docs/apim_relnotes/20230530_apimgr_relnotes/)|Policy Studio RCP Upgrade |Policy Studio upgrade   |Sun Access Manager has been retired   |
