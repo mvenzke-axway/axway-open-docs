@@ -82,23 +82,39 @@ After upgrading, if the **OAuth Client State Cache** had default settings prior 
 
 ## End of support notices
 
-To stay current and align our offerings with customer demand and best practices, Axway might discontinue support for some capabilities.
-
-As part of this update, the following features have notice for removal:
-
 <!-- There are no end of support notices in this update. -->
 
-* Support for Base OS (CentOS 5, CentOS 6, Suse 11, and Suse 12) ends on November 2023, with the API Management update.
-* Support for IBM DB2 version 10.5 as a database will end in February 2024.
-* Support for Client Application Registry (CAR) will end in February 2024.
+To stay current and align our offerings with customer demand and best practices, Axway might discontinue support for some capabilities.
 
-    The API Gateway can still act as an OAuth server without CAR, but API Manager will be required when CAR-only mode is no longer available.
-* Support for CA Siteminder filters will end in August 2024.
-* Support for Oracle Access Manager filters will end in August 2024.
-* Support for RSA Cleartrust (RSA Access Manager) will end in August 2024.
-* Support for customer created images for container deployment, by way of EMT scripts, will end in August 2024.
+As part of this update, the following features have notice for removal.
 
-    The use of Axway created images only will be supported.
+### Operating systems and hardware
+
+Support for CentOS 5, CentOS 6, Suse 11, and Suse 12 ended in November 2023.
+
+### KPS database storage
+
+Support for IBM DB2 version 10.5 as a database will end in February 2024.
+
+### Client Application Registry for Oauth servers
+
+Support for Client Application Registry (CAR) will end in February 2024. The API Gateway can still act as an OAuth server without CAR, but API Manager will be required when CAR-only mode is no longer available.
+
+### CA SiteMinder filters
+
+Support for [CA SiteMinder](/docs/apim_policydev/apigw_polref/ca_siteminder/) filters will end in August 2024.
+
+### Oracle Access Manager filters
+
+Support for [Oracle Access Manager](/docs/apim_policydev/apigw_polref/connector_oam/) filters will end in August 2024.
+
+### Access Manager filter
+
+Support for RSA Cleartrust ([RSA Access Manager](/docs/apigtw_auth_auth/rsa_access_mgr_overview/)) will end in August 2024.
+
+### Images for container deployment
+
+Support for customer created images for container deployment, by way of EMT scripts, will end in August 2024. The use of Axway created images only will be supported.
 
 ## Removed features
 
