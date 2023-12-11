@@ -9,6 +9,8 @@
 
 This section describes the operating system requirements for API Gateway.
 
+For more information on the operating systems, databases, and browser versions for the API Management releases, see the [Axway Products Supported Platforms - API Management](https://docs.axway.com/bundle/Axway_Products_SupportedPlatforms_allOS_en_HTML5/page/api_management.html) page.
+
 ### Linux
 
 API Gateway supports the following software versions:

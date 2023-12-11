@@ -14,11 +14,13 @@ You can find the release notes for all service packs on [Axway Support](https://
 
 |Update |New features and enhancements        |Important Changes    |EOS notices/Removed features  |
 |---    |---                                  |---                  |---                     |
-|[API Gateway and Manager 7.7.20231130](/docs/apim_relnotes/20231130_apimgr_relnotes/)|Support for GraphQL APIs |AAOI version compatibility  | Various (Check the release notes of the product.)   |
-| |AAOI Helm charts v5.7.0 are now available | Enum validation update | -   |
-| |- | PGP Integrity Checks |  -  |
-| |- | API Key Headers in responses | -   |
-| |- | OAuth Client State Cache settings | -   |
+|[API Gateway and Manager 7.7.20231130](/docs/apim_relnotes/20231130_apimgr_relnotes/)|Support for GraphQL APIs |AAOI version compatibility  | Operating systems and hardware   |
+| |AAOI Helm charts v5.7.0 are now available | Enum validation update | KPS database storage   |
+| |- | PGP Integrity Checks | Client Application Registry for Oauth servers  |
+| |- | API Key Headers in responses | CA SiteMinder filters   |
+| |- | OAuth Client State Cache settings | Oracle Access Manager filters   |
+| |- | - | Access Manager filter   |
+| |- | - | Images for container deployment   |
 |**Update**       |**New features and enhancements**        | **Important Changes**   |**EOS notices/Removed features**  |
 |[API Portal 7.7.20231130](/docs/apim_relnotes/20230830_apip_relnotes/)|Multi-factor authentication  |API Catalog Swagger UI upgrade|- |
 | |- | Support for PHP 8.1 added in classic mode |  -  |
