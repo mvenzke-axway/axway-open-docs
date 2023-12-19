@@ -90,7 +90,7 @@ When today's date is selected, the API is retired immediately. An API is retired
 
 When a future date is selected, the API will enter a deprecated state until the retirement date is reached. When the retirement date is reached, the API is retired.
 
-{{< alert title="Note" color="primary" >}}The API lifecycle can also be delegated to the Organization Administrator by enabling the self-service API publishing option. For more information, see [Self-service API publishing](/docs/api_mgmt_overview/key_concepts/api_mgmt_orgs_roles/index.html#self-service-api-publishing).{{< /alert >}}
+{{< alert title="Note" color="primary" >}}The API lifecycle can also be delegated to the Organization Administrator by enabling the self-service API publishing option. For more information, see [Self-service API publishing](/docs/api_mgmt_overview/key_concepts/api_mgmt_orgs_roles#self-service-api-publishing).{{< /alert >}}
 
 ## High level tasks in API Manager
 
