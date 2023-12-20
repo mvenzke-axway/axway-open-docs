@@ -215,6 +215,7 @@ As part of this update, the following features have notice for removal:
 The following features have been removed from the product in this update:
 
 * Support for MySQL 5.7 as a relational database to store metrics data.
+* Support for Apache Cassandra database versions 2.x.
 
 ## Fixed issues
 

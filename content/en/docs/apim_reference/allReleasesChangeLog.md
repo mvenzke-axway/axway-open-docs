@@ -32,7 +32,7 @@ You can find the release notes for all service packs on [Axway Support](https://
 |    |- |Non-blocking API property is updated |Oracle Access Manager filters  |
 |    |- |New field in OAS3 definitions for API Manager REST APIs |RSA Cleartrust (RSA Access Manager)   |
 |    |- |CORS Origin header matching as URL |Support for MySQL 5.7 as a relational database to store metrics data  |
-|    |- |Generic error filter SOAP fault response changes |-  |
+|    |- |Generic error filter SOAP fault response changes | Support for Apache Cassandra versions 2.x  |
 |    |- |Incomplete Web Services cannot process SOAP requests |-  |
 |    |- |Support for Cassandra 4.0.10  |-  |
 |    |- |API Manager OAuth authorizations screen changes  |-  |
