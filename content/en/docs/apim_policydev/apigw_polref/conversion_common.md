@@ -194,9 +194,9 @@ To configure the **Add HTTP Header** filter, complete the following fields:
 
 **Name**: Enter an appropriate name for the filter to display in a policy.
 
-**HTTP Header Name**: Enter the name of the HTTP header to add to the message.
+**HTTP Header Name**: Enter the name of the HTTP header to add to the message.  HTTP header names are not permitted to contain colon (`:`), newline (`\n`), or carraige return (`\r`) characters.
 
-**HTTP Header Value**: Enter the value of the new HTTP header. You can also enter selectors to represent message attributes. At runtime, the API Gateway expands the selector to the current value of the corresponding message attribute. For example, the `${id}` selector is replaced by the value of the current message ID. Message attribute selectors have the following syntax:
+**HTTP Header Value**: Enter the value of the new HTTP header.  Header values are not permitted to contain space (` `), tab (`\t`), newline (`\n`), or carriage return (`\r`) characters normally, though these characters are be permitted for `obs-fold` values that conform to the grammar in RFC 7230 Section 3.2 when the [Java system property](/docs/apim_reference/system_props) `com.vordel.dwe.outputObsFoldedValuesAllowed` is enabled. You can also enter selectors to represent message attributes. At runtime, the API Gateway expands the selector to the current value of the corresponding message attribute. For example, the `${id}` selector is replaced by the value of the current message ID. Message attribute selectors have the following syntax:
 
 ```
 ${message_attribute}
@@ -255,7 +255,7 @@ Some headers cannot, or should not be modified using the **Add HTTP Header** fil
 * The `Accept-Encoding` and `Content-Encoding` headers are set according to the [compressed content encoding](/docs/apim_policydev/apigw_gw_instances/common_compress_encoding) settings and must be configured there.
 * The `Content-Length` header must be sent by [configuring remote host settings](/docs/apim_policydev/apigw_gw_instances/general_remote_hosts) for the endpoint that requires them.
 * The `Content-Type` header is tied to the message body, and might need to re-parse the body if the type is changed. It is safer to use the [Set Message filter](/docs/apim_policydev/apigw_polref/conversion_common) with the desired body and the new `Content-Type` header value.
-* The `Server` header is controlled by the [Server Brand setting in General Settings](docs/apim_reference/general_settings). It should be left as the default, blank value, to avoid sending a `Server` header. The value of the **Server Brand** setting also shows in part of the `Via` header, if configured.
+* The `Server` header is controlled by the [Server Brand setting in General Settings](/docs/apim_reference/general_settings). It should be left as the default, blank value, to avoid sending a `Server` header. The value of the **Server Brand** setting also shows in part of the `Via` header, if configured.
 * The `Strict-Transport-Security` headers for HSTS must be configured as documented in [Configure HTTP Strict Transport Security](/docs/apim_policydev/apigw_gw_instances/configure_http_strict_transport_security).
 * The `Via` header is required to be sent and will have its value overwritten after your entire policy executes. Refer to Axway community, [KB-178805](https://support.axway.com/kb/178805/language/en) article, for details on how to avoid exposing internal hostnames in the `Via` header.
 
