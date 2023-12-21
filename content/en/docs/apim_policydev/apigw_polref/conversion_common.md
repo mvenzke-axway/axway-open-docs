@@ -194,9 +194,9 @@ To configure the **Add HTTP Header** filter, complete the following fields:
 
 **Name**: Enter an appropriate name for the filter to display in a policy.
 
-**HTTP Header Name**: Enter the name of the HTTP header to add to the message.  HTTP header names are not permitted to contain colon (`:`), newline (`\n`), or carraige return (`\r`) characters.
+**HTTP Header Name**: Enter the name of the HTTP header to add to the message.  HTTP header names do not support colon (`:`), newline (`\n`), or carraige return (`\r`) characters.
 
-**HTTP Header Value**: Enter the value of the new HTTP header.  Header values are not permitted to contain space, tab (`\t`), newline (`\n`), or carriage return (`\r`) characters normally, though these characters are be permitted for `obs-fold` values that conform to the grammar in RFC 7230 Section 3.2 when the [Java system property](/docs/apim_reference/system_props) `com.vordel.dwe.outputObsFoldedValuesAllowed` is enabled. You can also enter selectors to represent message attributes. At runtime, the API Gateway expands the selector to the current value of the corresponding message attribute. For example, the `${id}` selector is replaced by the value of the current message ID. Message attribute selectors have the following syntax:
+**HTTP Header Value**: Enter the value of the new HTTP header. Header values do not support space, tab (`\t`), newline (`\n`), or carriage return (`\r`) characters by default. However, when the [Java system property](/docs/apim_reference/system_props) `com.vordel.dwe.outputObsFoldedValuesAllowed` is enabled,  these characters are supported for `obs-fold` values that conform to the grammar in the [RFC 7230, section 3.2|https://datatracker.ietf.org/doc/html/rfc7230#section-3.2]. You can also enter selectors to represent message attributes. At runtime, the API Gateway expands the selector to the current value of the corresponding message attribute. For example, the `${id}` selector is replaced by the value of the current message ID. Message attribute selectors have the following syntax:
 
 ```
 ${message_attribute}
