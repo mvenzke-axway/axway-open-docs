@@ -100,7 +100,7 @@ If running via a system service, ensure that the following lines are present in 
 
 ```
 LimitMEMLOCK=infinity
-LimitNOFILE=100000
+LimitNOFILE=1048576
 LimitNPROC=32768
 LimitAS=infinity
 ```
